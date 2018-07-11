@@ -76,7 +76,7 @@
         var o = "" + e.id !== "undefined" ? '<button class="installAppAction r-a-f"  data-extId="' + e.id + '">Install</button>' : "";
         var s = e.hl === "new" ? '<div class="r-h-n r-n"></div>' : e.hl === "hot" ? '<div class="r-h-n r-h"></div>' : "";
         var r = '<tr class="r-a-r-i">' + '<td class="r-a-c r-a-c-1">' + s + a + "</td>" + '<td class="r-a-c r-a-c-2">' + l + "</td>" + '<td class="r-a-c r-a-c-3">' + (e.installed ? i : o) + "</td>" + "</tr>";
-        $("#tab-relative-apps table").append(r);
+        //$("#tab-relative-apps table").append(r);
       }
       function r() {
         utils.getInstalledAppsInWhitelist(o, function (e) {
@@ -796,8 +796,8 @@
       utils.resetClickHandler($(".click-Feedback"), function () {
         chrome.extension.sendMessage("click-Feedback");
       });
-      utils.resetClickHandler($(".click-Fanpage"), function () {
-        chrome.extension.sendMessage("click-Fanpage");
+      utils.resetClickHandler($(".click-Fanpage"), function () {        
+        chrome.extension.sendMessage("click-Rate");
       });
       utils.resetClickHandler($(".click-ShareFB"), function () {
         chrome.extension.sendMessage("click-ShareFB");

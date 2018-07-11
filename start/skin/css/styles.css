@@ -365,7 +365,7 @@ body {
   display: block;
   position: relative;
   padding-left: 20px;
-  margin-bottom: 12px;
+  margin-bottom: 0;
   cursor: pointer;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -1477,7 +1477,7 @@ h1.hour {
 #background_selector_widget #tab-background,
 #background_selector_widget #tab-relative-apps,
 #background_selector_widget #tab-setting {
-  min-height: 300px;
+  min-height: 200px;
   max-height: 320px;
   position: relative;
   overflow-x: hidden;
