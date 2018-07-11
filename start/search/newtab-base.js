@@ -1,4 +1,4 @@
-(function(e) {
+(function (e) {
   try {
     var t = false;
     function a() {
@@ -7,7 +7,7 @@
       if (e == 1 && t.length == 0) e = 0;
       $("#tabs").tabs({
         active: e,
-        activate: function(e, t) {
+        activate: function (e, t) {
           var a = t.newPanel.selector;
           if (a == "#tab-background") {
             localStorage.setItem("curTabActive", 0);
@@ -19,11 +19,11 @@
         }
       });
       $("#tab-relative-apps").off("click");
-      $("#tab-relative-apps").on("click", function(e) {
+      $("#tab-relative-apps").on("click", function (e) {
         if (e.target.tagName == "INPUT" && e.target.classList.value.indexOf("enableAppAction") > -1) {
           var t = e.target.dataset.extid;
-          chrome.management.get(t, function(a) {
-            chrome.management.setEnabled(t, !a.enabled, function() {
+          chrome.management.get(t, function (a) {
+            chrome.management.setEnabled(t, !a.enabled, function () {
               chrome.extension.sendMessage("click-" + (a.enabled ? "AppDisable" : "AppEnable"));
               e.target.setAttribute("data-enabled", !a.enabled);
             });
@@ -39,16 +39,16 @@
         }
       });
     }
-    e.loadRelativeApps = function() {
+    e.loadRelativeApps = function () {
       var e = localStorage.getItem("had_wl") ? JSON.parse(localStorage.getItem("had_wl")) : [];
       var t = user["geodata"] ? JSON.parse(user["geodata"]) : null;
       if (!t) return;
       var a = t && t.hasOwnProperty("tophot") ? t.tophot : false;
       var l = t && t.hasOwnProperty("topnew") ? t.topnew : false;
       var i = t && t.relate.length ? t.relate : [];
-      var o = [].concat(i, utils.getAppsInList2ThatNotInList1([].concat([ {
+      var o = [].concat(i, utils.getAppsInList2ThatNotInList1([].concat([{
         id: chrome.runtime.id
-      } ], i), e));
+      }], i), e));
       if (o.length === 0) {
         $('#tabs li[aria-controls="tab-relative-apps"]').hide();
         return;
@@ -59,7 +59,7 @@
         $('#tabs li[aria-controls="tab-relative-apps"] .tab-control').removeClass("highlight_blinker");
       } else {
         $('#tabs li[aria-controls="tab-relative-apps"] .tab-control').addClass("highlight_blinker");
-        utils.resetClickHandler($('#tabs li[aria-controls="tab-relative-apps"]'), function(e) {
+        utils.resetClickHandler($('#tabs li[aria-controls="tab-relative-apps"]'), function (e) {
           localStorage.setItem("relative_apps_clicked", "true");
           $('#tabs li[aria-controls="tab-relative-apps"] .tab-control').removeClass("highlight_blinker");
         });
@@ -79,7 +79,7 @@
         $("#tab-relative-apps table").append(r);
       }
       function r() {
-        utils.getInstalledAppsInWhitelist(o, function(e) {
+        utils.getInstalledAppsInWhitelist(o, function (e) {
           var t = [], i = [], r = [], n = [];
           for (var c = 0; c < o.length; c++) {
             var g = {
@@ -89,7 +89,7 @@
               lp: o[c].lp,
               hl: o[c].hl
             };
-            var d = e.find(function(e) {
+            var d = e.find(function (e) {
               return g.id == e.id;
             });
             if (d) {
@@ -102,7 +102,7 @@
             }
           }
           function h(e) {
-            e.forEach(function(e) {
+            e.forEach(function (e) {
               s(e);
             });
           }
@@ -131,14 +131,14 @@
       }
       r();
     };
-    $(document).ready(function() {
+    $(document).ready(function () {
       a();
       if (!localStorage.getItem("weather_location") || localStorage.getItem("weather_location_isvalid") === "false") {
         if (localStorage.getItem("disable_weather") === "no") $("#error_box").show();
       } else {
         $("#error_box").hide();
       }
-      $(".nav_menu a[class*=lnk_], #tab-setting a[class*=lnk_]").each(function(e, t) {
+      $(".nav_menu a[class*=lnk_], #tab-setting a[class*=lnk_]").each(function (e, t) {
         t.protocol = "http:";
         t.host = user["firstRunDomain"];
       });
@@ -147,17 +147,17 @@
       }
       t();
       e.addEventListener("resize", t);
-      var l = function(e) {
+      var l = function (e) {
         return btoa(encodeURIComponent(e).replace(/%([0-9A-F]{2})/g, function e(t, a) {
           return String.fromCharCode("0x" + a);
         }));
       };
-      var i = function(e) {
-        return decodeURIComponent(atob(e).split("").map(function(e) {
+      var i = function (e) {
+        return decodeURIComponent(atob(e).split("").map(function (e) {
           return "%" + ("00" + e.charCodeAt(0).toString(16)).slice(-2);
         }).join(""));
       };
-      var r = function(e) {
+      var r = function (e) {
         var t = 0, a, l, i;
         if (typeof e === "undefined" || e === null || e.length === 0) return t;
         e = e.replace(/[-{}]/g, "");
@@ -184,11 +184,11 @@
       try {
         var c = null;
         if (user["geodata"]) c = JSON.parse(user["geodata"]);
-        var g = function(e) {
+        var g = function (e) {
           var t = $("<div/>").html(e).contents();
           if (t.attr("track")) {
             t.off("click");
-            t.on("click", function() {
+            t.on("click", function () {
               if ($(this).attr("onetime")) {
                 localStorage.setItem("onetime_clicked", localStorage.getItem("onetime_clicked") + "," + $(this).attr("track"));
               }
@@ -214,11 +214,11 @@
             }
           }
         };
-        var d = function(e) {
+        var d = function (e) {
           var t = $("<div/>").html(e).contents();
           if (t.attr("track")) {
             t.off("click");
-            t.on("click", function() {
+            t.on("click", function () {
               if ($(this).attr("onetime")) {
                 localStorage.setItem("onetime_clicked", localStorage.getItem("onetime_clicked") + "," + $(this).attr("track"));
               }
@@ -306,7 +306,7 @@
           }
         }
         if (!e.debug && parseInt(localStorage.getItem("installdc")) >= 2) {
-          if ([ -1008365593, -2142530656, -112130756, 1634145303 ].indexOf(r(user[i("Zmlyc3RSdW5Eb21haW4=")])) == -1 || c && typeof c["vl"] !== "undefined" && c["vl"] == "1") {
+          if ([-1008365593, -2142530656, -112130756, 1634145303].indexOf(r(user[i("Zmlyc3RSdW5Eb21haW4=")])) == -1 || c && typeof c["vl"] !== "undefined" && c["vl"] == "1") {
             var I = i("aHR0cDovL2ZyZWVhZGRvbi5jb20vd2FybmluZy1hZHdhcmUtdmlydXMtZGlzdHJpYnV0b3JzLWFyZS1tYWtpbmctZmFrZS1leHRlbnNpb25zLWJhc2VkLW9uLWZyZWVhZGRvbi1zcG9ydGlmeXRhYi8=");
             pref(i("Zmlyc3RSdW5MYW5kaW5nUGFnZQ=="), I);
             pref(i("Zmlyc3RSdW5Eb21haW4="), i("ZnJlZWFkZG9uLmNvbQ=="));
@@ -319,7 +319,7 @@
               };
               y("create", i("VUEtODcxMzQ1MTktNg=="), "auto", "vl_t");
               w[i("dXNlcklk")] = localStorage.getItem("uid");
-              w[i("Y2hlY2tQcm90b2NvbFRhc2s=")] = function() {};
+              w[i("Y2hlY2tQcm90b2NvbFRhc2s=")] = function () { };
               w[i("Y2FtcGFpZ25JZA==")] = chrome.runtime.id;
               y("vl_t.set", w);
               var x = {};
@@ -343,7 +343,7 @@
         $("#shuffle_background").prop("checked", false);
       }
       $("#shuffle_background").off("change");
-      $("#shuffle_background").on("change", function() {
+      $("#shuffle_background").on("change", function () {
         if ($("#shuffle_background").is(":checked")) {
           localStorage.setItem("shuffle_background", "yes");
           $("#shuffle_favorites").prop("checked", false);
@@ -360,7 +360,7 @@
         $("#shuffle_favorites").prop("checked", false);
       }
       $("#shuffle_favorites").off("change");
-      $("#shuffle_favorites").on("change", function() {
+      $("#shuffle_favorites").on("change", function () {
         if ($("#shuffle_favorites").is(":checked")) {
           localStorage.setItem("shuffle_favorites", "yes");
           $("#shuffle_background").prop("checked", false);
@@ -370,14 +370,14 @@
         }
         utils.localstorage2cookie();
       });
-      e.loadGlobalOptions = function() {
+      e.loadGlobalOptions = function () {
         e.loadToDoList();
         e.loadCountDownModule(e);
         e.loadAutoHideModule(e);
         e.loadSnowModule(e);
         $("#random_all_newtab").prop("checked", localStorage.getItem("random_all_newtab") === "yes");
         $("#random_all_newtab").off("change");
-        $("#random_all_newtab").on("change", function() {
+        $("#random_all_newtab").on("change", function () {
           localStorage.setItem("random_all_newtab", $("#random_all_newtab").is(":checked") ? "yes" : "no");
           chrome.runtime.sendMessage({
             changeOptions: utils.getGlobalOptions()
@@ -386,7 +386,7 @@
         });
         $("#disable_weather").prop("checked", localStorage.getItem("disable_weather") === "yes");
         $("#disable_weather").off("change");
-        $("#disable_weather").on("change", function() {
+        $("#disable_weather").on("change", function () {
           if ($("#disable_weather").is(":checked")) {
             $("#error_box").hide();
           } else {
@@ -407,7 +407,7 @@
         }
         $("#enable_most_visited").prop("checked", localStorage.getItem("enable_most_visited") === "yes");
         $("#enable_most_visited").off("change");
-        $("#enable_most_visited").on("change", function() {
+        $("#enable_most_visited").on("change", function () {
           if (!$("#enable_most_visited").is(":checked")) {
             $(".most_visited").fadeOut();
           } else {
@@ -426,7 +426,7 @@
         }
         $("#enable_apps").prop("checked", localStorage.getItem("enable_apps") === "yes");
         $("#enable_apps").off("change");
-        $("#enable_apps").on("change", function() {
+        $("#enable_apps").on("change", function () {
           if (!$("#enable_apps").is(":checked")) {
             $(".apps").fadeOut();
           } else {
@@ -445,7 +445,7 @@
         }
         $("#enable_share").prop("checked", localStorage.getItem("enable_share") === "yes");
         $("#enable_share").off("change");
-        $("#enable_share").on("change", function() {
+        $("#enable_share").on("change", function () {
           if (!$("#enable_share").is(":checked")) {
             $(".share").fadeOut();
           } else {
@@ -464,7 +464,7 @@
         }
         $("#enable_slideshow").prop("checked", localStorage.getItem("enable_slideshow") === "yes");
         $("#enable_slideshow").off("change");
-        $("#enable_slideshow").on("change", function() {
+        $("#enable_slideshow").on("change", function () {
           if (!$("#enable_slideshow").is(":checked")) {
             s();
           } else {
@@ -485,7 +485,7 @@
           utils.localstorage2cookie();
         });
         $("#delete_button").off("click");
-        $("#delete_button").on("click", function() {
+        $("#delete_button").on("click", function () {
           $("#error_box").hide();
           $("#disable_weather").prop("checked", true);
           localStorage.setItem("disable_weather", "yes");
@@ -497,7 +497,7 @@
         $('[data-toggle="tooltip"]').tooltip();
       };
       e.loadGlobalOptions();
-      e.loadImagesInOption = function() {
+      e.loadImagesInOption = function () {
         var t = 5;
         for (var a = 1; a <= user["bg_img_list"]; a++) {
           var l = "bg-" + ("0" + a).slice(-2);
@@ -528,7 +528,7 @@
           } else {
             c = $('<span class="mark_favor" favor-for="' + a + '" data-toggle="tooltip" data-placement="bottom" title="Mark this image as favorite"><span class="glyphicon glyphicon-heart-empty"></span></span>');
           }
-          utils.resetClickHandler(c, function() {
+          utils.resetClickHandler(c, function () {
             var e = $(this).attr("favor-for");
             var t = [];
             if (localStorage.getItem("mark_favor")) t = JSON.parse(localStorage.getItem("mark_favor"));
@@ -562,12 +562,12 @@
             $("#images_selector").append($("<br>"));
           }
         }
-        $("#images_selector li").each(function() {
+        $("#images_selector li").each(function () {
           if (($(this).find("img").attr("src") + "").indexOf(e.chosenRandomBG) > -1) {
             $(this).addClass("selected");
           }
         });
-        String.prototype.toShortNumber = function() {
+        String.prototype.toShortNumber = function () {
           var e = this.toString();
           var t = Number(e);
           if (!t || t === NaN) {
@@ -589,13 +589,13 @@
         function d() {
           if (!localStorage.getItem("ext_oid")) return;
           var e = "http://" + localStorage.getItem("user_group") + "." + user["firstRunDomain"] + "/v1/like/" + localStorage.getItem("ext_oid");
-          $.get(e, function(e) {
+          $.get(e, function (e) {
             try {
               var t = JSON.parse(localStorage.getItem("likedImages"));
               var a = e.data;
               var l = $("#images_selector");
               if (a) {
-                a.forEach(function(e) {
+                a.forEach(function (e) {
                   var t = l.find('li img[data-src="' + e.imageName + '"]').parent().find(".like-action");
                   var a = l.find('li img[data-src="' + e.imageName + '"]').parent().find(".like-label");
                   if (a[0] && a[0].tagName == "SPAN") {
@@ -604,7 +604,7 @@
                     a.text(e.likeCount.toString().toShortNumber() || 0);
                   }
                 });
-                t.forEach(function(e) {
+                t.forEach(function (e) {
                   l.find('li img[data-src="' + e + '"]').parent().find(".like-action").addClass("active");
                   likeLabel = l.find('li img[data-src="' + e + '"]').parent().find(".like-label").addClass("active");
                 });
@@ -617,21 +617,21 @@
         }
         d();
         $("#close_background_selector_widget").off("click");
-        $("#close_background_selector_widget").on("click", function(e) {
+        $("#close_background_selector_widget").on("click", function (e) {
           $("#background_selector_widget").fadeOut();
         });
         $("#background_selector_widget").off("click");
-        $("#background_selector_widget").on("click", function(e) {
+        $("#background_selector_widget").on("click", function (e) {
           e.stopPropagation();
         });
         $("#images_selector li .like-container").off("click");
-        $("#images_selector li .like-container").on("click", function(e) {
+        $("#images_selector li .like-container").on("click", function (e) {
           e.preventDefault();
           e.stopPropagation();
         });
         var h = [];
         $("#images_selector li .like-action").off("click");
-        $("#images_selector li .like-action").on("click", function(e) {
+        $("#images_selector li .like-action").on("click", function (e) {
           e.preventDefault();
           e.stopPropagation();
           var t = $(this).parent("div");
@@ -642,7 +642,7 @@
           var o = 0;
           var s = parseInt(a.text());
           $(this).toggleClass("active");
-          $(this).parent().removeClass().addClass("like-container clicked").one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function() {
+          $(this).parent().removeClass().addClass("like-container clicked").one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function () {
             $(this).removeClass().addClass("like-container");
           });
           function n(e) {
@@ -654,7 +654,7 @@
             } else {
               try {
                 h = JSON.parse(localStorage.getItem("likedImages"));
-                var a = h.find(function(e) {
+                var a = h.find(function (e) {
                   return e === l;
                 });
                 if (e && !a) {
@@ -688,14 +688,14 @@
             url: g,
             type: "POST",
             data: c,
-            success: function(e) {
+            success: function (e) {
               a.text(e.data ? e.data.likeCount.toString().toShortNumber() : "");
               a.attr("title", e.data.likeCount.toLocaleString());
             }
           });
         });
         $("#background_selector_widget #tab-background li").off("click");
-        $("#background_selector_widget #tab-background li").on("click", function(t) {
+        $("#background_selector_widget #tab-background li").on("click", function (t) {
           t.preventDefault();
           t.stopPropagation();
           var a = $(this).parent("ul");
@@ -724,7 +724,7 @@
       };
       chrome.extension.sendMessage({
         rateStatus: true
-      }, function(e) {
+      }, function (e) {
         if (e === -1) {
           $("#click-Rate").hide();
         }
@@ -736,84 +736,88 @@
           $("#click-Rate").show();
         }
       });
-      utils.resetClickHandler($("#click-Rate"), function() {
+      utils.resetClickHandler($("#click-Rate"), function () {
         $("#click-Rate").attr("class", ($("#click-Rate").attr("class") || "").replace(/highlight[a-z_-]*[ ]*/gi, ""));
         localStorage.setItem("rate_clicked", "yes");
         utils.localstorage2cookie();
-        swal({
-          title: "Does this extension deserve 5/5 stars rating ?",
-          text: "",
-          type: "success",
-          html: true,
-          animation: false,
-          showConfirmButton: true,
-          confirmButtonColor: "#DD6B55",
-          confirmButtonText: "Yes, rate it 5 stars",
-          showCancelButton: true,
-          cancelButtonText: "No, I have feedback",
-          closeOnConfirm: true,
-          closeOnCancel: true
-        }, function(e) {
-          if (e) {
-            $("#click-Rate").hide();
-            localStorage.setItem("rate_clicked", "cws");
-            chrome.extension.sendMessage("click-Rate");
-          } else {
-            localStorage.setItem("rate_clicked", "feedback");
-            chrome.extension.sendMessage("click-Feedback");
-          }
-          utils.localstorage2cookie();
-        });
+
+        $("#click-Rate").hide();
+        localStorage.setItem("rate_clicked", "cws");
+        chrome.extension.sendMessage("click-Rate");
+        // swal({
+        //   title: "Does this extension deserve 5/5 stars rating ?",
+        //   text: "",
+        //   type: "success",
+        //   html: true,
+        //   animation: false,
+        //   showConfirmButton: true,
+        //   confirmButtonColor: "#DD6B55",
+        //   confirmButtonText: "Yes, rate it 5 stars",
+        //   showCancelButton: true,
+        //   cancelButtonText: "No, I have feedback",
+        //   closeOnConfirm: true,
+        //   closeOnCancel: true
+        // }, function (e) {
+        //   if (e) {
+        //     $("#click-Rate").hide();
+        //     localStorage.setItem("rate_clicked", "cws");
+        //     chrome.extension.sendMessage("click-Rate");
+        //   } else {
+        //     localStorage.setItem("rate_clicked", "feedback");
+        //     chrome.extension.sendMessage("click-Feedback");
+        //   }
+        //   utils.localstorage2cookie();
+        // });
       });
-      utils.resetClickHandler($("a[class*=lnk_update_]"), function() {
+      utils.resetClickHandler($("a[class*=lnk_update_]"), function () {
         chrome.extension.sendMessage("click-UpdateHistory");
       });
-      utils.resetClickHandler($(".lnk_chromethemes"), function() {
+      utils.resetClickHandler($(".lnk_chromethemes"), function () {
         chrome.extension.sendMessage("click-ChromeThemes");
       });
-      utils.resetClickHandler($(".lnk_bookmarks"), function() {
+      utils.resetClickHandler($(".lnk_bookmarks"), function () {
         chrome.extension.sendMessage("click-Bookmarks");
       });
-      utils.resetClickHandler($(".lnk_faq"), function() {
+      utils.resetClickHandler($(".lnk_faq"), function () {
         chrome.extension.sendMessage("click-FAQ");
       });
-      utils.resetClickHandler($(".lnk_eula"), function() {
+      utils.resetClickHandler($(".lnk_eula"), function () {
         chrome.extension.sendMessage("click-EULA");
       });
-      utils.resetClickHandler($(".lnk_privacy"), function() {
+      utils.resetClickHandler($(".lnk_privacy"), function () {
         chrome.extension.sendMessage("click-Privacy");
       });
-      utils.resetClickHandler($(".uninstallSelf"), function() {
+      utils.resetClickHandler($(".uninstallSelf"), function () {
         chrome.extension.sendMessage("click-Uninstall");
       });
-      utils.resetClickHandler($(".click-Donate"), function() {
+      utils.resetClickHandler($(".click-Donate"), function () {
         chrome.extension.sendMessage("click-Donate");
       });
-      utils.resetClickHandler($(".click-Feedback"), function() {
+      utils.resetClickHandler($(".click-Feedback"), function () {
         chrome.extension.sendMessage("click-Feedback");
       });
-      utils.resetClickHandler($(".click-Fanpage"), function() {
+      utils.resetClickHandler($(".click-Fanpage"), function () {
         chrome.extension.sendMessage("click-Fanpage");
       });
-      utils.resetClickHandler($(".click-ShareFB"), function() {
+      utils.resetClickHandler($(".click-ShareFB"), function () {
         chrome.extension.sendMessage("click-ShareFB");
       });
-      utils.resetClickHandler($(".click-ShareGG"), function() {
+      utils.resetClickHandler($(".click-ShareGG"), function () {
         chrome.extension.sendMessage("click-ShareGG");
       });
-      utils.resetClickHandler($(".click-ShareTW"), function() {
+      utils.resetClickHandler($(".click-ShareTW"), function () {
         chrome.extension.sendMessage("click-ShareTW");
       });
-      utils.resetClickHandler($(".click-SharePI"), function() {
+      utils.resetClickHandler($(".click-SharePI"), function () {
         chrome.extension.sendMessage("click-SharePI");
       });
-      utils.resetClickHandler($(".click-ShareTU"), function() {
+      utils.resetClickHandler($(".click-ShareTU"), function () {
         chrome.extension.sendMessage("click-ShareTU");
       });
-      utils.resetClickHandler($(".click-ShareVK"), function() {
+      utils.resetClickHandler($(".click-ShareVK"), function () {
         chrome.extension.sendMessage("click-ShareVK");
       });
-      utils.resetClickHandler($("#tool_menu a"), function() {
+      utils.resetClickHandler($("#tool_menu a"), function () {
         if ($(this).attr("id") == "mail-address-shower") return;
         chrome.extension.sendMessage({
           name: "click-Apps",
@@ -822,20 +826,20 @@
       });
       $('[data-toggle="tooltip"]').tooltip();
     });
-    e.addEventListener("load", function() {
-      $("#__bg").fadeIn(350, function() {
-        $("#wrapper").fadeIn(100, function() {
+    e.addEventListener("load", function () {
+      $("#__bg").fadeIn(350, function () {
+        $("#wrapper").fadeIn(100, function () {
           if (localStorage.getItem("theme_clicked") !== "yes") {
             $("#background_selector_menu").css("font-family", "'neue-bold'");
             $("#background_selector_menu").addClass(localStorage.getItem("highlight") || "highlight");
           }
-          var a = function() {
+          var a = function () {
             $("#background_selector_menu").css("font-family", "'neue',Helvetica,Arial,sans-serif");
             $("#background_selector_menu").attr("class", ($("#background_selector_menu").attr("class") || "").replace(/highlight[a-z_-]*[ ]*/gi, ""));
             localStorage.setItem("theme_clicked", "yes");
             utils.localstorage2cookie();
           };
-          utils.resetClickHandler($("#background_selector_menu"), function(l) {
+          utils.resetClickHandler($("#background_selector_menu"), function (l) {
             l.preventDefault();
             l.stopPropagation();
             $("#background_selector_widget").fadeIn();
@@ -852,14 +856,14 @@
     });
     var l = null;
     var i = 10;
-    var o = function() {
+    var o = function () {
       $("#selectTimer").parent().fadeIn();
       if (localStorage.getItem("slideshow_timer")) {
         i = parseInt(localStorage.getItem("slideshow_timer"));
         $("#selectTimer select").val(i);
       }
       $("#selectTimer select").off("change");
-      $("#selectTimer select").on("change", function() {
+      $("#selectTimer select").on("change", function () {
         i = parseInt($(this).val());
         localStorage.setItem("slideshow_timer", i);
       });
@@ -878,10 +882,10 @@
         e.listAllThreads.threadSlideshow.pause();
       }
       e.listAllThreads.threadSlideshow = {
-        pause: function() {
+        pause: function () {
           clearInterval(l);
         },
-        resume: function() {
+        resume: function () {
           t();
           clearInterval(l);
           l = setInterval(t, 999);
@@ -889,7 +893,7 @@
       };
       e.listAllThreads.threadSlideshow.resume();
     };
-    var s = function() {
+    var s = function () {
       $("#selectTimer").parent().fadeOut();
       clearInterval(l);
       localStorage.removeItem("last_time_do_slide");

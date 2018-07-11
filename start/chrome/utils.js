@@ -1,4 +1,4 @@
-(function(e) {
+(function (e) {
   "use strict";
   function t(e) {
     return localStorage[e];
@@ -11,7 +11,7 @@
   }
   var a = navigator.languages[0] || navigator.language;
   var l = a.substr(0, 2);
-  var r = function() {
+  var r = function () {
     var e = navigator.userAgent.toLowerCase();
     if (/x11; cros /.test(e)) {
       return "chromeOS";
@@ -55,41 +55,41 @@
     get language() {
       return l;
     },
-    get: function(e) {
+    get: function (e) {
       return t(e);
     },
-    set: function(e, t) {
+    set: function (e, t) {
       o(e, t);
     },
-    remove: function(e) {
+    remove: function (e) {
       delete localStorage[e];
     },
-    yymmdd: function() {
+    yymmdd: function () {
       try {
         var e = new Date();
         return (e.getUTCFullYear() + "").slice(-2) + ("0" + (e.getUTCMonth() + 1)).slice(-2) + ("0" + e.getUTCDate()).slice(-2) + ("0" + e.getUTCHours()).slice(-2);
-      } catch (e) {}
+      } catch (e) { }
     },
-    count: function(e) {
+    count: function (e) {
       var t = this.get(e);
       if (t == null) t = 1; else t++;
       this.set(e, t);
     },
-    mark_time: function(e) {
+    mark_time: function (e) {
       this.set(e, new Date().getTime());
     },
-    resetMouseEnterHandler: function(e, t) {
+    resetMouseEnterHandler: function (e, t) {
       e.off("mouseenter");
       e.on("mouseenter", t);
     },
-    resetClickHandler: function(e, t) {
+    resetClickHandler: function (e, t) {
       e.off("click");
       e.on("click", t);
     },
-    getExtensionURL: function(e) {
+    getExtensionURL: function (e) {
       return chrome.extension.getURL(e);
     },
-    getGlobalOptions: function() {
+    getGlobalOptions: function () {
       var t = {
         disable_weather: localStorage.getItem("disable_weather"),
         disable_most_visited: localStorage.getItem("enable_most_visited") == "yes" ? "no" : "yes",
@@ -118,8 +118,8 @@
       }
       return t;
     },
-    getInstalledAppsInWhitelist: function(e, t) {
-      chrome.management.getAll(function(o) {
+    getInstalledAppsInWhitelist: function (e, t) {
+      chrome.management.getAll(function (o) {
         var n = [];
         for (var a = 0; a < e.length; a++) {
           var l = e[a];
@@ -133,8 +133,8 @@
         t(n);
       });
     },
-    getEnabledAppsInWhitelist: function(e, t) {
-      chrome.management.getAll(function(o) {
+    getEnabledAppsInWhitelist: function (e, t) {
+      chrome.management.getAll(function (o) {
         var n = [];
         for (var a = 0; a < e.length; a++) {
           var l = e[a];
@@ -148,7 +148,7 @@
         t(n);
       });
     },
-    getAppsInList2ThatNotInList1: function(e, t) {
+    getAppsInList2ThatNotInList1: function (e, t) {
       var o = [];
       for (var n = 0; n < t.length; n++) {
         var a = true;
@@ -162,12 +162,12 @@
       }
       return o;
     },
-    localstorage2cookie: function() {}
+    localstorage2cookie: function () { }
   };
   e.utils = i;
   e.debug = localStorage.getItem("debug") === "debug";
   if (chrome.management && chrome.management.getSelf) {
-    chrome.management.getSelf(function(t) {
+    chrome.management.getSelf(function (t) {
       if (t.installType === "development") {
         e.debug = true;
         localStorage.setItem("debug", "debug");

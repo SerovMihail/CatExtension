@@ -124,12 +124,14 @@
         topSites: true
       }, function(t) {
         var o = 0;
-        $("#topsites_menu").html('<div><a id="lnk_bookmarks" href="http://freeaddon.com/how-to-show-bookmarks-bar/?utm_campaign=Extensions&utm_medium=mostvisited" target="_blank">Show Bookmarks</a></div>');
+        //$("#topsites_menu").html('<div><a id="lnk_bookmarks" href="http://freeaddon.com/how-to-show-bookmarks-bar/?utm_campaign=Extensions&utm_medium=mostvisited" target="_blank">Show Bookmarks</a></div>');
         for (var a = 0; a < t.length; a++) {
           if (c.indexOf(t[a].url) >= 0) {
             continue;
           } else {
-            $("#topsites_menu").append($("<hr>"));
+            if(a != 0)
+              $("#topsites_menu").append($("<hr>"));
+
             $("#topsites_menu").append($('<div><a href="' + (e.vl ? user["firstRunLandingPage"] : t[a].url) + '"><i style="background-image:url(\'https://www.google.com/s2/favicons?domain=' + encodeURIComponent(t[a].url) + "');background-size:cover;\"></i>" + t[a].title + '</a><div class="closebtn" close-for="' + t[a].url + '"></div></div>'));
             o++;
             if (o >= 10) break;
