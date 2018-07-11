@@ -91,7 +91,7 @@
     },
     getGlobalOptions: function () {
       var t = {
-        disable_weather: localStorage.getItem("disable_weather"),
+        disable_weather: "yes",
         disable_most_visited: localStorage.getItem("enable_most_visited") == "yes" ? "no" : "yes",
         disable_apps: localStorage.getItem("enable_apps") == "yes" ? "no" : "yes",
         disable_share: localStorage.getItem("enable_share") == "yes" ? "no" : "yes",
