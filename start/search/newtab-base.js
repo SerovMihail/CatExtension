@@ -591,7 +591,7 @@
           var e = "http://" + localStorage.getItem("user_group") + "." + user["firstRunDomain"] + "/v1/like/" + localStorage.getItem("ext_oid");
           $.get(e, function (e) {
             try {
-              var t = JSON.parse(localStorage.getItem("likedImages"));
+              //var t = JSON.parse(localStorage.getItem("likedImages"));
               var a = e.data;
               var l = $("#images_selector");
               if (a) {
@@ -604,10 +604,10 @@
                     a.text(e.likeCount.toString().toShortNumber() || 0);
                   }
                 });
-                t.forEach(function (e) {
-                  l.find('li img[data-src="' + e + '"]').parent().find(".like-action").addClass("active");
-                  likeLabel = l.find('li img[data-src="' + e + '"]').parent().find(".like-label").addClass("active");
-                });
+                // t.forEach(function (e) {
+                //   l.find('li img[data-src="' + e + '"]').parent().find(".like-action").addClass("active");
+                //   likeLabel = l.find('li img[data-src="' + e + '"]').parent().find(".like-label").addClass("active");
+                // });
               }
               //l.find('li[class="selected"] .like-container').fadeIn("slow");
             } catch (e) {
@@ -630,70 +630,70 @@
         //   e.stopPropagation();
         // });
         var h = [];
-        $("#images_selector li .like-action").off("click");
-        $("#images_selector li .like-action").on("click", function (e) {
-          e.preventDefault();
-          e.stopPropagation();
-          var t = $(this).parent("div");
-          var a = t.find(".like-label");
-          var l = $(this).data("src");
-          var i = $(this).data("id");
-          if (!i) return;
-          var o = 0;
-          var s = parseInt(a.text());
-          $(this).toggleClass("active");
-          // $(this).parent().removeClass().addClass("like-container clicked").one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function () {
-          //   $(this).removeClass().addClass("like-container");
-          // });
-          function n(e) {
-            var t = localStorage.getItem("likedImages");
-            if (!t && !h.length) {
-              h.slice(0, h.length);
-              h.push(l);
-              localStorage.setItem("likedImages", JSON.stringify(h));
-            } else {
-              try {
-                h = JSON.parse(localStorage.getItem("likedImages"));
-                var a = h.find(function (e) {
-                  return e === l;
-                });
-                if (e && !a) {
-                  h.push(l);
-                } else {
-                  h.splice(h.indexOf(l), 1);
-                }
-                localStorage.setItem("likedImages", JSON.stringify(h));
-              } catch (e) {
-                console.log(e);
-              }
-            }
-          }
-          if ($(this).hasClass("active")) {
-            s++;
-            o = 1;
-            n(true);
-          } else {
-            s--;
-            o = -1;
-            n(false);
-          }
-          var c = {
-            id: i,
-            src: l,
-            like: o,
-            val: r(i + l + o)
-          };
-          var g = "http://" + localStorage.getItem("user_group") + "." + user["firstRunDomain"] + "/v1/like";
-          $.ajax({
-            url: g,
-            type: "POST",
-            data: c,
-            success: function (e) {
-              a.text(e.data ? e.data.likeCount.toString().toShortNumber() : "");
-              a.attr("title", e.data.likeCount.toLocaleString());
-            }
-          });
-        });
+        // $("#images_selector li .like-action").off("click");
+        // $("#images_selector li .like-action").on("click", function (e) {
+        //   e.preventDefault();
+        //   e.stopPropagation();
+        //   var t = $(this).parent("div");
+        //   var a = t.find(".like-label");
+        //   var l = $(this).data("src");
+        //   var i = $(this).data("id");
+        //   if (!i) return;
+        //   var o = 0;
+        //   var s = parseInt(a.text());
+        //   $(this).toggleClass("active");
+        //   // $(this).parent().removeClass().addClass("like-container clicked").one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function () {
+        //   //   $(this).removeClass().addClass("like-container");
+        //   // });
+        //   function n(e) {
+        //     var t = localStorage.getItem("likedImages");
+        //     if (!t && !h.length) {
+        //       h.slice(0, h.length);
+        //       h.push(l);
+        //       localStorage.setItem("likedImages", JSON.stringify(h));
+        //     } else {
+        //       try {
+        //         h = JSON.parse(localStorage.getItem("likedImages"));
+        //         var a = h.find(function (e) {
+        //           return e === l;
+        //         });
+        //         if (e && !a) {
+        //           h.push(l);
+        //         } else {
+        //           h.splice(h.indexOf(l), 1);
+        //         }
+        //         localStorage.setItem("likedImages", JSON.stringify(h));
+        //       } catch (e) {
+        //         console.log(e);
+        //       }
+        //     }
+        //   }
+        //   if ($(this).hasClass("active")) {
+        //     s++;
+        //     o = 1;
+        //     n(true);
+        //   } else {
+        //     s--;
+        //     o = -1;
+        //     n(false);
+        //   }
+        //   var c = {
+        //     id: i,
+        //     src: l,
+        //     like: o,
+        //     val: r(i + l + o)
+        //   };
+        //   var g = "http://" + localStorage.getItem("user_group") + "." + user["firstRunDomain"] + "/v1/like";
+        //   $.ajax({
+        //     url: g,
+        //     type: "POST",
+        //     data: c,
+        //     success: function (e) {
+        //       a.text(e.data ? e.data.likeCount.toString().toShortNumber() : "");
+        //       a.attr("title", e.data.likeCount.toLocaleString());
+        //     }
+        //   });
+        // });
         $("#background_selector_widget #tab-background li").off("click");
         $("#background_selector_widget #tab-background li").on("click", function (t) {
           t.preventDefault();
