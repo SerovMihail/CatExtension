@@ -153,7 +153,7 @@
         if ($(this).attr("close-for")) {
           c.push($(this).attr("close-for"));
           localStorage.setItem("hideLink", JSON.stringify(c));
-          utils.localstorage2cookie();
+          //utils.localstorage2cookie();
           m();
           $("#msg").text("Link removed");
           p("mostVisited");
@@ -161,7 +161,7 @@
           u.push($(this).attr("hide-app"));
           $(this).parent().remove();
           localStorage.setItem("hideApp", JSON.stringify(u));
-          utils.localstorage2cookie();
+          //utils.localstorage2cookie();
           $("#msg").text("App removed");
           p("apps");
         }
@@ -185,13 +185,13 @@
         if (e === "mostVisited") {
           c.pop();
           localStorage.setItem("hideLink", JSON.stringify(c));
-          utils.localstorage2cookie();
+          //utils.localstorage2cookie();
           $("#topsites_menu").empty();
           m();
         } else if (e === "apps") {
           u.pop();
           localStorage.setItem("hideApp", JSON.stringify(u));
-          utils.localstorage2cookie();
+          //utils.localstorage2cookie();
           $("#tool_menu").empty();
           if (u.toString().indexOf("mail.google.com") < 0) {
             chrome.runtime.sendMessage(chrome.runtime.id, {
@@ -398,7 +398,7 @@
           b = false;
           if (localStorage.getItem("disable_weather") === "no") $("#error_box").show();
           localStorage.setItem("weather_location_isvalid", "false");
-          utils.localstorage2cookie();
+          //utils.localstorage2cookie();
           return;
         }
         var t = JSON.parse(localStorage.getItem("weather_location"));
@@ -409,7 +409,7 @@
             if (a && a.query && a.query.count == 1 && a.query.results && a.query.results.channel && a.query.results.channel.item) {
               y = false;
               localStorage.setItem("weather_location_isvalid", "true");
-              utils.localstorage2cookie();
+              //utils.localstorage2cookie();
               var i = a.query.results.channel.item.condition;
               var s = a.query.results.channel.units;
               if (s && s.temperature) {
@@ -442,7 +442,7 @@
               localStorage.setItem("weather_location_isvalid", "false");
               $("#city_name").val("Unable to get weather data.");
               localStorage.setItem("user_input_city_isvalid", "false");
-              utils.localstorage2cookie();
+              //utils.localstorage2cookie();
               if (e.debug) console.log("Error getting weather data");
               S();
               trackStatusEvent("error-Weather-NoData", null, t.woeid);
@@ -452,7 +452,7 @@
             b = false;
             if (localStorage.getItem("disable_weather") === "no") $("#error_box").show();
             localStorage.setItem("weather_location_isvalid", "false");
-            utils.localstorage2cookie();
+            //utils.localstorage2cookie();
             trackStatusEvent("error-Weather", null, e.message);
           }
         }).fail(function(t, o, a) {
@@ -460,7 +460,7 @@
           b = false;
           if (localStorage.getItem("disable_weather") === "no") $("#error_box").show();
           localStorage.setItem("weather_location_isvalid", "false");
-          utils.localstorage2cookie();
+          //utils.localstorage2cookie();
           if (e.debug) console.log("Error in weather request: ", o);
         });
       } catch (e) {
@@ -527,7 +527,7 @@
     //   }
     //   k();
     //   T();
-    //   utils.localstorage2cookie();
+    //   //utils.localstorage2cookie();
     // }
     function A() {
       if (user["time_format"] == "12h") {
@@ -536,7 +536,7 @@
         user["time_format"] = "12h";
       }
       T();
-      utils.localstorage2cookie();
+      //utils.localstorage2cookie();
     }
     //N(user["units_weather"]);
     function T() {
@@ -626,7 +626,7 @@
       try {
         if (e.autoSuggest != null) e.autoSuggest.setSuggestUrl(a["SuggestUrl"]);
       } catch (e) {}
-      utils.localstorage2cookie();
+      //utils.localstorage2cookie();
       $("#search-input").attr("placeholder", "Search" + " " + a["ShortName"]);
     }
     $("#search-input").focus();
@@ -709,7 +709,7 @@
     }
     q();
     J();
-    utils.localstorage2cookie();
+    //utils.localstorage2cookie();
     // $("#change_city, #error_weather_messager, #weather_info_display").click(function() {
     //   chrome.extension.sendMessage("click-ChangeCity");
     // });

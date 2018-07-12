@@ -162,7 +162,7 @@
       }
       return o;
     },
-    localstorage2cookie: function () { }
+    //localstorage2cookie: function () { }
   };
   e.utils = i;
   e.debug = localStorage.getItem("debug") === "debug";

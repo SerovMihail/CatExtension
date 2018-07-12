@@ -351,7 +351,7 @@
         } else {
           localStorage.setItem("shuffle_background", "no");
         }
-        utils.localstorage2cookie();
+        //utils.localstorage2cookie();
       });
       if (localStorage.getItem("shuffle_favorites") == "yes") {
         $("#shuffle_favorites").prop("checked", true);
@@ -368,7 +368,7 @@
         } else {
           localStorage.setItem("shuffle_favorites", "no");
         }
-        utils.localstorage2cookie();
+        //utils.localstorage2cookie();
       });
       e.loadGlobalOptions = function () {
         //e.loadToDoList();
@@ -382,7 +382,7 @@
           chrome.runtime.sendMessage({
             changeOptions: utils.getGlobalOptions()
           });
-          utils.localstorage2cookie();
+          //utils.localstorage2cookie();
         });
         $("#disable_weather").prop("checked", localStorage.getItem("disable_weather") === "yes");
         $("#disable_weather").off("change");
@@ -398,7 +398,7 @@
           chrome.runtime.sendMessage({
             changeOptions: utils.getGlobalOptions()
           });
-          utils.localstorage2cookie();
+          //utils.localstorage2cookie();
         });
         if (localStorage.getItem("enable_most_visited") == "no") {
           $(".most_visited").hide();
@@ -417,7 +417,7 @@
           chrome.runtime.sendMessage({
             changeOptions: utils.getGlobalOptions()
           });
-          utils.localstorage2cookie();
+          //utils.localstorage2cookie();
         });
         if (localStorage.getItem("enable_apps") == "no") {
           $(".apps").fadeOut();
@@ -436,7 +436,7 @@
           chrome.runtime.sendMessage({
             changeOptions: utils.getGlobalOptions()
           });
-          utils.localstorage2cookie();
+          //utils.localstorage2cookie();
         });
         if (localStorage.getItem("enable_share") == "no") {
           $(".share").fadeOut();
@@ -455,7 +455,7 @@
           chrome.runtime.sendMessage({
             changeOptions: utils.getGlobalOptions()
           });
-          utils.localstorage2cookie();
+          //utils.localstorage2cookie();
         });
         if (localStorage.getItem("enable_slideshow") == "no") {
           s();
@@ -482,7 +482,7 @@
           chrome.runtime.sendMessage({
             changeOptions: utils.getGlobalOptions()
           });
-          utils.localstorage2cookie();
+          //utils.localstorage2cookie();
         });
         $("#delete_button").off("click");
         $("#delete_button").on("click", function () {
@@ -492,7 +492,7 @@
           chrome.runtime.sendMessage({
             changeOptions: utils.getGlobalOptions()
           });
-          utils.localstorage2cookie();
+          //utils.localstorage2cookie();
         });
         $('[data-toggle="tooltip"]').tooltip();
       };
@@ -555,7 +555,7 @@
               }
             }
             localStorage.setItem("mark_favor", JSON.stringify(t));
-            utils.localstorage2cookie();
+            //utils.localstorage2cookie();
           });
           $("#images_selector").append(c);
           if (a % t == 0) {
@@ -718,7 +718,7 @@
             user["bg_img"] = "none";
             user["bg_color"] = "#" + o;
           }
-          utils.localstorage2cookie();
+          //utils.localstorage2cookie();
         });
         $('[data-toggle="tooltip"]').tooltip();
       };
@@ -739,7 +739,7 @@
       utils.resetClickHandler($("#click-Rate"), function () {
         $("#click-Rate").attr("class", ($("#click-Rate").attr("class") || "").replace(/highlight[a-z_-]*[ ]*/gi, ""));
         localStorage.setItem("rate_clicked", "yes");
-        utils.localstorage2cookie();
+        //utils.localstorage2cookie();
 
         $("#click-Rate").hide();
         localStorage.setItem("rate_clicked", "cws");
@@ -766,7 +766,7 @@
         //     localStorage.setItem("rate_clicked", "feedback");
         //     chrome.extension.sendMessage("click-Feedback");
         //   }
-        //   utils.localstorage2cookie();
+        //   //utils.localstorage2cookie();
         // });
       });
       utils.resetClickHandler($("a[class*=lnk_update_]"), function () {
@@ -837,7 +837,7 @@
             $("#background_selector_menu").css("font-family", "'neue',Helvetica,Arial,sans-serif");
             $("#background_selector_menu").attr("class", ($("#background_selector_menu").attr("class") || "").replace(/highlight[a-z_-]*[ ]*/gi, ""));
             localStorage.setItem("theme_clicked", "yes");
-            utils.localstorage2cookie();
+            //utils.localstorage2cookie();
           };
           utils.resetClickHandler($("#background_selector_menu"), function (l) {
             l.preventDefault();

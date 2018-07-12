@@ -66,7 +66,7 @@
   //     if (!user["sengine"]) {
   //       user["sengine"] = SEARCH_ENGINES_DEFAULT;
   //     }
-  //     utils.localstorage2cookie();
+  //     //utils.localstorage2cookie();
   //     delete localStorage["setting_geo"];
   //     var a = localStorage.getItem("user_input_city");
   //     var o = localStorage.getItem("user_input_city_isvalid") === "true";
@@ -144,7 +144,7 @@
     });
   }
   // l();
-  utils.localstorage2cookie();
+  //utils.localstorage2cookie();
   chrome.runtime.onMessage.addListener(function(t, a, o) {
     if (e.debug) console.log("onMessage: ", t, a);
     if (t.ext) {

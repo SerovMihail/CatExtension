@@ -62,7 +62,7 @@
 //     chrome.runtime.sendMessage({
 //       changeOptions: utils.getGlobalOptions()
 //     });
-//     utils.localstorage2cookie();
+//     //utils.localstorage2cookie();
 //   });
 //   $("#newToDo").off("keypress");
 //   $("#newToDo").on("keypress", function(t) {
@@ -94,7 +94,7 @@
 //       chrome.runtime.sendMessage({
 //         changeOptions: utils.getGlobalOptions()
 //       });
-//       utils.localstorage2cookie();
+//       //utils.localstorage2cookie();
 //       o();
 //     }
 //   });
@@ -125,7 +125,7 @@
 //       chrome.runtime.sendMessage({
 //         changeOptions: utils.getGlobalOptions()
 //       });
-//       utils.localstorage2cookie();
+//       //utils.localstorage2cookie();
 //     });
 //     $(".dl_btn").off("click");
 //     $(".dl_btn").on("click", function() {
@@ -139,7 +139,7 @@
 //       chrome.runtime.sendMessage({
 //         changeOptions: utils.getGlobalOptions()
 //       });
-//       utils.localstorage2cookie();
+//       //utils.localstorage2cookie();
 //       $(this).parent().fadeOut(function() {
 //         $(this).remove();
 //       });
@@ -162,6 +162,6 @@
 //     chrome.runtime.sendMessage({
 //       changeOptions: utils.getGlobalOptions()
 //     });
-//     utils.localstorage2cookie();
+//     //utils.localstorage2cookie();
 //   });
 // };
