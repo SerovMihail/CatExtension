@@ -44,55 +44,55 @@
     var o = "/" + localStorage.getItem("ext_name") + location.pathname;
     if (e.debug) console.log("TRACK: ", "pageview", o); else ga("trackActive.send", "pageview", o);
   }
-  e.ajax = function(e, t, a, n, r) {
-    var o = new XMLHttpRequest();
-    o.open(e, t);
-    o.timeout = 5e3;
-    o.onreadystatechange = function() {
-      if (o.readyState == 4 && o.status == 200) {
-        if (typeof n == "function") {
-          n(o);
-        }
-      } else if (o.readyState == 4) {
-        if (typeof r == "function") {
-          r(o.status);
-        }
-      }
-    };
-    o.send(a);
-  };
-  e.ajax_get = function(e, t, a, n, r) {
-    ajax("GET", e, t, function(e) {
-      if (typeof n == "function") {
-        if (a == "xml") {
-          n(e.responseXML);
-        } else if (a == "text") {
-          n(e.responseText);
-        } else {
-          n(JSON.parse(e.responseText));
-        }
-      }
-    }, r);
-  };
-  e.ajax_post = function(t, a, n, r, o) {
-    ajax("POST", t, a, function(t) {
-      if (typeof r == "function") {
-        if (n == "xml") {
-          r(t.responseXML);
-        } else if (n == "text") {
-          r(t.responseText);
-        } else {
-          r(JSON.parse(t.responseText));
-          if (e.debug) console.log("JSON.parse(xhr.responseText)", JSON.parse(t.responseText));
-        }
-      }
-    }, o);
-  };
-  e.ajax_head = function(e, t, a) {
-    ajax("HEAD", e, null, function(e) {
-      if (typeof t == "function") t(e);
-    }, a);
-  };
+  // e.ajax = function(e, t, a, n, r) {
+  //   var o = new XMLHttpRequest();
+  //   o.open(e, t);
+  //   o.timeout = 5e3;
+  //   o.onreadystatechange = function() {
+  //     if (o.readyState == 4 && o.status == 200) {
+  //       if (typeof n == "function") {
+  //         n(o);
+  //       }
+  //     } else if (o.readyState == 4) {
+  //       if (typeof r == "function") {
+  //         r(o.status);
+  //       }
+  //     }
+  //   };
+  //   o.send(a);
+  // };
+  // e.ajax_get = function(e, t, a, n, r) {
+  //   ajax("GET", e, t, function(e) {
+  //     if (typeof n == "function") {
+  //       if (a == "xml") {
+  //         n(e.responseXML);
+  //       } else if (a == "text") {
+  //         n(e.responseText);
+  //       } else {
+  //         n(JSON.parse(e.responseText));
+  //       }
+  //     }
+  //   }, r);
+  // };
+  // e.ajax_post = function(t, a, n, r, o) {
+  //   ajax("POST", t, a, function(t) {
+  //     if (typeof r == "function") {
+  //       if (n == "xml") {
+  //         r(t.responseXML);
+  //       } else if (n == "text") {
+  //         r(t.responseText);
+  //       } else {
+  //         r(JSON.parse(t.responseText));
+  //         if (e.debug) console.log("JSON.parse(xhr.responseText)", JSON.parse(t.responseText));
+  //       }
+  //     }
+  //   }, o);
+  // };
+  // e.ajax_head = function(e, t, a) {
+  //   ajax("HEAD", e, null, function(e) {
+  //     if (typeof t == "function") t(e);
+  //   }, a);
+  // };
   e.trackStatusEvent = function(e, t, a, n) {
     var r = "";
     if (e.indexOf("search") == 0) {

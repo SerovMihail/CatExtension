@@ -364,32 +364,32 @@
         $("#background_selector_widget").fadeOut();
       }
     });
-    function w() {
-      chrome.tabs.query({}, function(e) {
-        for (var t = 0; t < e.length; t++) {
-          chrome.tabs.sendMessage(e[t].id, {
-            type: "weather_info",
-            info: {
-              weather_location: JSON.parse(localStorage.getItem("weather_location")),
-              weather_data: JSON.parse(localStorage.getItem("weather_data"))
-            }
-          });
-        }
-      });
-    }
-    function S() {
-      chrome.tabs.query({}, function(e) {
-        for (var t = 0; t < e.length; t++) {
-          chrome.tabs.sendMessage(e[t].id, {
-            type: "error_get_weather_in_city",
-            info: {
-              weather_location: JSON.parse(localStorage.getItem("weather_location")),
-              error_msg: "Unable to get weather data."
-            }
-          });
-        }
-      });
-    }
+    // function w() {
+    //   chrome.tabs.query({}, function(e) {
+    //     for (var t = 0; t < e.length; t++) {
+    //       chrome.tabs.sendMessage(e[t].id, {
+    //         type: "weather_info",
+    //         info: {
+    //           weather_location: JSON.parse(localStorage.getItem("weather_location")),
+    //           weather_data: JSON.parse(localStorage.getItem("weather_data"))
+    //         }
+    //       });
+    //     }
+    //   });
+    // }
+    // function S() {
+    //   chrome.tabs.query({}, function(e) {
+    //     for (var t = 0; t < e.length; t++) {
+    //       chrome.tabs.sendMessage(e[t].id, {
+    //         type: "error_get_weather_in_city",
+    //         info: {
+    //           weather_location: JSON.parse(localStorage.getItem("weather_location")),
+    //           error_msg: "Unable to get weather data."
+    //         }
+    //       });
+    //     }
+    //   });
+    // }
     // function k() {
     //   try {
     //     b = false;
@@ -595,14 +595,14 @@
         });
       } catch (e) {}
     }
-    $("#cat_nav a").click(function(e) {
-      var t = $(this);
-      t.parent().children().each(function() {
-        $(this).removeClass("selected_cat");
-      });
-      user["selected_cat"] = i = t.addClass("selected_cat").text();
-      trackStatusEvent("search-cat");
-    });
+    // $("#cat_nav a").click(function(e) {
+    //   var t = $(this);
+    //   t.parent().children().each(function() {
+    //     $(this).removeClass("selected_cat");
+    //   });
+    //   user["selected_cat"] = i = t.addClass("selected_cat").text();
+    //   trackStatusEvent("search-cat");
+    // });
     function L(e) {
       return e.replace(/(?:^|\s)\w/g, function(e) {
         return e.toUpperCase();
@@ -761,9 +761,9 @@
       // if (t.refreshRelativeApps) {
       //   e.loadRelativeApps();
       // }
-      if (t.refreshWeather) {
-        N(user["units_weather"]);
-      }
+      // if (t.refreshWeather) {
+      //   N(user["units_weather"]);
+      // }
       if (t.type === "gmail_info_fetched") {
         U(t.info);
       }

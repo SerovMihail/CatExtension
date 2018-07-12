@@ -320,24 +320,24 @@
   //     }
   //   }, "json");
   // }
-  chrome.management.onInstalled.addListener(function(t) {
-    if (e.debug) console.log("inst:", t);
-    h([ t ], "onInstalled");
-  });
-  chrome.management.onEnabled.addListener(function(t) {
-    if (e.debug) console.log("enabled:", t);
-    h([ t ], "onEnabled");
-  });
-  function p() {
-    chrome.management.getAll(function(e) {
-      h(e, "allApps");
-    });
-  }
-  function S(e, t) {
-    e = Math.ceil(e);
-    t = Math.floor(t);
-    return Math.floor(Math.random() * (t - e)) + e;
-  }
+  // chrome.management.onInstalled.addListener(function(t) {
+  //   if (e.debug) console.log("inst:", t);
+  //   h([ t ], "onInstalled");
+  // });
+  // chrome.management.onEnabled.addListener(function(t) {
+  //   if (e.debug) console.log("enabled:", t);
+  //   h([ t ], "onEnabled");
+  // });
+  // function p() {
+  //   chrome.management.getAll(function(e) {
+  //     h(e, "allApps");
+  //   });
+  // }
+  // function S(e, t) {
+  //   e = Math.ceil(e);
+  //   t = Math.floor(t);
+  //   return Math.floor(Math.random() * (t - e)) + e;
+  // }
   chrome.tabs.onCreated.addListener(function(t) {
     if (t.url.match("chrome://newtab/")) {
       var a = new Date().getTime();

@@ -433,8 +433,8 @@
     // if (!localStorage.getItem("likedImages")) {
     //   localStorage.setItem("likedImages", JSON.stringify([]));
     // }
-    if (!localStorage.getItem("IDT")) {
-      localStorage.setItem("IDT", new Date().toISOString());
-    }
+    // if (!localStorage.getItem("IDT")) {
+    //   localStorage.setItem("IDT", new Date().toISOString());
+    // }
   }
 })(this);
