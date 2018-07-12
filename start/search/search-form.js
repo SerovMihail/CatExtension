@@ -473,62 +473,62 @@
     var y = false;
     var I = false;
     var C = 5e3;
-    function E() {
-      clearTimeout(D);
-      D = setTimeout(E, C);
-      var e = r.find("img").attr("src"), t = e;
-      $(".widght .time").stop(true, true);
-      $(".widght .weather").stop(true, true);
-      if (r.hasClass("clock") && b) {
-        t = e.replace("clock.png", "cloud.png");
-        $(".widght .time").fadeOut(100, function() {
-          $(".widght .weather").fadeIn().css("display", "inline-block");
-          if (I) {
-            $(".widght .time").tooltip("hide");
-            $(".widght .weather").tooltip("show");
-          }
-        });
-      } else {
-        if (localStorage.getItem("disable_weather") == "yes" || y) b = false; else b = true;
-        t = e.replace("cloud.png", "clock.png");
-        $(".widght .weather").fadeOut(100, function() {
-          $(".widght .time").fadeIn().css("display", "inline-block");
-          if (I) {
-            $(".widght .time").tooltip("show");
-            $(".widght .weather").tooltip("hide");
-          }
-        });
-      }
-      r.find("img").attr("src", t);
-      r.toggleClass("clock temp");
-    }
+    // function E() {
+    //   clearTimeout(D);
+    //   D = setTimeout(E, C);
+    //   var e = r.find("img").attr("src"), t = e;
+    //   $(".widght .time").stop(true, true);
+    //   $(".widght .weather").stop(true, true);
+    //   if (r.hasClass("clock") && b) {
+    //     t = e.replace("clock.png", "cloud.png");
+    //     $(".widght .time").fadeOut(100, function() {
+    //       $(".widght .weather").fadeIn().css("display", "inline-block");
+    //       if (I) {
+    //         $(".widght .time").tooltip("hide");
+    //         $(".widght .weather").tooltip("show");
+    //       }
+    //     });
+    //   } else {
+    //     if (localStorage.getItem("disable_weather") == "yes" || y) b = false; else b = true;
+    //     t = e.replace("cloud.png", "clock.png");
+    //     $(".widght .weather").fadeOut(100, function() {
+    //       $(".widght .time").fadeIn().css("display", "inline-block");
+    //       if (I) {
+    //         $(".widght .time").tooltip("show");
+    //         $(".widght .weather").tooltip("hide");
+    //       }
+    //     });
+    //   }
+    //   r.find("img").attr("src", t);
+    //   r.toggleClass("clock temp");
+    // }
     $(".widght .time, .widght .weather").on("mouseenter", function() {
       I = true;
     });
     $(".widght .time, .widght .weather").on("mouseleave", function() {
       I = false;
     });
-    $(".widght .weather h1").on("click", function() {
-      N(user["units_weather"] == "imperial" ? "metric" : "imperial");
-    });
+    // $(".widght .weather h1").on("click", function() {
+    //   N(user["units_weather"] == "imperial" ? "metric" : "imperial");
+    // });
     $(".widght .time").on("click", function() {
       A();
     });
     var O = $("#weather_widget_unit");
-    function N(e) {
-      if (e != "imperial") {
-        user["units_weather"] = "metric";
-        user["date_format"] = "{{d}}.{{m}}.{{y}}";
-        O.html("C");
-      } else {
-        user["units_weather"] = "imperial";
-        user["date_format"] = "{{m}}.{{d}}.{{y}}";
-        O.html("F");
-      }
-      k();
-      T();
-      utils.localstorage2cookie();
-    }
+    // function N(e) {
+    //   if (e != "imperial") {
+    //     user["units_weather"] = "metric";
+    //     user["date_format"] = "{{d}}.{{m}}.{{y}}";
+    //     O.html("C");
+    //   } else {
+    //     user["units_weather"] = "imperial";
+    //     user["date_format"] = "{{m}}.{{d}}.{{y}}";
+    //     O.html("F");
+    //   }
+    //   k();
+    //   T();
+    //   utils.localstorage2cookie();
+    // }
     function A() {
       if (user["time_format"] == "12h") {
         user["time_format"] = "24h";
@@ -538,7 +538,7 @@
       T();
       utils.localstorage2cookie();
     }
-    N(user["units_weather"]);
+    //N(user["units_weather"]);
     function T() {
       var e = new Date();
       if (user["time_format"] == "12h") {
@@ -556,21 +556,21 @@
       $(".num").html(user["date_format"].replace("{{m}}", e.getMonth() + 1).replace("{{d}}", e.getDate()).replace("{{y}}", e.getFullYear()));
     }
     var x = setInterval(T, 1e4);
-    var D = setTimeout(E, C);
+    //var D = setTimeout(E, C);
     if (e.listAllThreads.threadSearchForm) {
       e.listAllThreads.threadSearchForm.pause();
     }
     e.listAllThreads.threadSearchForm = {
       pause: function() {
         clearInterval(x);
-        clearTimeout(D);
+        //clearTimeout(D);
       },
       resume: function() {
         T();
         clearInterval(x);
-        clearTimeout(D);
+        //clearTimeout(D);
         x = setInterval(T, 1e4);
-        D = setTimeout(E, C);
+        //D = setTimeout(E, C);
       }
     };
     var M = SEARCH_ENGINES;
@@ -757,9 +757,9 @@
       if (t.refreshOptions) {
         e.loadGlobalOptions();
       }
-      if (t.refreshRelativeApps) {
-        e.loadRelativeApps();
-      }
+      // if (t.refreshRelativeApps) {
+      //   e.loadRelativeApps();
+      // }
       if (t.refreshWeather) {
         N(user["units_weather"]);
       }

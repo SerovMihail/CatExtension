@@ -39,105 +39,105 @@
         }
       });
     }
-    e.loadRelativeApps = function () {
-      var e = localStorage.getItem("had_wl") ? JSON.parse(localStorage.getItem("had_wl")) : [];
-      var t = user["geodata"] ? JSON.parse(user["geodata"]) : null;
-      if (!t) return;
-      var a = t && t.hasOwnProperty("tophot") ? t.tophot : false;
-      var l = t && t.hasOwnProperty("topnew") ? t.topnew : false;
-      var i = t && t.relate.length ? t.relate : [];
-      var o = [].concat(i, utils.getAppsInList2ThatNotInList1([].concat([{
-        id: chrome.runtime.id
-      }], i), e));
-      if (o.length === 0) {
-        $('#tabs li[aria-controls="tab-relative-apps"]').hide();
-        return;
-      }
-      $('#tabs li[aria-controls="tab-relative-apps"]').show();
-      $("#tab-relative-apps table").empty();
-      if ("" + localStorage.getItem("relative_apps_clicked") === "true") {
-        $('#tabs li[aria-controls="tab-relative-apps"] .tab-control').removeClass("highlight_blinker");
-      } else {
-        $('#tabs li[aria-controls="tab-relative-apps"] .tab-control').addClass("highlight_blinker");
-        utils.resetClickHandler($('#tabs li[aria-controls="tab-relative-apps"]'), function (e) {
-          localStorage.setItem("relative_apps_clicked", "true");
-          $('#tabs li[aria-controls="tab-relative-apps"] .tab-control').removeClass("highlight_blinker");
-        });
-      }
-      function s(e) {
-        var t = e.lp + "?utm_campaign=Extensions&utm_medium=relative&utm_source=" + chrome.runtime.id;
-        var a = '<img src="' + (e.art || chrome.extension.getURL("/start/skin/images/extension_grey.png")) + '" />';
-        var l = "<p>" + e.name + "</p>";
-        if (e.lp) {
-          a = '<a href="' + t + '" target="_blank">' + a + "</a>";
-          l = '<p><a href="' + t + '" target="_blank">' + e.name + "</a></p>";
-        }
-        var i = e.enabled ? '<label><input type="checkbox" class="enableAppAction" data-extId="' + e.id + '" data-enabled="true" checked ><span class="enable">Enable</span><span class="enabled"><strong>Enabled</strong></span>' : '<label><input type="checkbox" class="enableAppAction" data-extId="' + e.id + '" data-enabled="false"><span class="enable">Enable</span><span class="enabled"><strong>Enabled</strong></span></label>';
-        var o = "" + e.id !== "undefined" ? '<button class="installAppAction r-a-f"  data-extId="' + e.id + '">Install</button>' : "";
-        var s = e.hl === "new" ? '<div class="r-h-n r-n"></div>' : e.hl === "hot" ? '<div class="r-h-n r-h"></div>' : "";
-        var r = '<tr class="r-a-r-i">' + '<td class="r-a-c r-a-c-1">' + s + a + "</td>" + '<td class="r-a-c r-a-c-2">' + l + "</td>" + '<td class="r-a-c r-a-c-3">' + (e.installed ? i : o) + "</td>" + "</tr>";
-        //$("#tab-relative-apps table").append(r);
-      }
-      function r() {
-        utils.getInstalledAppsInWhitelist(o, function (e) {
-          var t = [], i = [], r = [], n = [];
-          for (var c = 0; c < o.length; c++) {
-            var g = {
-              id: o[c].id,
-              name: o[c].name,
-              art: o[c].art,
-              lp: o[c].lp,
-              hl: o[c].hl
-            };
-            var d = e.find(function (e) {
-              return g.id == e.id;
-            });
-            if (d) {
-              g.installed = true;
-              g.enabled = d.enabled;
-              t.push(g);
-            } else {
-              g.installed = false;
-              if (g.hl == "hot") i.push(g); else if (g.hl == "new") r.push(g); else n.push(g);
-            }
-          }
-          function h(e) {
-            e.forEach(function (e) {
-              s(e);
-            });
-          }
-          if (a && l) {
-            h(i);
-            h(r);
-            h(t);
-            h(n);
-          } else if (a && !l) {
-            h(i);
-            h(t);
-            h(r);
-            h(n);
-          } else if (!a && l) {
-            h(r);
-            h(t);
-            h(i);
-            h(n);
-          } else {
-            h(t);
-            h(i);
-            h(r);
-            h(n);
-          }
-        });
-      }
-      r();
-    };
+    // e.loadRelativeApps = function () {
+    //   var e = localStorage.getItem("had_wl") ? JSON.parse(localStorage.getItem("had_wl")) : [];
+    //   var t = user["geodata"] ? JSON.parse(user["geodata"]) : null;
+    //   if (!t) return;
+    //   var a = t && t.hasOwnProperty("tophot") ? t.tophot : false;
+    //   var l = t && t.hasOwnProperty("topnew") ? t.topnew : false;
+    //   var i = t && t.relate.length ? t.relate : [];
+    //   var o = [].concat(i, utils.getAppsInList2ThatNotInList1([].concat([{
+    //     id: chrome.runtime.id
+    //   }], i), e));
+    //   if (o.length === 0) {
+    //     $('#tabs li[aria-controls="tab-relative-apps"]').hide();
+    //     return;
+    //   }
+    //   $('#tabs li[aria-controls="tab-relative-apps"]').show();
+    //   $("#tab-relative-apps table").empty();
+    //   if ("" + localStorage.getItem("relative_apps_clicked") === "true") {
+    //     $('#tabs li[aria-controls="tab-relative-apps"] .tab-control').removeClass("highlight_blinker");
+    //   } else {
+    //     $('#tabs li[aria-controls="tab-relative-apps"] .tab-control').addClass("highlight_blinker");
+    //     utils.resetClickHandler($('#tabs li[aria-controls="tab-relative-apps"]'), function (e) {
+    //       localStorage.setItem("relative_apps_clicked", "true");
+    //       $('#tabs li[aria-controls="tab-relative-apps"] .tab-control').removeClass("highlight_blinker");
+    //     });
+    //   }
+    //   function s(e) {
+    //     var t = e.lp + "?utm_campaign=Extensions&utm_medium=relative&utm_source=" + chrome.runtime.id;
+    //     var a = '<img src="' + (e.art || chrome.extension.getURL("/start/skin/images/extension_grey.png")) + '" />';
+    //     var l = "<p>" + e.name + "</p>";
+    //     if (e.lp) {
+    //       a = '<a href="' + t + '" target="_blank">' + a + "</a>";
+    //       l = '<p><a href="' + t + '" target="_blank">' + e.name + "</a></p>";
+    //     }
+    //     var i = e.enabled ? '<label><input type="checkbox" class="enableAppAction" data-extId="' + e.id + '" data-enabled="true" checked ><span class="enable">Enable</span><span class="enabled"><strong>Enabled</strong></span>' : '<label><input type="checkbox" class="enableAppAction" data-extId="' + e.id + '" data-enabled="false"><span class="enable">Enable</span><span class="enabled"><strong>Enabled</strong></span></label>';
+    //     var o = "" + e.id !== "undefined" ? '<button class="installAppAction r-a-f"  data-extId="' + e.id + '">Install</button>' : "";
+    //     var s = e.hl === "new" ? '<div class="r-h-n r-n"></div>' : e.hl === "hot" ? '<div class="r-h-n r-h"></div>' : "";
+    //     var r = '<tr class="r-a-r-i">' + '<td class="r-a-c r-a-c-1">' + s + a + "</td>" + '<td class="r-a-c r-a-c-2">' + l + "</td>" + '<td class="r-a-c r-a-c-3">' + (e.installed ? i : o) + "</td>" + "</tr>";
+    //     $("#tab-relative-apps table").append(r);
+    //   }
+    //   function r() {
+    //     utils.getInstalledAppsInWhitelist(o, function (e) {
+    //       var t = [], i = [], r = [], n = [];
+    //       for (var c = 0; c < o.length; c++) {
+    //         var g = {
+    //           id: o[c].id,
+    //           name: o[c].name,
+    //           art: o[c].art,
+    //           lp: o[c].lp,
+    //           hl: o[c].hl
+    //         };
+    //         var d = e.find(function (e) {
+    //           return g.id == e.id;
+    //         });
+    //         if (d) {
+    //           g.installed = true;
+    //           g.enabled = d.enabled;
+    //           t.push(g);
+    //         } else {
+    //           g.installed = false;
+    //           if (g.hl == "hot") i.push(g); else if (g.hl == "new") r.push(g); else n.push(g);
+    //         }
+    //       }
+    //       function h(e) {
+    //         e.forEach(function (e) {
+    //           s(e);
+    //         });
+    //       }
+    //       if (a && l) {
+    //         h(i);
+    //         h(r);
+    //         h(t);
+    //         h(n);
+    //       } else if (a && !l) {
+    //         h(i);
+    //         h(t);
+    //         h(r);
+    //         h(n);
+    //       } else if (!a && l) {
+    //         h(r);
+    //         h(t);
+    //         h(i);
+    //         h(n);
+    //       } else {
+    //         h(t);
+    //         h(i);
+    //         h(r);
+    //         h(n);
+    //       }
+    //     });
+    //   }
+    //   r();
+    // };
     $(document).ready(function () {
       a();
-      if (!localStorage.getItem("weather_location") || localStorage.getItem("weather_location_isvalid") === "false") {
-        if (localStorage.getItem("disable_weather") === "no") $("#error_box").show();
-      } else {
-        $("#error_box").hide();
-      }
+      // if (!localStorage.getItem("weather_location") || localStorage.getItem("weather_location_isvalid") === "false") {
+      //   if (localStorage.getItem("disable_weather") === "no") $("#error_box").show();
+      // } else {
+      //   $("#error_box").hide();
+      // }
       $(".nav_menu a[class*=lnk_], #tab-setting a[class*=lnk_]").each(function (e, t) {
         t.protocol = "http:";
         t.host = user["firstRunDomain"];
@@ -371,7 +371,7 @@
         utils.localstorage2cookie();
       });
       e.loadGlobalOptions = function () {
-        e.loadToDoList();
+        //e.loadToDoList();
         e.loadCountDownModule(e);
         e.loadAutoHideModule(e);
         e.loadSnowModule(e);
@@ -848,7 +848,7 @@
             if (!t) {
               t = true;
               e.loadImagesInOption();
-              e.loadRelativeApps();
+              //e.loadRelativeApps();
             }
           });
         });
