@@ -919,6 +919,7 @@ footer a,
   position: absolute;
   min-width: 120px;
   text-align: left;
+  right: -5px;
 }
 
 #topsites_menu {
@@ -926,13 +927,13 @@ footer a,
   min-width: 330px;
   max-width: 500px;
   text-align: left;
-  right: -210px;
+  right: -154px;
 }
 
 #tool_menu {
   position: absolute;
   min-width: 220px;
-  right: -120px;
+  right: -65px;
 }
 
 #support_menu hr,
