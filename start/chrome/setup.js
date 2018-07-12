@@ -165,12 +165,12 @@
       });
       return true;
     }
-    if (t.type === "weather_location_request") {
-      var l = t.info.enteredLocation;
-      localStorage.setItem("user_input_city", l);
-      if (e.debug) console.log("request.info.enteredLocation", t.info.enteredLocation);
-      c(t.info.enteredLocation);
-    }
+    // if (t.type === "weather_location_request") {
+    //   var l = t.info.enteredLocation;
+    //   localStorage.setItem("user_input_city", l);
+    //   if (e.debug) console.log("request.info.enteredLocation", t.info.enteredLocation);
+    //   c(t.info.enteredLocation);
+    // }
     if (t.type === "fetch_email_data") {
       d(u, f);
     }
