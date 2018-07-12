@@ -710,9 +710,9 @@
     q();
     J();
     utils.localstorage2cookie();
-    $("#change_city, #error_weather_messager, #weather_info_display").click(function() {
-      chrome.extension.sendMessage("click-ChangeCity");
-    });
+    // $("#change_city, #error_weather_messager, #weather_info_display").click(function() {
+    //   chrome.extension.sendMessage("click-ChangeCity");
+    // });
     function U(e) {
       (function e(t) {
         var o = document.getElementById("mail-address-shower");
