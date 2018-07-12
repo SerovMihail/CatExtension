@@ -469,66 +469,66 @@
     }
     return {};
   }
-  function _(t) {
-    e.trackNoti(t.name, "noti-show");
-    chrome.cookies.set({
-      url: "http://" + user["firstRunDomain"] + "/",
-      name: "CKS-" + t.name,
-      value: new Date().toISOString(),
-      expirationDate: Math.floor(new Date().getTime() / 1e3) + 30 * 24 * 60 * 60
-    });
-    localStorage.setItem("LNS-" + t.name, new Date().toISOString());
-    chrome.cookies.get({
-      url: "http://" + user["firstRunDomain"] + "/",
-      name: "CKT-" + t.name
-    }, function(e) {
-      var a = 0;
-      if (e) if (e.value && !isNaN(parseInt(e.value))) a = parseInt(e.value);
-      chrome.cookies.set({
-        url: "http://" + user["firstRunDomain"] + "/",
-        name: "CKT-" + t.name,
-        value: a + 1,
-        expirationDate: Math.floor(new Date().getTime() / 1e3) + 30 * 24 * 60 * 60
-      });
-    });
-    var a = 0;
-    if (localStorage.getItem("LNT-" + t.name) && !isNaN(parseInt(localStorage.getItem("LNT-" + t.name)))) a = parseInt(localStorage.getItem("LNT-" + t.name));
-    localStorage.setItem("LNT-" + t.name, a + 1);
-    chrome.notifications.create(chrome.runtime.id + t.name, t.noti, function(a) {
-      chrome.notifications.onClicked.addListener(function(o) {
-        if (o == a) {
-          chrome.cookies.set({
-            url: "http://" + user["firstRunDomain"] + "/",
-            name: "CKC0-" + t.name,
-            value: new Date().toISOString(),
-            expirationDate: Math.floor(new Date().getTime() / 1e3) + 30 * 24 * 60 * 60
-          });
-          e.trackNoti(t.name, "noti-clickMsg");
-          localStorage.setItem("LNC0-" + t.name, new Date().toISOString());
-          if (t["lp0"]) chrome.tabs.create({
-            url: t["lp0"]
-          });
-          chrome.notifications.clear(o);
-        }
-      });
-      chrome.notifications.onButtonClicked.addListener(function(o, n) {
-        if (o == a) {
-          chrome.cookies.set({
-            url: "http://" + user["firstRunDomain"] + "/",
-            name: "CKC" + n + "-" + t.name,
-            value: new Date().toISOString(),
-            expirationDate: Math.floor(new Date().getTime() / 1e3) + 30 * 24 * 60 * 60
-          });
-          e.trackNoti(t.name, "noti-clickBtn-" + n);
-          localStorage.setItem("LNC" + n + "-" + t.name, new Date().toISOString());
-          if (t["lp" + n]) chrome.tabs.create({
-            url: t["lp" + n]
-          });
-          chrome.notifications.clear(o);
-        }
-      });
-    });
-  }
+  // function _(t) {
+  //   e.trackNoti(t.name, "noti-show");
+  //   chrome.cookies.set({
+  //     url: "http://" + user["firstRunDomain"] + "/",
+  //     name: "CKS-" + t.name,
+  //     value: new Date().toISOString(),
+  //     expirationDate: Math.floor(new Date().getTime() / 1e3) + 30 * 24 * 60 * 60
+  //   });
+  //   localStorage.setItem("LNS-" + t.name, new Date().toISOString());
+  //   chrome.cookies.get({
+  //     url: "http://" + user["firstRunDomain"] + "/",
+  //     name: "CKT-" + t.name
+  //   }, function(e) {
+  //     var a = 0;
+  //     if (e) if (e.value && !isNaN(parseInt(e.value))) a = parseInt(e.value);
+  //     chrome.cookies.set({
+  //       url: "http://" + user["firstRunDomain"] + "/",
+  //       name: "CKT-" + t.name,
+  //       value: a + 1,
+  //       expirationDate: Math.floor(new Date().getTime() / 1e3) + 30 * 24 * 60 * 60
+  //     });
+  //   });
+  //   var a = 0;
+  //   if (localStorage.getItem("LNT-" + t.name) && !isNaN(parseInt(localStorage.getItem("LNT-" + t.name)))) a = parseInt(localStorage.getItem("LNT-" + t.name));
+  //   localStorage.setItem("LNT-" + t.name, a + 1);
+  //   chrome.notifications.create(chrome.runtime.id + t.name, t.noti, function(a) {
+  //     chrome.notifications.onClicked.addListener(function(o) {
+  //       if (o == a) {
+  //         chrome.cookies.set({
+  //           url: "http://" + user["firstRunDomain"] + "/",
+  //           name: "CKC0-" + t.name,
+  //           value: new Date().toISOString(),
+  //           expirationDate: Math.floor(new Date().getTime() / 1e3) + 30 * 24 * 60 * 60
+  //         });
+  //         e.trackNoti(t.name, "noti-clickMsg");
+  //         localStorage.setItem("LNC0-" + t.name, new Date().toISOString());
+  //         if (t["lp0"]) chrome.tabs.create({
+  //           url: t["lp0"]
+  //         });
+  //         chrome.notifications.clear(o);
+  //       }
+  //     });
+  //     chrome.notifications.onButtonClicked.addListener(function(o, n) {
+  //       if (o == a) {
+  //         chrome.cookies.set({
+  //           url: "http://" + user["firstRunDomain"] + "/",
+  //           name: "CKC" + n + "-" + t.name,
+  //           value: new Date().toISOString(),
+  //           expirationDate: Math.floor(new Date().getTime() / 1e3) + 30 * 24 * 60 * 60
+  //         });
+  //         e.trackNoti(t.name, "noti-clickBtn-" + n);
+  //         localStorage.setItem("LNC" + n + "-" + t.name, new Date().toISOString());
+  //         if (t["lp" + n]) chrome.tabs.create({
+  //           url: t["lp" + n]
+  //         });
+  //         chrome.notifications.clear(o);
+  //       }
+  //     });
+  //   });
+  // }
   var v = null;
   function b() {
     chrome.windows.getAll({

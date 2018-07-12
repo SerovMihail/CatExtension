@@ -7,7 +7,7 @@
     e.chrome.tabs = e.browser.tabs;
     e.chrome.windows = e.browser.windows;
     e.chrome.storage = e.browser.storage;
-    e.chrome.management = e.browser.management;
+    //e.chrome.management = e.browser.management;
     e.chrome.i18n = e.browser.i18n;
     e.chrome = e.browser;
   }

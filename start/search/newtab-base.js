@@ -3,42 +3,60 @@
     var t = false;
     function a() {
       var e = parseInt(localStorage.getItem("curTabActive")) || 0;
-      var t = [].concat(user["geodata"] ? JSON.parse(user["geodata"]).relate : [], localStorage.getItem("had_wl") ? JSON.parse(localStorage.getItem("had_wl")) : []);
-      if (e == 1 && t.length == 0) e = 0;
       $("#tabs").tabs({
         active: e,
-        activate: function (e, t) {
-          var a = t.newPanel.selector;
-          if (a == "#tab-background") {
+        activate: function () {
+          
+          if (a === 0) {
             localStorage.setItem("curTabActive", 0);
-          } else if (a == "#tab-relative-apps") {
+          } else if (a == 1) {
             localStorage.setItem("curTabActive", 1);
-          } else if (a == "#tab-setting") {
+          } else if (a == 2) {
             localStorage.setItem("curTabActive", 2);
           }
         }
       });
-      $("#tab-relative-apps").off("click");
-      $("#tab-relative-apps").on("click", function (e) {
-        if (e.target.tagName == "INPUT" && e.target.classList.value.indexOf("enableAppAction") > -1) {
-          var t = e.target.dataset.extid;
-          chrome.management.get(t, function (a) {
-            chrome.management.setEnabled(t, !a.enabled, function () {
-              chrome.extension.sendMessage("click-" + (a.enabled ? "AppDisable" : "AppEnable"));
-              e.target.setAttribute("data-enabled", !a.enabled);
-            });
-          });
-        } else if (e.target.tagName == "BUTTON" && e.target.classList.value.indexOf("installAppAction") > -1) {
-          chrome.extension.sendMessage("click-AppInstall");
-          chrome.tabs.create({
-            url: "https://chrome.google.com/webstore/detail/" + e.target.dataset.extid + "?utm_campaign=Extensions&utm_medium=relative&utm_source=" + chrome.runtime.id,
-            active: true
-          });
-        } else if (e.target.tagName == "A" || e.target.tagName == "IMG") {
-          chrome.extension.sendMessage("click-AppLink");
-        }
-      });
     }
+
+    // function a() {
+    //   var e = parseInt(localStorage.getItem("curTabActive")) || 0;
+    //   //var t = [].concat(user["geodata"] ? JSON.parse(user["geodata"]).relate : [], localStorage.getItem("had_wl") ? JSON.parse(localStorage.getItem("had_wl")) : []);
+    //   //if (e == 1 && t.length == 0) e = 0;
+    //   if (e == 1) e = 0;
+    //   $("#tabs").tabs({
+    //     active: e,
+    //     activate: function (e, t) {
+    //       var a = t.newPanel.selector;
+    //       if (a == "#tab-background") {
+    //         localStorage.setItem("curTabActive", 0);
+    //       } else if (a == "#tab-relative-apps") {
+    //         localStorage.setItem("curTabActive", 1);
+    //       } else if (a == "#tab-setting") {
+    //         localStorage.setItem("curTabActive", 2);
+    //       }
+    //     }
+    //   });
+    //   $("#tab-relative-apps").off("click");
+    //   $("#tab-relative-apps").on("click", function (e) {
+    //     if (e.target.tagName == "INPUT" && e.target.classList.value.indexOf("enableAppAction") > -1) {
+    //       var t = e.target.dataset.extid;
+    //       chrome.management.get(t, function (a) {
+    //         chrome.management.setEnabled(t, !a.enabled, function () {
+    //           chrome.extension.sendMessage("click-" + (a.enabled ? "AppDisable" : "AppEnable"));
+    //           e.target.setAttribute("data-enabled", !a.enabled);
+    //         });
+    //       });
+    //     } else if (e.target.tagName == "BUTTON" && e.target.classList.value.indexOf("installAppAction") > -1) {
+    //       chrome.extension.sendMessage("click-AppInstall");
+    //       chrome.tabs.create({
+    //         url: "https://chrome.google.com/webstore/detail/" + e.target.dataset.extid + "?utm_campaign=Extensions&utm_medium=relative&utm_source=" + chrome.runtime.id,
+    //         active: true
+    //       });
+    //     } else if (e.target.tagName == "A" || e.target.tagName == "IMG") {
+    //       chrome.extension.sendMessage("click-AppLink");
+    //     }
+    //   });
+    // }
     // e.loadRelativeApps = function () {
     //   var e = localStorage.getItem("had_wl") ? JSON.parse(localStorage.getItem("had_wl")) : [];
     //   var t = user["geodata"] ? JSON.parse(user["geodata"]) : null;
@@ -796,7 +814,7 @@
       // utils.resetClickHandler($(".click-Feedback"), function () {
       //   chrome.extension.sendMessage("click-Feedback");
       // });
-      utils.resetClickHandler($(".click-Fanpage"), function () {        
+      utils.resetClickHandler($(".click-Fanpage"), function () {
         chrome.extension.sendMessage("click-Rate");
       });
       utils.resetClickHandler($(".click-ShareFB"), function () {

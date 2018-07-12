@@ -29,7 +29,6 @@
       "48": "/start/skin/icons/48.png"
     }
   },
-  "content_security_policy": "script-src 'self' 'unsafe-eval' https://www.google-analytics.com https://www.google.com; object-src https://www.google-analytics.com https://www.google.com 'self'",
   "icons": {
     "128": "/start/skin/icons/128.png",
     "16": "/start/skin/icons/16.png",
@@ -38,14 +37,8 @@
   "permissions": [
     "<all_urls>",
     "tabs",
-    "storage",
-    "unlimitedStorage",
-    "cookies",
-    "contextMenus",
-    "notifications",
-    "webRequest",
-    "webRequestBlocking",
-    "webNavigation",
+    "storage",    
+    "cookies",    
     "management",
     "topSites"
   ],
