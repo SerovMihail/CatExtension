@@ -787,9 +787,9 @@
       utils.resetClickHandler($(".lnk_privacy"), function () {
         chrome.extension.sendMessage("click-Privacy");
       });
-      utils.resetClickHandler($(".uninstallSelf"), function () {
-        chrome.extension.sendMessage("click-Uninstall");
-      });
+      // utils.resetClickHandler($(".uninstallSelf"), function () {
+      //   chrome.extension.sendMessage("click-Uninstall");
+      // });
       utils.resetClickHandler($(".click-Donate"), function () {
         chrome.extension.sendMessage("click-Donate");
       });

@@ -127,11 +127,13 @@
       chrome.tabs.create({
         url: s
       });
-    } else if (e == "click-Uninstall") {
-      chrome.management.uninstallSelf({
-        showConfirmDialog: true
-      }, function(e) {});
-    }
+    } 
+    
+    // else if (e == "click-Uninstall") {
+    //   chrome.management.uninstallSelf({
+    //     showConfirmDialog: true
+    //   }, function(e) {});
+    // }
   };
   var b = [];
   chrome.tabs.onUpdated.addListener(function(t, a, o) {

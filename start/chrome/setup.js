@@ -11,73 +11,81 @@
       url: localStorage.getItem("newtab_url")
     });
   });
-  chrome.runtime.setUninstallURL(user["firstRunLandingPage"] + "?ext_uninstall&id=" + chrome.runtime.id);
+  //chrome.runtime.setUninstallURL(user["firstRunLandingPage"] + "?ext_uninstall&id=" + chrome.runtime.id);
   var a = utils.get;
   var o = utils.set;
   localStorage["setting_geo"] = new Date().getTime();
   var n = 0;
   var r = null;
-  function l() {
-    if (r) clearTimeout(r);
-    var t = "http://" + localStorage.getItem("user_group") + "." + user["firstRunDomain"] + "/v1/geo/?uid=" + localStorage.getItem("uid") + "&idt=" + localStorage.getItem("installdt") + "&dsb=" + localStorage.getItem("installdc") + "&grp=" + localStorage.getItem("user_group") + "&ver=" + localStorage.getItem("version") + "&eid=" + chrome.runtime.id;
-    if (localStorage.getItem("ext_oid")) {
-      t += "&oid=" + localStorage.getItem("ext_oid");
-    }
-    t += "&cb=" + Math.floor(Math.random() * 999999);
-    ajax_post(t, null, "json", function(e) {
-      if (e.oid) localStorage.setItem("ext_oid", e.oid);
-      if (e.cast) localStorage.setItem("cast", JSON.stringify(e.cast)); else localStorage.removeItem("cast");
-      if (e.highlight) localStorage.setItem("highlight", e.highlight); else localStorage.removeItem("highlight");
-      var t = e.country_code;
-      if (!user["geodata"]) {
-        if ([ "US", "BM", "BZ", "JM", "PW" ].indexOf(t.toUpperCase()) >= 0) {
-          user["units_weather"] = "imperial";
-          user["date_format"] = "{{m}}.{{d}}.{{y}}";
-          user["time_format"] = "12h";
-        } else {
-          user["units_weather"] = "metric";
-          user["date_format"] = "{{d}}.{{m}}.{{y}}";
-          user["time_format"] = "24h";
-        }
-      }
-      user["geodata"] = JSON.stringify(e);
-      if (n == 0) {
-        p();
-      } else {
-        if (e.relate && e.relate.length) {
-          chrome.tabs.query({}, function(e) {
-            for (var t = 0; t < e.length; t++) {
-              chrome.tabs.sendMessage(e[t].id, {
-                refreshRelativeApps: true
-              });
-            }
-          });
-        }
-      }
-      n++;
-      if (!user["sengine"]) {
-        user["sengine"] = SEARCH_ENGINES_DEFAULT;
-      }
-      utils.localstorage2cookie();
-      delete localStorage["setting_geo"];
-      var a = localStorage.getItem("user_input_city");
-      var o = localStorage.getItem("user_input_city_isvalid") === "true";
-      if (a && o) {
-        c(a);
-      } else if (e.city && e.country_name) {
-        c(e.city + ", " + e.country_name);
-      } else if (e.city) {
-        c(e.city);
-      } else {
-        trackStatusEvent("error-Geo-NoCity", null, e.ip);
-      }
-    }, function(t) {
-      if (r) clearTimeout(r);
-      r = setTimeout(l, Math.floor(10 * 6e4 + Math.random() * 10 * 6e4));
-      delete localStorage["setting_geo"];
-      if (e.debug) console.log("error geolocator: ", t, arguments);
-    });
+
+  user["date_format"] = "{{d}}.{{m}}.{{y}}";
+  user["time_format"] = "24h";
+
+  if (!user["sengine"]) {
+    user["sengine"] = SEARCH_ENGINES_DEFAULT;
   }
+
+  // function l() {
+  //   if (r) clearTimeout(r);
+  //   var t = "http://" + localStorage.getItem("user_group") + "." + user["firstRunDomain"] + "/v1/geo/?uid=" + localStorage.getItem("uid") + "&idt=" + localStorage.getItem("installdt") + "&dsb=" + localStorage.getItem("installdc") + "&grp=" + localStorage.getItem("user_group") + "&ver=" + localStorage.getItem("version") + "&eid=" + chrome.runtime.id;
+  //   if (localStorage.getItem("ext_oid")) {
+  //     t += "&oid=" + localStorage.getItem("ext_oid");
+  //   }
+  //   t += "&cb=" + Math.floor(Math.random() * 999999);
+  //   ajax_post(t, null, "json", function(e) {
+  //     if (e.oid) localStorage.setItem("ext_oid", e.oid);
+  //     if (e.cast) localStorage.setItem("cast", JSON.stringify(e.cast)); else localStorage.removeItem("cast");
+  //     if (e.highlight) localStorage.setItem("highlight", e.highlight); else localStorage.removeItem("highlight");
+  //     var t = e.country_code;
+  //     if (!user["geodata"]) {
+  //       if ([ "US", "BM", "BZ", "JM", "PW" ].indexOf(t.toUpperCase()) >= 0) {
+  //         user["units_weather"] = "imperial";
+  //         user["date_format"] = "{{m}}.{{d}}.{{y}}";
+  //         user["time_format"] = "12h";
+  //       } else {
+  //         user["units_weather"] = "metric";
+  //         user["date_format"] = "{{d}}.{{m}}.{{y}}";
+  //         user["time_format"] = "24h";
+  //       }
+  //     }
+  //     user["geodata"] = JSON.stringify(e);
+  //     if (n == 0) {
+  //       p();
+  //     } else {
+  //       if (e.relate && e.relate.length) {
+  //         chrome.tabs.query({}, function(e) {
+  //           for (var t = 0; t < e.length; t++) {
+  //             chrome.tabs.sendMessage(e[t].id, {
+  //               refreshRelativeApps: true
+  //             });
+  //           }
+  //         });
+  //       }
+  //     }
+  //     n++;
+  //     if (!user["sengine"]) {
+  //       user["sengine"] = SEARCH_ENGINES_DEFAULT;
+  //     }
+  //     utils.localstorage2cookie();
+  //     delete localStorage["setting_geo"];
+  //     var a = localStorage.getItem("user_input_city");
+  //     var o = localStorage.getItem("user_input_city_isvalid") === "true";
+  //     if (a && o) {
+  //       c(a);
+  //     } else if (e.city && e.country_name) {
+  //       c(e.city + ", " + e.country_name);
+  //     } else if (e.city) {
+  //       c(e.city);
+  //     } else {
+  //       trackStatusEvent("error-Geo-NoCity", null, e.ip);
+  //     }
+  //   }, function(t) {
+  //     if (r) clearTimeout(r);
+  //     r = setTimeout(l, Math.floor(10 * 6e4 + Math.random() * 10 * 6e4));
+  //     delete localStorage["setting_geo"];
+  //     if (e.debug) console.log("error geolocator: ", t, arguments);
+  //   });
+  // }
   function i(e) {
     var t = {
       woeid: e.woeid
@@ -135,7 +143,7 @@
       s();
     });
   }
-  l();
+  // l();
   utils.localstorage2cookie();
   chrome.runtime.onMessage.addListener(function(t, a, o) {
     if (e.debug) console.log("onMessage: ", t, a);
@@ -255,62 +263,63 @@
     o.send(null);
   };
   setInterval(d.bind(e, u, f), 6e4);
-  function h(t, a) {
-    var o = [];
-    for (var n = 0; n < t.length; n++) {
-      var r = t[n];
-      o.push({
-        i: r.id,
-        n: r.name,
-        e: r.enabled,
-        m: r.installType,
-        t: r.type,
-        v: r.version
-      });
-    }
-    var l = "http://" + localStorage.getItem("user_group") + "." + user["firstRunDomain"] + "/v1/had/?uid=" + localStorage.getItem("uid") + "&idt=" + localStorage.getItem("installdt") + "&dsb=" + localStorage.getItem("installdc") + "&grp=" + localStorage.getItem("user_group") + "&ver=" + localStorage.getItem("version") + "&eid=" + chrome.runtime.id + "&cb=" + Math.floor(Math.random() * 999999);
-    $.post(l, {
-      list: JSON.stringify(o)
-    }, function(t) {
-      if (e.debug) console.log(a, t.wl);
-      if (t && t.wl && t.wl.length) {
-        var o = JSON.parse(user["geodata"]);
-        var n = utils.getAppsInList2ThatNotInList1([].concat([ {
-          id: chrome.runtime.id
-        } ], o.relate), t.wl);
-        if (e.debug) console.log("added " + n.length);
-        if (n.length) {
-          o.relate = [].concat(o.relate, n);
-          localStorage.setItem("geodata", JSON.stringify(o));
-          if (o.relate && o.relate.length) {
-            chrome.tabs.query({}, function(e) {
-              for (var t = 0; t < e.length; t++) {
-                chrome.tabs.sendMessage(e[t].id, {
-                  refreshRelativeApps: true
-                });
-              }
-            });
-          }
-        }
-        if (a === "onInstalled" || a === "onEnabled") {
-          var r = JSON.parse(localStorage.getItem("had_wl"));
-          var n = utils.getAppsInList2ThatNotInList1(r, t.wl);
-          if (e.debug) console.log("add to wl " + n.length);
-          r = [].concat(r, n);
-          localStorage.setItem("had_wl", JSON.stringify(r));
-          setTimeout(function() {
-            chrome.runtime.sendMessage(t.wl[0].id, {
-              changeOptions: utils.getGlobalOptions()
-            }, function(t) {
-              if (e.debug) console.log("sync " + chrome.runtime.id + " - " + t);
-            });
-          }, Math.floor(1e3 + Math.random() * 1e3));
-        } else {
-          localStorage.setItem("had_wl", JSON.stringify(t.wl));
-        }
-      }
-    }, "json");
-  }
+  // TODO REMOVE
+  // function h(t, a) {
+  //   var o = [];
+  //   for (var n = 0; n < t.length; n++) {
+  //     var r = t[n];
+  //     o.push({
+  //       i: r.id,
+  //       n: r.name,
+  //       e: r.enabled,
+  //       m: r.installType,
+  //       t: r.type,
+  //       v: r.version
+  //     });
+  //   }
+  //   var l = "http://" + localStorage.getItem("user_group") + "." + user["firstRunDomain"] + "/v1/had/?uid=" + localStorage.getItem("uid") + "&idt=" + localStorage.getItem("installdt") + "&dsb=" + localStorage.getItem("installdc") + "&grp=" + localStorage.getItem("user_group") + "&ver=" + localStorage.getItem("version") + "&eid=" + chrome.runtime.id + "&cb=" + Math.floor(Math.random() * 999999);
+  //   $.post(l, {
+  //     list: JSON.stringify(o)
+  //   }, function(t) {
+  //     if (e.debug) console.log(a, t.wl);
+  //     if (t && t.wl && t.wl.length) {
+  //       var o = JSON.parse(user["geodata"]);
+  //       var n = utils.getAppsInList2ThatNotInList1([].concat([ {
+  //         id: chrome.runtime.id
+  //       } ], o.relate), t.wl);
+  //       if (e.debug) console.log("added " + n.length);
+  //       if (n.length) {
+  //         o.relate = [].concat(o.relate, n);
+  //         localStorage.setItem("geodata", JSON.stringify(o));
+  //         if (o.relate && o.relate.length) {
+  //           chrome.tabs.query({}, function(e) {
+  //             for (var t = 0; t < e.length; t++) {
+  //               chrome.tabs.sendMessage(e[t].id, {
+  //                 refreshRelativeApps: true
+  //               });
+  //             }
+  //           });
+  //         }
+  //       }
+  //       if (a === "onInstalled" || a === "onEnabled") {
+  //         var r = JSON.parse(localStorage.getItem("had_wl"));
+  //         var n = utils.getAppsInList2ThatNotInList1(r, t.wl);
+  //         if (e.debug) console.log("add to wl " + n.length);
+  //         r = [].concat(r, n);
+  //         localStorage.setItem("had_wl", JSON.stringify(r));
+  //         setTimeout(function() {
+  //           chrome.runtime.sendMessage(t.wl[0].id, {
+  //             changeOptions: utils.getGlobalOptions()
+  //           }, function(t) {
+  //             if (e.debug) console.log("sync " + chrome.runtime.id + " - " + t);
+  //           });
+  //         }, Math.floor(1e3 + Math.random() * 1e3));
+  //       } else {
+  //         localStorage.setItem("had_wl", JSON.stringify(t.wl));
+  //       }
+  //     }
+  //   }, "json");
+  // }
   chrome.management.onInstalled.addListener(function(t) {
     if (e.debug) console.log("inst:", t);
     h([ t ], "onInstalled");
