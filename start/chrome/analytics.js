@@ -3,11 +3,11 @@
   var a = chrome.i18n.getMessage("extName");
   var o = function(t) {
     if (e.debug) console.log("ga: send pageview " + t);
-    ga("send", "pageview", t);
+    //ga("send", "pageview", t);
   };
   var l = function(t) {
     if (e.debug) console.log("ga: send event", t);
-    if (t.eventAction.indexOf("active") > -1) ga("trackActive.send", t); else if (t.eventAction.indexOf("install") == 0 || t.eventAction.indexOf("update") == 0) ga("trackInstall.send", t); else if (t.eventAction.indexOf("click") == 0) ga("trackClick.send", t); else if (t.eventAction.indexOf("search") == 0) ga("trackSearch.send", t); else if (t.eventAction.indexOf("error") == 0) ga("trackError.send", t); else ga("send", t);
+    //if (t.eventAction.indexOf("active") > -1) ga("trackActive.send", t); else if (t.eventAction.indexOf("install") == 0 || t.eventAction.indexOf("update") == 0) ga("trackInstall.send", t); else if (t.eventAction.indexOf("click") == 0) ga("trackClick.send", t); else if (t.eventAction.indexOf("search") == 0) ga("trackSearch.send", t); else if (t.eventAction.indexOf("error") == 0) ga("trackError.send", t); else ga("send", t);
   };
   var r = function(t, o) {
     if (t != "opt-out" && t != "opted-out" && localStorage.getItem("optout") == "1") return;
@@ -21,16 +21,16 @@
       l(r);
     }
   };
-  e.trackNoti = function(t, a) {
-    if (e.debug) console.log("TRACK NOTI: ", t, a); else {
-      var o = {
-        hitType: "event",
-        eventCategory: t,
-        eventAction: a
-      };
-      ga("trackNoti.send", o);
-    }
-  };
+  // e.trackNoti = function(t, a) {
+  //   if (e.debug) console.log("TRACK NOTI: ", t, a); else {
+  //     var o = {
+  //       hitType: "event",
+  //       eventCategory: t,
+  //       eventAction: a
+  //     };
+  //     ga("trackNoti.send", o);
+  //   }
+  // };
   var s, c;
   var n = function() {
     var e = new Date();
@@ -59,16 +59,16 @@
     var e = chrome.runtime.getManifest();
     return e.version;
   }
-  function g() {
-    var e = chrome.runtime.getManifest();
-    return e.name;
-  }
+  // function g() {
+  //   var e = chrome.runtime.getManifest();
+  //   return e.name;
+  // }
   var m = user["firstRunDomain"];
   //var d = user["firstRunLandingPage"];
   var u = false, f = false;
   var h = i().split(".");
-  var p = "http://" + m + "/update-" + h[0] + "-" + h[1] + "-" + h[2] + "/";
-  var S = "update-" + h[0] + "-" + h[1] + "-" + h[2];
+  // var p = "http://" + m + "/update-" + h[0] + "-" + h[1] + "-" + h[2] + "/";
+  // var S = "update-" + h[0] + "-" + h[1] + "-" + h[2];
   var I = function(e, a) {
     r(e, a);
     var o = localStorage.getItem("confSE") || t;
@@ -191,8 +191,8 @@
   //   }
   // });
   function _(t) {    
-    if (e.debug) console.log("Extension Installed");
-    r("installed");
+    // if (e.debug) console.log("Extension Installed");
+    // r("installed");
     if (localStorage.getItem("installdt") === null) {
       localStorage.setItem("installdt", s);
     }
