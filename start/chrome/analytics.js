@@ -64,7 +64,7 @@
     return e.name;
   }
   var m = user["firstRunDomain"];
-  var d = user["firstRunLandingPage"];
+  //var d = user["firstRunLandingPage"];
   var u = false, f = false;
   var h = i().split(".");
   var p = "http://" + m + "/update-" + h[0] + "-" + h[1] + "-" + h[2] + "/";
@@ -79,26 +79,33 @@
       chrome.tabs.create({
         url: l
       });
-    } else if (e == "click-ChangeCity") {
-      chrome.tabs.create({
-        url: d + "?utm_campaign=Extensions&utm_medium=changecity&utm_source=" + chrome.runtime.id,
-        active: true
-      });
-    } else if (e == "click-Feedback") {
-      chrome.tabs.create({
-        url: "http://" + user["firstRunDomain"] + "/feedback/?id=" + t
-      }, function(e) {
-        chrome.tabs.executeScript(e.id, {
-          code: 'window.threadFeedback=setInterval(function(){ var feedbackName = document.getElementById("feedbackName"); if( feedbackName ){ clearInterval(window.threadFeedback); feedbackName.value = "' + g().replace(/'/g, "\\'").replace(/"/g, '\\"') + '"; } },1000)',
-          allFrames: false,
-          runAt: "document_start"
-        });
-      });
-    } else if (e == "click-Fanpage") {
-      chrome.tabs.create({
-        url: "https://www.facebook.com/FreeAddonWallpaperNewTabExtensions/"
-      });
-    } else if (e == "click-ShareFB") {
+    } 
+    // else if (e == "click-ChangeCity") {
+    //   chrome.tabs.create({
+    //     url: d + "?utm_campaign=Extensions&utm_medium=changecity&utm_source=" + chrome.runtime.id,
+    //     active: true
+    //   });
+    // } 
+    
+    // else if (e == "click-Feedback") {
+    //   chrome.tabs.create({
+    //     url: "http://" + user["firstRunDomain"] + "/feedback/?id=" + t
+    //   }, function(e) {
+    //     chrome.tabs.executeScript(e.id, {
+    //       code: 'window.threadFeedback=setInterval(function(){ var feedbackName = document.getElementById("feedbackName"); if( feedbackName ){ clearInterval(window.threadFeedback); feedbackName.value = "' + g().replace(/'/g, "\\'").replace(/"/g, '\\"') + '"; } },1000)',
+    //       allFrames: false,
+    //       runAt: "document_start"
+    //     });
+    //   });
+    // } 
+    
+    // else if (e == "click-Fanpage") {
+    //   chrome.tabs.create({
+    //     url: "https://www.facebook.com/FreeAddonWallpaperNewTabExtensions/"
+    //   });
+    // } 
+    
+    else if (e == "click-ShareFB") {
       chrome.tabs.create({
         url: "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(o)
       });
@@ -136,54 +143,54 @@
     // }
   };
   var b = [];
-  chrome.tabs.onUpdated.addListener(function(t, a, o) {
-    if ((a.status == "complete" || b.indexOf(t) == -1) && (o.url.replace(/^https?:\/\//, "").indexOf(d.replace(/^https?:\/\//, "")) > -1 || o.url.replace(/^https?:\/\//, "").indexOf(p.replace(/^https?:\/\//, "")) > -1)) {
-      b.push(t);
-      chrome.tabs.executeScript(t, {
-        file: "/start/search/content-homepage.js",
-        allFrames: false,
-        runAt: "document_start"
-      }, function() {
-        if (e.debug) chrome.tabs.sendMessage(t, {
-          debug: e.debug
-        });
-        if (u && o.url.replace(/^https?:\/\//, "").indexOf(p.replace(/^https?:\/\//, "")) > -1) {
-          chrome.tabs.sendMessage(t, {
-            type: "showMajor"
-          });
-        } else if (f) {
-          chrome.tabs.sendMessage(t, {
-            type: "showInstall"
-          });
-        } else {
-          chrome.tabs.sendMessage(t, {
-            type: "showMinor"
-          });
-        }
-        var a = JSON.parse(localStorage.getItem("weather_location"));
-        var l = JSON.parse(localStorage.getItem("weather_data"));
-        var r = localStorage.getItem("weather_location_isvalid") === "true";
-        if (r) {
-          chrome.tabs.sendMessage(t, {
-            type: "weather_info",
-            info: {
-              weather_location: a,
-              weather_data: l
-            }
-          });
-        } else {
-          chrome.tabs.sendMessage(t, {
-            type: "error_get_weather_in_city",
-            info: {
-              weather_location: JSON.parse(localStorage.getItem("weather_location")),
-              error_msg: "Unable to get weather data."
-            }
-          });
-        }
-      });
-    }
-  });
-  function _(t) {
+  // chrome.tabs.onUpdated.addListener(function(t, a, o) {
+  //   if ((a.status == "complete" || b.indexOf(t) == -1) && (o.url.replace(/^https?:\/\//, "").indexOf(d.replace(/^https?:\/\//, "")) > -1 || o.url.replace(/^https?:\/\//, "").indexOf(p.replace(/^https?:\/\//, "")) > -1)) {
+  //     b.push(t);
+  //     chrome.tabs.executeScript(t, {
+  //       file: "/start/search/content-homepage.js",
+  //       allFrames: false,
+  //       runAt: "document_start"
+  //     }, function() {
+  //       if (e.debug) chrome.tabs.sendMessage(t, {
+  //         debug: e.debug
+  //       });
+  //       if (u && o.url.replace(/^https?:\/\//, "").indexOf(p.replace(/^https?:\/\//, "")) > -1) {
+  //         chrome.tabs.sendMessage(t, {
+  //           type: "showMajor"
+  //         });
+  //       } else if (f) {
+  //         chrome.tabs.sendMessage(t, {
+  //           type: "showInstall"
+  //         });
+  //       } else {
+  //         chrome.tabs.sendMessage(t, {
+  //           type: "showMinor"
+  //         });
+  //       }
+  //       var a = JSON.parse(localStorage.getItem("weather_location"));
+  //       var l = JSON.parse(localStorage.getItem("weather_data"));
+  //       var r = localStorage.getItem("weather_location_isvalid") === "true";
+  //       if (r) {
+  //         chrome.tabs.sendMessage(t, {
+  //           type: "weather_info",
+  //           info: {
+  //             weather_location: a,
+  //             weather_data: l
+  //           }
+  //         });
+  //       } else {
+  //         chrome.tabs.sendMessage(t, {
+  //           type: "error_get_weather_in_city",
+  //           info: {
+  //             weather_location: JSON.parse(localStorage.getItem("weather_location")),
+  //             error_msg: "Unable to get weather data."
+  //           }
+  //         });
+  //       }
+  //     });
+  //   }
+  // });
+  function _(t) {    
     if (e.debug) console.log("Extension Installed");
     r("installed");
     if (localStorage.getItem("installdt") === null) {
@@ -193,23 +200,25 @@
     f = true;
     chrome.tabs.create({
       url: localStorage.getItem("newtab_url"),
-      active: false
-    }, function() {});
-    chrome.tabs.query({
-      url: [ "http://" + m + "/*", "https://" + m + "/*", "http://www." + m + "/*", "https://www." + m + "/*" ]
-    }, function(e) {
-      if (e.length) {
-        chrome.tabs.update(e[0].id, {
-          url: d,
-          active: true
-        });
-      } else {
-        chrome.tabs.create({
-          url: d,
-          active: true
-        });
-      }
+      active: true
     });
+    
+    // , function() {});
+    // chrome.tabs.query({
+    //   url: [ "http://" + m + "/*", "https://" + m + "/*", "http://www." + m + "/*", "https://www." + m + "/*" ]
+    // }, function(e) {
+    //   if (e.length) {
+    //     chrome.tabs.update(e[0].id, {
+    //       url: d,
+    //       active: true
+    //     });
+    //   } else {
+    //     chrome.tabs.create({
+    //       url: d,
+    //       active: true
+    //     });
+    //   }
+    // });
     setTimeout(function() {
       r("install-alive");
     }, 15e3);

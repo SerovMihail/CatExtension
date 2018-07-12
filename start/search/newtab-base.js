@@ -793,9 +793,9 @@
       utils.resetClickHandler($(".click-Donate"), function () {
         chrome.extension.sendMessage("click-Donate");
       });
-      utils.resetClickHandler($(".click-Feedback"), function () {
-        chrome.extension.sendMessage("click-Feedback");
-      });
+      // utils.resetClickHandler($(".click-Feedback"), function () {
+      //   chrome.extension.sendMessage("click-Feedback");
+      // });
       utils.resetClickHandler($(".click-Fanpage"), function () {        
         chrome.extension.sendMessage("click-Rate");
       });
