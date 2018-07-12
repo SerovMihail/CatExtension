@@ -86,63 +86,63 @@
   //     if (e.debug) console.log("error geolocator: ", t, arguments);
   //   });
   // }
-  function i(e) {
-    var t = {
-      woeid: e.woeid
-    };
-    if (e.locality1 && e.locality1.content) t.city = e.locality1.content; else t.city = isNaN(e.name) ? e.name : e.admin1 ? e.admin1.content : e.name;
-    if (e.country) t.countrycode = e.country.code;
-    return t;
-  }
-  function s() {
-    chrome.tabs.query({}, function(e) {
-      for (var t = 0; t < e.length; t++) {
-        chrome.tabs.sendMessage(e[t].id, {
-          type: "error_city_not_found",
-          info: {
-            error_msg: "Unable to get your city."
-          }
-        });
-      }
-    });
-  }
-  function c(t) {
-    var a = "https://query.yahooapis.com/v1/public/yql?q=SELECT%20*%20FROM%20geo.places%20WHERE%20text%3D%22" + encodeURIComponent(t) + "%22&format=json";
-    $.getJSON(a, function(a) {
-      var o = a.query.count;
-      var n = null;
-      var r = false;
-      if (o > 1) {
-        r = true;
-        n = i(a.query.results.place[0]);
-      } else if (o == 1 && a.query.results.place) {
-        r = true;
-        n = i(a.query.results.place);
-      }
-      if (r) {
-        var l = {
-          enteredLocation: t,
-          woeid: n.woeid,
-          location_name: n.city
-        };
-        localStorage.setItem("weather_location", JSON.stringify(l));
-        chrome.tabs.query({}, function(e) {
-          for (var t = 0; t < e.length; t++) {
-            chrome.tabs.sendMessage(e[t].id, {
-              refreshWeather: true
-            });
-          }
-        });
-      } else {
-        if (e.debug) console.log("Error getting GeoPlaces");
-        s();
-        trackStatusEvent("error-GeoPlaces-NoData", null, t);
-      }
-    }).fail(function(t, a, o) {
-      if (e.debug) console.log("Error in GeoPlaces request");
-      s();
-    });
-  }
+  // function i(e) {
+  //   var t = {
+  //     woeid: e.woeid
+  //   };
+  //   if (e.locality1 && e.locality1.content) t.city = e.locality1.content; else t.city = isNaN(e.name) ? e.name : e.admin1 ? e.admin1.content : e.name;
+  //   if (e.country) t.countrycode = e.country.code;
+  //   return t;
+  // }
+  // function s() {
+  //   chrome.tabs.query({}, function(e) {
+  //     for (var t = 0; t < e.length; t++) {
+  //       chrome.tabs.sendMessage(e[t].id, {
+  //         type: "error_city_not_found",
+  //         info: {
+  //           error_msg: "Unable to get your city."
+  //         }
+  //       });
+  //     }
+  //   });
+  // }
+  // function c(t) {
+  //   var a = "https://query.yahooapis.com/v1/public/yql?q=SELECT%20*%20FROM%20geo.places%20WHERE%20text%3D%22" + encodeURIComponent(t) + "%22&format=json";
+  //   $.getJSON(a, function(a) {
+  //     var o = a.query.count;
+  //     var n = null;
+  //     var r = false;
+  //     if (o > 1) {
+  //       r = true;
+  //       n = i(a.query.results.place[0]);
+  //     } else if (o == 1 && a.query.results.place) {
+  //       r = true;
+  //       n = i(a.query.results.place);
+  //     }
+  //     if (r) {
+  //       var l = {
+  //         enteredLocation: t,
+  //         woeid: n.woeid,
+  //         location_name: n.city
+  //       };
+  //       localStorage.setItem("weather_location", JSON.stringify(l));
+  //       chrome.tabs.query({}, function(e) {
+  //         for (var t = 0; t < e.length; t++) {
+  //           chrome.tabs.sendMessage(e[t].id, {
+  //             refreshWeather: true
+  //           });
+  //         }
+  //       });
+  //     } else {
+  //       if (e.debug) console.log("Error getting GeoPlaces");
+  //       s();
+  //       trackStatusEvent("error-GeoPlaces-NoData", null, t);
+  //     }
+  //   }).fail(function(t, a, o) {
+  //     if (e.debug) console.log("Error in GeoPlaces request");
+  //     s();
+  //   });
+  // }
   // l();
   //utils.localstorage2cookie();
   chrome.runtime.onMessage.addListener(function(t, a, o) {

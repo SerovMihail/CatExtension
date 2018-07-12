@@ -331,7 +331,7 @@
   });
   function y() {
     if (!localStorage.getItem("disable_weather")) {
-      localStorage.setItem("disable_weather", "no");
+      localStorage.setItem("disable_weather", "yes");
     }
     if (!localStorage.getItem("enable_most_visited")) {
       if (!localStorage.getItem("disable_most_visited")) {

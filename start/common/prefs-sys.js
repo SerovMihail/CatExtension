@@ -1,8 +1,8 @@
 pref('xlp_pers_guid','');
 pref('guid','');
 pref('firstRun',true);
-pref('firstRunDomain', 'freeaddon.com');
-pref('firstRunLandingPage', 'http://freeaddon.com/cute-cats-wallpapers-new-tab/');
+pref('firstRunDomain', 'https://www.google.com/');
+pref('firstRunLandingPage', 'https://www.google.com/');
 pref('firstVer','0');
 pref('lastVer','0');
 pref('ls_ts','0');
