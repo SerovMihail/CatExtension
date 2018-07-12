@@ -390,89 +390,89 @@
         }
       });
     }
-    function k() {
-      try {
-        b = false;
-        if (!localStorage.getItem("weather_location")) {
-          y = true;
-          b = false;
-          if (localStorage.getItem("disable_weather") === "no") $("#error_box").show();
-          localStorage.setItem("weather_location_isvalid", "false");
-          //utils.localstorage2cookie();
-          return;
-        }
-        var t = JSON.parse(localStorage.getItem("weather_location"));
-        var o = user["units_weather"] == "imperial" ? "f" : "c";
-        var a = "https://query.yahooapis.com/v1/public/yql?q=" + encodeURIComponent("select * from weather.forecast where woeid=" + t.woeid + ' and u="' + o + '"') + "&format=json";
-        $.getJSON(a, function(a) {
-          try {
-            if (a && a.query && a.query.count == 1 && a.query.results && a.query.results.channel && a.query.results.channel.item) {
-              y = false;
-              localStorage.setItem("weather_location_isvalid", "true");
-              //utils.localstorage2cookie();
-              var i = a.query.results.channel.item.condition;
-              var s = a.query.results.channel.units;
-              if (s && s.temperature) {
-                o = s.temperature.toLowerCase();
-              }
-              var n = {
-                fetchTemperature: i.temp,
-                fetchUnit: o,
-                code: i.code,
-                condition: i.text,
-                updated: new Date()
-              };
-              localStorage.setItem("weather_data", JSON.stringify(n));
-              $("#error_box").hide();
-              $("#city_name").val(t.location_name);
-              localStorage.setItem("user_input_city_isvalid", "true");
-              w();
-              var r = Math.round(n.fetchTemperature);
-              var l = $(".weather h1");
-              var c = n.condition;
-              var u = t.location_name;
-              l.find(".val").html(r);
-              $(".widght .weather .city").text(u);
-              $(".widght .weather .condition").text(c);
-              if (localStorage.getItem("disable_weather") == "yes" || y) b = false; else b = true;
-            } else {
-              y = true;
-              b = false;
-              if (localStorage.getItem("disable_weather") === "no") $("#error_box").show();
-              localStorage.setItem("weather_location_isvalid", "false");
-              $("#city_name").val("Unable to get weather data.");
-              localStorage.setItem("user_input_city_isvalid", "false");
-              //utils.localstorage2cookie();
-              if (e.debug) console.log("Error getting weather data");
-              S();
-              trackStatusEvent("error-Weather-NoData", null, t.woeid);
-            }
-          } catch (e) {
-            y = true;
-            b = false;
-            if (localStorage.getItem("disable_weather") === "no") $("#error_box").show();
-            localStorage.setItem("weather_location_isvalid", "false");
-            //utils.localstorage2cookie();
-            trackStatusEvent("error-Weather", null, e.message);
-          }
-        }).fail(function(t, o, a) {
-          y = true;
-          b = false;
-          if (localStorage.getItem("disable_weather") === "no") $("#error_box").show();
-          localStorage.setItem("weather_location_isvalid", "false");
-          //utils.localstorage2cookie();
-          if (e.debug) console.log("Error in weather request: ", o);
-        });
-      } catch (e) {
-        y = true;
-        b = false;
-        trackStatusEvent("error-Weather", null, e.message);
-      }
-    }
-    var b = true;
-    var y = false;
-    var I = false;
-    var C = 5e3;
+    // function k() {
+    //   try {
+    //     b = false;
+    //     if (!localStorage.getItem("weather_location")) {
+    //       y = true;
+    //       b = false;
+    //       if (localStorage.getItem("disable_weather") === "no") $("#error_box").show();
+    //       localStorage.setItem("weather_location_isvalid", "false");
+    //       //utils.localstorage2cookie();
+    //       return;
+    //     }
+    //     var t = JSON.parse(localStorage.getItem("weather_location"));
+    //     var o = user["units_weather"] == "imperial" ? "f" : "c";
+    //     var a = "https://query.yahooapis.com/v1/public/yql?q=" + encodeURIComponent("select * from weather.forecast where woeid=" + t.woeid + ' and u="' + o + '"') + "&format=json";
+    //     $.getJSON(a, function(a) {
+    //       try {
+    //         if (a && a.query && a.query.count == 1 && a.query.results && a.query.results.channel && a.query.results.channel.item) {
+    //           y = false;
+    //           localStorage.setItem("weather_location_isvalid", "true");
+    //           //utils.localstorage2cookie();
+    //           var i = a.query.results.channel.item.condition;
+    //           var s = a.query.results.channel.units;
+    //           if (s && s.temperature) {
+    //             o = s.temperature.toLowerCase();
+    //           }
+    //           var n = {
+    //             fetchTemperature: i.temp,
+    //             fetchUnit: o,
+    //             code: i.code,
+    //             condition: i.text,
+    //             updated: new Date()
+    //           };
+    //           localStorage.setItem("weather_data", JSON.stringify(n));
+    //           $("#error_box").hide();
+    //           $("#city_name").val(t.location_name);
+    //           localStorage.setItem("user_input_city_isvalid", "true");
+    //           w();
+    //           var r = Math.round(n.fetchTemperature);
+    //           var l = $(".weather h1");
+    //           var c = n.condition;
+    //           var u = t.location_name;
+    //           l.find(".val").html(r);
+    //           $(".widght .weather .city").text(u);
+    //           $(".widght .weather .condition").text(c);
+    //           if (localStorage.getItem("disable_weather") == "yes" || y) b = false; else b = true;
+    //         } else {
+    //           y = true;
+    //           b = false;
+    //           if (localStorage.getItem("disable_weather") === "no") $("#error_box").show();
+    //           localStorage.setItem("weather_location_isvalid", "false");
+    //           $("#city_name").val("Unable to get weather data.");
+    //           localStorage.setItem("user_input_city_isvalid", "false");
+    //           //utils.localstorage2cookie();
+    //           if (e.debug) console.log("Error getting weather data");
+    //           S();
+    //           trackStatusEvent("error-Weather-NoData", null, t.woeid);
+    //         }
+    //       } catch (e) {
+    //         y = true;
+    //         b = false;
+    //         if (localStorage.getItem("disable_weather") === "no") $("#error_box").show();
+    //         localStorage.setItem("weather_location_isvalid", "false");
+    //         //utils.localstorage2cookie();
+    //         trackStatusEvent("error-Weather", null, e.message);
+    //       }
+    //     }).fail(function(t, o, a) {
+    //       y = true;
+    //       b = false;
+    //       if (localStorage.getItem("disable_weather") === "no") $("#error_box").show();
+    //       localStorage.setItem("weather_location_isvalid", "false");
+    //       //utils.localstorage2cookie();
+    //       if (e.debug) console.log("Error in weather request: ", o);
+    //     });
+    //   } catch (e) {
+    //     y = true;
+    //     b = false;
+    //     trackStatusEvent("error-Weather", null, e.message);
+    //   }
+    // }
+    // var b = true;
+    // var y = false;
+    // var I = false;
+    // var C = 5e3;
     // function E() {
     //   clearTimeout(D);
     //   D = setTimeout(E, C);
@@ -502,19 +502,20 @@
     //   r.find("img").attr("src", t);
     //   r.toggleClass("clock temp");
     // }
-    $(".widght .time, .widght .weather").on("mouseenter", function() {
-      I = true;
-    });
-    $(".widght .time, .widght .weather").on("mouseleave", function() {
-      I = false;
-    });
+    // $(".widght .time, .widght .weather").on("mouseenter", function() {
+    //   I = true;
+    // });
+    // $(".widght .time, .widght .weather").on("mouseleave", function() {
+    //   I = false;
+    // });
     // $(".widght .weather h1").on("click", function() {
     //   N(user["units_weather"] == "imperial" ? "metric" : "imperial");
     // });
+    A();
     $(".widght .time").on("click", function() {
       A();
     });
-    var O = $("#weather_widget_unit");
+    //var O = $("#weather_widget_unit");
     // function N(e) {
     //   if (e != "imperial") {
     //     user["units_weather"] = "metric";
@@ -539,7 +540,7 @@
       //utils.localstorage2cookie();
     }
     //N(user["units_weather"]);
-    function T() {
+    function  T() {
       var e = new Date();
       if (user["time_format"] == "12h") {
         var t = e.getHours() < 12 ? "AM" : "PM";

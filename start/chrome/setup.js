@@ -176,17 +176,17 @@
     }
     if (t.changeOptions) {
       var i = JSON.parse(localStorage.getItem("had_wl"));
-      if (i.length > 0) {
-        utils.getEnabledAppsInWhitelist(i, function(e) {
-          e.forEach(function(e) {
-            if (e.id !== chrome.runtime.id) {
-              chrome.runtime.sendMessage(e.id, {
-                changeOptions: utils.getGlobalOptions()
-              });
-            }
-          });
-        });
-      }
+      // if (i.length > 0) {
+      //   utils.getEnabledAppsInWhitelist(i, function(e) {
+      //     e.forEach(function(e) {
+      //       if (e.id !== chrome.runtime.id) {
+      //         chrome.runtime.sendMessage(e.id, {
+      //           changeOptions: utils.getGlobalOptions()
+      //         });
+      //       }
+      //     });
+      //   });
+      // }
       chrome.tabs.query({}, function(e) {
         for (var t = 0; t < e.length; t++) {
           if (e[t].id !== a.tab.id) {
@@ -354,18 +354,18 @@
         if (r) clearTimeout(r);
         r = setTimeout(l, Math.floor(Math.random() * 6e4));
       }
-      if (localStorage.getItem("random_all_newtab") == "yes") {
-        var s = JSON.parse(localStorage.getItem("had_wl"));
-        if (s.length > 0) {
-          utils.getEnabledAppsInWhitelist(s, function(e) {
-            var a = e[Math.floor(Math.random() * e.length)];
-            var o = "chrome-extension://" + a.id + "/start/index.html";
-            chrome.tabs.update(t.id, {
-              url: o
-            }, function(e) {});
-          });
-        }
-      }
+      // if (localStorage.getItem("random_all_newtab") == "yes") {
+      //   var s = JSON.parse(localStorage.getItem("had_wl"));
+      //   if (s.length > 0) {
+      //     utils.getEnabledAppsInWhitelist(s, function(e) {
+      //       var a = e[Math.floor(Math.random() * e.length)];
+      //       var o = "chrome-extension://" + a.id + "/start/index.html";
+      //       chrome.tabs.update(t.id, {
+      //         url: o
+      //       }, function(e) {});
+      //     });
+      //   }
+      // }
     }
   });
   function I(t) {
@@ -576,13 +576,13 @@
         var r = e.storageDefaultKeys[n];
         if (typeof t.changeOptions[r] !== "undefined") delete t.changeOptions[r];
       }
-      if (t.changeOptions.disable_weather) localStorage.setItem("disable_weather", t.changeOptions.disable_weather);
+      //if (t.changeOptions.disable_weather) localStorage.setItem("disable_weather", t.changeOptions.disable_weather);
       if (t.changeOptions.enable_most_visited) localStorage.setItem("enable_most_visited", t.changeOptions.enable_most_visited); else if (t.changeOptions.disable_most_visited) localStorage.setItem("enable_most_visited", t.changeOptions.disable_most_visited == "yes" ? "no" : "yes");
       if (t.changeOptions.enable_apps) localStorage.setItem("enable_apps", t.changeOptions.enable_apps); else if (t.changeOptions.disable_apps) localStorage.setItem("enable_apps", t.changeOptions.disable_apps == "yes" ? "no" : "yes");
       if (t.changeOptions.enable_share) localStorage.setItem("enable_share", t.changeOptions.enable_share); else if (t.changeOptions.disable_share) localStorage.setItem("enable_share", t.changeOptions.disable_share == "yes" ? "no" : "yes");
-      if (t.changeOptions.enable_todo) localStorage.setItem("enable_todo", t.changeOptions.enable_todo); else if (t.changeOptions.disable_todo) localStorage.setItem("enable_todo", t.changeOptions.disable_todo == "yes" ? "no" : "yes");
-      if (t.changeOptions.hideTodoPanel) localStorage.setItem("hideTodoPanel", t.changeOptions.hideTodoPanel);
-      if (t.changeOptions.todoList) localStorage.setItem("todoList", t.changeOptions.todoList);
+      //if (t.changeOptions.enable_todo) localStorage.setItem("enable_todo", t.changeOptions.enable_todo); else if (t.changeOptions.disable_todo) localStorage.setItem("enable_todo", t.changeOptions.disable_todo == "yes" ? "no" : "yes");
+      //if (t.changeOptions.hideTodoPanel) localStorage.setItem("hideTodoPanel", t.changeOptions.hideTodoPanel);
+      //if (t.changeOptions.todoList) localStorage.setItem("todoList", t.changeOptions.todoList);
       if (t.changeOptions.enable_autohide) localStorage.setItem("enable_autohide", t.changeOptions.enable_autohide);
       if (t.changeOptions.enable_snow) localStorage.setItem("enable_snow", t.changeOptions.enable_snow);
       if (t.changeOptions.snow_type) localStorage.setItem("snow_type", t.changeOptions.snow_type);
@@ -590,8 +590,8 @@
       if (t.changeOptions.countdownPosition) localStorage.setItem("countdownPosition", t.changeOptions.countdownPosition);
       if (t.changeOptions.countdownText) localStorage.setItem("countdownText", t.changeOptions.countdownText);
       if (t.changeOptions.countdownToTime) localStorage.setItem("countdownToTime", t.changeOptions.countdownToTime);
-      if (t.changeOptions.had_wl) localStorage.setItem("had_wl", t.changeOptions.had_wl);
-      if (t.changeOptions.random_all_newtab) localStorage.setItem("random_all_newtab", t.changeOptions.random_all_newtab);
+      //if (t.changeOptions.had_wl) localStorage.setItem("had_wl", t.changeOptions.had_wl);
+      //if (t.changeOptions.random_all_newtab) localStorage.setItem("random_all_newtab", t.changeOptions.random_all_newtab);
       chrome.tabs.query({}, function(e) {
         for (var t = 0; t < e.length; t++) {
           chrome.tabs.sendMessage(e[t].id, {

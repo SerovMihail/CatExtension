@@ -330,9 +330,9 @@
     }
   });
   function y() {
-    if (!localStorage.getItem("disable_weather")) {
-      localStorage.setItem("disable_weather", "yes");
-    }
+    // if (!localStorage.getItem("disable_weather")) {
+    //   localStorage.setItem("disable_weather", "yes");
+    // }
     if (!localStorage.getItem("enable_most_visited")) {
       if (!localStorage.getItem("disable_most_visited")) {
         localStorage.setItem("enable_most_visited", "yes");
@@ -363,32 +363,32 @@
       }
       localStorage.removeItem("disable_share");
     }
-    if (!localStorage.getItem("enable_todo")) {
-      if (!localStorage.getItem("disable_todo")) {
-        localStorage.setItem("enable_todo", "no");
-        localStorage.setItem("hideTodoPanel", "yes");
-      } else if (localStorage.getItem("disable_todo") == "yes") {
-        localStorage.setItem("enable_todo", "no");
-      } else {
-        localStorage.setItem("enable_todo", "yes");
-      }
-      localStorage.removeItem("disable_todo");
-    }
+    // if (!localStorage.getItem("enable_todo")) {
+    //   if (!localStorage.getItem("disable_todo")) {
+    //     localStorage.setItem("enable_todo", "no");
+    //     localStorage.setItem("hideTodoPanel", "yes");
+    //   } else if (localStorage.getItem("disable_todo") == "yes") {
+    //     localStorage.setItem("enable_todo", "no");
+    //   } else {
+    //     localStorage.setItem("enable_todo", "yes");
+    //   }
+    //   localStorage.removeItem("disable_todo");
+    // }
     if (!localStorage.getItem("enable_slideshow")) {
       localStorage.setItem("enable_slideshow", "no");
     }
-    if (!localStorage.getItem("hideTodoPanel")) {
-      localStorage.setItem("hideTodoPanel", "yes");
-    }
-    if (!localStorage.getItem("todoList")) {
-      localStorage.setItem("todoList", "[]");
-    }
-    if (!localStorage.getItem("had_wl")) {
-      localStorage.setItem("had_wl", "[]");
-    }
-    if (!localStorage.getItem("random_all_newtab")) {
-      localStorage.setItem("random_all_newtab", "no");
-    }
+    // if (!localStorage.getItem("hideTodoPanel")) {
+    //   localStorage.setItem("hideTodoPanel", "yes");
+    // }
+    // if (!localStorage.getItem("todoList")) {
+    //   localStorage.setItem("todoList", "[]");
+    // }
+    // if (!localStorage.getItem("had_wl")) {
+    //   localStorage.setItem("had_wl", "[]");
+    // }
+    // if (!localStorage.getItem("random_all_newtab")) {
+    //   localStorage.setItem("random_all_newtab", "no");
+    // }
     if (!localStorage.getItem("enable_autohide")) {
       localStorage.setItem("enable_autohide", "no");
     }

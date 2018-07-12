@@ -375,31 +375,31 @@
         e.loadCountDownModule(e);
         e.loadAutoHideModule(e);
         e.loadSnowModule(e);
-        $("#random_all_newtab").prop("checked", localStorage.getItem("random_all_newtab") === "yes");
-        $("#random_all_newtab").off("change");
-        $("#random_all_newtab").on("change", function () {
-          localStorage.setItem("random_all_newtab", $("#random_all_newtab").is(":checked") ? "yes" : "no");
-          chrome.runtime.sendMessage({
-            changeOptions: utils.getGlobalOptions()
-          });
-          //utils.localstorage2cookie();
-        });
-        $("#disable_weather").prop("checked", localStorage.getItem("disable_weather") === "yes");
-        $("#disable_weather").off("change");
-        $("#disable_weather").on("change", function () {
-          if ($("#disable_weather").is(":checked")) {
-            $("#error_box").hide();
-          } else {
-            if (localStorage.getItem("weather_location_isvalid") === "false") {
-              $("#error_box").show();
-            }
-          }
-          localStorage.setItem("disable_weather", $("#disable_weather").is(":checked") ? "yes" : "no");
-          chrome.runtime.sendMessage({
-            changeOptions: utils.getGlobalOptions()
-          });
-          //utils.localstorage2cookie();
-        });
+        // $("#random_all_newtab").prop("checked", localStorage.getItem("random_all_newtab") === "yes");
+        // $("#random_all_newtab").off("change");
+        // $("#random_all_newtab").on("change", function () {
+        //   localStorage.setItem("random_all_newtab", $("#random_all_newtab").is(":checked") ? "yes" : "no");
+        //   chrome.runtime.sendMessage({
+        //     changeOptions: utils.getGlobalOptions()
+        //   });
+        //   //utils.localstorage2cookie();
+        // });
+        //$("#disable_weather").prop("checked", localStorage.getItem("disable_weather") === "yes");
+        // $("#disable_weather").off("change");
+        // $("#disable_weather").on("change", function () {
+        //   if ($("#disable_weather").is(":checked")) {
+        //     $("#error_box").hide();
+        //   } else {
+        //     if (localStorage.getItem("weather_location_isvalid") === "false") {
+        //       $("#error_box").show();
+        //     }
+        //   }
+        //   localStorage.setItem("disable_weather", $("#disable_weather").is(":checked") ? "yes" : "no");
+        //   chrome.runtime.sendMessage({
+        //     changeOptions: utils.getGlobalOptions()
+        //   });
+        //   //utils.localstorage2cookie();
+        // });
         if (localStorage.getItem("enable_most_visited") == "no") {
           $(".most_visited").hide();
         } else {
@@ -484,16 +484,16 @@
           });
           //utils.localstorage2cookie();
         });
-        $("#delete_button").off("click");
-        $("#delete_button").on("click", function () {
-          $("#error_box").hide();
-          $("#disable_weather").prop("checked", true);
-          localStorage.setItem("disable_weather", "yes");
-          chrome.runtime.sendMessage({
-            changeOptions: utils.getGlobalOptions()
-          });
-          //utils.localstorage2cookie();
-        });
+        // $("#delete_button").off("click");
+        // $("#delete_button").on("click", function () {
+        //   $("#error_box").hide();
+        //   $("#disable_weather").prop("checked", true);
+        //   localStorage.setItem("disable_weather", "yes");
+        //   chrome.runtime.sendMessage({
+        //     changeOptions: utils.getGlobalOptions()
+        //   });
+        //   //utils.localstorage2cookie();
+        // });
         $('[data-toggle="tooltip"]').tooltip();
       };
       e.loadGlobalOptions();

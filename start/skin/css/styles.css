@@ -1840,13 +1840,13 @@ h3 {
 }
 
 
-.bgFooter #checkbox_disable_weather {
+/* .bgFooter #checkbox_disable_weather {
   display: inline;
   margin-left: 15px;
 }
 .bgFooter #checkbox_disable_weather .checkbox{
   margin: 0 19px 0 0;
-}
+} */
 .bgFooter #change_city_box {
   border-top: 1px solid #F3F3F3;
   margin-top: 10px;
