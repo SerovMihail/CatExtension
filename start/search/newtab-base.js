@@ -518,8 +518,8 @@
             });
           }
           i.append(o);
-          var n = '<div class="like-container" style="display: none;"><div class="like-action" data-src="' + s + '"></div><span class="like-label"></span></div>';
-          i.append(n);
+          // var n = '<div class="like-container" style="display: none;"><div class="like-action" data-src="' + s + '"></div><span class="like-label"></span></div>';
+          // i.append(n);
           $("#images_selector").append(i);
           var c, g = [];
           if (localStorage.getItem("mark_favor")) g = JSON.parse(localStorage.getItem("mark_favor"));
@@ -609,7 +609,7 @@
                   likeLabel = l.find('li img[data-src="' + e + '"]').parent().find(".like-label").addClass("active");
                 });
               }
-              l.find('li[class="selected"] .like-container').fadeIn("slow");
+              //l.find('li[class="selected"] .like-container').fadeIn("slow");
             } catch (e) {
               console.log(e);
             }
@@ -624,11 +624,11 @@
         $("#background_selector_widget").on("click", function (e) {
           e.stopPropagation();
         });
-        $("#images_selector li .like-container").off("click");
-        $("#images_selector li .like-container").on("click", function (e) {
-          e.preventDefault();
-          e.stopPropagation();
-        });
+        // $("#images_selector li .like-container").off("click");
+        // $("#images_selector li .like-container").on("click", function (e) {
+        //   e.preventDefault();
+        //   e.stopPropagation();
+        // });
         var h = [];
         $("#images_selector li .like-action").off("click");
         $("#images_selector li .like-action").on("click", function (e) {
@@ -642,9 +642,9 @@
           var o = 0;
           var s = parseInt(a.text());
           $(this).toggleClass("active");
-          $(this).parent().removeClass().addClass("like-container clicked").one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function () {
-            $(this).removeClass().addClass("like-container");
-          });
+          // $(this).parent().removeClass().addClass("like-container clicked").one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function () {
+          //   $(this).removeClass().addClass("like-container");
+          // });
           function n(e) {
             var t = localStorage.getItem("likedImages");
             if (!t && !h.length) {
@@ -699,11 +699,11 @@
           t.preventDefault();
           t.stopPropagation();
           var a = $(this).parent("ul");
-          a.find(".like-container").fadeOut();
+          //a.find(".like-container").fadeOut();
           $("#background_selector_widget li.selected").removeClass();
           $(this).addClass("selected");
-          var l = $(this).find(".like-container");
-          l.fadeIn("slow");
+          //var l = $(this).find(".like-container");
+          //l.fadeIn("slow");
           if ($(this).find("img").length > 0) {
             var i = $(this).find("img").attr("data-src");
             user["bg_img"] = i;
