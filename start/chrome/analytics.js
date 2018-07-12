@@ -223,59 +223,59 @@
       r("install-alive");
     }, 15e3);
   }
-  function v(t, a) {
-    if (e.debug) console.log("Extension Updated");
-    r("updated" + "-" + t);
-    try {
-      y();
-      if ((user["ver_update_ignore"] + "").indexOf(a) >= 0) {
-        return;
-      }
-      if ((user["ver_update_major"] + "").indexOf(t) >= 0) {
-        chrome.cookies.get({
-          url: p,
-          name: S
-        }, function(e) {
-          if (e) return;
-          u = true;
-          chrome.tabs.query({
-            url: [ "http://" + m + "/*", "https://" + m + "/*", "http://www." + m + "/*", "https://www." + m + "/*" ]
-          }, function(e) {
-            if (e.length) {
-              chrome.tabs.update(e[0].id, {
-                url: p,
-                active: true
-              });
-            } else {
-              chrome.tabs.create({
-                url: p,
-                active: true
-              });
-            }
-          });
-        });
-      } else if (c >= 3 && (user["ver_update_minor"] + "").indexOf(t) >= 0) {
-        chrome.tabs.query({
-          url: [ "http://" + m + "/*", "https://" + m + "/*", "http://www." + m + "/*", "https://www." + m + "/*" ]
-        }, function(e) {
-          if (e.length) {
-            chrome.tabs.update(e[0].id, {
-              url: d,
-              active: true
-            });
-          } else {
-            chrome.tabs.create({
-              url: d,
-              active: true
-            });
-          }
-        });
-      }
-      if ((user["ver_reset_clicked_options"] + "").indexOf(t) >= 0) {
-        localStorage.removeItem("theme_clicked");
-      }
-    } catch (e) {}
-  }
+  // function v(t, a) {
+  //   if (e.debug) console.log("Extension Updated");
+  //   r("updated" + "-" + t);
+  //   try {
+  //     y();
+  //     if ((user["ver_update_ignore"] + "").indexOf(a) >= 0) {
+  //       return;
+  //     }
+  //     if ((user["ver_update_major"] + "").indexOf(t) >= 0) {
+  //       chrome.cookies.get({
+  //         url: p,
+  //         name: S
+  //       }, function(e) {
+  //         if (e) return;
+  //         u = true;
+  //         chrome.tabs.query({
+  //           url: [ "http://" + m + "/*", "https://" + m + "/*", "http://www." + m + "/*", "https://www." + m + "/*" ]
+  //         }, function(e) {
+  //           if (e.length) {
+  //             chrome.tabs.update(e[0].id, {
+  //               url: p,
+  //               active: true
+  //             });
+  //           } else {
+  //             chrome.tabs.create({
+  //               url: p,
+  //               active: true
+  //             });
+  //           }
+  //         });
+  //       });
+  //     } else if (c >= 3 && (user["ver_update_minor"] + "").indexOf(t) >= 0) {
+  //       chrome.tabs.query({
+  //         url: [ "http://" + m + "/*", "https://" + m + "/*", "http://www." + m + "/*", "https://www." + m + "/*" ]
+  //       }, function(e) {
+  //         if (e.length) {
+  //           chrome.tabs.update(e[0].id, {
+  //             url: d,
+  //             active: true
+  //           });
+  //         } else {
+  //           chrome.tabs.create({
+  //             url: d,
+  //             active: true
+  //           });
+  //         }
+  //       });
+  //     }
+  //     if ((user["ver_reset_clicked_options"] + "").indexOf(t) >= 0) {
+  //       localStorage.removeItem("theme_clicked");
+  //     }
+  //   } catch (e) {}
+  // }
   function w(t, a) {
     if (e.debug) console.log("Extension Active");
     if (localStorage.getItem("optout") === "1") {

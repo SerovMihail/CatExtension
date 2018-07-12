@@ -844,12 +844,12 @@ footer {
   background-size: cover;
 }
 
-.most_visited,
+/* .most_visited,
 .apps,
 .share,
 .search-box {
   position: relative;
-}
+} */
 
 .quotes {
   width: 90%;
@@ -919,7 +919,8 @@ footer a,
   position: absolute;
   min-width: 120px;
   text-align: left;
-  right: -5px;
+  right: 0px;
+  top: 40px;
 }
 
 #topsites_menu {
@@ -927,13 +928,15 @@ footer a,
   min-width: 330px;
   max-width: 500px;
   text-align: left;
-  right: -154px;
+  right: 0px;
+  top: 40px;
 }
 
 #tool_menu {
   position: absolute;
   min-width: 220px;
-  right: -65px;
+  right: 0px;
+  top: 40px;
 }
 
 #support_menu hr,
