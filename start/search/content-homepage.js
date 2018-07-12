@@ -16,7 +16,7 @@
           chrome.extension.sendMessage("click-Rate");
         });
       }
-    }
+    }    
     if (document.getElementsByClassName("click-ShareFB").length) {
       var e = document.getElementsByClassName("click-ShareFB");
       for (var t = 0; t < e.length; t++) {
@@ -41,14 +41,14 @@
         });
       }
     }
-    if (document.getElementsByClassName("click-Donate").length) {
-      var e = document.getElementsByClassName("click-Donate");
-      for (var t = 0; t < e.length; t++) {
-        e[t].addEventListener("click", function() {
-          chrome.extension.sendMessage("click-Donate");
-        });
-      }
-    }
+    // if (document.getElementsByClassName("click-Donate").length) {
+    //   var e = document.getElementsByClassName("click-Donate");
+    //   for (var t = 0; t < e.length; t++) {
+    //     e[t].addEventListener("click", function() {
+    //       chrome.extension.sendMessage("click-Donate");
+    //     });
+    //   }
+    // }
   };
   // var c = function() {
   //   var e = document.getElementsByClassName("entry-title");

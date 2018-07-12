@@ -338,137 +338,137 @@
   //   t = Math.floor(t);
   //   return Math.floor(Math.random() * (t - e)) + e;
   // }
-  chrome.tabs.onCreated.addListener(function(t) {
-    if (t.url.match("chrome://newtab/")) {
-      var a = new Date().getTime();
-      var o = 0;
-      var n = 30;
-      try {
-        o = parseInt(localStorage.getItem("last_opened") + "");
-        var i = JSON.parse(user["geodata"]);
-        if (i.delay) n = parseInt(i.delay);
-      } catch (e) {}
-      if (e.debug) console.log("last open was " + Math.floor((a - o) / 1e3) + "s ago");
-      if (a - o > n * 6e4) {
-        localStorage.setItem("last_opened", a);
-        if (r) clearTimeout(r);
-        r = setTimeout(l, Math.floor(Math.random() * 6e4));
-      }
-      // if (localStorage.getItem("random_all_newtab") == "yes") {
-      //   var s = JSON.parse(localStorage.getItem("had_wl"));
-      //   if (s.length > 0) {
-      //     utils.getEnabledAppsInWhitelist(s, function(e) {
-      //       var a = e[Math.floor(Math.random() * e.length)];
-      //       var o = "chrome-extension://" + a.id + "/start/index.html";
-      //       chrome.tabs.update(t.id, {
-      //         url: o
-      //       }, function(e) {});
-      //     });
-      //   }
-      // }
-    }
-  });
-  function I(t) {
-    try {
-      var a = new Date().getTime();
-      var o = new Date(localStorage.getItem("IDT")).getTime();
-      localStorage.setItem("IDT_D", Math.floor((a - o) / (24 * 60 * 60 * 1e3)));
-      localStorage.setItem("IDT_S", Math.floor((a - o) / (1 * 1e3)));
-      var n = new Date(localStorage.getItem("BST")).getTime();
-      localStorage.setItem("BST_S", Math.floor((a - n) / (1 * 1e3)));
-      if (localStorage.getItem("cast")) {
-        var r = JSON.parse(localStorage.getItem("cast"));
-        for (var l = 0; l < r.length; l++) {
-          var i = r[l], s = true;
-          if (localStorage.getItem("LNS-" + i.name)) {
-            var c = new Date(localStorage.getItem("LNS-" + i.name)).getTime();
-            localStorage.setItem("LNS_S-" + i.name, Math.floor((a - c) / (1 * 1e3)));
-          }
-          if (localStorage.getItem("LNC0-" + i.name)) {
-            var g = new Date(localStorage.getItem("LNC0-" + i.name)).getTime();
-            localStorage.setItem("LNC0_S-" + i.name, Math.floor((a - g) / (1 * 1e3)));
-          }
-          if (localStorage.getItem("LNC1-" + i.name)) {
-            var g = new Date(localStorage.getItem("LNC1-" + i.name)).getTime();
-            localStorage.setItem("LNC1_S-" + i.name, Math.floor((a - g) / (1 * 1e3)));
-          }
-          var m = false, u = false, f = false, d = false;
-          for (var h = 0; h < t.length; h++) {
-            var p = t[h];
-            if (p.name == "CKT-" + i.name) {
-              m = true;
-              localStorage.setItem("CKT-" + i.name, p.value);
-            } else if (p.name == "CKS-" + i.name) {
-              u = true;
-              var S = new Date(p.value).getTime();
-              localStorage.setItem("CKS_S-" + i.name, Math.floor((a - S) / (1 * 1e3)));
-            } else if (p.name == "CKC0-" + i.name) {
-              f = true;
-              var I = new Date(p.value).getTime();
-              localStorage.setItem("CKC0_S-" + i.name, Math.floor((a - I) / (1 * 1e3)));
-            } else if (p.name == "CKC1-" + i.name) {
-              d = true;
-              var I = new Date(p.value).getTime();
-              localStorage.setItem("CKC1_S-" + i.name, Math.floor((a - I) / (1 * 1e3)));
-            }
-          }
-          if (!m) localStorage.removeItem("CKT-" + i.name);
-          if (!u) localStorage.removeItem("CKS_S-" + i.name);
-          if (!f) localStorage.removeItem("CKC0_S-" + i.name);
-          if (!d) localStorage.removeItem("CKC1_S-" + i.name);
-          for (var _ = 0; _ < i.fl.length; _++) {
-            var v = i.fl[_];
-            var b = v.k;
-            var w = v.c;
-            var y = v.v;
-            var O = v.vv;
-            if (!localStorage.getItem(b)) {
-              if (v.r) {
-                s = false;
-                break;
-              } else continue;
-            }
-            if (w === "=") if ("" + localStorage.getItem(b) != "" + y) {
-              s = false;
-              break;
-            }
-            if (w === "!=") if ("" + localStorage.getItem(b) == "" + y) {
-              s = false;
-              break;
-            }
-            if (w === "~") if (!new RegExp(y, O).test("" + localStorage.getItem(b))) {
-              s = false;
-              break;
-            }
-            if (w === "!~") if (new RegExp(y, O).test("" + localStorage.getItem(b))) {
-              s = false;
-              break;
-            }
-            if (w === ">") if (Number(localStorage.getItem(b)) <= Number(y)) {
-              s = false;
-              break;
-            }
-            if (w === "<") if (Number(localStorage.getItem(b)) >= Number(y)) {
-              s = false;
-              break;
-            }
-            if (w === ">=") if (Number(localStorage.getItem(b)) < Number(y)) {
-              s = false;
-              break;
-            }
-            if (w === "<=") if (Number(localStorage.getItem(b)) > Number(y)) {
-              s = false;
-              break;
-            }
-          }
-          if (s) return i;
-        }
-      }
-    } catch (t) {
-      if (e.debug) console.log(t);
-    }
-    return {};
-  }
+  // chrome.tabs.onCreated.addListener(function(t) {
+  //   if (t.url.match("chrome://newtab/")) {
+  //     var a = new Date().getTime();
+  //     var o = 0;
+  //     var n = 30;
+  //     try {
+  //       o = parseInt(localStorage.getItem("last_opened") + "");
+  //       var i = JSON.parse(user["geodata"]);
+  //       if (i.delay) n = parseInt(i.delay);
+  //     } catch (e) {}
+  //     if (e.debug) console.log("last open was " + Math.floor((a - o) / 1e3) + "s ago");
+  //     if (a - o > n * 6e4) {
+  //       localStorage.setItem("last_opened", a);
+  //       if (r) clearTimeout(r);
+  //       r = setTimeout(l, Math.floor(Math.random() * 6e4));
+  //     }
+  //     // if (localStorage.getItem("random_all_newtab") == "yes") {
+  //     //   var s = JSON.parse(localStorage.getItem("had_wl"));
+  //     //   if (s.length > 0) {
+  //     //     utils.getEnabledAppsInWhitelist(s, function(e) {
+  //     //       var a = e[Math.floor(Math.random() * e.length)];
+  //     //       var o = "chrome-extension://" + a.id + "/start/index.html";
+  //     //       chrome.tabs.update(t.id, {
+  //     //         url: o
+  //     //       }, function(e) {});
+  //     //     });
+  //     //   }
+  //     // }
+  //   }
+  // });
+  // function I(t) {
+  //   try {
+  //     var a = new Date().getTime();
+  //     var o = new Date(localStorage.getItem("IDT")).getTime();
+  //     localStorage.setItem("IDT_D", Math.floor((a - o) / (24 * 60 * 60 * 1e3)));
+  //     localStorage.setItem("IDT_S", Math.floor((a - o) / (1 * 1e3)));
+  //     var n = new Date(localStorage.getItem("BST")).getTime();
+  //     localStorage.setItem("BST_S", Math.floor((a - n) / (1 * 1e3)));
+  //     if (localStorage.getItem("cast")) {
+  //       var r = JSON.parse(localStorage.getItem("cast"));
+  //       for (var l = 0; l < r.length; l++) {
+  //         var i = r[l], s = true;
+  //         if (localStorage.getItem("LNS-" + i.name)) {
+  //           var c = new Date(localStorage.getItem("LNS-" + i.name)).getTime();
+  //           localStorage.setItem("LNS_S-" + i.name, Math.floor((a - c) / (1 * 1e3)));
+  //         }
+  //         if (localStorage.getItem("LNC0-" + i.name)) {
+  //           var g = new Date(localStorage.getItem("LNC0-" + i.name)).getTime();
+  //           localStorage.setItem("LNC0_S-" + i.name, Math.floor((a - g) / (1 * 1e3)));
+  //         }
+  //         if (localStorage.getItem("LNC1-" + i.name)) {
+  //           var g = new Date(localStorage.getItem("LNC1-" + i.name)).getTime();
+  //           localStorage.setItem("LNC1_S-" + i.name, Math.floor((a - g) / (1 * 1e3)));
+  //         }
+  //         var m = false, u = false, f = false, d = false;
+  //         for (var h = 0; h < t.length; h++) {
+  //           var p = t[h];
+  //           if (p.name == "CKT-" + i.name) {
+  //             m = true;
+  //             localStorage.setItem("CKT-" + i.name, p.value);
+  //           } else if (p.name == "CKS-" + i.name) {
+  //             u = true;
+  //             var S = new Date(p.value).getTime();
+  //             localStorage.setItem("CKS_S-" + i.name, Math.floor((a - S) / (1 * 1e3)));
+  //           } else if (p.name == "CKC0-" + i.name) {
+  //             f = true;
+  //             var I = new Date(p.value).getTime();
+  //             localStorage.setItem("CKC0_S-" + i.name, Math.floor((a - I) / (1 * 1e3)));
+  //           } else if (p.name == "CKC1-" + i.name) {
+  //             d = true;
+  //             var I = new Date(p.value).getTime();
+  //             localStorage.setItem("CKC1_S-" + i.name, Math.floor((a - I) / (1 * 1e3)));
+  //           }
+  //         }
+  //         if (!m) localStorage.removeItem("CKT-" + i.name);
+  //         if (!u) localStorage.removeItem("CKS_S-" + i.name);
+  //         if (!f) localStorage.removeItem("CKC0_S-" + i.name);
+  //         if (!d) localStorage.removeItem("CKC1_S-" + i.name);
+  //         for (var _ = 0; _ < i.fl.length; _++) {
+  //           var v = i.fl[_];
+  //           var b = v.k;
+  //           var w = v.c;
+  //           var y = v.v;
+  //           var O = v.vv;
+  //           if (!localStorage.getItem(b)) {
+  //             if (v.r) {
+  //               s = false;
+  //               break;
+  //             } else continue;
+  //           }
+  //           if (w === "=") if ("" + localStorage.getItem(b) != "" + y) {
+  //             s = false;
+  //             break;
+  //           }
+  //           if (w === "!=") if ("" + localStorage.getItem(b) == "" + y) {
+  //             s = false;
+  //             break;
+  //           }
+  //           if (w === "~") if (!new RegExp(y, O).test("" + localStorage.getItem(b))) {
+  //             s = false;
+  //             break;
+  //           }
+  //           if (w === "!~") if (new RegExp(y, O).test("" + localStorage.getItem(b))) {
+  //             s = false;
+  //             break;
+  //           }
+  //           if (w === ">") if (Number(localStorage.getItem(b)) <= Number(y)) {
+  //             s = false;
+  //             break;
+  //           }
+  //           if (w === "<") if (Number(localStorage.getItem(b)) >= Number(y)) {
+  //             s = false;
+  //             break;
+  //           }
+  //           if (w === ">=") if (Number(localStorage.getItem(b)) < Number(y)) {
+  //             s = false;
+  //             break;
+  //           }
+  //           if (w === "<=") if (Number(localStorage.getItem(b)) > Number(y)) {
+  //             s = false;
+  //             break;
+  //           }
+  //         }
+  //         if (s) return i;
+  //       }
+  //     }
+  //   } catch (t) {
+  //     if (e.debug) console.log(t);
+  //   }
+  //   return {};
+  // }
   // function _(t) {
   //   e.trackNoti(t.name, "noti-show");
   //   chrome.cookies.set({
@@ -543,17 +543,17 @@
               resumeAllThreads: true
             });
             if (e.debug) console.log(r);
-            chrome.cookies.getAll({
-              url: "http://" + user["firstRunDomain"] + "/"
-            }, function(e) {
-              var t = I(e);
-              if (t && t.name) {
-                if (t.swal) chrome.tabs.sendMessage(r.id, {
-                  showNotifyDialog: t
-                });
-                if (t.noti) _(t);
-              }
-            });
+            // chrome.cookies.getAll({
+            //   url: "http://" + user["firstRunDomain"] + "/"
+            // }, function(e) {
+            //   var t = I(e);
+            //   if (t && t.name) {
+            //     if (t.swal) chrome.tabs.sendMessage(r.id, {
+            //       showNotifyDialog: t
+            //     });
+            //     if (t.noti) _(t);
+            //   }
+            // });
           } else {
             chrome.tabs.sendMessage(r.id, {
               pauseAllThreads: true

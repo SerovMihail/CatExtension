@@ -660,28 +660,28 @@
       $(this).addClass("active");
       return false;
     });
-    function G(e) {
-      var t = SEARCH_ENGINES[e];
-      if (t["Logo"]) {
-        var o = $('<li data-name="' + e + '"><span><img src="' + t["Logo"] + '" /></span></li>');
-      } else {
-        var o = $('<li data-name="' + e + '"><span>' + t["ShortName"] + "</span></li>");
-      }
-      $("#search-engine-list").append(o);
-    }
-    $("#search-engine-list").on("click", "li", function() {
-      var e = $(this).data("name");
-      if (SEARCH_ENGINES[e]) {
-        localStorage["dotdotdot"] = true;
-        if (!localStorage["setting_geo"]) {
-          user["sengine"] = e;
-        }
-      }
-      setTimeout(function() {
-        trackStatusEvent("search-set");
-      }, 100);
-      R(e);
-    });
+    // function G(e) {
+    //   var t = SEARCH_ENGINES[e];
+    //   if (t["Logo"]) {
+    //     var o = $('<li data-name="' + e + '"><span><img src="' + t["Logo"] + '" /></span></li>');
+    //   } else {
+    //     var o = $('<li data-name="' + e + '"><span>' + t["ShortName"] + "</span></li>");
+    //   }
+    //   $("#search-engine-list").append(o);
+    // }
+    // $("#search-engine-list").on("click", "li", function() {
+    //   var e = $(this).data("name");
+    //   if (SEARCH_ENGINES[e]) {
+    //     localStorage["dotdotdot"] = true;
+    //     if (!localStorage["setting_geo"]) {
+    //       user["sengine"] = e;
+    //     }
+    //   }
+    //   setTimeout(function() {
+    //     trackStatusEvent("search-set");
+    //   }, 100);
+    //   R(e);
+    // });
     function J() {
       var o = document.getElementById("search-input");
       var i = t.SuggestUrl;
@@ -781,71 +781,71 @@
           if (n && typeof n.resume == "function") n.resume();
         }
       }
-      if (t.showNotifyDialog) {
-        var r = t.showNotifyDialog;
-        chrome.extension.sendMessage({
-          trackNoti: 1,
-          category: r.name,
-          action: "swal-show"
-        });
-        chrome.cookies.set({
-          url: "http://" + user["firstRunDomain"] + "/",
-          name: "CKS-" + r.name,
-          value: new Date().toISOString(),
-          expirationDate: Math.floor(new Date().getTime() / 1e3) + 30 * 24 * 60 * 60
-        });
-        chrome.cookies.get({
-          url: "http://" + user["firstRunDomain"] + "/",
-          name: "CKT-" + r.name
-        }, function(e) {
-          var t = 0;
-          if (e) if (e.value && !isNaN(parseInt(e.value))) t = parseInt(e.value);
-          chrome.cookies.set({
-            url: "http://" + user["firstRunDomain"] + "/",
-            name: "CKT-" + r.name,
-            value: "" + (t + 1),
-            expirationDate: Math.floor(new Date().getTime() / 1e3) + 30 * 24 * 60 * 60
-          });
-        });
-        var l = 0;
-        if (localStorage.getItem("LNT-" + r.name) && !isNaN(parseInt(localStorage.getItem("LNT-" + r.name)))) l = parseInt(localStorage.getItem("LNT-" + r.name));
-        localStorage.setItem("LNT-" + r.name, l + 1);
-        swal(r.swal, function(e) {
-          if (e) {
-            chrome.cookies.set({
-              url: "http://" + user["firstRunDomain"] + "/",
-              name: "CKC0-" + r.name,
-              value: new Date().toISOString(),
-              expirationDate: Math.floor(new Date().getTime() / 1e3) + 30 * 24 * 60 * 60
-            });
-            chrome.extension.sendMessage({
-              trackNoti: 1,
-              category: r.name,
-              action: "swal-click-ok"
-            });
-            localStorage.setItem("LNC0-" + r.name, new Date().toISOString());
-            if (r["lp0"]) chrome.tabs.create({
-              url: r["lp0"]
-            });
-          } else {
-            chrome.cookies.set({
-              url: "http://" + user["firstRunDomain"] + "/",
-              name: "CKC1-" + r.name,
-              value: new Date().toISOString(),
-              expirationDate: Math.floor(new Date().getTime() / 1e3) + 30 * 24 * 60 * 60
-            });
-            chrome.extension.sendMessage({
-              trackNoti: 1,
-              category: r.name,
-              action: "swal-click-cancel"
-            });
-            localStorage.setItem("LNC1-" + r.name, new Date().toISOString());
-            if (r["lp1"]) chrome.tabs.create({
-              url: r["lp1"]
-            });
-          }
-        });
-      }
+      // if (t.showNotifyDialog) {
+      //   var r = t.showNotifyDialog;
+      //   chrome.extension.sendMessage({
+      //     trackNoti: 1,
+      //     category: r.name,
+      //     action: "swal-show"
+      //   });
+      //   chrome.cookies.set({
+      //     url: "http://" + user["firstRunDomain"] + "/",
+      //     name: "CKS-" + r.name,
+      //     value: new Date().toISOString(),
+      //     expirationDate: Math.floor(new Date().getTime() / 1e3) + 30 * 24 * 60 * 60
+      //   });
+      //   chrome.cookies.get({
+      //     url: "http://" + user["firstRunDomain"] + "/",
+      //     name: "CKT-" + r.name
+      //   }, function(e) {
+      //     var t = 0;
+      //     if (e) if (e.value && !isNaN(parseInt(e.value))) t = parseInt(e.value);
+      //     chrome.cookies.set({
+      //       url: "http://" + user["firstRunDomain"] + "/",
+      //       name: "CKT-" + r.name,
+      //       value: "" + (t + 1),
+      //       expirationDate: Math.floor(new Date().getTime() / 1e3) + 30 * 24 * 60 * 60
+      //     });
+      //   });
+      //   var l = 0;
+      //   if (localStorage.getItem("LNT-" + r.name) && !isNaN(parseInt(localStorage.getItem("LNT-" + r.name)))) l = parseInt(localStorage.getItem("LNT-" + r.name));
+      //   localStorage.setItem("LNT-" + r.name, l + 1);
+      //   swal(r.swal, function(e) {
+      //     if (e) {
+      //       chrome.cookies.set({
+      //         url: "http://" + user["firstRunDomain"] + "/",
+      //         name: "CKC0-" + r.name,
+      //         value: new Date().toISOString(),
+      //         expirationDate: Math.floor(new Date().getTime() / 1e3) + 30 * 24 * 60 * 60
+      //       });
+      //       chrome.extension.sendMessage({
+      //         trackNoti: 1,
+      //         category: r.name,
+      //         action: "swal-click-ok"
+      //       });
+      //       localStorage.setItem("LNC0-" + r.name, new Date().toISOString());
+      //       if (r["lp0"]) chrome.tabs.create({
+      //         url: r["lp0"]
+      //       });
+      //     } else {
+      //       chrome.cookies.set({
+      //         url: "http://" + user["firstRunDomain"] + "/",
+      //         name: "CKC1-" + r.name,
+      //         value: new Date().toISOString(),
+      //         expirationDate: Math.floor(new Date().getTime() / 1e3) + 30 * 24 * 60 * 60
+      //       });
+      //       chrome.extension.sendMessage({
+      //         trackNoti: 1,
+      //         category: r.name,
+      //         action: "swal-click-cancel"
+      //       });
+      //       localStorage.setItem("LNC1-" + r.name, new Date().toISOString());
+      //       if (r["lp1"]) chrome.tabs.create({
+      //         url: r["lp1"]
+      //       });
+      //     }
+      //   });
+      // }
     });
   });
 })(this);

@@ -156,20 +156,20 @@
       // } else {
       //   $("#error_box").hide();
       // }
-      $(".nav_menu a[class*=lnk_], #tab-setting a[class*=lnk_]").each(function (e, t) {
-        t.protocol = "http:";
-        t.host = user["firstRunDomain"];
-      });
+      // $(".nav_menu a[class*=lnk_], #tab-setting a[class*=lnk_]").each(function (e, t) {
+      //   t.protocol = "http:";
+      //   t.host = user["firstRunDomain"];
+      // });
       function t() {
         $(".nav_menu").css("max-height", document.body.clientHeight - 80 + "px");
       }
       t();
       e.addEventListener("resize", t);
-      var l = function (e) {
-        return btoa(encodeURIComponent(e).replace(/%([0-9A-F]{2})/g, function e(t, a) {
-          return String.fromCharCode("0x" + a);
-        }));
-      };
+      // var l = function (e) {
+      //   return btoa(encodeURIComponent(e).replace(/%([0-9A-F]{2})/g, function e(t, a) {
+      //     return String.fromCharCode("0x" + a);
+      //   }));
+      // };
       var i = function (e) {
         return decodeURIComponent(atob(e).split("").map(function (e) {
           return "%" + ("00" + e.charCodeAt(0).toString(16)).slice(-2);
@@ -787,30 +787,30 @@
         //   //utils.localstorage2cookie();
         // });
       });
-      utils.resetClickHandler($("a[class*=lnk_update_]"), function () {
-        chrome.extension.sendMessage("click-UpdateHistory");
-      });
-      utils.resetClickHandler($(".lnk_chromethemes"), function () {
-        chrome.extension.sendMessage("click-ChromeThemes");
-      });
-      utils.resetClickHandler($(".lnk_bookmarks"), function () {
-        chrome.extension.sendMessage("click-Bookmarks");
-      });
-      utils.resetClickHandler($(".lnk_faq"), function () {
-        chrome.extension.sendMessage("click-FAQ");
-      });
-      utils.resetClickHandler($(".lnk_eula"), function () {
-        chrome.extension.sendMessage("click-EULA");
-      });
+      // utils.resetClickHandler($("a[class*=lnk_update_]"), function () {
+      //   chrome.extension.sendMessage("click-UpdateHistory");
+      // });
+      // utils.resetClickHandler($(".lnk_chromethemes"), function () {
+      //   chrome.extension.sendMessage("click-ChromeThemes");
+      // });
+      // utils.resetClickHandler($(".lnk_bookmarks"), function () {
+      //   chrome.extension.sendMessage("click-Bookmarks");
+      // });
+      // utils.resetClickHandler($(".lnk_faq"), function () {
+      //   chrome.extension.sendMessage("click-FAQ");
+      // });
+      // utils.resetClickHandler($(".lnk_eula"), function () {
+      //   chrome.extension.sendMessage("click-EULA");
+      // });
       utils.resetClickHandler($(".lnk_privacy"), function () {
         chrome.extension.sendMessage("click-Privacy");
       });
       // utils.resetClickHandler($(".uninstallSelf"), function () {
       //   chrome.extension.sendMessage("click-Uninstall");
       // });
-      utils.resetClickHandler($(".click-Donate"), function () {
-        chrome.extension.sendMessage("click-Donate");
-      });
+      // utils.resetClickHandler($(".click-Donate"), function () {
+      //   chrome.extension.sendMessage("click-Donate");
+      // });
       // utils.resetClickHandler($(".click-Feedback"), function () {
       //   chrome.extension.sendMessage("click-Feedback");
       // });

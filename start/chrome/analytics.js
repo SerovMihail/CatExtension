@@ -129,11 +129,17 @@
       chrome.tabs.create({
         url: "http://vk.com/share.php?url=" + encodeURIComponent(o)
       });
-    } else if (e == "click-Donate") {
-      var s = "http://" + user["firstRunDomain"] + "/donate/?id=" + t;
+    } 
+    // else if (e == "click-Donate") {
+    //   var s = "http://" + user["firstRunDomain"] + "/donate/?id=" + t;
+    //   chrome.tabs.create({
+    //     url: s
+    //   });
+    // }  
+    else if (e == "click-Privacy") {     
       chrome.tabs.create({
-        url: s
-      });
+        url: "https://google.com"
+      });      
     } 
     
     // else if (e == "click-Uninstall") {
@@ -142,7 +148,7 @@
     //   }, function(e) {});
     // }
   };
-  var b = [];
+  //var b = [];
   // chrome.tabs.onUpdated.addListener(function(t, a, o) {
   //   if ((a.status == "complete" || b.indexOf(t) == -1) && (o.url.replace(/^https?:\/\//, "").indexOf(d.replace(/^https?:\/\//, "")) > -1 || o.url.replace(/^https?:\/\//, "").indexOf(p.replace(/^https?:\/\//, "")) > -1)) {
   //     b.push(t);

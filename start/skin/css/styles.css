@@ -1120,7 +1120,7 @@ div#search-engine-select {
   width: 100%;
 }
 
-ul#search-engine-list {
+/* ul#search-engine-list {
   background-color: #ECECEC;
   color: #484848;
   cursor: pointer;
@@ -1146,7 +1146,7 @@ ul#search-engine-list img {
 #search-engine-item-title img {
   vertical-align: middle;
   max-width: 50px;
-}
+} */
 
 .dropdown dd {
   position: relative;
