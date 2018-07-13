@@ -334,18 +334,9 @@
           chrome.runtime.sendMessage({
             changeOptions: utils.getGlobalOptions()
           });
-          //utils.localstorage2cookie();
+         
         });
-        // $("#delete_button").off("click");
-        // $("#delete_button").on("click", function () {
-        //   $("#error_box").hide();
-        //   $("#disable_weather").prop("checked", true);
-        //   localStorage.setItem("disable_weather", "yes");
-        //   chrome.runtime.sendMessage({
-        //     changeOptions: utils.getGlobalOptions()
-        //   });
-        //   //utils.localstorage2cookie();
-        // });
+        
         $('[data-toggle="tooltip"]').tooltip();
       };
       e.loadGlobalOptions();
