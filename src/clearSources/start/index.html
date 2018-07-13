@@ -7,7 +7,7 @@
     <title>New Tab</title>
     
     <!-- Newtab Styles -->
-    <link rel="stylesheet" type="text/css" href="/start/skin/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="/start/content/css/styles.css">
 
     <!-- initialize utils and common -->
     <script data-source="internal" type="text/javascript" src="/start/chrome/settings.js"></script>
@@ -17,6 +17,7 @@
     <script data-source="internal" type="text/javascript" src="/start/search/search-engines.js"></script>
 
     <!-- External Scripts -->
+    <script type="text/javascript" src="/start/libs/jquery-2.1.1.min.js"></script> 
     <script type="text/javascript" src="/start/libs/all-libs.min.js"></script> 
 </head>
 
@@ -107,10 +108,9 @@
 
         <div class="widght">
             <div class="toggle" data-toggle="tooltip" data-placement="bottom" title="Click to change your background">
-                <span id="background_selector_menu">Options</span>
-                <!--<a href="#" id="background_selector"><img id="background_selector_img" src="/start/skin/images/brush-white.png"></a>-->
+                <span id="background_selector_menu">Options</span>                
                 <span href="#" id="weather" class="clock">
-                    <img src="/start/skin/images/clock.png">
+                    <img src="/start/content/images/clock.png">
                 </span>
             </div>
             <div class="time" data-toggle="tooltip" data-placement="bottom" title="Click to change between 24 and 12 hours">

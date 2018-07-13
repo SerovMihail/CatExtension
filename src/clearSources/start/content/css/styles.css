@@ -32,12 +32,12 @@ body {
 
 @font-face {
   font-family: 'neue';
-  src: url('/start/skin/fonts/neue.woff');
+  src: url('/start/content/fonts/neue.woff');
 }
 
 @font-face {
   font-family: 'neue-bold';
-  src: url('/start/skin/fonts/neue-bold.woff');
+  src: url('/start/content/fonts/neue-bold.woff');
 }
 
 @-webkit-keyframes pulse-red {
@@ -170,8 +170,8 @@ body {
 
 @font-face {
   font-family: 'Glyphicons Halflings';
-  src: url('/start/skin/fonts/glyphicons-halflings-regular.eot');
-  src: url('/start/skin/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('/start/skin/fonts/glyphicons-halflings-regular.woff2') format('woff2'), url('/start/skin/fonts/glyphicons-halflings-regular.woff') format('woff'), url('/start/skin/fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('/start/skin/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+  src: url('/start/content/fonts/glyphicons-halflings-regular.eot');
+  src: url('/start/content/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('/start/content/fonts/glyphicons-halflings-regular.woff2') format('woff2'), url('/start/content/fonts/glyphicons-halflings-regular.woff') format('woff'), url('/start/content/fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('/start/content/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
 
 .glyphicon {
@@ -2322,97 +2322,97 @@ ul#countdown li .label {
   font-size: 13px;
 }
 .icon_myaccount {
-  background-image: url('chrome-extension://__MSG_@@extension_id__/start/skin/icons/google/myaccount.png');
+  background-image: url('chrome-extension://__MSG_@@extension_id__/start/content/icons/google/myaccount.png');
   background-size: cover;
 }
 
 .icon_googleplus {
-  background-image: url('chrome-extension://__MSG_@@extension_id__/start/skin/icons/google/plus.png');
+  background-image: url('chrome-extension://__MSG_@@extension_id__/start/content/icons/google/plus.png');
   background-size: cover;
 }
 
 .icon_youtube {
-  background-image: url('chrome-extension://__MSG_@@extension_id__/start/skin/icons/google/youtube.png');
+  background-image: url('chrome-extension://__MSG_@@extension_id__/start/content/icons/google/youtube.png');
   background-size: cover;
 }
 
 .icon_drive {
-  background-image: url('chrome-extension://__MSG_@@extension_id__/start/skin/icons/google/drive.png');
+  background-image: url('chrome-extension://__MSG_@@extension_id__/start/content/icons/google/drive.png');
   background-size: cover;
 }
 
 .icon_gmail {
-  background-image: url('chrome-extension://__MSG_@@extension_id__/start/skin/icons/google/gmail.png');
+  background-image: url('chrome-extension://__MSG_@@extension_id__/start/content/icons/google/gmail.png');
   background-size: cover;
 }
 
 .icon_documents {
-  background-image: url('chrome-extension://__MSG_@@extension_id__/start/skin/icons/google/docs.png');
+  background-image: url('chrome-extension://__MSG_@@extension_id__/start/content/icons/google/docs.png');
   background-size: cover;
 }
 
 .icon_contacts {
-  background-image: url('chrome-extension://__MSG_@@extension_id__/start/skin/icons/google/contacts.png');
+  background-image: url('chrome-extension://__MSG_@@extension_id__/start/content/icons/google/contacts.png');
   background-size: cover;
 }
 
 .icon_photos {
-  background-image: url('chrome-extension://__MSG_@@extension_id__/start/skin/icons/google/photos.png');
+  background-image: url('chrome-extension://__MSG_@@extension_id__/start/content/icons/google/photos.png');
   background-size: cover;
 }
 
 .icon_calendar {
-  background-image: url('chrome-extension://__MSG_@@extension_id__/start/skin/icons/google/calendar.png');
+  background-image: url('chrome-extension://__MSG_@@extension_id__/start/content/icons/google/calendar.png');
   background-size: cover;
 }
 
 .icon_news {
-  background-image: url('chrome-extension://__MSG_@@extension_id__/start/skin/icons/google/news.png');
+  background-image: url('chrome-extension://__MSG_@@extension_id__/start/content/icons/google/news.png');
   background-size: cover;
 }
 
 .icon_sheets {
-  background-image: url('chrome-extension://__MSG_@@extension_id__/start/skin/icons/google/sheets.png');
+  background-image: url('chrome-extension://__MSG_@@extension_id__/start/content/icons/google/sheets.png');
   background-size: cover;
 }
 
 .icon_hangouts {
-  background-image: url('chrome-extension://__MSG_@@extension_id__/start/skin/icons/google/hangouts.png');
+  background-image: url('chrome-extension://__MSG_@@extension_id__/start/content/icons/google/hangouts.png');
   background-size: cover;
 }
 
 .icon_googlemap {
-  background-image: url('chrome-extension://__MSG_@@extension_id__/start/skin/icons/google/maps.png');
+  background-image: url('chrome-extension://__MSG_@@extension_id__/start/content/icons/google/maps.png');
   background-size: cover;
 }
 
 .icon_classroom {
-  background-image: url('chrome-extension://__MSG_@@extension_id__/start/skin/icons/google/classroom.png');
+  background-image: url('chrome-extension://__MSG_@@extension_id__/start/content/icons/google/classroom.png');
   background-size: cover;
 }
 
 .icon_facebook {
-  background-image: url('chrome-extension://__MSG_@@extension_id__/start/skin/icons/favicons/facebook.png');
+  background-image: url('chrome-extension://__MSG_@@extension_id__/start/content/icons/favicons/facebook.png');
   background-size: cover;
 }
 
 .icon_twitter {
-  background-image: url('chrome-extension://__MSG_@@extension_id__/start/skin/icons/favicons/twitter.png');
+  background-image: url('chrome-extension://__MSG_@@extension_id__/start/content/icons/favicons/twitter.png');
   background-size: cover;
 }
 
 .icon_pinterest {
-  background-image: url('chrome-extension://__MSG_@@extension_id__/start/skin/icons/favicons/pinterest.png');
+  background-image: url('chrome-extension://__MSG_@@extension_id__/start/content/icons/favicons/pinterest.png');
   background-size: cover;
 }
 
 .icon_tumblr {
-  background-image: url('chrome-extension://__MSG_@@extension_id__/start/skin/icons/favicons/tumblr.png');
+  background-image: url('chrome-extension://__MSG_@@extension_id__/start/content/icons/favicons/tumblr.png');
   background-size: cover;
 }
 
 .icon_vk {
-  background-image: url('chrome-extension://__MSG_@@extension_id__/start/skin/icons/favicons/vk.png');
+  background-image: url('chrome-extension://__MSG_@@extension_id__/start/content/icons/favicons/vk.png');
   background-size: cover;
 }
 

@@ -7,7 +7,7 @@
     var o = Object.keys(user["bg_color_gif"]).indexOf(e.replace(/\.jpg$/, ".gif"));
     if (o > -1) {
       chosenRandomBG = e.replace(/\.jpg$/, ".gif");
-      document.getElementById("__bg").style.backgroundImage = "url(" + chrome.extension.getURL("/start/skin/images/" + chosenRandomBG) + ")";
+      document.getElementById("__bg").style.backgroundImage = "url(" + chrome.extension.getURL("/start/content/images/" + chosenRandomBG) + ")";
       var a = Object.values(user["bg_color_gif"])[o];
       if (Math.floor(Math.random() * 100) < 10 || a.indexOf("frame") > -1 || a === "white" || a === "#ffffff") {
         var n = Math.floor(Math.random() * user["frame_bg_list"]);
@@ -15,7 +15,7 @@
         if (!document.getElementById("frame_bg")) {
           var r = document.createElement("div");
           r.setAttribute("id", "frame_bg");
-          r.style = 'background-image: url("/start/skin/images/' + g + '"); width: 100%; height: 100%; background-repeat: no-repeat; background-size: 900px; background-position: center center;';
+          r.style = 'background-image: url("/start/content/images/' + g + '"); width: 100%; height: 100%; background-repeat: no-repeat; background-size: 900px; background-position: center center;';
           document.getElementById("__bg").insertBefore(r, document.getElementById("__bg").childNodes[0]);
         }
         if (a.indexOf("frame") > -1 || a === "#ffffff") {
@@ -31,7 +31,7 @@
       }
     } else {
       chosenRandomBG = e.replace(/\.gif$/, ".jpg");
-      document.getElementById("__bg").style.backgroundImage = "url(" + chrome.extension.getURL("/start/skin/images/" + chosenRandomBG) + ")";
+      document.getElementById("__bg").style.backgroundImage = "url(" + chrome.extension.getURL("/start/content/images/" + chosenRandomBG) + ")";
       document.getElementById("__bg").style.backgroundColor = "none";
       document.getElementById("__bg").style.backgroundSize = "cover";
       if (document.getElementById("frame_bg")) {

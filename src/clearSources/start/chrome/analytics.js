@@ -229,7 +229,7 @@
       localStorage.setItem("shuffle_background", "yes");
       localStorage.setItem("shuffle_favorites", "no");
     }
-    localStorage.setItem("bg_img", localStorage.getItem("bg_img").replace("url(", "").replace("/start/skin/images/", "").replace("/skin/images/", "").replace(")", ""));
+    localStorage.setItem("bg_img", localStorage.getItem("bg_img").replace("url(", "").replace("/start/content/images/", "").replace("/content/images/", "").replace(")", ""));
     if (!localStorage.getItem("mark_favor")) {
       localStorage.setItem("mark_favor", JSON.stringify([]));
     }    

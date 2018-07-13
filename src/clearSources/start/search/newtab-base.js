@@ -360,13 +360,13 @@
             s = l + ".gif";
             o = $("<img>", {
               "data-src": s,
-              src: utils.getExtensionURL("/start/skin/images/" + l + ".gif")
+              src: utils.getExtensionURL("/start/content/images/" + l + ".gif")
             });
           } else {
             s = l + ".jpg";
             o = $("<img>", {
               "data-src": s,
-              src: utils.getExtensionURL("/start/skin/images/" + l + ".jpg")
+              src: utils.getExtensionURL("/start/content/images/" + l + ".jpg")
             });
           }
           i.append(o);

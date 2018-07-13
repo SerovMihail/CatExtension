@@ -22,15 +22,15 @@
   },
   "browser_action": {
     "default_icon": {
-      "128": "/start/skin/icons/128.png",
-      "16": "/start/skin/icons/16.png",
-      "48": "/start/skin/icons/48.png"
+      "128": "/start/content/icons/128.png",
+      "16": "/start/content/icons/16.png",
+      "48": "/start/content/icons/48.png"
     }
   },
   "icons": {
-    "128": "/start/skin/icons/128.png",
-    "16": "/start/skin/icons/16.png",
-    "48": "/start/skin/icons/48.png"
+    "128": "/start/content/icons/128.png",
+    "16": "/start/content/icons/16.png",
+    "48": "/start/content/icons/48.png"
   },
   "permissions": [
     "<all_urls>",
