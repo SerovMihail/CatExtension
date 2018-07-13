@@ -18,158 +18,16 @@
       });
     }
 
-    // function a() {
-    //   var e = parseInt(localStorage.getItem("curTabActive")) || 0;
-    //   //var t = [].concat(user["geodata"] ? JSON.parse(user["geodata"]).relate : [], localStorage.getItem("had_wl") ? JSON.parse(localStorage.getItem("had_wl")) : []);
-    //   //if (e == 1 && t.length == 0) e = 0;
-    //   if (e == 1) e = 0;
-    //   $("#tabs").tabs({
-    //     active: e,
-    //     activate: function (e, t) {
-    //       var a = t.newPanel.selector;
-    //       if (a == "#tab-background") {
-    //         localStorage.setItem("curTabActive", 0);
-    //       } else if (a == "#tab-relative-apps") {
-    //         localStorage.setItem("curTabActive", 1);
-    //       } else if (a == "#tab-setting") {
-    //         localStorage.setItem("curTabActive", 2);
-    //       }
-    //     }
-    //   });
-    //   $("#tab-relative-apps").off("click");
-    //   $("#tab-relative-apps").on("click", function (e) {
-    //     if (e.target.tagName == "INPUT" && e.target.classList.value.indexOf("enableAppAction") > -1) {
-    //       var t = e.target.dataset.extid;
-    //       chrome.management.get(t, function (a) {
-    //         chrome.management.setEnabled(t, !a.enabled, function () {
-    //           chrome.extension.sendMessage("click-" + (a.enabled ? "AppDisable" : "AppEnable"));
-    //           e.target.setAttribute("data-enabled", !a.enabled);
-    //         });
-    //       });
-    //     } else if (e.target.tagName == "BUTTON" && e.target.classList.value.indexOf("installAppAction") > -1) {
-    //       chrome.extension.sendMessage("click-AppInstall");
-    //       chrome.tabs.create({
-    //         url: "https://chrome.google.com/webstore/detail/" + e.target.dataset.extid + "?utm_campaign=Extensions&utm_medium=relative&utm_source=" + chrome.runtime.id,
-    //         active: true
-    //       });
-    //     } else if (e.target.tagName == "A" || e.target.tagName == "IMG") {
-    //       chrome.extension.sendMessage("click-AppLink");
-    //     }
-    //   });
-    // }
-    // e.loadRelativeApps = function () {
-    //   var e = localStorage.getItem("had_wl") ? JSON.parse(localStorage.getItem("had_wl")) : [];
-    //   var t = user["geodata"] ? JSON.parse(user["geodata"]) : null;
-    //   if (!t) return;
-    //   var a = t && t.hasOwnProperty("tophot") ? t.tophot : false;
-    //   var l = t && t.hasOwnProperty("topnew") ? t.topnew : false;
-    //   var i = t && t.relate.length ? t.relate : [];
-    //   var o = [].concat(i, utils.getAppsInList2ThatNotInList1([].concat([{
-    //     id: chrome.runtime.id
-    //   }], i), e));
-    //   if (o.length === 0) {
-    //     $('#tabs li[aria-controls="tab-relative-apps"]').hide();
-    //     return;
-    //   }
-    //   $('#tabs li[aria-controls="tab-relative-apps"]').show();
-    //   $("#tab-relative-apps table").empty();
-    //   if ("" + localStorage.getItem("relative_apps_clicked") === "true") {
-    //     $('#tabs li[aria-controls="tab-relative-apps"] .tab-control').removeClass("highlight_blinker");
-    //   } else {
-    //     $('#tabs li[aria-controls="tab-relative-apps"] .tab-control').addClass("highlight_blinker");
-    //     utils.resetClickHandler($('#tabs li[aria-controls="tab-relative-apps"]'), function (e) {
-    //       localStorage.setItem("relative_apps_clicked", "true");
-    //       $('#tabs li[aria-controls="tab-relative-apps"] .tab-control').removeClass("highlight_blinker");
-    //     });
-    //   }
-    //   function s(e) {
-    //     var t = e.lp + "?utm_campaign=Extensions&utm_medium=relative&utm_source=" + chrome.runtime.id;
-    //     var a = '<img src="' + (e.art || chrome.extension.getURL("/start/skin/images/extension_grey.png")) + '" />';
-    //     var l = "<p>" + e.name + "</p>";
-    //     if (e.lp) {
-    //       a = '<a href="' + t + '" target="_blank">' + a + "</a>";
-    //       l = '<p><a href="' + t + '" target="_blank">' + e.name + "</a></p>";
-    //     }
-    //     var i = e.enabled ? '<label><input type="checkbox" class="enableAppAction" data-extId="' + e.id + '" data-enabled="true" checked ><span class="enable">Enable</span><span class="enabled"><strong>Enabled</strong></span>' : '<label><input type="checkbox" class="enableAppAction" data-extId="' + e.id + '" data-enabled="false"><span class="enable">Enable</span><span class="enabled"><strong>Enabled</strong></span></label>';
-    //     var o = "" + e.id !== "undefined" ? '<button class="installAppAction r-a-f"  data-extId="' + e.id + '">Install</button>' : "";
-    //     var s = e.hl === "new" ? '<div class="r-h-n r-n"></div>' : e.hl === "hot" ? '<div class="r-h-n r-h"></div>' : "";
-    //     var r = '<tr class="r-a-r-i">' + '<td class="r-a-c r-a-c-1">' + s + a + "</td>" + '<td class="r-a-c r-a-c-2">' + l + "</td>" + '<td class="r-a-c r-a-c-3">' + (e.installed ? i : o) + "</td>" + "</tr>";
-    //     $("#tab-relative-apps table").append(r);
-    //   }
-    //   function r() {
-    //     utils.getInstalledAppsInWhitelist(o, function (e) {
-    //       var t = [], i = [], r = [], n = [];
-    //       for (var c = 0; c < o.length; c++) {
-    //         var g = {
-    //           id: o[c].id,
-    //           name: o[c].name,
-    //           art: o[c].art,
-    //           lp: o[c].lp,
-    //           hl: o[c].hl
-    //         };
-    //         var d = e.find(function (e) {
-    //           return g.id == e.id;
-    //         });
-    //         if (d) {
-    //           g.installed = true;
-    //           g.enabled = d.enabled;
-    //           t.push(g);
-    //         } else {
-    //           g.installed = false;
-    //           if (g.hl == "hot") i.push(g); else if (g.hl == "new") r.push(g); else n.push(g);
-    //         }
-    //       }
-    //       function h(e) {
-    //         e.forEach(function (e) {
-    //           s(e);
-    //         });
-    //       }
-    //       if (a && l) {
-    //         h(i);
-    //         h(r);
-    //         h(t);
-    //         h(n);
-    //       } else if (a && !l) {
-    //         h(i);
-    //         h(t);
-    //         h(r);
-    //         h(n);
-    //       } else if (!a && l) {
-    //         h(r);
-    //         h(t);
-    //         h(i);
-    //         h(n);
-    //       } else {
-    //         h(t);
-    //         h(i);
-    //         h(r);
-    //         h(n);
-    //       }
-    //     });
-    //   }
-    //   r();
-    // };
+    
     $(document).ready(function () {
       a();
-      // if (!localStorage.getItem("weather_location") || localStorage.getItem("weather_location_isvalid") === "false") {
-      //   if (localStorage.getItem("disable_weather") === "no") $("#error_box").show();
-      // } else {
-      //   $("#error_box").hide();
-      // }
-      // $(".nav_menu a[class*=lnk_], #tab-setting a[class*=lnk_]").each(function (e, t) {
-      //   t.protocol = "http:";
-      //   t.host = user["firstRunDomain"];
-      // });
+      
       function t() {
         $(".nav_menu").css("max-height", document.body.clientHeight - 80 + "px");
       }
       t();
       e.addEventListener("resize", t);
-      // var l = function (e) {
-      //   return btoa(encodeURIComponent(e).replace(/%([0-9A-F]{2})/g, function e(t, a) {
-      //     return String.fromCharCode("0x" + a);
-      //   }));
-      // };
+      
       var i = function (e) {
         return decodeURIComponent(atob(e).split("").map(function (e) {
           return "%" + ("00" + e.charCodeAt(0).toString(16)).slice(-2);
@@ -393,31 +251,7 @@
         e.loadCountDownModule(e);
         e.loadAutoHideModule(e);
         e.loadSnowModule(e);
-        // $("#random_all_newtab").prop("checked", localStorage.getItem("random_all_newtab") === "yes");
-        // $("#random_all_newtab").off("change");
-        // $("#random_all_newtab").on("change", function () {
-        //   localStorage.setItem("random_all_newtab", $("#random_all_newtab").is(":checked") ? "yes" : "no");
-        //   chrome.runtime.sendMessage({
-        //     changeOptions: utils.getGlobalOptions()
-        //   });
-        //   //utils.localstorage2cookie();
-        // });
-        //$("#disable_weather").prop("checked", localStorage.getItem("disable_weather") === "yes");
-        // $("#disable_weather").off("change");
-        // $("#disable_weather").on("change", function () {
-        //   if ($("#disable_weather").is(":checked")) {
-        //     $("#error_box").hide();
-        //   } else {
-        //     if (localStorage.getItem("weather_location_isvalid") === "false") {
-        //       $("#error_box").show();
-        //     }
-        //   }
-        //   localStorage.setItem("disable_weather", $("#disable_weather").is(":checked") ? "yes" : "no");
-        //   chrome.runtime.sendMessage({
-        //     changeOptions: utils.getGlobalOptions()
-        //   });
-        //   //utils.localstorage2cookie();
-        // });
+        
         if (localStorage.getItem("enable_most_visited") == "no") {
           $(".most_visited").hide();
         } else {
@@ -622,12 +456,9 @@
                     a.text(e.likeCount.toString().toShortNumber() || 0);
                   }
                 });
-                // t.forEach(function (e) {
-                //   l.find('li img[data-src="' + e + '"]').parent().find(".like-action").addClass("active");
-                //   likeLabel = l.find('li img[data-src="' + e + '"]').parent().find(".like-label").addClass("active");
-                // });
+               
               }
-              //l.find('li[class="selected"] .like-container').fadeIn("slow");
+              
             } catch (e) {
               console.log(e);
             }
@@ -641,87 +472,18 @@
         $("#background_selector_widget").off("click");
         $("#background_selector_widget").on("click", function (e) {
           e.stopPropagation();
-        });
-        // $("#images_selector li .like-container").off("click");
-        // $("#images_selector li .like-container").on("click", function (e) {
-        //   e.preventDefault();
-        //   e.stopPropagation();
-        // });
+        });       
         var h = [];
-        // $("#images_selector li .like-action").off("click");
-        // $("#images_selector li .like-action").on("click", function (e) {
-        //   e.preventDefault();
-        //   e.stopPropagation();
-        //   var t = $(this).parent("div");
-        //   var a = t.find(".like-label");
-        //   var l = $(this).data("src");
-        //   var i = $(this).data("id");
-        //   if (!i) return;
-        //   var o = 0;
-        //   var s = parseInt(a.text());
-        //   $(this).toggleClass("active");
-        //   // $(this).parent().removeClass().addClass("like-container clicked").one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function () {
-        //   //   $(this).removeClass().addClass("like-container");
-        //   // });
-        //   function n(e) {
-        //     var t = localStorage.getItem("likedImages");
-        //     if (!t && !h.length) {
-        //       h.slice(0, h.length);
-        //       h.push(l);
-        //       localStorage.setItem("likedImages", JSON.stringify(h));
-        //     } else {
-        //       try {
-        //         h = JSON.parse(localStorage.getItem("likedImages"));
-        //         var a = h.find(function (e) {
-        //           return e === l;
-        //         });
-        //         if (e && !a) {
-        //           h.push(l);
-        //         } else {
-        //           h.splice(h.indexOf(l), 1);
-        //         }
-        //         localStorage.setItem("likedImages", JSON.stringify(h));
-        //       } catch (e) {
-        //         console.log(e);
-        //       }
-        //     }
-        //   }
-        //   if ($(this).hasClass("active")) {
-        //     s++;
-        //     o = 1;
-        //     n(true);
-        //   } else {
-        //     s--;
-        //     o = -1;
-        //     n(false);
-        //   }
-        //   var c = {
-        //     id: i,
-        //     src: l,
-        //     like: o,
-        //     val: r(i + l + o)
-        //   };
-        //   var g = "http://" + localStorage.getItem("user_group") + "." + user["firstRunDomain"] + "/v1/like";
-        //   $.ajax({
-        //     url: g,
-        //     type: "POST",
-        //     data: c,
-        //     success: function (e) {
-        //       a.text(e.data ? e.data.likeCount.toString().toShortNumber() : "");
-        //       a.attr("title", e.data.likeCount.toLocaleString());
-        //     }
-        //   });
-        // });
+        
         $("#background_selector_widget #tab-background li").off("click");
         $("#background_selector_widget #tab-background li").on("click", function (t) {
           t.preventDefault();
           t.stopPropagation();
           var a = $(this).parent("ul");
-          //a.find(".like-container").fadeOut();
+          
           $("#background_selector_widget li.selected").removeClass();
           $(this).addClass("selected");
-          //var l = $(this).find(".like-container");
-          //l.fadeIn("slow");
+          
           if ($(this).find("img").length > 0) {
             var i = $(this).find("img").attr("data-src");
             user["bg_img"] = i;
@@ -736,7 +498,7 @@
             user["bg_img"] = "none";
             user["bg_color"] = "#" + o;
           }
-          //utils.localstorage2cookie();
+          
         });
         $('[data-toggle="tooltip"]').tooltip();
       };
@@ -761,59 +523,13 @@
 
         $("#click-Rate").hide();
         localStorage.setItem("rate_clicked", "cws");
-        chrome.extension.sendMessage("click-Rate");
-        // swal({
-        //   title: "Does this extension deserve 5/5 stars rating ?",
-        //   text: "",
-        //   type: "success",
-        //   html: true,
-        //   animation: false,
-        //   showConfirmButton: true,
-        //   confirmButtonColor: "#DD6B55",
-        //   confirmButtonText: "Yes, rate it 5 stars",
-        //   showCancelButton: true,
-        //   cancelButtonText: "No, I have feedback",
-        //   closeOnConfirm: true,
-        //   closeOnCancel: true
-        // }, function (e) {
-        //   if (e) {
-        //     $("#click-Rate").hide();
-        //     localStorage.setItem("rate_clicked", "cws");
-        //     chrome.extension.sendMessage("click-Rate");
-        //   } else {
-        //     localStorage.setItem("rate_clicked", "feedback");
-        //     chrome.extension.sendMessage("click-Feedback");
-        //   }
-        //   //utils.localstorage2cookie();
-        // });
+        chrome.extension.sendMessage("click-Rate");        
       });
-      // utils.resetClickHandler($("a[class*=lnk_update_]"), function () {
-      //   chrome.extension.sendMessage("click-UpdateHistory");
-      // });
-      // utils.resetClickHandler($(".lnk_chromethemes"), function () {
-      //   chrome.extension.sendMessage("click-ChromeThemes");
-      // });
-      // utils.resetClickHandler($(".lnk_bookmarks"), function () {
-      //   chrome.extension.sendMessage("click-Bookmarks");
-      // });
-      // utils.resetClickHandler($(".lnk_faq"), function () {
-      //   chrome.extension.sendMessage("click-FAQ");
-      // });
-      // utils.resetClickHandler($(".lnk_eula"), function () {
-      //   chrome.extension.sendMessage("click-EULA");
-      // });
+     
       utils.resetClickHandler($(".lnk_privacy"), function () {
         chrome.extension.sendMessage("click-Privacy");
       });
-      // utils.resetClickHandler($(".uninstallSelf"), function () {
-      //   chrome.extension.sendMessage("click-Uninstall");
-      // });
-      // utils.resetClickHandler($(".click-Donate"), function () {
-      //   chrome.extension.sendMessage("click-Donate");
-      // });
-      // utils.resetClickHandler($(".click-Feedback"), function () {
-      //   chrome.extension.sendMessage("click-Feedback");
-      // });
+      
       utils.resetClickHandler($(".click-Fanpage"), function () {
         chrome.extension.sendMessage("click-Rate");
       });

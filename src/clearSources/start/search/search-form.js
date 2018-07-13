@@ -364,172 +364,12 @@
         $("#background_selector_widget").fadeOut();
       }
     });
-    // function w() {
-    //   chrome.tabs.query({}, function(e) {
-    //     for (var t = 0; t < e.length; t++) {
-    //       chrome.tabs.sendMessage(e[t].id, {
-    //         type: "weather_info",
-    //         info: {
-    //           weather_location: JSON.parse(localStorage.getItem("weather_location")),
-    //           weather_data: JSON.parse(localStorage.getItem("weather_data"))
-    //         }
-    //       });
-    //     }
-    //   });
-    // }
-    // function S() {
-    //   chrome.tabs.query({}, function(e) {
-    //     for (var t = 0; t < e.length; t++) {
-    //       chrome.tabs.sendMessage(e[t].id, {
-    //         type: "error_get_weather_in_city",
-    //         info: {
-    //           weather_location: JSON.parse(localStorage.getItem("weather_location")),
-    //           error_msg: "Unable to get weather data."
-    //         }
-    //       });
-    //     }
-    //   });
-    // }
-    // function k() {
-    //   try {
-    //     b = false;
-    //     if (!localStorage.getItem("weather_location")) {
-    //       y = true;
-    //       b = false;
-    //       if (localStorage.getItem("disable_weather") === "no") $("#error_box").show();
-    //       localStorage.setItem("weather_location_isvalid", "false");
-    //       //utils.localstorage2cookie();
-    //       return;
-    //     }
-    //     var t = JSON.parse(localStorage.getItem("weather_location"));
-    //     var o = user["units_weather"] == "imperial" ? "f" : "c";
-    //     var a = "https://query.yahooapis.com/v1/public/yql?q=" + encodeURIComponent("select * from weather.forecast where woeid=" + t.woeid + ' and u="' + o + '"') + "&format=json";
-    //     $.getJSON(a, function(a) {
-    //       try {
-    //         if (a && a.query && a.query.count == 1 && a.query.results && a.query.results.channel && a.query.results.channel.item) {
-    //           y = false;
-    //           localStorage.setItem("weather_location_isvalid", "true");
-    //           //utils.localstorage2cookie();
-    //           var i = a.query.results.channel.item.condition;
-    //           var s = a.query.results.channel.units;
-    //           if (s && s.temperature) {
-    //             o = s.temperature.toLowerCase();
-    //           }
-    //           var n = {
-    //             fetchTemperature: i.temp,
-    //             fetchUnit: o,
-    //             code: i.code,
-    //             condition: i.text,
-    //             updated: new Date()
-    //           };
-    //           localStorage.setItem("weather_data", JSON.stringify(n));
-    //           $("#error_box").hide();
-    //           $("#city_name").val(t.location_name);
-    //           localStorage.setItem("user_input_city_isvalid", "true");
-    //           w();
-    //           var r = Math.round(n.fetchTemperature);
-    //           var l = $(".weather h1");
-    //           var c = n.condition;
-    //           var u = t.location_name;
-    //           l.find(".val").html(r);
-    //           $(".widght .weather .city").text(u);
-    //           $(".widght .weather .condition").text(c);
-    //           if (localStorage.getItem("disable_weather") == "yes" || y) b = false; else b = true;
-    //         } else {
-    //           y = true;
-    //           b = false;
-    //           if (localStorage.getItem("disable_weather") === "no") $("#error_box").show();
-    //           localStorage.setItem("weather_location_isvalid", "false");
-    //           $("#city_name").val("Unable to get weather data.");
-    //           localStorage.setItem("user_input_city_isvalid", "false");
-    //           //utils.localstorage2cookie();
-    //           if (e.debug) console.log("Error getting weather data");
-    //           S();
-    //           trackStatusEvent("error-Weather-NoData", null, t.woeid);
-    //         }
-    //       } catch (e) {
-    //         y = true;
-    //         b = false;
-    //         if (localStorage.getItem("disable_weather") === "no") $("#error_box").show();
-    //         localStorage.setItem("weather_location_isvalid", "false");
-    //         //utils.localstorage2cookie();
-    //         trackStatusEvent("error-Weather", null, e.message);
-    //       }
-    //     }).fail(function(t, o, a) {
-    //       y = true;
-    //       b = false;
-    //       if (localStorage.getItem("disable_weather") === "no") $("#error_box").show();
-    //       localStorage.setItem("weather_location_isvalid", "false");
-    //       //utils.localstorage2cookie();
-    //       if (e.debug) console.log("Error in weather request: ", o);
-    //     });
-    //   } catch (e) {
-    //     y = true;
-    //     b = false;
-    //     trackStatusEvent("error-Weather", null, e.message);
-    //   }
-    // }
-    // var b = true;
-    // var y = false;
-    // var I = false;
-    // var C = 5e3;
-    // function E() {
-    //   clearTimeout(D);
-    //   D = setTimeout(E, C);
-    //   var e = r.find("img").attr("src"), t = e;
-    //   $(".widght .time").stop(true, true);
-    //   $(".widght .weather").stop(true, true);
-    //   if (r.hasClass("clock") && b) {
-    //     t = e.replace("clock.png", "cloud.png");
-    //     $(".widght .time").fadeOut(100, function() {
-    //       $(".widght .weather").fadeIn().css("display", "inline-block");
-    //       if (I) {
-    //         $(".widght .time").tooltip("hide");
-    //         $(".widght .weather").tooltip("show");
-    //       }
-    //     });
-    //   } else {
-    //     if (localStorage.getItem("disable_weather") == "yes" || y) b = false; else b = true;
-    //     t = e.replace("cloud.png", "clock.png");
-    //     $(".widght .weather").fadeOut(100, function() {
-    //       $(".widght .time").fadeIn().css("display", "inline-block");
-    //       if (I) {
-    //         $(".widght .time").tooltip("show");
-    //         $(".widght .weather").tooltip("hide");
-    //       }
-    //     });
-    //   }
-    //   r.find("img").attr("src", t);
-    //   r.toggleClass("clock temp");
-    // }
-    // $(".widght .time, .widght .weather").on("mouseenter", function() {
-    //   I = true;
-    // });
-    // $(".widght .time, .widght .weather").on("mouseleave", function() {
-    //   I = false;
-    // });
-    // $(".widght .weather h1").on("click", function() {
-    //   N(user["units_weather"] == "imperial" ? "metric" : "imperial");
-    // });
+    
     A();
     $(".widght .time").on("click", function() {
       A();
     });
-    //var O = $("#weather_widget_unit");
-    // function N(e) {
-    //   if (e != "imperial") {
-    //     user["units_weather"] = "metric";
-    //     user["date_format"] = "{{d}}.{{m}}.{{y}}";
-    //     O.html("C");
-    //   } else {
-    //     user["units_weather"] = "imperial";
-    //     user["date_format"] = "{{m}}.{{d}}.{{y}}";
-    //     O.html("F");
-    //   }
-    //   k();
-    //   T();
-    //   //utils.localstorage2cookie();
-    // }
+    
     function A() {
       if (user["time_format"] == "12h") {
         user["time_format"] = "24h";
@@ -537,9 +377,9 @@
         user["time_format"] = "12h";
       }
       T();
-      //utils.localstorage2cookie();
+      
     }
-    //N(user["units_weather"]);
+   
     function  T() {
       var e = new Date();
       if (user["time_format"] == "12h") {
@@ -595,14 +435,7 @@
         });
       } catch (e) {}
     }
-    // $("#cat_nav a").click(function(e) {
-    //   var t = $(this);
-    //   t.parent().children().each(function() {
-    //     $(this).removeClass("selected_cat");
-    //   });
-    //   user["selected_cat"] = i = t.addClass("selected_cat").text();
-    //   trackStatusEvent("search-cat");
-    // });
+    
     function L(e) {
       return e.replace(/(?:^|\s)\w/g, function(e) {
         return e.toUpperCase();
@@ -660,28 +493,7 @@
       $(this).addClass("active");
       return false;
     });
-    // function G(e) {
-    //   var t = SEARCH_ENGINES[e];
-    //   if (t["Logo"]) {
-    //     var o = $('<li data-name="' + e + '"><span><img src="' + t["Logo"] + '" /></span></li>');
-    //   } else {
-    //     var o = $('<li data-name="' + e + '"><span>' + t["ShortName"] + "</span></li>");
-    //   }
-    //   $("#search-engine-list").append(o);
-    // }
-    // $("#search-engine-list").on("click", "li", function() {
-    //   var e = $(this).data("name");
-    //   if (SEARCH_ENGINES[e]) {
-    //     localStorage["dotdotdot"] = true;
-    //     if (!localStorage["setting_geo"]) {
-    //       user["sengine"] = e;
-    //     }
-    //   }
-    //   setTimeout(function() {
-    //     trackStatusEvent("search-set");
-    //   }, 100);
-    //   R(e);
-    // });
+    
     function J() {
       var o = document.getElementById("search-input");
       var i = t.SuggestUrl;
@@ -710,10 +522,7 @@
     }
     q();
     J();
-    //utils.localstorage2cookie();
-    // $("#change_city, #error_weather_messager, #weather_info_display").click(function() {
-    //   chrome.extension.sendMessage("click-ChangeCity");
-    // });
+    
     function U(e) {
       (function e(t) {
         var o = document.getElementById("mail-address-shower");
@@ -758,12 +567,7 @@
       if (t.refreshOptions) {
         e.loadGlobalOptions();
       }
-      // if (t.refreshRelativeApps) {
-      //   e.loadRelativeApps();
-      // }
-      // if (t.refreshWeather) {
-      //   N(user["units_weather"]);
-      // }
+      
       if (t.type === "gmail_info_fetched") {
         U(t.info);
       }
@@ -781,71 +585,7 @@
           if (n && typeof n.resume == "function") n.resume();
         }
       }
-      // if (t.showNotifyDialog) {
-      //   var r = t.showNotifyDialog;
-      //   chrome.extension.sendMessage({
-      //     trackNoti: 1,
-      //     category: r.name,
-      //     action: "swal-show"
-      //   });
-      //   chrome.cookies.set({
-      //     url: "http://" + user["firstRunDomain"] + "/",
-      //     name: "CKS-" + r.name,
-      //     value: new Date().toISOString(),
-      //     expirationDate: Math.floor(new Date().getTime() / 1e3) + 30 * 24 * 60 * 60
-      //   });
-      //   chrome.cookies.get({
-      //     url: "http://" + user["firstRunDomain"] + "/",
-      //     name: "CKT-" + r.name
-      //   }, function(e) {
-      //     var t = 0;
-      //     if (e) if (e.value && !isNaN(parseInt(e.value))) t = parseInt(e.value);
-      //     chrome.cookies.set({
-      //       url: "http://" + user["firstRunDomain"] + "/",
-      //       name: "CKT-" + r.name,
-      //       value: "" + (t + 1),
-      //       expirationDate: Math.floor(new Date().getTime() / 1e3) + 30 * 24 * 60 * 60
-      //     });
-      //   });
-      //   var l = 0;
-      //   if (localStorage.getItem("LNT-" + r.name) && !isNaN(parseInt(localStorage.getItem("LNT-" + r.name)))) l = parseInt(localStorage.getItem("LNT-" + r.name));
-      //   localStorage.setItem("LNT-" + r.name, l + 1);
-      //   swal(r.swal, function(e) {
-      //     if (e) {
-      //       chrome.cookies.set({
-      //         url: "http://" + user["firstRunDomain"] + "/",
-      //         name: "CKC0-" + r.name,
-      //         value: new Date().toISOString(),
-      //         expirationDate: Math.floor(new Date().getTime() / 1e3) + 30 * 24 * 60 * 60
-      //       });
-      //       chrome.extension.sendMessage({
-      //         trackNoti: 1,
-      //         category: r.name,
-      //         action: "swal-click-ok"
-      //       });
-      //       localStorage.setItem("LNC0-" + r.name, new Date().toISOString());
-      //       if (r["lp0"]) chrome.tabs.create({
-      //         url: r["lp0"]
-      //       });
-      //     } else {
-      //       chrome.cookies.set({
-      //         url: "http://" + user["firstRunDomain"] + "/",
-      //         name: "CKC1-" + r.name,
-      //         value: new Date().toISOString(),
-      //         expirationDate: Math.floor(new Date().getTime() / 1e3) + 30 * 24 * 60 * 60
-      //       });
-      //       chrome.extension.sendMessage({
-      //         trackNoti: 1,
-      //         category: r.name,
-      //         action: "swal-click-cancel"
-      //       });
-      //       localStorage.setItem("LNC1-" + r.name, new Date().toISOString());
-      //       if (r["lp1"]) chrome.tabs.create({
-      //         url: r["lp1"]
-      //       });
-      //     }
-      //   });
-      // }
+      
     });
   });
 })(this);

@@ -90,79 +90,27 @@
       return chrome.extension.getURL(e);
     },
     getGlobalOptions: function () {
-      var t = {
-        //disable_weather: "yes",
+      var t = {       
         disable_most_visited: localStorage.getItem("enable_most_visited") == "yes" ? "no" : "yes",
         disable_apps: localStorage.getItem("enable_apps") == "yes" ? "no" : "yes",
-        disable_share: localStorage.getItem("enable_share") == "yes" ? "no" : "yes",
-        //disable_todo: localStorage.getItem("enable_todo") == "yes" ? "no" : "yes",
+        disable_share: localStorage.getItem("enable_share") == "yes" ? "no" : "yes",        
         enable_most_visited: localStorage.getItem("enable_most_visited"),
         enable_apps: localStorage.getItem("enable_apps"),
-        enable_share: localStorage.getItem("enable_share"),
-        //enable_todo: localStorage.getItem("enable_todo"),
-        //hideTodoPanel: localStorage.getItem("hideTodoPanel"),
-        //todoList: localStorage.getItem("todoList"),
+        enable_share: localStorage.getItem("enable_share"),        
         enable_autohide: localStorage.getItem("enable_autohide"),
         enable_snow: localStorage.getItem("enable_snow"),
         snow_type: localStorage.getItem("snow_type"),
         enable_countdown: localStorage.getItem("enable_countdown"),
         countdownPosition: localStorage.getItem("countdownPosition"),
         countdownText: localStorage.getItem("countdownText"),
-        countdownToTime: localStorage.getItem("countdownToTime"),
-        //had_wl: localStorage.getItem("had_wl"),
-        //random_all_newtab: localStorage.getItem("random_all_newtab")
+        countdownToTime: localStorage.getItem("countdownToTime")        
       };
       for (var o = 0; o < e.storageDefaultKeys.length; o++) {
         var n = e.storageDefaultKeys[o];
         if (typeof t[n] !== "undefined") delete t[n];
       }
       return t;
-    },
-    // getInstalledAppsInWhitelist: function (e, t) {
-    //   chrome.management.getAll(function (o) {
-    //     var n = [];
-    //     for (var a = 0; a < e.length; a++) {
-    //       var l = e[a];
-    //       for (var r = 0; r < o.length; r++) {
-    //         var i = o[r];
-    //         if (l.id === i.id) {
-    //           n.push(i);
-    //         }
-    //       }
-    //     }
-    //     t(n);
-    //   });
-    // },
-    // getEnabledAppsInWhitelist: function (e, t) {
-    //   chrome.management.getAll(function (o) {
-    //     var n = [];
-    //     for (var a = 0; a < e.length; a++) {
-    //       var l = e[a];
-    //       for (var r = 0; r < o.length; r++) {
-    //         var i = o[r];
-    //         if (i.enabled && l.id === i.id) {
-    //           n.push(i);
-    //         }
-    //       }
-    //     }
-    //     t(n);
-    //   });
-    // },
-    // getAppsInList2ThatNotInList1: function (e, t) {
-    //   var o = [];
-    //   for (var n = 0; n < t.length; n++) {
-    //     var a = true;
-    //     for (var l = 0; l < e.length; l++) {
-    //       if (t[n].id === e[l].id) {
-    //         a = false;
-    //         break;
-    //       }
-    //     }
-    //     if (a) o.push(t[n]);
-    //   }
-    //   return o;
-    // },
-    //localstorage2cookie: function () { }
+    }    
   };
   e.utils = i;
   e.debug = localStorage.getItem("debug") === "debug";
