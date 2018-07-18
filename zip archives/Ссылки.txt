@@ -1,0 +1,6 @@
+                    |                                                |                |
+Ссылка              |       Путь                                     |   Строка       |
+____________________|________________________________________________|________________|
+privacy policy      |   start\backgroundScripts\Analytics.js -       |  86 строчка    |
+поиск               |   start\backgroundScripts\seach-engines.js     |  9 строчка     |
+More apps           |   start\index.html                             |  49 строчка    |
