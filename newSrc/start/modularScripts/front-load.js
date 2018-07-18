@@ -15,7 +15,7 @@
         if (!document.getElementById("frame_bg")) {
           var r = document.createElement("div");
           r.setAttribute("id", "frame_bg");
-          r.style = 'background-image: url("/start/content/images/' + g + '"); width: 100%; height: 100%; background-repeat: no-repeat; background-size: 900px; background-position: center center;';
+          r.style = 'background-image: url("/start/content/serviceImages/' + g + '"); width: 100%; height: 100%; background-repeat: no-repeat; background-size: 900px; background-position: center center;';
           document.getElementById("__bg").insertBefore(r, document.getElementById("__bg").childNodes[0]);
         }
         if (a.indexOf("frame") > -1 || a === "#ffffff") {
