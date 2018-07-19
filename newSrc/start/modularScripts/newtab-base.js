@@ -6,7 +6,7 @@
       $("#tabs").tabs({
         active: e,
         activate: function () {
-          
+
           if (a === 0) {
             localStorage.setItem("curTabActive", 0);
           } else if (a == 1) {
@@ -18,16 +18,16 @@
       });
     }
 
-    
+
     $(document).ready(function () {
       a();
-      
+
       function t() {
         $(".nav_menu").css("max-height", document.body.clientHeight - 80 + "px");
       }
       t();
       e.addEventListener("resize", t);
-      
+
       var i = function (e) {
         return decodeURIComponent(atob(e).split("").map(function (e) {
           return "%" + ("00" + e.charCodeAt(0).toString(16)).slice(-2);
@@ -251,7 +251,7 @@
         e.loadCountDownModule(e);
         e.loadAutoHideModule(e);
         e.loadSnowModule(e);
-        
+
         if (localStorage.getItem("enable_most_visited") == "no") {
           $(".most_visited").hide();
         } else {
@@ -334,32 +334,32 @@
           chrome.runtime.sendMessage({
             changeOptions: utils.getGlobalOptions()
           });
-         
+
         });
-        
+
         $('[data-toggle="tooltip"]').tooltip();
       };
       e.loadGlobalOptions();
       e.loadImagesInOption = function () {
         var t = 5;
-        for (var a = 1; a <= user["bg_img_list"]; a++) {
+        for (var a = 0; a < user["bg_img_list"]; a++) {
           var l = "bg-" + ("0" + a).slice(-2);
           var i = $("<li>");
           var o;
           var s;
-          if (Object.keys(user["bg_color_gif"]).indexOf(l + ".gif") > -1) {
-            s = l + ".gif";
-            o = $("<img>", {
-              "data-src": s,
-              src: utils.getExtensionURL("/start/content/images/" + l + ".gif")
-            });
-          } else {
-            s = l + ".jpg";
-            o = $("<img>", {
-              "data-src": s,
-              src: utils.getExtensionURL("/start/content/images/" + l + ".jpg")
-            });
-          }
+          // if (Object.keys(user["bg_color_gif"]).indexOf(l + ".gif") > -1) {
+          //   s = l + ".gif";
+          //   o = $("<img>", {
+          //     "data-src": s,
+          //     src: utils.getExtensionURL("/start/content/images/" + l + ".gif")
+          //   });
+          // } else {
+          s = l + ".jpg";
+          o = $("<img>", {
+            "data-src": s,
+            src: utils.getExtensionURL(e.imageBuffer[a].fullPath)
+          });
+          //}
           i.append(o);
           // var n = '<div class="like-container" style="display: none;"><div class="like-action" data-src="' + s + '"></div><span class="like-label"></span></div>';
           // i.append(n);
@@ -401,7 +401,8 @@
             //utils.localstorage2cookie();
           });
           $("#images_selector").append(c);
-          if (a % t == 0) {
+          // stange because of start from zero
+          if (a > 5 && a % 5 == 4) {
             $("#images_selector").append($("<br>"));
           }
         }
@@ -429,33 +430,33 @@
           }
           return l;
         };
-        function d() {
-          if (!localStorage.getItem("ext_oid")) return;
-          var e = "http://" + localStorage.getItem("user_group") + "." + user["firstRunDomain"] + "/v1/like/" + localStorage.getItem("ext_oid");
-          $.get(e, function (e) {
-            try {
-              //var t = JSON.parse(localStorage.getItem("likedImages"));
-              var a = e.data;
-              var l = $("#images_selector");
-              if (a) {
-                a.forEach(function (e) {
-                  var t = l.find('li img[data-src="' + e.imageName + '"]').parent().find(".like-action");
-                  var a = l.find('li img[data-src="' + e.imageName + '"]').parent().find(".like-label");
-                  if (a[0] && a[0].tagName == "SPAN") {
-                    t.attr("data-id", e._id);
-                    a.attr("title", e.likeCount.toLocaleString());
-                    a.text(e.likeCount.toString().toShortNumber() || 0);
-                  }
-                });
-               
-              }
-              
-            } catch (e) {
-              console.log(e);
-            }
-          });
-        }
-        d();
+        // function d() {
+        //   if (!localStorage.getItem("ext_oid")) return;
+        //   var e = "http://" + localStorage.getItem("user_group") + "." + user["firstRunDomain"] + "/v1/like/" + localStorage.getItem("ext_oid");
+        //   $.get(e, function (e) {
+        //     try {
+        //       //var t = JSON.parse(localStorage.getItem("likedImages"));
+        //       var a = e.data;
+        //       var l = $("#images_selector");
+        //       if (a) {
+        //         a.forEach(function (e) {
+        //           var t = l.find('li img[data-src="' + e.imageName + '"]').parent().find(".like-action");
+        //           var a = l.find('li img[data-src="' + e.imageName + '"]').parent().find(".like-label");
+        //           if (a[0] && a[0].tagName == "SPAN") {
+        //             t.attr("data-id", e._id);
+        //             a.attr("title", e.likeCount.toLocaleString());
+        //             a.text(e.likeCount.toString().toShortNumber() || 0);
+        //           }
+        //         });
+
+        //       }
+
+        //     } catch (e) {
+        //       console.log(e);
+        //     }
+        //   });
+        // }
+        // d();
         $("#close_background_selector_widget").off("click");
         $("#close_background_selector_widget").on("click", function (e) {
           $("#background_selector_widget").fadeOut();
@@ -463,18 +464,18 @@
         $("#background_selector_widget").off("click");
         $("#background_selector_widget").on("click", function (e) {
           e.stopPropagation();
-        });       
+        });
         var h = [];
-        
+
         $("#background_selector_widget #tab-background li").off("click");
         $("#background_selector_widget #tab-background li").on("click", function (t) {
           t.preventDefault();
           t.stopPropagation();
           var a = $(this).parent("ul");
-          
+
           $("#background_selector_widget li.selected").removeClass();
           $(this).addClass("selected");
-          
+
           if ($(this).find("img").length > 0) {
             var i = $(this).find("img").attr("data-src");
             user["bg_img"] = i;
@@ -489,7 +490,7 @@
             user["bg_img"] = "none";
             user["bg_color"] = "#" + o;
           }
-          
+
         });
         $('[data-toggle="tooltip"]').tooltip();
       };
@@ -514,13 +515,13 @@
 
         $("#click-Rate").hide();
         localStorage.setItem("rate_clicked", "cws");
-        chrome.extension.sendMessage("click-Rate");        
+        chrome.extension.sendMessage("click-Rate");
       });
-     
+
       utils.resetClickHandler($(".lnk_privacy"), function () {
         chrome.extension.sendMessage("click-Privacy");
       });
-      
+
       utils.resetClickHandler($(".click-Fanpage"), function () {
         chrome.extension.sendMessage("click-Rate");
       });
@@ -600,7 +601,8 @@
         }
         if (t - a >= i * 1e3) {
           localStorage.setItem("last_time_do_slide", t);
-          e.setNewTabBackground();
+          if (window.imageBuffer)
+            e.setNewTabBackground();
         }
       }
       if (e.listAllThreads.threadSlideshow) {
