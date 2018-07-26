@@ -430,33 +430,7 @@
           }
           return l;
         };
-        // function d() {
-        //   if (!localStorage.getItem("ext_oid")) return;
-        //   var e = "http://" + localStorage.getItem("user_group") + "." + user["firstRunDomain"] + "/v1/like/" + localStorage.getItem("ext_oid");
-        //   $.get(e, function (e) {
-        //     try {
-        //       //var t = JSON.parse(localStorage.getItem("likedImages"));
-        //       var a = e.data;
-        //       var l = $("#images_selector");
-        //       if (a) {
-        //         a.forEach(function (e) {
-        //           var t = l.find('li img[data-src="' + e.imageName + '"]').parent().find(".like-action");
-        //           var a = l.find('li img[data-src="' + e.imageName + '"]').parent().find(".like-label");
-        //           if (a[0] && a[0].tagName == "SPAN") {
-        //             t.attr("data-id", e._id);
-        //             a.attr("title", e.likeCount.toLocaleString());
-        //             a.text(e.likeCount.toString().toShortNumber() || 0);
-        //           }
-        //         });
-
-        //       }
-
-        //     } catch (e) {
-        //       console.log(e);
-        //     }
-        //   });
-        // }
-        // d();
+       
         $("#close_background_selector_widget").off("click");
         $("#close_background_selector_widget").on("click", function (e) {
           $("#background_selector_widget").fadeOut();
