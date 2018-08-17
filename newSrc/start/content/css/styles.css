@@ -447,7 +447,7 @@ body {
   position: absolute;
   z-index: 1070;
   display: block;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: inherit;
   font-size: 12px;
   font-style: normal;
   font-weight: normal;
@@ -635,23 +635,6 @@ select:focus {
 } */
 
 
-/* .searchBtn {
-  background: #ECECEC;
-  color: #666;
-  height: 30px !important;
-  padding: 0 10px;
-  line-height: 30px !important;
-  cursor: pointer;
-  text-indent: 0;
-  font-size: 14px;
-  border: none;
-  font-family: "neue";
-  margin: 0 auto;
-  display: block;
-  margin-top: 42px;
-  width: 120px;
-  box-shadow: none;
-} */
 
 nav {
   display: flex;
@@ -1350,26 +1333,6 @@ h1.hour {
   opacity: 0.8;
 }
 
-
-#city_name {
-  width: 200px;
-  height: 30px;
-  padding: 5px;
-  cursor: text;
-}
-
-#change_city {
-  font-weight: 100;
-  color: white;
-  font-family: 'neue', Helvetica, Arial, sans-serif;
-  width: 100px;
-  height: 30px;
-  border-radius: 3px;
-  background: none;
-  background-color: #56B1EA;
-  border: 0.5px solid transparent;
-  cursor: pointer;
-}
 
 #background_selector_widget {
   display: none;
