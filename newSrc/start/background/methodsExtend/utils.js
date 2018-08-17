@@ -86,9 +86,6 @@
       e.off("click");
       e.on("click", t);
     },
-    getExtensionURL: function (e) {
-      return chrome.extension.getURL(e);
-    },
     getGlobalOptions: function () {
       var t = {       
         disable_most_visited: localStorage.getItem("enable_most_visited") == "yes" ? "no" : "yes",
@@ -110,7 +107,10 @@
         if (typeof t[n] !== "undefined") delete t[n];
       }
       return t;
-    }    
+    },    
+    getExtensionURL: function (e) {
+      return chrome.extension.getURL(e);
+    }  
   };
   e.utils = i;
   e.debug = localStorage.getItem("debug") === "debug";

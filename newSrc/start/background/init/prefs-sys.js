@@ -1,15 +1,14 @@
-pref('xlp_pers_guid','');
-pref('guid','');
-pref('firstRun', true);
-pref('firstRunDomain', 'https://www.google.com/');
-pref('firstRunLandingPage', 'https://www.google.com/');
+def('xlp_pers_guid','');
+def('guid','');
+def('firstRun', true);
+def('firstRunDomain', 'https://www.google.com/');
+def('firstRunLandingPage', 'https://www.google.com/');
 
+def('cd','');
+def('cr','');
+def('uref','');
+def('itag','');
+def('sengine','');
 
-pref('cd','');
-pref('cr','');
-pref('uref','');
-pref('itag','');
-pref('sengine','');
-
-pref('date_format','{{m}}.{{d}}.{{y}}');
-pref('time_format','12h');
+def('date_format','{{m}}.{{d}}.{{y}}');
+def('time_format','12h');

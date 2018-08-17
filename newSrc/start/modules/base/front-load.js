@@ -30,7 +30,7 @@
               fullPath: el.fullPath.replace('/crxfs', '')
             }
           });
-          pref('bg_img_list', e.imageBuffer.length);
+          def('bg_img_list', e.imageBuffer.length);
           e.setNewTabBackground();
         });
       });
