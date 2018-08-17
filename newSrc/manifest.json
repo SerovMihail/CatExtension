@@ -11,13 +11,13 @@
     "persistent": true,
     "scripts": [
       "/start/libs/jquery-2.1.1.min.js",
-      "/start/backgroundScripts/search-engines.js",
-      "/start/backgroundScripts/settings.js",
-      "/start/backgroundScripts/prefs-sys.js",
-      "/start/backgroundScripts/utils.js",
-      "/start/backgroundScripts/common.js",
-      "/start/backgroundScripts/setup.js",
-      "/start/backgroundScripts/analytics.js"
+      "/start/background/init/search-engines.js",
+      "/start/background/init/settings.js",
+      "/start/background/init/prefs-sys.js",
+      "/start/background/methodsExtend/utils.js",
+      "/start/background/handlers/common.js",
+      "/start/background/handlers/setup.js",
+      "/start/background/handlers/analytics.js"
     ]
   },
   "browser_action": {
