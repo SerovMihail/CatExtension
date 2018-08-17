@@ -162,14 +162,7 @@
           var l = "bg-" + ("0" + a).slice(-2);
           var i = $("<li>");
           var o;
-          var s;
-          // if (Object.keys(user["bg_color_gif"]).indexOf(l + ".gif") > -1) {
-          //   s = l + ".gif";
-          //   o = $("<img>", {
-          //     "data-src": s,
-          //     src: utils.getExtensionURL("/start/content/images/" + l + ".gif")
-          //   });
-          // } else {
+          var s;          
           s = l + ".jpg";
           o = $("<img>", {
             "data-src": s,
@@ -177,8 +170,7 @@
           });
           //}
           i.append(o);
-          // var n = '<div class="like-container" style="display: none;"><div class="like-action" data-src="' + s + '"></div><span class="like-label"></span></div>';
-          // i.append(n);
+          
           $("#images_selector").append(i);
           var c, g = [];
           if (localStorage.getItem("mark_favor")) g = JSON.parse(localStorage.getItem("mark_favor"));

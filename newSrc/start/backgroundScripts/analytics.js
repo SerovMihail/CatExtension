@@ -219,17 +219,11 @@
     if (!localStorage.getItem("last_opened")) {
       localStorage.setItem("last_opened", new Date().getTime());
     }
-    // if (!localStorage.getItem("bg_img")) {
-    //   localStorage.setItem("bg_img", "bg-01.jpg");
-    // }
-    // if (!localStorage.getItem("last_bg")) {
-    //   localStorage.setItem("last_bg", "0");
-    // }
+    
     if (!localStorage.getItem("shuffle_background") || !localStorage.getItem("shuffle_favorites")) {
       localStorage.setItem("shuffle_background", "yes");
       localStorage.setItem("shuffle_favorites", "no");
     }
-    // localStorage.setItem("bg_img", localStorage.getItem("bg_img").replace("url(", "").replace("/start/content/images/", "").replace("/content/images/", "").replace(")", ""));
     if (!localStorage.getItem("mark_favor")) {
       localStorage.setItem("mark_favor", JSON.stringify([]));
     }    

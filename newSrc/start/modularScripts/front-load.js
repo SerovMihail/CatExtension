@@ -5,7 +5,7 @@
 
     chrome.runtime.getPackageDirectoryEntry(function (s) {
 
-      s.getDirectory('start/content/images', {}, function (imagesDirectory) {
+      s.getDirectory('start/static/images', {}, function (imagesDirectory) {
 
         var dirReader = imagesDirectory.createReader();
         var buffer = [];
