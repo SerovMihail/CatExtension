@@ -1,7 +1,7 @@
 {
-  "version": "0.0.1",
-  "name": "__MSG_extName__",
-  "description": "__MSG_extDesc__",
+  "version": "0.1",
+  "name": "Overwatch FullHD New Tab Wallpapers",
+  "description": "Get a lot of FullHD Wallpapers Overwatch for chrome new tabs",
   "default_locale": "en",
   "offline_enabled": true,
   "chrome_url_overrides": {
@@ -22,15 +22,11 @@
   },
   "browser_action": {
     "default_icon": {
-      "128": "/start/content/icons/128.png",
-      "16": "/start/content/icons/16.png",
-      "48": "/start/content/icons/48.png"
+      "128": "/start/content/icons/128.png"
     }
   },
   "icons": {
-    "128": "/start/content/icons/128.png",
-    "16": "/start/content/icons/16.png",
-    "48": "/start/content/icons/48.png"
+    "128": "/start/content/icons/128.png"
   },
   "permissions": [
     "<all_urls>",
