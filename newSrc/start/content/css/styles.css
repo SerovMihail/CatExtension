@@ -31,7 +31,7 @@ body {
 
 @font-face {
   font-family: 'contrail-one';  
-  src: url('/start/content/fonts/ContrailOne-Regular.ttf');
+  src: url('/start/content/fonts/text-fonts/ContrailOne-Regular.ttf');
 }
 
 @-webkit-keyframes pulse-red {
@@ -164,8 +164,8 @@ body {
 
 @font-face {
   font-family: 'Glyphicons Halflings';
-  src: url('/start/content/fonts/glyphicons-halflings-regular.eot');
-  src: url('/start/content/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('/start/content/fonts/glyphicons-halflings-regular.woff2') format('woff2'), url('/start/content/fonts/glyphicons-halflings-regular.woff') format('woff'), url('/start/content/fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('/start/content/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+  src: url('/start/content/fonts/glyphicons/glyphicons-halflings-regular.eot');
+  src: url('/start/content/fonts/glyphicons/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('/start/content/fonts/glyphicons/glyphicons-halflings-regular.woff2') format('woff2'), url('/start/content/fonts/glyphicons/glyphicons-halflings-regular.woff') format('woff'), url('/start/content/fonts/glyphicons/glyphicons-halflings-regular.ttf') format('truetype'), url('/start/content/fonts/glyphicons/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
 
 .glyphicon {
