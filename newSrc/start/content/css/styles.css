@@ -17,7 +17,7 @@ body {
   margin: 0;
   font-size: 80%;
   font-weight: 100;
-  font-family: 'neue', Helvetica, Arial, sans-serif;
+  font-family: 'contrail-one', cursive;  
   background-image: none;
   background: transparent;
   background-repeat: no-repeat !important;
@@ -25,19 +25,13 @@ body {
   background-position: center center !important;
 }
 
-
 * {
   box-sizing: border-box;
 }
 
 @font-face {
-  font-family: 'neue';
-  src: url('/start/content/fonts/neue.woff');
-}
-
-@font-face {
-  font-family: 'neue-bold';
-  src: url('/start/content/fonts/neue-bold.woff');
+  font-family: 'contrail-one';  
+  src: url('/start/content/fonts/ContrailOne-Regular.ttf');
 }
 
 @-webkit-keyframes pulse-red {
@@ -640,10 +634,6 @@ select:focus {
   animation: blinker 1.2s infinite;
 } */
 
-/* .selected_cat {
-  font-family: "neue-bold";
-  font-size: 13px;
-} */
 
 /* .searchBtn {
   background: #ECECEC;
@@ -1770,8 +1760,7 @@ h1.hour {
 }
 
 
-h3 {
-  font-family: "neue-bold";
+h3 {  
   margin: 0;
   font-size: 17px;
 }
@@ -2154,7 +2143,7 @@ h3 {
   border: none;
   padding: 10px;
   font-size: 20px;
-  font-family: Arial, sans-serif;
+  font-family: inherit;
   transition: all 0.32s;
 }
 

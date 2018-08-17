@@ -345,12 +345,10 @@
     e.addEventListener("load", function () {
       $("#__bg").fadeIn(350, function () {
         $("#wrapper").fadeIn(100, function () {
-          if (localStorage.getItem("theme_clicked") !== "yes") {
-            $("#background_selector_menu").css("font-family", "'neue-bold'");
+          if (localStorage.getItem("theme_clicked") !== "yes") {            
             $("#background_selector_menu").addClass(localStorage.getItem("highlight") || "highlight");
           }
-          var a = function () {
-            $("#background_selector_menu").css("font-family", "'neue',Helvetica,Arial,sans-serif");
+          var a = function () {            
             $("#background_selector_menu").attr("class", ($("#background_selector_menu").attr("class") || "").replace(/highlight[a-z_-]*[ ]*/gi, ""));
             localStorage.setItem("theme_clicked", "yes");
             //utils.localstorage2cookie();
