@@ -1,26 +1,24 @@
 (function (e) {
   try {
     var t = false;
-    function a() {
+    function setActive() {
       var e = parseInt(localStorage.getItem("curTabActive")) || 0;
       $("#tabs").tabs({
         active: e,
         activate: function () {
-
-          if (a === 0) {
+          if (e === 0) {
             localStorage.setItem("curTabActive", 0);
-          } else if (a == 1) {
+          } else if (e == 1) {
             localStorage.setItem("curTabActive", 1);
-          } else if (a == 2) {
+          } else if (e == 2) {
             localStorage.setItem("curTabActive", 2);
           }
         }
       });
     }
 
-
     $(document).ready(function () {
-      a();
+      setActive();
 
       function t() {
         $(".nav_menu").css("max-height", document.body.clientHeight - 80 + "px");

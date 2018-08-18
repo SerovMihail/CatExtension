@@ -1,17 +1,17 @@
 (function (e) {
   "use strict";
-  function t(e) {
+  function getFromLocalStorage(e) {
     return localStorage[e];
   }
-  function o(e, t) {
+  function setInLocalStorage(e, t) {
     localStorage[e] = t;
   }
-  function n(e) {
+  function clearLocalStorage(e) {
     localStorage.clear();
   }
-  var a = navigator.languages[0] || navigator.language;
-  var l = a.substr(0, 2);
-  var r = function () {
+  var lang = navigator.languages[0] || navigator.language;
+  var shortLang = lang.substr(0, 2);
+  var getOS = function () {
     var e = navigator.userAgent.toLowerCase();
     if (/x11; cros /.test(e)) {
       return "chromeOS";
@@ -33,9 +33,9 @@
       return "win10";
     }
   }();
-  var i = {
+  var methods = {
     get os() {
-      return r;
+      return getOS;
     },
     get id() {
       var e = localStorage.getItem("ext_id") || chrome.app.getDetails().id;
@@ -50,16 +50,16 @@
       return e;
     },
     get locale() {
-      return a;
+      return lang;
     },
     get language() {
-      return l;
+      return shortLang;
     },
     get: function (e) {
-      return t(e);
+      return getFromLocalStorage(e);
     },
     set: function (e, t) {
-      o(e, t);
+      setInLocalStorage(e, t);
     },
     remove: function (e) {
       delete localStorage[e];
@@ -112,7 +112,7 @@
       return chrome.extension.getURL(e);
     }  
   };
-  e.utils = i;
+  e.utils = methods;
   e.debug = localStorage.getItem("debug") === "debug";
   if (chrome.management && chrome.management.getSelf) {
     chrome.management.getSelf(function (t) {
