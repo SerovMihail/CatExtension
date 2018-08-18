@@ -56,10 +56,7 @@
   $(document).ready(function() {
     d();
     var o = $("#search-input");
-    var s = [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ];
-    var n = "4c48e554026a4c9e97b3b2dc8824b559";
-    var r = $("#weather");
-    var l = $("input[type=search]");
+    var s = [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ];   
     var c = [];
     if (localStorage.getItem("hideLink")) c = JSON.parse(localStorage.getItem("hideLink"));
     var u = [];
@@ -78,31 +75,31 @@
         return false;
       }
       chrome.management.getAll(function(e) {
-        var o = e.filter(function(e) {
+        var filterArr = e.filter(function(e) {
           return typeof e.appLaunchUrl !== "undefined";
         });
-        for (var a = 0; a < o.length; a++) {
-          var i = o[a];
+        for (var a = 0; a < filterArr.length; a++) {
+          var i = filterArr[a];
           if (t(i.name)) {
             continue;
           }
-          var s = document.createElement("DIV");
-          var n = document.createElement("A");
-          var r = document.createElement("I");
-          var l = document.createTextNode(i.name);
-          var c = document.createElement("DIV");
-          c.className = "closebtn";
-          c.setAttribute("hide-app", "app:" + i.id);
-          r.setAttribute("style", "background-image:url('" + i.icons[0].url + "');background-size:cover;");
-          n.setAttribute("id", i.id);
-          n.addEventListener("click", function() {
+          var div1 = document.createElement("DIV");
+          var links = document.createElement("A");
+          var iTag = document.createElement("I");
+          var textNode = document.createTextNode(i.name);
+          var div2 = document.createElement("DIV");
+          div2.className = "closebtn";
+          div2.setAttribute("hide-app", "app:" + iTag.id);
+          iTag.setAttribute("style", "background-image:url('" + i.icons[0].url + "');background-size:cover;");
+          links.setAttribute("id", iTag.id);
+          links.addEventListener("click", function() {
             chrome.management.launchApp(this.id);
           });
-          n.appendChild(r);
-          n.appendChild(l);
-          s.appendChild(n);
-          s.appendChild(c);
-          document.getElementById("tool_menu").appendChild(s);
+          links.appendChild(iTag);
+          links.appendChild(textNode);
+          div1.appendChild(links);
+          div1.appendChild(div2);
+          document.getElementById("tool_menu").appendChild(div1);
           if (localStorage.getItem("hideApp")) {
             if (JSON.parse(localStorage.getItem("hideApp")).length > 0) {
               f("tool_menu", "Apps");

@@ -21,20 +21,20 @@
   }; 
   var s, c;
   var n = function () {
-    var e = new Date();
-    var t = "" + e.getUTCFullYear();
-    var a = e.getUTCMonth() < 9 ? "0" + (e.getUTCMonth() + 1) : "" + (e.getUTCMonth() + 1);
-    var o = e.getUTCDate() < 10 ? "0" + e.getUTCDate() : "" + e.getUTCDate();
+    var date = new Date();
+    var t = "" + date.getUTCFullYear();
+    var a = date.getUTCMonth() < 9 ? "0" + (date.getUTCMonth() + 1) : "" + (date.getUTCMonth() + 1);
+    var o = date.getUTCDate() < 10 ? "0" + date.getUTCDate() : "" + date.getUTCDate();
     s = t + a + o;
     c = 0;
-    var l = localStorage.getItem("installdt");
-    if (!l) {
+    var installDt = localStorage.getItem("installdt");
+    if (!installDt) {
       localStorage.setItem("installdt", s);
     } else {
       try {
-        var r = l.substr(0, 4);
-        var n = l.substr(4, 2) - 1;
-        var i = l.substr(6, 2);
+        var r = installDt.substr(0, 4);
+        var n = installDt.substr(4, 2) - 1;
+        var i = installDt.substr(6, 2);
         var g = new Date(r, n, i);
         var m = e.getTime() - g.getTime();
         c = Math.floor(m / (1e3 * 60 * 60 * 24));

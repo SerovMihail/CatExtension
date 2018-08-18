@@ -1,59 +1,59 @@
 window.loadAutoHideModule = function(e) {
   if (e.autoHideThread) clearTimeout(e.autoHideThread);
   e.autoHideThread = null;
-  function t() {
+  function delay() {
     clearTimeout(e.autoHideThread);
     e.autoHideThread = setTimeout(a, 1e4);
   }
-  function a() {
+  function hide() {
     if ($("#background_selector_widget").css("display") == "none") {
       $("#wrapper").fadeOut(1e3);
     }
   }
-  function n() {
+  function show() {
     $("#wrapper").fadeIn(1e3);
-    t();
+    delay();
   }
-  function o() {
+  function addEvents() {
     e.listAllThreads.threadAutoHide = {
       pause: function() {
         clearTimeout(e.autoHideThread);
-        a();
+        hide();
       },
       resume: function() {
-        n();
+        show();
       }
     };
-    t();
-    $("body").off("mousemove", n);
-    $("input[type=text]").off("focus", s);
-    $("input[type=search]").off("keypress", s);
-    $("input[type=text], input[type=search]").off("focusout", o);
-    $("body").on("mousemove", n);
-    $("input[type=text]").on("focus", s);
-    $("input[type=search]").on("keypress", s);
-    $("input[type=text], input[type=search]").on("focusout", o);
+    delay();
+    $("body").off("mousemove", show);
+    $("input[type=text]").off("focus", removeEvents);
+    $("input[type=search]").off("keypress", removeEvents);
+    $("input[type=text], input[type=search]").off("focusout", addEvents);
+    $("body").on("mousemove", show);
+    $("input[type=text]").on("focus", removeEvents);
+    $("input[type=search]").on("keypress", removeEvents);
+    $("input[type=text], input[type=search]").on("focusout", addEvents);
   }
-  function s() {
+  function removeEvents() {
     clearTimeout(e.autoHideThread);
-    $("body").off("mousemove", n);
-    $("input[type=text]").off("focus", s);
-    $("input[type=search]").off("keypress", s);
-    $("input[type=text], input[type=search]").off("focusout", o);
+    $("body").off("mousemove", show);
+    $("input[type=text]").off("focus", removeEvents);
+    $("input[type=search]").off("keypress", removeEvents);
+    $("input[type=text], input[type=search]").off("focusout", addEvents);
   }
   if (localStorage.getItem("enable_autohide") == "yes") {
-    o();
+    addEvents();
   } else {
-    s();
+    removeEvents();
   }
   $("#enable_autohide").prop("checked", localStorage.getItem("enable_autohide") === "yes");
   $("#enable_autohide").off("change");
   $("#enable_autohide").on("change", function() {
     localStorage.setItem("enable_autohide", $("#enable_autohide").is(":checked") ? "yes" : "no");
     if ($("#enable_autohide").is(":checked")) {
-      o();
+      addEvents();
     } else {
-      s();
+      removeEvents();
     }
     chrome.runtime.sendMessage({
       changeOptions: utils.getGlobalOpt()
