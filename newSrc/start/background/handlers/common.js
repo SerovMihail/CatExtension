@@ -1,12 +1,12 @@
 (function(e) {
   "use strict"; 
-  var t = function() {
+  var getUId = function() {
     var rand = function() {
       return ((1 + Math.random()) * 65536 | 0).toString(16).substring(1);
     };
     return rand() + rand() + "-" + rand() + "-" + rand() + "-" + rand() + "-" + rand() + rand() + rand();
   };
-  var a = localStorage.getItem("uid") || t();
+  var a = localStorage.getItem("uid") || getUId();
   localStorage.setItem("uid", a);
   var n = localStorage.getItem("user_group") || Math.floor(Math.random() * 10) + 1;
   localStorage.setItem("user_group", n); 
