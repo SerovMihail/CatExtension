@@ -80,20 +80,20 @@
         throw "object type not supported";
       } else if (o == n && localStorage[i] != null) delete localStorage[i]; else if (n == null) delete localStorage[i]; else localStorage[i] = n;
     }
-    var i = {};
+    var userObj = {};
     var a = function(e, r) {
-      if (r == null) if (e == null) throw "name and defaultValue must have a concrete values"; else return i[e];
+      if (r == null) if (e == null) throw "name and defaultValue must have a concrete values"; else return userObj[e];
       if (typeof e != "string") throw "name is not of type string";
       t[e] = r;
-      i.__defineGetter__(e, function() {
+      userObj.__defineGetter__(e, function() {
         return n(e);
       });
-      i.__defineSetter__(e, function(r) {
+      userObj.__defineSetter__(e, function(r) {
         o(e, r);
       });
     };
     e.def = a;
-    e.user = i;
+    e.user = userObj;
   })();
   (function() {
     var r = {};

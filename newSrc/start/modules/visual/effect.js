@@ -56,7 +56,7 @@ window.loadAutoHideModule = function(e) {
       s();
     }
     chrome.runtime.sendMessage({
-      changeOptions: utils.getGlobalOptions()
+      changeOptions: utils.getGlobalOpt()
     });
   });
 };
@@ -149,7 +149,7 @@ window.loadSnowModule = function(e) {
       $("#snow_type").parent().parent().parent().fadeOut();
     }
     chrome.runtime.sendMessage({
-      changeOptions: utils.getGlobalOptions()
+      changeOptions: utils.getGlobalOpt()
     });
   });
   if (localStorage.getItem("snow_type")) {

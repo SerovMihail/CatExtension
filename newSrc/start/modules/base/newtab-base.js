@@ -83,7 +83,7 @@
           }
           localStorage.setItem("enable_most_visited", $("#enable_most_visited").is(":checked") ? "yes" : "no");
           chrome.runtime.sendMessage({
-            changeOptions: utils.getGlobalOptions()
+            changeOptions: utils.getGlobalOpt()
           });
           //utils.localstorage2cookie();
         });
@@ -102,7 +102,7 @@
           }
           localStorage.setItem("enable_apps", $("#enable_apps").is(":checked") ? "yes" : "no");
           chrome.runtime.sendMessage({
-            changeOptions: utils.getGlobalOptions()
+            changeOptions: utils.getGlobalOpt()
           });
           //utils.localstorage2cookie();
         });
@@ -121,7 +121,7 @@
           }
           localStorage.setItem("enable_share", $("#enable_share").is(":checked") ? "yes" : "no");
           chrome.runtime.sendMessage({
-            changeOptions: utils.getGlobalOptions()
+            changeOptions: utils.getGlobalOpt()
           });
           //utils.localstorage2cookie();
         });
@@ -148,7 +148,7 @@
           }
           localStorage.setItem("enable_slideshow", $("#enable_slideshow").is(":checked") ? "yes" : "no");
           chrome.runtime.sendMessage({
-            changeOptions: utils.getGlobalOptions()
+            changeOptions: utils.getGlobalOpt()
           });
 
         });
@@ -166,7 +166,7 @@
           s = l + ".jpg";
           o = $("<img>", {
             "data-src": s,
-            src: utils.getExtensionURL(e.imageBuffer[a].fullPath)
+            src: utils.getExtURL(e.imageBuffer[a].fullPath)
           });
           //}
           i.append(o);
@@ -179,7 +179,7 @@
           } else {
             c = $('<span class="mark_favor" favor-for="' + a + '" data-toggle="tooltip" data-placement="bottom" title="Mark this image as favorite"><span class="glyphicon glyphicon-heart-empty"></span></span>');
           }
-          utils.resetClickHandler(c, function () {
+          utils.resetClickHnd(c, function () {
             var e = $(this).attr("favor-for");
             var t = [];
             if (localStorage.getItem("mark_favor")) t = JSON.parse(localStorage.getItem("mark_favor"));
@@ -290,7 +290,7 @@
           $("#click-Rate").show();
         }
       });
-      utils.resetClickHandler($("#click-Rate"), function () {
+      utils.resetClickHnd($("#click-Rate"), function () {
         $("#click-Rate").attr("class", ($("#click-Rate").attr("class") || "").replace(/highlight[a-z_-]*[ ]*/gi, ""));
         localStorage.setItem("rate_clicked", "yes");
         //utils.localstorage2cookie();
@@ -300,32 +300,32 @@
         chrome.extension.sendMessage("click-Rate");
       });
 
-      utils.resetClickHandler($(".lnk_privacy"), function () {
+      utils.resetClickHnd($(".lnk_privacy"), function () {
         chrome.extension.sendMessage("click-Privacy");
       });
 
-      utils.resetClickHandler($(".click-Fanpage"), function () {
+      utils.resetClickHnd($(".click-Fanpage"), function () {
         chrome.extension.sendMessage("click-Rate");
       });
-      utils.resetClickHandler($(".click-ShareFB"), function () {
+      utils.resetClickHnd($(".click-ShareFB"), function () {
         chrome.extension.sendMessage("click-ShareFB");
       });
-      utils.resetClickHandler($(".click-ShareGG"), function () {
+      utils.resetClickHnd($(".click-ShareGG"), function () {
         chrome.extension.sendMessage("click-ShareGG");
       });
-      utils.resetClickHandler($(".click-ShareTW"), function () {
+      utils.resetClickHnd($(".click-ShareTW"), function () {
         chrome.extension.sendMessage("click-ShareTW");
       });
-      utils.resetClickHandler($(".click-SharePI"), function () {
+      utils.resetClickHnd($(".click-SharePI"), function () {
         chrome.extension.sendMessage("click-SharePI");
       });
-      utils.resetClickHandler($(".click-ShareTU"), function () {
+      utils.resetClickHnd($(".click-ShareTU"), function () {
         chrome.extension.sendMessage("click-ShareTU");
       });
-      utils.resetClickHandler($(".click-ShareVK"), function () {
+      utils.resetClickHnd($(".click-ShareVK"), function () {
         chrome.extension.sendMessage("click-ShareVK");
       });
-      utils.resetClickHandler($("#tool_menu a"), function () {
+      utils.resetClickHnd($("#tool_menu a"), function () {
         if ($(this).attr("id") == "mail-address-shower") return;
         chrome.extension.sendMessage({
           name: "click-Apps",
@@ -345,7 +345,7 @@
             localStorage.setItem("theme_clicked", "yes");
             //utils.localstorage2cookie();
           };
-          utils.resetClickHandler($("#background_selector_menu"), function (l) {
+          utils.resetClickHnd($("#background_selector_menu"), function (l) {
             l.preventDefault();
             l.stopPropagation();
             $("#background_selector_widget").fadeIn();

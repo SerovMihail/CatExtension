@@ -136,7 +136,7 @@
             if (o >= 10) break;
           }
         }
-        utils.resetClickHandler($("#topsites_menu a"), function(e) {
+        utils.resetClickHnd($("#topsites_menu a"), function(e) {
           chrome.extension.sendMessage("click-TopSites");
         });
         if (localStorage.getItem("hideLink")) {
@@ -148,7 +148,7 @@
       });
     }
     function h() {
-      utils.resetClickHandler($(".closebtn"), function() {
+      utils.resetClickHnd($(".closebtn"), function() {
         if ($(this).attr("close-for")) {
           c.push($(this).attr("close-for"));
           localStorage.setItem("hideLink", JSON.stringify(c));
@@ -180,7 +180,7 @@
         }
       }
       $(".undo-box").removeClass("undo-box-hide");
-      utils.resetClickHandler($("#undobtn"), function() {
+      utils.resetClickHnd($("#undobtn"), function() {
         if (e === "mostVisited") {
           c.pop();
           localStorage.setItem("hideLink", JSON.stringify(c));
@@ -263,100 +263,100 @@
     $("footer").off("mouseleave");
     $("footer").on("mouseleave", _);
     $("#topsites_menu").hide();
-    utils.resetMouseEnterHandler($("#lnk_topsites"), function(e) {
+    utils.resetMouseEnterHnd($("#lnk_topsites"), function(e) {
       e.stopPropagation();
       $("#topsites_menu").show(200);
       $("#share_menu").fadeOut(200);
       $("#support_menu").fadeOut(200);
       $("#tool_menu").fadeOut(200);
     });
-    utils.resetClickHandler($("#lnk_topsites"), function(e) {
+    utils.resetClickHnd($("#lnk_topsites"), function(e) {
       e.stopPropagation();
       $("#topsites_menu").toggle(200);
       $("#share_menu").fadeOut(200);
       $("#support_menu").fadeOut(200);
       $("#tool_menu").fadeOut(200);
     });
-    utils.resetMouseEnterHandler($("#topsites_menu"), function(e) {
+    utils.resetMouseEnterHnd($("#topsites_menu"), function(e) {
       e.stopPropagation();
       $("#topsites_menu").off("mouseleave");
       $("#topsites_menu").on("mouseleave", _);
     });
-    utils.resetClickHandler($("#topsites_menu"), function(e) {
+    utils.resetClickHnd($("#topsites_menu"), function(e) {
       e.stopPropagation();
     });
     $("#share_menu").hide();
-    utils.resetMouseEnterHandler($("#lnk_share"), function(e) {
+    utils.resetMouseEnterHnd($("#lnk_share"), function(e) {
       e.stopPropagation();
       $("#topsites_menu").fadeOut(200);
       $("#share_menu").show(200);
       $("#support_menu").fadeOut(200);
       $("#tool_menu").fadeOut(200);
     });
-    utils.resetClickHandler($("#lnk_share"), function(e) {
+    utils.resetClickHnd($("#lnk_share"), function(e) {
       e.stopPropagation();
       $("#topsites_menu").fadeOut(200);
       $("#share_menu").toggle(200);
       $("#support_menu").fadeOut(200);
       $("#tool_menu").fadeOut(200);
     });
-    utils.resetMouseEnterHandler($("#share_menu"), function(e) {
+    utils.resetMouseEnterHnd($("#share_menu"), function(e) {
       e.stopPropagation();
       $("#share_menu").off("mouseleave");
       $("#share_menu").on("mouseleave", _);
     });
-    utils.resetClickHandler($("#share_menu"), function(e) {
+    utils.resetClickHnd($("#share_menu"), function(e) {
       e.stopPropagation();
       _();
     });
     $("#support_menu").hide();
-    utils.resetMouseEnterHandler($("#lnk_support"), function(e) {
+    utils.resetMouseEnterHnd($("#lnk_support"), function(e) {
       e.stopPropagation();
       $("#topsites_menu").fadeOut(200);
       $("#share_menu").fadeOut(200);
       $("#support_menu").show(200);
       $("#tool_menu").fadeOut(200);
     });
-    utils.resetClickHandler($("#lnk_support"), function(e) {
+    utils.resetClickHnd($("#lnk_support"), function(e) {
       e.stopPropagation();
       $("#topsites_menu").fadeOut(200);
       $("#share_menu").fadeOut(200);
       $("#support_menu").toggle(200);
       $("#tool_menu").fadeOut(200);
     });
-    utils.resetMouseEnterHandler($("#support_menu"), function(e) {
+    utils.resetMouseEnterHnd($("#support_menu"), function(e) {
       e.stopPropagation();
       $("#support_menu").off("mouseleave");
       $("#support_menu").on("mouseleave", _);
     });
-    utils.resetClickHandler($("#support_menu"), function(e) {
+    utils.resetClickHnd($("#support_menu"), function(e) {
       e.stopPropagation();
       _();
     });
     $("#tool_menu").hide();
-    utils.resetMouseEnterHandler($("#lnk_tool"), function(e) {
+    utils.resetMouseEnterHnd($("#lnk_tool"), function(e) {
       e.stopPropagation();
       $("#topsites_menu").fadeOut(200);
       $("#share_menu").fadeOut(200);
       $("#support_menu").fadeOut(200);
       $("#tool_menu").show(200);
     });
-    utils.resetClickHandler($("#lnk_tool"), function(e) {
+    utils.resetClickHnd($("#lnk_tool"), function(e) {
       e.stopPropagation();
       $("#topsites_menu").fadeOut(200);
       $("#share_menu").fadeOut(200);
       $("#support_menu").fadeOut(200);
       $("#tool_menu").toggle(200);
     });
-    utils.resetMouseEnterHandler($("#tool_menu"), function(e) {
+    utils.resetMouseEnterHnd($("#tool_menu"), function(e) {
       e.stopPropagation();
       $("#tool_menu").off("mouseleave");
       $("#tool_menu").on("mouseleave", _);
     });
-    utils.resetClickHandler($("#tool_menu"), function(e) {
+    utils.resetClickHnd($("#tool_menu"), function(e) {
       e.stopPropagation();
     });
-    utils.resetClickHandler($(document), function() {
+    utils.resetClickHnd($(document), function() {
       _();
       $("#search-suggestion-pad").hide();
       if ($("#background_selector_widget").css("opacity") == 1) {

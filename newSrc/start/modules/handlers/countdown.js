@@ -38,7 +38,7 @@ window.loadCountDownModule = function(e) {
         $(".countDown").removeClass("center_center");
       }
       chrome.runtime.sendMessage({
-        changeOptions: utils.getGlobalOptions()
+        changeOptions: utils.getGlobalOpt()
       });
     });
     var t = 0;
@@ -65,7 +65,7 @@ window.loadCountDownModule = function(e) {
           t = new Date($(this).val()).getTime();
           localStorage.setItem("countdownToTime", $(this).val());
           chrome.runtime.sendMessage({
-            changeOptions: utils.getGlobalOptions()
+            changeOptions: utils.getGlobalOpt()
           });
         }
         if (e.keyCode == 13) {
@@ -83,7 +83,7 @@ window.loadCountDownModule = function(e) {
         $("#countdownTitle").text(r);
         localStorage.setItem("countdownText", $(this).val());
         chrome.runtime.sendMessage({
-          changeOptions: utils.getGlobalOptions()
+          changeOptions: utils.getGlobalOpt()
         });
         if (e.keyCode == 13) {
           $(this).trigger("blur");
@@ -163,7 +163,7 @@ window.loadCountDownModule = function(e) {
       clearTimeout(e.countDownThread);
     }
     chrome.runtime.sendMessage({
-      changeOptions: utils.getGlobalOptions()
+      changeOptions: utils.getGlobalOpt()
     });
   });
 };

@@ -78,15 +78,15 @@
     mark_time: function (e) {
       this.set(e, new Date().getTime());
     },
-    resetMouseEnterHandler: function (e, t) {
+    resetMouseEnterHnd: function (e, t) {
       e.off("mouseenter");
       e.on("mouseenter", t);
     },
-    resetClickHandler: function (e, t) {
+    resetClickHnd: function (e, t) {
       e.off("click");
       e.on("click", t);
     },
-    getGlobalOptions: function () {
+    getGlobalOpt: function () {
       var t = {       
         disable_most_visited: localStorage.getItem("enable_most_visited") == "yes" ? "no" : "yes",
         disable_apps: localStorage.getItem("enable_apps") == "yes" ? "no" : "yes",
@@ -108,7 +108,7 @@
       }
       return t;
     },    
-    getExtensionURL: function (e) {
+    getExtURL: function (e) {
       return chrome.extension.getURL(e);
     }  
   };
