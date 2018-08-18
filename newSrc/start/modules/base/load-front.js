@@ -1,12 +1,7 @@
 (function (e) {
-
-
   e.getAllImages = function () {
-
     chrome.runtime.getPackageDirectoryEntry(function (s) {
-
       s.getDirectory('start/static/images', {}, function (imagesDirectory) {
-
         var dirReader = imagesDirectory.createReader();
         var buffer = [];
         getEntries = function (callback) {
@@ -23,7 +18,6 @@
             /* handle error -- error is a FileError object */
           });
         };
-
         getEntries(function (buffer) {
           e.imageBuffer = buffer.map(function (el) {
             return {
@@ -34,7 +28,6 @@
           e.setNewTabBackground();
         });
       });
-
     });
 
   };
@@ -57,31 +50,31 @@
   };
   e.setNewTabBackground = function () {
 
-    var t = "" + localStorage.getItem("last_bg");
-    var favorArr = [], a = [];
+    var lastBg = "" + localStorage.getItem("last_bg");
+    var favorArr = [], newArr = [];
     if (localStorage.getItem("mark_favor")) {
       favorArr = JSON.parse(localStorage.getItem("mark_favor"));
-      if (favorArr.length >= 2 && favorArr.indexOf(t) > -1) {
-        favorArr.splice(favorArr.indexOf(t), 1);
+      if (favorArr.length >= 2 && favorArr.indexOf(lastBg) > -1) {
+        favorArr.splice(favorArr.indexOf(lastBg), 1);
       }
-      if (favorArr.length) a = favorArr.join("|").split("|");
+      if (favorArr.length) newArr = favorArr.join("|").split("|");
     }
     for (var n = 1; n <= user["bg_img_list"]; n++) {
-      if ("" + n !== t) a.push("" + n);
+      if ("" + n !== lastBg) newArr.push("" + n);
     }
     if (localStorage.getItem("shuffle_background") == "yes" || localStorage.getItem("shuffle_favorites") == "yes" && favorArr.length == 0) {
-      var g;
-      if (t == "0") {
-        g = 1;
+      var gIndex;
+      if (lastBg == "0") {
+        gIndex = 1;
       } else {
-        g = a[Math.floor(Math.random() * a.length)];
+        gIndex = newArr[Math.floor(Math.random() * newArr.length)];
       }
-      chosenRandomBG = "bg-" + ("0" + g).slice(-2) + ".jpg";
+      chosenRandomBG = "bg-" + ("0" + gIndex).slice(-2) + ".jpg";
     } else if (localStorage.getItem("shuffle_favorites") == "yes") {
-      var g = favorArr[Math.floor(Math.random() * favorArr.length)];
-      chosenRandomBG = "bg-" + ("0" + g).slice(-2) + ".jpg";
+      var gIndex = favorArr[Math.floor(Math.random() * favorArr.length)];
+      chosenRandomBG = "bg-" + ("0" + gIndex).slice(-2) + ".jpg";
     } else {
-      chosenRandomBG = "bg-" + ("0" + t).slice(-2) + ".jpg";
+      chosenRandomBG = "bg-" + ("0" + lastBg).slice(-2) + ".jpg";
     }
     e.setBackgroundGIFOrJPG(chosenRandomBG);
   };

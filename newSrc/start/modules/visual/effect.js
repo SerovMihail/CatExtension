@@ -1,26 +1,34 @@
-window.loadAutoHideModule = function(e) {
+window.loadAutoHideModule = function (e) {
   if (e.autoHideThread) clearTimeout(e.autoHideThread);
   e.autoHideThread = null;
   function delay() {
     clearTimeout(e.autoHideThread);
     e.autoHideThread = setTimeout(a, 1e4);
   }
+  function show() {
+    $("#wrapper").fadeIn(1e3);
+    delay();
+  }
   function hide() {
     if ($("#background_selector_widget").css("display") == "none") {
       $("#wrapper").fadeOut(1e3);
     }
   }
-  function show() {
-    $("#wrapper").fadeIn(1e3);
-    delay();
+
+  function removeEvents() {
+    clearTimeout(e.autoHideThread);
+    $("body").off("mousemove", show);
+    $("input[type=text]").off("focus", removeEvents);
+    $("input[type=search]").off("keypress", removeEvents);
+    $("input[type=text], input[type=search]").off("focusout", addEvents);
   }
   function addEvents() {
     e.listAllThreads.threadAutoHide = {
-      pause: function() {
+      pause: function () {
         clearTimeout(e.autoHideThread);
         hide();
       },
-      resume: function() {
+      resume: function () {
         show();
       }
     };
@@ -34,13 +42,7 @@ window.loadAutoHideModule = function(e) {
     $("input[type=search]").on("keypress", removeEvents);
     $("input[type=text], input[type=search]").on("focusout", addEvents);
   }
-  function removeEvents() {
-    clearTimeout(e.autoHideThread);
-    $("body").off("mousemove", show);
-    $("input[type=text]").off("focus", removeEvents);
-    $("input[type=search]").off("keypress", removeEvents);
-    $("input[type=text], input[type=search]").off("focusout", addEvents);
-  }
+
   if (localStorage.getItem("enable_autohide") == "yes") {
     addEvents();
   } else {
@@ -48,7 +50,7 @@ window.loadAutoHideModule = function(e) {
   }
   $("#enable_autohide").prop("checked", localStorage.getItem("enable_autohide") === "yes");
   $("#enable_autohide").off("change");
-  $("#enable_autohide").on("change", function() {
+  $("#enable_autohide").on("change", function () {
     localStorage.setItem("enable_autohide", $("#enable_autohide").is(":checked") ? "yes" : "no");
     if ($("#enable_autohide").is(":checked")) {
       addEvents();
@@ -61,11 +63,11 @@ window.loadAutoHideModule = function(e) {
   });
 };
 
-window.loadSnowModule = function(e) {
+window.loadSnowModule = function (e) {
   if (e.change_interval) clearInterval(e.change_interval);
   e.change_interval = null;
-  var t = function() {
-    var t;
+  var t = function () {
+    var type;
     var a = $('<div id="flake" class="snow" />').css({
       position: "absolute",
       "z-index": 999999999,
@@ -73,61 +75,67 @@ window.loadSnowModule = function(e) {
       cursor: "default",
       "user-select": "none"
     }).html("&#10052;");
-    var n = function() {
-      var e = $(document).height(), n = $(document).width();
-      var o = Math.random() * n - 100, s = .5 + Math.random(), l = t.minSize + Math.random() * t.maxSize, i = e - 40, r = o - 250 + Math.random() * 200, c = e * 10 + Math.random() * 5e3;
-      a.clone().appendTo("body").html(t.snow_type).css({
-        left: o,
-        opacity: s,
-        "font-size": l,
-        color: t.flakeColor
+    var n = function () {
+      var height = $(document).height(),
+        width = $(document).width();
+      var leftDistance = Math.random() * width - 100,
+        customOpacity = .5 + Math.random(),
+        customFontSize = type.minSize + Math.random() * type.maxSize,
+        customTop = height - 40,
+        customLeftDistance = leftDistance - 250 + Math.random() * 200,
+        duration = height * 10 + Math.random() * 5e3;
+      a.clone().appendTo("body").html(type.snow_type).css({
+        left: leftDistance,
+        opacity: customOpacity,
+        "font-size": customFontSize,
+        color: type.flakeColor
       }).animate({
-        top: i,
-        left: r,
+        top: customTop,
+        left: customLeftDistance,
         opacity: .3
-      }, c, "linear", function() {
+      }, duration, "linear", function () {
         $(this).remove();
       });
     };
     if (!localStorage.getItem("snow_type")) localStorage.setItem("snow_type", "flake");
     switch (localStorage.getItem("snow_type")) {
-     case "flake":
-      t = {
-        minSize: 10,
-        maxSize: 25,
-        newOn: 500,
-        flakeColor: "#0099FF",
-        snow_type: "&#10052;"
-      };
-      break;
+      case "flake":
+        type = {
+          minSize: 10,
+          maxSize: 25,
+          newOn: 500,
+          flakeColor: "#0099FF",
+          snow_type: "&#10052;"
+        };
+        break;
 
-     case "ball":
-      t = {
-        minSize: 5,
-        maxSize: 20,
-        newOn: 500,
-        flakeColor: "#bbb",
-        snow_type: "&#x2022;"
-      };
-      break;
+      case "ball":
+        type = {
+          minSize: 5,
+          maxSize: 20,
+          newOn: 500,
+          flakeColor: "#bbb",
+          snow_type: "&#x2022;"
+        };
+        break;
     }
     if (e.listAllThreads.threadSnow) {
       e.listAllThreads.threadSnow.pause();
     }
     e.listAllThreads.threadSnow = {
-      pause: function() {
+      pause: function () {
         $(".snow").pause();
         clearInterval(e.change_interval);
       },
-      resume: function() {
+      resume: function () {
         $(".snow").resume();
         clearInterval(e.change_interval);
-        e.change_interval = setInterval(n, t.newOn);
+        e.change_interval = setInterval(n, type.newOn);
       }
     };
     e.listAllThreads.threadSnow.resume();
   };
-  var a = function() {
+  var a = function () {
     $(".snow").resume();
     clearInterval(e.change_interval);
   };
@@ -139,7 +147,7 @@ window.loadSnowModule = function(e) {
     $("#snow_type").parent().parent().parent().hide();
   }
   $("#enable_snow").prop("checked", localStorage.getItem("enable_snow") === "yes");
-  $("#enable_snow").off("change").on("change", function() {
+  $("#enable_snow").off("change").on("change", function () {
     localStorage.setItem("enable_snow", $("#enable_snow").is(":checked") ? "yes" : "no");
     if ($("#enable_snow").is(":checked")) {
       t();
@@ -155,7 +163,7 @@ window.loadSnowModule = function(e) {
   if (localStorage.getItem("snow_type")) {
     $("#snow_type").val(localStorage.getItem("snow_type"));
   }
-  $("#snow_type").off("change").on("change", function() {
+  $("#snow_type").off("change").on("change", function () {
     localStorage.setItem("snow_type", $(this).val());
     a();
     t();
