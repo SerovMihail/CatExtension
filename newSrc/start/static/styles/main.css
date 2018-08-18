@@ -2048,7 +2048,7 @@ ul#countdown li .label {
 }
 
 .icon_classroom {
-  background-image: url('chrome-extension://__MSG_@@extension_id__/start/static/icons/shareResources/classroom.png');
+  background-image: url('chrome-extension://__MSG_@@extension_id__/start/static/icons/googleResources/classroom.png');
   background-size: cover;
 }
 

@@ -62,7 +62,7 @@
   (function() {
     var r = "";
     var t = {};
-    function n(e) {
+    function getter(e) {
       var n = localStorage[r + e];
       if (n == null) {
         n = t[e];
@@ -73,7 +73,7 @@
       }
       return n;
     }
-    function o(e, n) {
+    function setter(e, n) {
       var o = t[e];
       var i = r + e;
       if (typeof n == "object") {
@@ -81,24 +81,24 @@
       } else if (o == n && localStorage[i] != null) delete localStorage[i]; else if (n == null) delete localStorage[i]; else localStorage[i] = n;
     }
     var userObj = {};
-    var a = function(e, r) {
+    var defineUser = function(e, r) {
       if (r == null) if (e == null) throw "name and defaultValue must have a concrete values"; else return userObj[e];
       if (typeof e != "string") throw "name is not of type string";
       t[e] = r;
       userObj.__defineGetter__(e, function() {
-        return n(e);
+        return getter(e);
       });
       userObj.__defineSetter__(e, function(r) {
-        o(e, r);
+        setter(e, r);
       });
     };
-    e.def = a;
+    e.def = defineUser;
     e.user = userObj;
   })();
   (function() {
     var r = {};
-    var t = {};
-    var n = function(e, n) {
+    var configObj = {};
+    var defineConfig = function(e, n) {
       r[e] = n;
       t.__defineGetter__(e, function() {
         return r[e];
@@ -107,8 +107,8 @@
         throw "config is not mutable, if you need mutable key/val, use preferences machanism";
       });
     };
-    e.conf = n;
-    e.config = t;
+    e.conf = defineConfig;
+    e.config = configObj;
   })();
   e.storageDefaultKeys = [];
   e.storageDefault = function(r, t) {
