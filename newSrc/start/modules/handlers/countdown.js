@@ -1,12 +1,12 @@
-window.loadCountDownModule = function(e) {
+window.loadCountDownModule = function (e) {
   if (e.countDownThread) clearTimeout(e.countDownThread);
   e.countDownThread = null;
-  var t = $("#enable_countdown");
-  var o = $("#countdown_setPosition");
-  var n = $("#countdown_setText");
-  var a = $("#countdown_setTime");
-  var r = function() {
-    o.val(localStorage.getItem("countdownPosition"));
+  var enableCountDownElem = $("#enable_countdown");
+  var setPositionElem = $("#countdown_setPosition");
+  var setTextElem = $("#countdown_setText");
+  var setTimeElem = $("#countdown_setTime");
+  var enableCountdown = function () {
+    setPositionElem.val(localStorage.getItem("countdownPosition"));
     $(".countDown").removeClass("miniSize");
     $(".countDown").removeClass("center_center");
     if (localStorage.getItem("countdownPosition")) {
@@ -19,12 +19,12 @@ window.loadCountDownModule = function(e) {
         $(".countDown").addClass("miniSize");
       }
     }
-    n.parent().parent().fadeIn();
-    a.parent().parent().fadeIn();
-    o.parent().parent().fadeIn();
+    setTextElem.parent().parent().fadeIn();
+    setTimeElem.parent().parent().fadeIn();
+    setPositionElem.parent().parent().fadeIn();
     $("#countdown").fadeIn();
-    o.off("change");
-    o.on("change", function() {
+    setPositionElem.off("change");
+    setPositionElem.on("change", function () {
       localStorage.setItem("countdownPosition", $(this).val());
       var e = $(this).val().toLowerCase();
       if (e === "bottom center") {
@@ -41,28 +41,28 @@ window.loadCountDownModule = function(e) {
         changeOptions: utils.getGlobalOpt()
       });
     });
-    var t = 0;
-    var r = "";
+    var countdownToTime = 0;
+    var countdownText = "";
     if (localStorage.getItem("countdownToTime")) {
-      a.val(localStorage.getItem("countdownToTime"));
-      t = new Date(localStorage.getItem("countdownToTime")).getTime();
+      setTimeElem.val(localStorage.getItem("countdownToTime"));
+      countdownToTime = new Date(localStorage.getItem("countdownToTime")).getTime();
     }
     if (localStorage.getItem("countdownText")) {
-      n.val(localStorage.getItem("countdownText"));
-      r = "Countdown to " + localStorage.getItem("countdownText");
-      $("#countdownTitle").text(r);
+      setTextElem.val(localStorage.getItem("countdownText"));
+      countdownText = "Countdown to " + localStorage.getItem("countdownText");
+      $("#countdownTitle").text(countdownText);
     }
-    var i = function(e) {
+    var setTimeElem = function (e) {
       if (e.handleObj.type == "blur" || e.keyCode == 13) {
         if ($(this).val() == "") {
           $(this).attr("type", "text");
           $(this).val("Invalid time");
-          a.off("focus");
-          a.on("focus", function() {
+          setTimeElem.off("focus");
+          setTimeElem.on("focus", function () {
             $(this).attr("type", "datetime-local");
           });
         } else {
-          t = new Date($(this).val()).getTime();
+          countdownToTime = new Date($(this).val()).getTime();
           localStorage.setItem("countdownToTime", $(this).val());
           chrome.runtime.sendMessage({
             changeOptions: utils.getGlobalOpt()
@@ -73,14 +73,14 @@ window.loadCountDownModule = function(e) {
         }
       }
     };
-    var l = function(e) {
+    var setTextElem = function (e) {
       if (e.handleObj.type == "blur" || e.keyCode == 13) {
         if ($(this).val().length > 0) {
-          r = "Countdown to " + $(this).val();
+          countdownText = "Countdown to " + $(this).val();
         } else {
-          r = "";
+          countdownText = "";
         }
-        $("#countdownTitle").text(r);
+        $("#countdownTitle").text(countdownText);
         localStorage.setItem("countdownText", $(this).val());
         chrome.runtime.sendMessage({
           changeOptions: utils.getGlobalOpt()
@@ -90,27 +90,27 @@ window.loadCountDownModule = function(e) {
         }
       }
     };
-    a.off("blur");
-    a.on("blur", i);
-    a.off("keydown");
-    a.on("keydown", i);
-    n.off("blur");
-    n.on("blur", l);
-    n.off("keydown");
-    n.on("keydown", l);
+    setTimeElem.off("blur");
+    setTimeElem.on("blur", setTimeElem);
+    setTimeElem.off("keydown");
+    setTimeElem.on("keydown", setTimeElem);
+    setTextElem.off("blur");
+    setTextElem.on("blur", setTextElem);
+    setTextElem.off("keydown");
+    setTextElem.on("keydown", setTextElem);
     var c;
     var s;
     var u;
     var d;
     function m() {
       var e = new Date().getTime();
-      if (e > t) {
+      if (e > countdownToTime) {
         c = 0;
         s = 0;
         u = 0;
         d = 0;
       } else {
-        var o = (e - t) / 1e3;
+        var o = (e - countdownToTime) / 1e3;
         o = Math.abs(Math.floor(o));
         c = Math.floor(o / (24 * 60 * 60));
         d = o - c * 24 * 60 * 60;
@@ -131,34 +131,34 @@ window.loadCountDownModule = function(e) {
     }
     e.countDownThread = setTimeout(w, 1);
     e.listAllThreads.threadCountdown = {
-      pause: function() {
+      pause: function () {
         clearInterval(e.countDownThread);
       },
-      resume: function() {
+      resume: function () {
         w();
       }
     };
   };
   if (localStorage.getItem("enable_countdown") == "yes") {
-    t.prop("checked", true);
-    r();
+    enableCountDownElem.prop("checked", true);
+    enableCountdown();
   } else {
-    t.prop("checked", false);
-    o.parent().parent().hide();
-    a.parent().parent().hide();
-    n.parent().parent().hide();
+    enableCountDownElem.prop("checked", false);
+    setPositionElem.parent().parent().hide();
+    setTimeElem.parent().parent().hide();
+    setTextElem.parent().parent().hide();
     $("#countdown").hide();
   }
-  t.off("change");
-  t.on("change", function() {
+  enableCountDownElem.off("change");
+  enableCountDownElem.on("change", function () {
     if ($(this).is(":checked")) {
       localStorage.setItem("enable_countdown", "yes");
-      r();
+      enableCountdown();
     } else {
       localStorage.setItem("enable_countdown", "no");
-      n.parent().parent().fadeOut();
-      a.parent().parent().fadeOut();
-      o.parent().parent().fadeOut();
+      setTextElem.parent().parent().fadeOut();
+      setTimeElem.parent().parent().fadeOut();
+      setPositionElem.parent().parent().fadeOut();
       $("#countdown").fadeOut();
       clearTimeout(e.countDownThread);
     }

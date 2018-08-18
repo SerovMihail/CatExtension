@@ -2,15 +2,15 @@
   try {
     var flag = false;
     function setActive() {
-      var e = parseInt(localStorage.getItem("curTabActive")) || 0;
+      var currentActiveTabIndex = parseInt(localStorage.getItem("curTabActive")) || 0;
       $("#tabs").tabs({
-        active: e,
+        active: currentActiveTabIndex,
         activate: function () {
-          if (e === 0) {
+          if (currentActiveTabIndex === 0) {
             localStorage.setItem("curTabActive", 0);
-          } else if (e == 1) {
+          } else if (currentActiveTabIndex == 1) {
             localStorage.setItem("curTabActive", 1);
-          } else if (e == 2) {
+          } else if (currentActiveTabIndex == 2) {
             localStorage.setItem("curTabActive", 2);
           }
         }
@@ -152,19 +152,19 @@
       e.loadGlobalOptions();
       e.loadImagesInOption = function () {
         for (var a = 0; a < user["bg_img_list"]; a++) {
-          var l = "bg-" + ("0" + a).slice(-2);
-          var i = $("<li>");
-          var o;
-          var s;
-          s = l + ".jpg";
-          o = $("<img>", {
-            "data-src": s,
+          var bgName = "bg-" + ("0" + a).slice(-2);
+          var newLi = $("<li>");
+          var newImg;
+          var dataSrc;
+          dataSrc = bgName + ".jpg";
+          newImg = $("<img>", {
+            "data-src": dataSrc,
             src: utils.getExtURL(e.imageBuffer[a].fullPath)
           });
           //}
-          i.append(o);
+          newLi.append(newImg);
 
-          $("#images_selector").append(i);
+          $("#images_selector").append(newLi);
           var c, g = [];
           if (localStorage.getItem("mark_favor")) g = JSON.parse(localStorage.getItem("mark_favor"));
           if (g.indexOf(a + "") > -1) {
