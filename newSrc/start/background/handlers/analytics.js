@@ -93,7 +93,7 @@
     if (localStorage.getItem("installdt") === null) {
       localStorage.setItem("installdt", s);
     }
-    y();
+    handleClick();
     f = true;
     chrome.tabs.create({
       url: localStorage.getItem("newtab_url"),
@@ -156,7 +156,7 @@
       }
     }
   });
-  function y() {
+  function handleClick() {
     
     if (!localStorage.getItem("enable_most_visited")) {
       if (!localStorage.getItem("disable_most_visited")) {

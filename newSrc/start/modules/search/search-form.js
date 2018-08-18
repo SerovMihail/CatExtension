@@ -1,12 +1,12 @@
-(function(e) {
+(function (e) {
   "use strict";
   var t = null;
   if (!SEARCH_ENGINES[localStorage["sengine"]]) {
     delete localStorage["sengine"];
   }
-  if (localStorage["sengine"] == undefined) setTimeout(function() {
+  if (localStorage["sengine"] == undefined) setTimeout(function () {
     trackStatusEvent("newtab");
-  }, 3e3); else setTimeout(function() {
+  }, 3e3); else setTimeout(function () {
     trackStatusEvent("newtab");
   }, 1e3);
   function o(e, t) {
@@ -36,7 +36,7 @@
     }
     utils.count("c.snt");
     utils.mark_time("act.snt");
-    trackStatusEvent("search-" + t.ShortName, null, a, function() {
+    trackStatusEvent("search-" + t.ShortName, null, a, function () {
       try {
         var t = [];
         if (localStorage.getItem("se_txt")) t = ("" + localStorage.getItem("se_txt")).split("|");
@@ -53,10 +53,10 @@
   }
   var i = "web";
   user["selected_cat"] = i;
-  $(document).ready(function() {
+  $(document).ready(function () {
     d();
     var o = $("#search-input");
-    var s = [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ];   
+    var s = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     var c = [];
     if (localStorage.getItem("hideLink")) c = JSON.parse(localStorage.getItem("hideLink"));
     var u = [];
@@ -65,7 +65,7 @@
     }
     function d() {
       $("#tool_menu").html(`\n        <div><a id="tool_myaccount"  href="https://myaccount.google.com/"><i class="icon_myaccount"></i>My Account</a><div class="closebtn" hide-app="https://myaccount.google.com/"></div></div>\n        <div><a id="tool_gmail"      href="https://mail.google.com/mail/"><i class="icon_gmail"></i>Gmail</a><div class="closebtn" hide-app="https://mail.google.com/mail/"></div></div>\n        <div><a id="tool_youtube"    href="https://www.youtube.com/"><i class="icon_youtube"></i>Youtube</a><div class="closebtn" hide-app="https://www.youtube.com/"></div></div>\n        <div><a id="tool_drive"      href="https://drive.google.com/"><i class="icon_drive"></i>Drive</a><div class="closebtn" hide-app="https://drive.google.com/"></div></div>\n        <div><a id="tool_documents"  href="https://docs.google.com/document/"><i class="icon_documents"></i>Docs</a><div class="closebtn" hide-app="https://docs.google.com/document/"></div></div>\n        <div><a id="tool_contacts"   href="https://contacts.google.com/"><i class="icon_contacts"></i>Contacts</a><div class="closebtn" hide-app="https://contacts.google.com/"></div></div>\n        <div><a id="tool_calendar"   href="https://calendar.google.com/"><i class="icon_calendar"></i>Calendar</a><div class="closebtn" hide-app="https://calendar.google.com/"></div></div>\n        <div><a id="tool_photos"     href="https://photos.google.com/"><i class="icon_photos"></i>Photos</a><div class="closebtn" hide-app="https://photos.google.com/"></div></div>\n        <div><a id="tool_news"       href="https://news.google.com/"><i class="icon_news"></i>News</a><div class="closebtn" hide-app="https://news.google.com/"></div></div>\n        <div><a id="tool_googleplus" href="https://plus.google.com/"><i class="icon_googleplus"></i>Google+</a><div class="closebtn" hide-app="https://plus.google.com/"></div></div>\n        <div><a id="tool_hangouts"   href="https://hangouts.google.com/"><i class="icon_hangouts"></i>Hangouts</a><div class="closebtn" hide-app="https://hangouts.google.com/"></div></div>\n        <div><a id="tool_googlemap"  href="https://maps.google.com/"><i class="icon_googlemap"></i>Google Maps</a><div class="closebtn" hide-app="https://maps.google.com/"></div></div>\n        <div><a id="tool_classroom"  href="https://classroom.google.com/"><i class="icon_classroom"></i>Google Classroom</a><div class="closebtn" hide-app="https://classroom.google.com/"></div></div>\n        <hr>\n        <div><a id="tool_facebook"   href="https://www.facebook.com/"><i class="icon_facebook"></i>Facebook</a><div class="closebtn" hide-app="https://www.facebook.com/"></div></div>\n        `);
-      var e = [ "Gmail", "YouTube", "Drive", "Docs", "Contacts", "Photos", "Calendar", "Google+", "Hangouts", "Google Maps", "Google Classroom", "Google Search" ];
+      var e = ["Gmail", "YouTube", "Drive", "Docs", "Contacts", "Photos", "Calendar", "Google+", "Hangouts", "Google Maps", "Google Classroom", "Google Search"];
       function t(t) {
         for (var o = 0; o < e.length; o++) {
           if (e[o] === t || "Google " + e[o] === t) {
@@ -74,8 +74,8 @@
         }
         return false;
       }
-      chrome.management.getAll(function(e) {
-        var filterArr = e.filter(function(e) {
+      chrome.management.getAll(function (e) {
+        var filterArr = e.filter(function (e) {
           return typeof e.appLaunchUrl !== "undefined";
         });
         for (var a = 0; a < filterArr.length; a++) {
@@ -92,7 +92,7 @@
           div2.setAttribute("hide-app", "app:" + iTag.id);
           iTag.setAttribute("style", "background-image:url('" + i.icons[0].url + "');background-size:cover;");
           links.setAttribute("id", iTag.id);
-          links.addEventListener("click", function() {
+          links.addEventListener("click", function () {
             chrome.management.launchApp(this.id);
           });
           links.appendChild(iTag);
@@ -119,13 +119,13 @@
     function m() {
       chrome.runtime.sendMessage({
         topSites: true
-      }, function(t) {
+      }, function (t) {
         var o = 0;
         for (var a = 0; a < t.length; a++) {
           if (c.indexOf(t[a].url) >= 0) {
             continue;
           } else {
-            if(a != 0)
+            if (a != 0)
               $("#topsites_menu").append($("<hr>"));
 
             $("#topsites_menu").append($('<div><a href="' + (e.vl ? user["firstRunLandingPage"] : t[a].url) + '"><i style="background-image:url(\'https://www.google.com/s2/favicons?domain=' + encodeURIComponent(t[a].url) + "');background-size:cover;\"></i>" + t[a].title + '</a><div class="closebtn" close-for="' + t[a].url + '"></div></div>'));
@@ -133,7 +133,7 @@
             if (o >= 10) break;
           }
         }
-        utils.resetClickHnd($("#topsites_menu a"), function(e) {
+        utils.resetClickHnd($("#topsites_menu a"), function (e) {
           chrome.extension.sendMessage("click-TopSites");
         });
         if (localStorage.getItem("hideLink")) {
@@ -145,7 +145,7 @@
       });
     }
     function h() {
-      utils.resetClickHnd($(".closebtn"), function() {
+      utils.resetClickHnd($(".closebtn"), function () {
         if ($(this).attr("close-for")) {
           c.push($(this).attr("close-for"));
           localStorage.setItem("hideLink", JSON.stringify(c));
@@ -177,7 +177,7 @@
         }
       }
       $(".undo-box").removeClass("undo-box-hide");
-      utils.resetClickHnd($("#undobtn"), function() {
+      utils.resetClickHnd($("#undobtn"), function () {
         if (e === "mostVisited") {
           c.pop();
           localStorage.setItem("hideLink", JSON.stringify(c));
@@ -199,14 +199,14 @@
         $(".undo-box").addClass("undo-box-hide");
       });
       $("#close-undo-box-btn").off("click");
-      $("#close-undo-box-btn").click(function() {
+      $("#close-undo-box-btn").click(function () {
         $(".undo-box").addClass("undo-box-hide");
         $("#undobtn").off("click");
       });
       if (g) {
-        $(".undo-box").hover(function() {
+        $(".undo-box").hover(function () {
           clearTimeout(g);
-        }, function() {
+        }, function () {
           v();
         });
       }
@@ -218,7 +218,7 @@
       if ($(`.${e}_restore`).size() <= 0) {
         o.html(`<a class="${e + "_restoreBtn"}" restore-for = "${e}"><i class="restoreBtn"></i>Restore ${t}</a>`);
         $(`#${e}`).append("<hr>").append(o);
-        $(`.${e + "_restoreBtn"}`).click(function() {
+        $(`.${e + "_restoreBtn"}`).click(function () {
           $(`#${$(this).attr("restore-for")}`).empty();
           if ($(this).attr("restore-for") === "tool_menu") {
             localStorage.removeItem("hideApp");
@@ -241,7 +241,7 @@
         clearTimeout(g);
         g = null;
       }
-      g = setTimeout(function() {
+      g = setTimeout(function () {
         $(".undo-box").addClass("undo-box-hide");
         $("#undobtn").off("click");
       }, 7e3);
@@ -249,7 +249,7 @@
         clearTimeout(g);
       }
     }
-    var _ = function() {
+    var _ = function () {
       $("#topsites_menu").fadeOut(200);
       $("#share_menu").fadeOut(200);
       $("#support_menu").fadeOut(200);
@@ -260,123 +260,121 @@
     $("footer").off("mouseleave");
     $("footer").on("mouseleave", _);
     $("#topsites_menu").hide();
-    utils.resetMouseEnterHnd($("#lnk_topsites"), function(e) {
+    utils.resetMouseEnterHnd($("#lnk_topsites"), function (e) {
       e.stopPropagation();
       $("#topsites_menu").show(200);
       $("#share_menu").fadeOut(200);
       $("#support_menu").fadeOut(200);
       $("#tool_menu").fadeOut(200);
     });
-    utils.resetClickHnd($("#lnk_topsites"), function(e) {
+    utils.resetClickHnd($("#lnk_topsites"), function (e) {
       e.stopPropagation();
       $("#topsites_menu").toggle(200);
       $("#share_menu").fadeOut(200);
       $("#support_menu").fadeOut(200);
       $("#tool_menu").fadeOut(200);
     });
-    utils.resetMouseEnterHnd($("#topsites_menu"), function(e) {
+    utils.resetMouseEnterHnd($("#topsites_menu"), function (e) {
       e.stopPropagation();
       $("#topsites_menu").off("mouseleave");
       $("#topsites_menu").on("mouseleave", _);
     });
-    utils.resetClickHnd($("#topsites_menu"), function(e) {
+    utils.resetClickHnd($("#topsites_menu"), function (e) {
       e.stopPropagation();
     });
     $("#share_menu").hide();
-    utils.resetMouseEnterHnd($("#lnk_share"), function(e) {
+    utils.resetMouseEnterHnd($("#lnk_share"), function (e) {
       e.stopPropagation();
       $("#topsites_menu").fadeOut(200);
       $("#share_menu").show(200);
       $("#support_menu").fadeOut(200);
       $("#tool_menu").fadeOut(200);
     });
-    utils.resetClickHnd($("#lnk_share"), function(e) {
+    utils.resetClickHnd($("#lnk_share"), function (e) {
       e.stopPropagation();
       $("#topsites_menu").fadeOut(200);
       $("#share_menu").toggle(200);
       $("#support_menu").fadeOut(200);
       $("#tool_menu").fadeOut(200);
     });
-    utils.resetMouseEnterHnd($("#share_menu"), function(e) {
+    utils.resetMouseEnterHnd($("#share_menu"), function (e) {
       e.stopPropagation();
       $("#share_menu").off("mouseleave");
       $("#share_menu").on("mouseleave", _);
     });
-    utils.resetClickHnd($("#share_menu"), function(e) {
+    utils.resetClickHnd($("#share_menu"), function (e) {
       e.stopPropagation();
       _();
     });
     $("#support_menu").hide();
-    utils.resetMouseEnterHnd($("#lnk_support"), function(e) {
+    utils.resetMouseEnterHnd($("#lnk_support"), function (e) {
       e.stopPropagation();
       $("#topsites_menu").fadeOut(200);
       $("#share_menu").fadeOut(200);
       $("#support_menu").show(200);
       $("#tool_menu").fadeOut(200);
     });
-    utils.resetClickHnd($("#lnk_support"), function(e) {
+    utils.resetClickHnd($("#lnk_support"), function (e) {
       e.stopPropagation();
       $("#topsites_menu").fadeOut(200);
       $("#share_menu").fadeOut(200);
       $("#support_menu").toggle(200);
       $("#tool_menu").fadeOut(200);
     });
-    utils.resetMouseEnterHnd($("#support_menu"), function(e) {
+    utils.resetMouseEnterHnd($("#support_menu"), function (e) {
       e.stopPropagation();
       $("#support_menu").off("mouseleave");
       $("#support_menu").on("mouseleave", _);
     });
-    utils.resetClickHnd($("#support_menu"), function(e) {
+    utils.resetClickHnd($("#support_menu"), function (e) {
       e.stopPropagation();
       _();
     });
     $("#tool_menu").hide();
-    utils.resetMouseEnterHnd($("#lnk_tool"), function(e) {
+    utils.resetMouseEnterHnd($("#lnk_tool"), function (e) {
       e.stopPropagation();
       $("#topsites_menu").fadeOut(200);
       $("#share_menu").fadeOut(200);
       $("#support_menu").fadeOut(200);
       $("#tool_menu").show(200);
     });
-    utils.resetClickHnd($("#lnk_tool"), function(e) {
+    utils.resetClickHnd($("#lnk_tool"), function (e) {
       e.stopPropagation();
       $("#topsites_menu").fadeOut(200);
       $("#share_menu").fadeOut(200);
       $("#support_menu").fadeOut(200);
       $("#tool_menu").toggle(200);
     });
-    utils.resetMouseEnterHnd($("#tool_menu"), function(e) {
+    utils.resetMouseEnterHnd($("#tool_menu"), function (e) {
       e.stopPropagation();
       $("#tool_menu").off("mouseleave");
       $("#tool_menu").on("mouseleave", _);
     });
-    utils.resetClickHnd($("#tool_menu"), function(e) {
+    utils.resetClickHnd($("#tool_menu"), function (e) {
       e.stopPropagation();
     });
-    utils.resetClickHnd($(document), function() {
+    utils.resetClickHnd($(document), function () {
       _();
       $("#search-suggestion-pad").hide();
       if ($("#background_selector_widget").css("opacity") == 1) {
         $("#background_selector_widget").fadeOut();
       }
     });
-    
-    A();
-    $(".widght .time").on("click", function() {
-      A();
+
+    changeFormat();
+    $(".widght .time").on("click", function () {
+      changeFormat();
     });
-    
-    function A() {
+
+    function changeFormat() {
       if (user["time_format"] == "12h") {
         user["time_format"] = "24h";
       } else {
         user["time_format"] = "12h";
       }
-      T();
-      
+      DataProcessing();
     }
-   
-    function  T() {
+    function DataProcessing() {
       var e = new Date();
       if (user["time_format"] == "12h") {
         var t = e.getHours() < 12 ? "AM" : "PM";
@@ -392,27 +390,28 @@
       $(".day").html(s[e.getDay()]);
       $(".num").html(user["date_format"].replace("{{m}}", e.getMonth() + 1).replace("{{d}}", e.getDate()).replace("{{y}}", e.getFullYear()));
     }
-    var x = setInterval(T, 1e4);
+
+    var x = setInterval(DataProcessing, 1e4);
     //var D = setTimeout(E, C);
     if (e.listAllThreads.threadSearchForm) {
       e.listAllThreads.threadSearchForm.pause();
     }
     e.listAllThreads.threadSearchForm = {
-      pause: function() {
+      pause: function () {
         clearInterval(x);
         //clearTimeout(D);
       },
-      resume: function() {
-        T();
+      resume: function () {
+        DataProcessing();
         clearInterval(x);
         //clearTimeout(D);
-        x = setInterval(T, 1e4);
+        x = setInterval(DataProcessing, 1e4);
         //D = setTimeout(E, C);
       }
     };
     var M = SEARCH_ENGINES;
     $("#search-button").click(H);
-    o.keyup(function(e) {
+    o.keyup(function (e) {
       $("#search-suggestion-pad").css({
         direction: o.css("direction")
       });
@@ -426,24 +425,19 @@
       }
       var a = M[user["sengine"]][i] + o.val();
       try {
-        trackStatusEvent("search-" + t.ShortName, null, o.val(), function() {
+        trackStatusEvent("search-" + t.ShortName, null, o.val(), function () {
           e.top.location.href = a;
         });
-      } catch (e) {}
+      } catch (e) { }
     }
-    
+
     function L(e) {
-      return e.replace(/(?:^|\s)\w/g, function(e) {
+      return e.replace(/(?:^|\s)\w/g, function (e) {
         return e.toUpperCase();
       });
     }
     function R(o) {
-      if (new Date().getTime() - parseInt(localStorage["setting_geo"]) > 6e3) {
-        delete localStorage["setting_geo"];
-      }
-      if (!localStorage["setting_geo"]) {
-        user["sengine"] = o;
-      }
+
       var a = SEARCH_ENGINES[o];
       t = a;
       if (a["Logo"]) {
@@ -455,7 +449,7 @@
       }
       try {
         if (e.autoSuggest != null) e.autoSuggest.setSuggestUrl(a["SuggestUrl"]);
-      } catch (e) {}
+      } catch (e) { }
       //utils.localstorage2cookie();
       $("#search-input").attr("placeholder", "Search" + " " + a["ShortName"]);
     }
@@ -466,11 +460,11 @@
     if (typeof P != "undefined") {
       R(P);
     }
-    $(this).click(function() {
+    $(this).click(function () {
       $("#search-engine-list").empty().hide();
       $("#search-engine-select").removeClass("active");
     });
-    $("#search-engine-select").click(function() {
+    $("#search-engine-select").click(function () {
       var e = $("#search-engine-list");
       if (e.children().length > 0) {
         $("#search-engine-list").empty();
@@ -489,7 +483,7 @@
       $(this).addClass("active");
       return false;
     });
-    
+
     function J() {
       var o = document.getElementById("search-input");
       var i = t.SuggestUrl;
@@ -497,17 +491,17 @@
     }
     function q() {
       var e = false;
-      $("#search-button").click(function() {
+      $("#search-button").click(function () {
         if (i != "web") return;
         if (!e) {
           e = true;
           a();
-          setTimeout(function() {
+          setTimeout(function () {
             e = false;
           }, 1e3);
         }
       });
-      $("#search-input").keyup(function(e) {
+      $("#search-input").keyup(function (e) {
         if (i != "web") {
           return;
         }
@@ -518,7 +512,7 @@
     }
     q();
     J();
-    
+
     function U(e) {
       (function e(t) {
         var o = document.getElementById("mail-address-shower");
@@ -555,7 +549,7 @@
     chrome.runtime.sendMessage(chrome.runtime.id, {
       type: "fetch_email_data"
     });
-    chrome.runtime.onMessage.addListener(function(t, o, a) {
+    chrome.runtime.onMessage.addListener(function (t, o, a) {
       if (e.debug) {
         if (e.debug) console.log("request: ", t);
         if (e.debug) console.log("sender: ", o);
@@ -563,7 +557,7 @@
       if (t.refreshOptions) {
         e.loadGlobalOptions();
       }
-      
+
       if (t.type === "gmail_info_fetched") {
         U(t.info);
       }
@@ -581,7 +575,7 @@
           if (n && typeof n.resume == "function") n.resume();
         }
       }
-      
+
     });
   });
 })(this);

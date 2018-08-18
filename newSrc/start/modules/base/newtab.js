@@ -1,6 +1,6 @@
 (function (e) {
   try {
-    var t = false;
+    var flag = false;
     function setActive() {
       var e = parseInt(localStorage.getItem("curTabActive")) || 0;
       $("#tabs").tabs({
@@ -20,11 +20,11 @@
     $(document).ready(function () {
       setActive();
 
-      function t() {
+      function setMaxHeight() {
         $(".nav_menu").css("max-height", document.body.clientHeight - 80 + "px");
       }
-      t();
-      e.addEventListener("resize", t);
+      setMaxHeight();
+      e.addEventListener("resize", setMaxHeight);
 
       if (localStorage.getItem("shuffle_background") == "yes") {
         $("#shuffle_background").prop("checked", true);
@@ -124,7 +124,7 @@
           //utils.localstorage2cookie();
         });
         if (localStorage.getItem("enable_slideshow") == "no") {
-          s();
+          clearSelectTimer();
         } else {
           o();
         }
@@ -132,7 +132,7 @@
         $("#enable_slideshow").off("change");
         $("#enable_slideshow").on("change", function () {
           if (!$("#enable_slideshow").is(":checked")) {
-            s();
+            clearSelectTimer();
           } else {
             var e = [];
             if (localStorage.getItem("mark_favor")) e = JSON.parse(localStorage.getItem("mark_favor"));
@@ -349,8 +349,8 @@
             $("#background_selector_widget").fadeIn();
             chrome.extension.sendMessage("click-ChangeThemeMenu");
             a();
-            if (!t) {
-              t = true;
+            if (!flag) {
+              flag = true;
               e.loadImagesInOption();
               //e.loadRelativeApps();
             }
@@ -398,7 +398,7 @@
       };
       e.listAllThreads.threadSlideshow.resume();
     };
-    var s = function () {
+    var clearSelectTimer = function () {
       $("#selectTimer").parent().fadeOut();
       clearInterval(l);
       localStorage.removeItem("last_time_do_slide");

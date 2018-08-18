@@ -10,12 +10,7 @@
     chrome.tabs.create({
       url: localStorage.getItem("newtab_url")
     });
-  });
-  var a = utils.get;
-  var o = utils.set;
-  localStorage["setting_geo"] = new Date().getTime();
-  var n = 0;
-  var r = null;
+  }); 
 
   user["date_format"] = "{{d}}.{{m}}.{{y}}";
   user["time_format"] = "24h";
