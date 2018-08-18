@@ -165,17 +165,17 @@
           newLi.append(newImg);
 
           $("#images_selector").append(newLi);
-          var c, g = [];
-          if (localStorage.getItem("mark_favor")) g = JSON.parse(localStorage.getItem("mark_favor"));
-          if (g.indexOf(a + "") > -1) {
-            c = $('<span class="mark_favor marked_favor" favor-for="' + a + '" data-toggle="tooltip" data-placement="bottom" title="Remove this image from favorites"><span class="glyphicon glyphicon-heart"></span></span>');
+          var favorSpan, markedFavors = [];
+          if (localStorage.getItem("mark_favor")) markedFavors = JSON.parse(localStorage.getItem("mark_favor"));
+          if (markedFavors.indexOf(a + "") > -1) {
+            favorSpan = $('<span class="mark_favor marked_favor" favor-for="' + a + '" data-toggle="tooltip" data-placement="bottom" title="Remove this image from favorites"><span class="glyphicon glyphicon-heart"></span></span>');
           } else {
-            c = $('<span class="mark_favor" favor-for="' + a + '" data-toggle="tooltip" data-placement="bottom" title="Mark this image as favorite"><span class="glyphicon glyphicon-heart-empty"></span></span>');
+            favorSpan = $('<span class="mark_favor" favor-for="' + a + '" data-toggle="tooltip" data-placement="bottom" title="Mark this image as favorite"><span class="glyphicon glyphicon-heart-empty"></span></span>');
           }
-          utils.resetClickHnd(c, function () {
-            var e = $(this).attr("favor-for");
-            var t = [];
-            if (localStorage.getItem("mark_favor")) t = JSON.parse(localStorage.getItem("mark_favor"));
+          utils.resetClickHnd(favorSpan, function () {
+            var favorFor = $(this).attr("favor-for");
+            var favorsArr = [];
+            if (localStorage.getItem("mark_favor")) favorsArr = JSON.parse(localStorage.getItem("mark_favor"));
             $(this).toggleClass("marked_favor");
             if ($(this).hasClass("marked_favor")) {
               $(this).attr("data-toggle", "tooltip");
@@ -184,8 +184,8 @@
               $(this).tooltip();
               $(this).find(".glyphicon").removeClass("glyphicon-heart-empty");
               $(this).find(".glyphicon").addClass("glyphicon-heart");
-              if (t.indexOf(e + "") == -1) {
-                t.push(e + "");
+              if (favorsArr.indexOf(favorFor + "") == -1) {
+                favorsArr.push(favorFor + "");
               }
             } else {
               $(this).attr("data-toggle", "tooltip");
@@ -194,15 +194,15 @@
               $(this).tooltip();
               $(this).find(".glyphicon").removeClass("glyphicon-heart");
               $(this).find(".glyphicon").addClass("glyphicon-heart-empty");
-              if (t.indexOf(e + "") > -1) {
-                t.splice(t.indexOf(e + ""), 1);
+              if (favorsArr.indexOf(favorFor + "") > -1) {
+                favorsArr.splice(favorsArr.indexOf(favorFor + ""), 1);
               }
             }
-            localStorage.setItem("mark_favor", JSON.stringify(t));
+            localStorage.setItem("mark_favor", JSON.stringify(favorsArr));
             //utils.localstorage2cookie();
           });
-          $("#images_selector").append(c);
-          // stange because of start from zero
+          $("#images_selector").append(favorSpan);
+          // strange construction because of start from zero
           if (a > 5 && a % 5 == 4) {
             $("#images_selector").append($("<br>"));
           }
@@ -219,17 +219,17 @@
             var a = e.match(/\d+/g).toString();
             t = Number(a);
           }
-          var l;
+          var result;
           if (t >= 1e9) {
-            l = (Math.round(t / 1e7) / 100).toString() + "B";
+            result = (Math.round(t / 1e7) / 100).toString() + "B";
           } else if (t >= 1e6) {
-            l = (Math.round(t / 1e4) / 100).toString() + "M";
+            result = (Math.round(t / 1e4) / 100).toString() + "M";
           } else if (t >= 1e3) {
-            l = (Math.round(t / 10) / 100).toString() + "K";
+            result = (Math.round(t / 10) / 100).toString() + "K";
           } else if (t < 1e3) {
             return t.toString();
           }
-          return l;
+          return result;
         };
 
         $("#close_background_selector_widget").off("click");
