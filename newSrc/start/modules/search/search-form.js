@@ -531,17 +531,17 @@
         }
       })(e.mailAddress);
       (function e(t) {
-        var o = document.getElementById("mail-counter");
-        if (o) {
-          o.innerHTML = "(" + t + ")";
+        var mainCounter = document.getElementById("mail-counter");
+        if (mainCounter) {
+          mainCounter.innerHTML = "(" + t + ")";
         } else {
           (function e() {
-            var o = document.createElement("SPAN");
-            var a = document.createTextNode("(" + t + ")");
-            o.setAttribute("style", "margin-left:5px;");
-            o.setAttribute("id", "mail-counter");
-            o.appendChild(a);
-            document.getElementById("tool_gmail").appendChild(o);
+            var newSpan = document.createElement("SPAN");
+            var spanWrap = document.createTextNode("(" + t + ")");
+            newSpan.setAttribute("style", "margin-left:5px;");
+            newSpan.setAttribute("id", "mail-counter");
+            newSpan.appendChild(spanWrap);
+            document.getElementById("tool_gmail").appendChild(newSpan);
           })();
         }
       })(e.mailNums);
