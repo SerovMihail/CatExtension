@@ -34,20 +34,7 @@
 
   e.listAllThreads = {};
   e.chosenRandomBG = "";
-  e.setBackgroundGIFOrJPG = function (e) {    
 
-    var t = e.replace("bg-0", "").replace("bg-", "").replace(".jpg", "");
-    var imagePath = window.imageBuffer[parseInt(t)].fullPath;
-    localStorage.setItem("last_bg", imagePath);
-    
-    document.getElementById("__bg").style.backgroundImage = "url(" + chrome.extension.getURL(imagePath);
-    document.getElementById("__bg").style.backgroundColor = "none";
-    document.getElementById("__bg").style.backgroundSize = "cover";
-    if (document.getElementById("frame_bg")) {
-      document.getElementById("frame_bg").remove();    
-    }
-    
-  };
   e.setNewTabBackground = function () {
 
     var lastBg = "" + localStorage.getItem("last_bg");
@@ -78,6 +65,21 @@
     }
     e.setBackgroundGIFOrJPG(chosenRandomBG);
   };
+  e.setBackgroundGIFOrJPG = function (e) {    
+
+    var t = e.replace("bg-0", "").replace("bg-", "").replace(".jpg", "");
+    var imagePath = window.imageBuffer[parseInt(t)].fullPath;
+    localStorage.setItem("last_bg", imagePath);
+    
+    document.getElementById("__bg").style.backgroundImage = "url(" + chrome.extension.getURL(imagePath);
+    document.getElementById("__bg").style.backgroundColor = "none";
+    document.getElementById("__bg").style.backgroundSize = "cover";
+    if (document.getElementById("frame_bg")) {
+      document.getElementById("frame_bg").remove();    
+    }
+    
+  };
+  
 
   e.getAllImages();
 

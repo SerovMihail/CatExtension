@@ -511,23 +511,23 @@
     J();
 
     function U(e) {
-      (function e(t) {
-        var o = document.getElementById("mail-address-shower");
-        if (o) {
-          o.innerHTML = t;
+      (function e(param) {
+        var mailShower = document.getElementById("mail-address-shower");
+        if (mailShower) {
+          mailShower.innerHTML = param;
         } else {
           (function e() {
-            var o = document.createElement("DIV");
-            var a = document.createElement("A");
-            var i = document.createTextNode(t);
-            a.setAttribute("id", "mail-address-shower");
-            a.appendChild(i);
-            o.appendChild(a);
-            document.getElementById("tool_menu").insertBefore(o, document.getElementById("tool_menu").firstChild);
+            var div = document.createElement("DIV");
+            var link = document.createElement("A");
+            var textNode = document.createTextNode(param);
+            link.setAttribute("id", "mail-address-shower");
+            link.appendChild(textNode);
+            div.appendChild(link);
+            document.getElementById("tool_menu").insertBefore(div, document.getElementById("tool_menu").firstChild);
           })();
         }
       })(e.mailAddress);
-      (function e(t) {
+      (function setMailCounter(t) {
         var o = document.getElementById("mail-counter");
         if (o) {
           o.innerHTML = "(" + t + ")";
@@ -546,7 +546,7 @@
     chrome.runtime.sendMessage(chrome.runtime.id, {
       type: "fetch_email_data"
     });
-    chrome.runtime.onMessage.addListener(function (t, o, a) {
+    chrome.runtime.onMessage.addListener(function (t, o) {
       if (e.debug) {
         if (e.debug) console.log("request: ", t);
         if (e.debug) console.log("sender: ", o);
