@@ -943,7 +943,7 @@ div#search-engine-select {
 }
 
 .search-box {
-    width: 22%;
+    width: 30%;
     position: absolute;
     margin: auto;
     top: 15px;
@@ -1807,7 +1807,7 @@ h3 {
     width: 40px;
     height: 40px;
     position: absolute;
-    right: 3px;    
+    right: 5px;    
     cursor: pointer;
     border-radius: 5px;
     padding: 7px;
@@ -1822,11 +1822,9 @@ h3 {
 #search-input {
     width: 100%;    
     box-shadow: none;
-    height: 45px !important;
+    height: 50px;
     line-height: 45px !important;
-    border: none;
-    padding: 10px;
-    /* font-size: 20px; */
+    border: none;    
     font-family: inherit;
     transition: all 0.32s;
     outline: none;
