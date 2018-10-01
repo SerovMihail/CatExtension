@@ -111,7 +111,7 @@ window.AutoSuggest = function (textBox, engine, action) {
   }
   t.keyUp = function (e) {
     var keyCode = e.keyCode;
-    if (keyCode != getKeyCode('ENTER')) { UP_ARROW
+    if (keyCode != getKeyCode('ENTER')) { 
       if ((keyCode != getKeyCode('UP_ARROW')) && (keyCode != getKeyCode('DOWN_ARROW')) && (keyCode != getKeyCode('F5'))) {
         if (interval != null) {
           window.clearInterval(interval)
@@ -135,29 +135,31 @@ window.AutoSuggest = function (textBox, engine, action) {
       
     }
     */
-    if ((keyCode != getKeyCode('UP_ARROW')) && (keyCode != 40)) {
-    } else {
-      if (keyCode == getKeyCode('UP_ARROW')) {
-        if (selectedRow != -1) {
-          document.getElementById("auto-suggest-row" + selectedRow).setAttribute("class", "");
-        }
-        selectedRow--;
-        if (selectedRow < 0) {
-          selectedRow = resultsLength - 1;
-        }
-      } else {
-        if (selectedRow != -1) {
-          document.getElementById("auto-suggest-row" + selectedRow).setAttribute("class", "");
-        }
-        selectedRow++;
-        if (selectedRow >= resultsLength) {
-          selectedRow = 0;
-        }
-      }
-      var row = document.getElementById("auto-suggest-row" + selectedRow);
-      row.setAttribute("class", "selected");
-      textBox.value = row.textContent;
-    }
+
+    // remove comments if you want to use autosuggest
+    // if ((keyCode != getKeyCode('UP_ARROW')) && (keyCode != 40)) {
+    // } else {
+    //   if (keyCode == getKeyCode('UP_ARROW')) {
+    //     if (selectedRow != -1) {
+    //       document.getElementById("auto-suggest-row" + selectedRow).setAttribute("class", "");
+    //     }
+    //     selectedRow--;
+    //     if (selectedRow < 0) {
+    //       selectedRow = resultsLength - 1;
+    //     }
+    //   } else {
+    //     if (selectedRow != -1) {
+    //       document.getElementById("auto-suggest-row" + selectedRow).setAttribute("class", "");
+    //     }
+    //     selectedRow++;
+    //     if (selectedRow >= resultsLength) {
+    //       selectedRow = 0;
+    //     }
+    //   }
+    //   var row = document.getElementById("auto-suggest-row" + selectedRow);
+    //   row.setAttribute("class", "selected");
+    //   textBox.value = row.textContent;
+    // }
   }
   t.documentMouseDown = function (e) {
     if (e.explicitOriginalTarget != t.asDiv) {
