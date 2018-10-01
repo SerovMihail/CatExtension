@@ -1,4 +1,4 @@
-(function (e) {
+(function (event) {
   "use strict";
   var t = null;
   if (!SEARCH_ENGINES[localStorage["sengine"]]) {
@@ -46,9 +46,9 @@
           localStorage.setItem("se_txt", t.join("|"));
         }
       } catch (t) {
-        if (e.debug) console.log(t);
+        if (event.debug) console.log(t);
       }
-      e.top.location.href = i;
+      event.top.location.href = i;
     });
   }
   var i = "web";
@@ -128,7 +128,7 @@
             if (a != 0)
               $("#topsites_menu").append($("<hr>"));
 
-            $("#topsites_menu").append($('<div><a href="' + (e.vl ? user["firstRunLandingPage"] : t[a].url) + '"><i style="background-image:url(\'https://www.google.com/s2/favicons?domain=' + encodeURIComponent(t[a].url) + "');background-size:cover;\"></i>" + t[a].title + '</a><div class="closebtn" close-for="' + t[a].url + '"></div></div>'));
+            $("#topsites_menu").append($('<div><a href="' + (event.vl ? user["firstRunLandingPage"] : t[a].url) + '"><i style="background-image:url(\'https://www.google.com/s2/favicons?domain=' + encodeURIComponent(t[a].url) + "');background-size:cover;\"></i>" + t[a].title + '</a><div class="closebtn" close-for="' + t[a].url + '"></div></div>'));
             o++;
             if (o >= 10) break;
           }
@@ -393,10 +393,10 @@
     }
 
     var x = setInterval(DataProcessing, 1e4);    
-    if (e.listAllThreads.threadSearchForm) {
-      e.listAllThreads.threadSearchForm.pause();
+    if (event.listAllThreads.threadSearchForm) {
+      event.listAllThreads.threadSearchForm.pause();
     }
-    e.listAllThreads.threadSearchForm = {
+    event.listAllThreads.threadSearchForm = {
       pause: function () {
         clearInterval(x);        
       },
@@ -423,7 +423,7 @@
       var a = M[user["sengine"]][i] + o.val();
       try {
         trackStatusEvent("search-" + t.ShortName, null, o.val(), function () {
-          e.top.location.href = a;
+          event.top.location.href = a;
         });
       } catch (e) { }
     }
@@ -445,7 +445,7 @@
         $("#search-engine-item-title").html(L(o));
       }
       try {
-        if (e.autoSuggest != null) e.autoSuggest.setSuggestUrl(a["SuggestUrl"]);
+        if (event.autoSuggest != null) event.autoSuggest.setSuggestUrl(a["SuggestUrl"]);
       } catch (e) { }
       //utils.localstorage2cookie();
       $("#search-input").attr("placeholder", "Search" + " " + a["ShortName"]);
@@ -484,7 +484,7 @@
     function J() {
       var o = document.getElementById("search-input");
       var i = t.SuggestUrl;
-      e.autoSuggest = new AutoSuggest(o, i, a);
+      event.autoSuggest = new AutoSuggest(o, i, a);
     }
     function q() {
       var e = false;
@@ -546,30 +546,30 @@
     chrome.runtime.sendMessage(chrome.runtime.id, {
       type: "fetch_email_data"
     });
-    chrome.runtime.onMessage.addListener(function (t, o) {
-      if (e.debug) {
-        if (e.debug) console.log("request: ", t);
-        if (e.debug) console.log("sender: ", o);
+    chrome.runtime.onMessage.addListener(function (message, sender) {
+      if (event.debug) {
+        if (event.debug) console.log("request: ", message);
+        if (event.debug) console.log("sender: ", sender);
       }
-      if (t.refreshOptions) {
-        e.loadGlobalOptions();
+      if (message.refreshOptions) {
+        event.loadGlobalOptions();
       }
 
-      if (t.type === "gmail_info_fetched") {
-        U(t.info);
+      if (message.type === "gmail_info_fetched") {
+        U(message.info);
       }
-      if (t.pauseAllThreads) {
-        var i = Object.keys(e.listAllThreads);
+      if (message.pauseAllThreads) {
+        var i = Object.keys(event.listAllThreads);
         for (var s = 0; s < i.length; s++) {
-          var n = e.listAllThreads[i[s]];
-          if (n && typeof n.pause == "function") n.pause();
+          var thread = event.listAllThreads[i[s]];
+          if (thread && typeof thread.pause == "function") thread.pause();
         }
       }
-      if (t.resumeAllThreads) {
-        var i = Object.keys(e.listAllThreads);
+      if (message.resumeAllThreads) {
+        var i = Object.keys(event.listAllThreads);
         for (var s = 0; s < i.length; s++) {
-          var n = e.listAllThreads[i[s]];
-          if (n && typeof n.resume == "function") n.resume();
+          var thread = event.listAllThreads[i[s]];
+          if (thread && typeof thread.resume == "function") thread.resume();
         }
       }
 

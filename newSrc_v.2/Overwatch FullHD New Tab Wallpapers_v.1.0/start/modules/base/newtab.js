@@ -198,8 +198,7 @@
                 favorsArr.splice(favorsArr.indexOf(favorFor + ""), 1);
               }
             }
-            localStorage.setItem("mark_favor", JSON.stringify(favorsArr));
-            //utils.localstorage2cookie();
+            localStorage.setItem("mark_favor", JSON.stringify(favorsArr));            
           });
           $("#images_selector").append(favorSpan);
           // strange construction because of start from zero
@@ -335,8 +334,7 @@
           }
           var a = function () {
             $("#background_selector_menu").attr("class", ($("#background_selector_menu").attr("class") || "").replace(/highlight[a-z_-]*[ ]*/gi, ""));
-            localStorage.setItem("theme_clicked", "yes");
-            //utils.localstorage2cookie();
+            localStorage.setItem("theme_clicked", "yes");            
           };
           utils.resetClickHnd($("#background_selector_menu"), function (l) {
             l.preventDefault();
@@ -346,8 +344,7 @@
             a();
             if (!flag) {
               flag = true;
-              e.loadImagesInOption();
-              //e.loadRelativeApps();
+              e.loadImagesInOption();              
             }
           });
         });
@@ -366,7 +363,7 @@
         i = parseInt($(this).val());
         localStorage.setItem("slideshow_timer", i);
       });
-      function t() {
+      function sliderTimer() {
         var t = new Date().getTime();
         var a = 0;
         if (localStorage.getItem("last_time_do_slide")) {
@@ -386,9 +383,9 @@
           clearInterval(l);
         },
         resume: function () {
-          t();
+          sliderTimer();
           clearInterval(l);
-          l = setInterval(t, 999);
+          l = setInterval(sliderTimer, 999);
         }
       };
       e.listAllThreads.threadSlideshow.resume();

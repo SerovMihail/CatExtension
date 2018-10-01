@@ -1,7 +1,7 @@
 (function (e) {
   "use strict";
-  var t = localStorage.getItem("user_group") || Math.floor(Math.random() * 10) + 1;
-  localStorage.setItem("user_group", t);
+  var userGroup = localStorage.getItem("user_group") || Math.floor(Math.random() * 10) + 1;
+  localStorage.setItem("user_group", userGroup);
   localStorage.setItem("newtab_url", chrome.extension.getURL("/start/index.html"));
   localStorage.setItem("ext_id", chrome.runtime.id);
   localStorage.setItem("ext_name", chrome.i18n.getMessage("extName"));
@@ -18,36 +18,36 @@
   if (!user["sengine"]) {
     user["sengine"] = SEARCH_ENGINES_DEFAULT;
   }
-  chrome.runtime.onMessage.addListener(function (t, a, o) {
-    if (e.debug) console.log("onMessage: ", t, a);
-    if (t.ext) {
-      var n = JSON.parse(t.ext);
+  chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
+    if (e.debug) console.log("onMessage: ", message, sender);
+    if (message.ext) {
+      var n = JSON.parse(message.ext);
       for (var r in n) {
         localStorage[r] = n[r];
       }
       if (!n["sengine"]) {
         delete localStorage["sengine"];
       }
-    } else if (t.getall) {
-      o({
+    } else if (message.getall) {
+      sendResponse({
         ext: JSON.stringify(localStorage)
       });
-    } else if (t.topSites) {
+    } else if (message.topSites) {
       chrome.topSites.get(function (e) {
-        o(e);
+        sendResponse(e);
       });
       return true;
     }
 
-    if (t.type === "fetch_email_data") {
+    if (message.type === "fetch_email_data") {
       d(u, f);
     }
-    if (t.changeOptions) {
+    if (message.changeOptions) {
       var i = JSON.parse(localStorage.getItem("had_wl"));
 
       chrome.tabs.query({}, function (e) {
         for (var t = 0; t < e.length; t++) {
-          if (e[t].id !== a.tab.id) {
+          if (e[t].id !== sender.tab.id) {
             chrome.tabs.sendMessage(e[t].id, {
               refreshOptions: true
             });
@@ -150,23 +150,23 @@
   }
   chrome.tabs.onActivated.addListener(w);
   chrome.windows.onFocusChanged.addListener(w);
-  chrome.runtime.onMessageExternal.addListener(function (t, a, o) {
-    if (e.debug) console.log("exMsg:", t, a);
-    if (t.changeOptions) {
+  chrome.runtime.onMessageExternal.addListener(function (message, sender, sendResponse) {
+    if (e.debug) console.log("exMsg:", message, sender);
+    if (message.changeOptions) {
       for (var n = 0; n < e.storageDefaultKeys.length; n++) {
         var r = e.storageDefaultKeys[n];
-        if (typeof t.changeOptions[r] !== "undefined") delete t.changeOptions[r];
+        if (typeof message.changeOptions[r] !== "undefined") delete message.changeOptions[r];
       }
-      if (t.changeOptions.enable_most_visited) localStorage.setItem("enable_most_visited", t.changeOptions.enable_most_visited); else if (t.changeOptions.disable_most_visited) localStorage.setItem("enable_most_visited", t.changeOptions.disable_most_visited == "yes" ? "no" : "yes");
-      if (t.changeOptions.enable_apps) localStorage.setItem("enable_apps", t.changeOptions.enable_apps); else if (t.changeOptions.disable_apps) localStorage.setItem("enable_apps", t.changeOptions.disable_apps == "yes" ? "no" : "yes");
-      if (t.changeOptions.enable_share) localStorage.setItem("enable_share", t.changeOptions.enable_share); else if (t.changeOptions.disable_share) localStorage.setItem("enable_share", t.changeOptions.disable_share == "yes" ? "no" : "yes");
-      if (t.changeOptions.enable_autohide) localStorage.setItem("enable_autohide", t.changeOptions.enable_autohide);
-      if (t.changeOptions.enable_snow) localStorage.setItem("enable_snow", t.changeOptions.enable_snow);
-      if (t.changeOptions.snow_type) localStorage.setItem("snow_type", t.changeOptions.snow_type);
-      if (t.changeOptions.enable_countdown) localStorage.setItem("enable_countdown", t.changeOptions.enable_countdown);
-      if (t.changeOptions.countdownPosition) localStorage.setItem("countdownPosition", t.changeOptions.countdownPosition);
-      if (t.changeOptions.countdownText) localStorage.setItem("countdownText", t.changeOptions.countdownText);
-      if (t.changeOptions.countdownToTime) localStorage.setItem("countdownToTime", t.changeOptions.countdownToTime);
+      if (message.changeOptions.enable_most_visited) localStorage.setItem("enable_most_visited", message.changeOptions.enable_most_visited); else if (message.changeOptions.disable_most_visited) localStorage.setItem("enable_most_visited", message.changeOptions.disable_most_visited == "yes" ? "no" : "yes");
+      if (message.changeOptions.enable_apps) localStorage.setItem("enable_apps", message.changeOptions.enable_apps); else if (message.changeOptions.disable_apps) localStorage.setItem("enable_apps", message.changeOptions.disable_apps == "yes" ? "no" : "yes");
+      if (message.changeOptions.enable_share) localStorage.setItem("enable_share", message.changeOptions.enable_share); else if (message.changeOptions.disable_share) localStorage.setItem("enable_share", message.changeOptions.disable_share == "yes" ? "no" : "yes");
+      if (message.changeOptions.enable_autohide) localStorage.setItem("enable_autohide", message.changeOptions.enable_autohide);
+      if (message.changeOptions.enable_snow) localStorage.setItem("enable_snow", message.changeOptions.enable_snow);
+      if (message.changeOptions.snow_type) localStorage.setItem("snow_type", message.changeOptions.snow_type);
+      if (message.changeOptions.enable_countdown) localStorage.setItem("enable_countdown", message.changeOptions.enable_countdown);
+      if (message.changeOptions.countdownPosition) localStorage.setItem("countdownPosition", message.changeOptions.countdownPosition);
+      if (message.changeOptions.countdownText) localStorage.setItem("countdownText", message.changeOptions.countdownText);
+      if (message.changeOptions.countdownToTime) localStorage.setItem("countdownToTime", message.changeOptions.countdownToTime);
       chrome.tabs.query({}, function (e) {
         for (var t = 0; t < e.length; t++) {
           chrome.tabs.sendMessage(e[t].id, {
@@ -174,7 +174,7 @@
           });
         }
       });
-      if (typeof o === "function") o(chrome.runtime.id + " OK");
+      if (typeof sendResponse === "function") sendResponse(chrome.runtime.id + " OK");
     }
   });
 })(this);
