@@ -1,3 +1,9 @@
+@import url("font-face.css");
+@import url("key-frames.css");
+@import url("my-apps-icons.css");
+@import url("scrollbar.css");
+@import url("glyphicons.css");
+
 html {
     height: 100%;
     width: 100%;
@@ -29,175 +35,6 @@ body {
     box-sizing: border-box;
 }
 
-@font-face {
-    font-family: 'sf-light';
-    src: url('/start/static/fonts/text-fonts/sf-light.otf');
-    font-display: fallback;
-}
-
-@-webkit-keyframes pulse-red {
-    0% {
-        color: red;
-        -webkit-box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.25);
-    }
-    70% {
-        color: #666;
-        -webkit-box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
-    }
-    100% {
-        color: #333;
-        -webkit-box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
-    }
-}
-
-@keyframes pulse-red {
-    0% {
-        color: red;
-        -webkit-box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.25);
-    }
-    70% {
-        color: #666;
-        -webkit-box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
-    }
-    100% {
-        color: #333;
-        -webkit-box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
-    }
-}
-
-@-webkit-keyframes pulse {
-    0% {
-        -webkit-box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.25);
-    }
-    70% {
-        -webkit-box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
-    }
-    100% {
-        -webkit-box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
-    }
-}
-
-@keyframes pulse {
-    0% {
-        -moz-box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.25);
-        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.5);
-    }
-    70% {
-        -moz-box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
-        box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
-    }
-    100% {
-        -moz-box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
-        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
-    }
-}
-
-@-moz-keyframes blinker {
-    0% {
-        opacity: 1.0;
-    }
-    50% {
-        opacity: 0.0;
-    }
-    100% {
-        opacity: 1.0;
-    }
-}
-
-@-webkit-keyframes blinker {
-    0% {
-        opacity: 1.0;
-    }
-    50% {
-        opacity: 0.0;
-    }
-    100% {
-        opacity: 1.0;
-    }
-}
-
-@keyframes blinker {
-    0% {
-        opacity: 1.0;
-    }
-    50% {
-        opacity: 0.0;
-    }
-    100% {
-        opacity: 1.0;
-    }
-}
-
-@keyframes blink-red {
-    0% {
-        background: red
-    }
-    100% {
-        background: none;
-    }
-}
-
-/* ScrollBar */
-
-::-webkit-scrollbar {
-    width: 8px;
-}
-
-::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    -webkit-border-radius: 10px;
-    border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-    -webkit-border-radius: 10px;
-    border-radius: 10px;
-    background: rgba(236, 236, 236, 0.8);
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
-}
-
-::-webkit-scrollbar-thumb:window-inactive {
-    background: rgba(236, 236, 236, 0.4);
-}
-
-@font-face {
-    font-family: 'Glyphicons Halflings';
-    src: url('/start/static/fonts/glyphicons/halflings-regular.eot');
-    src: url('/start/static/fonts/glyphicons/halflings-regular.eot?#iefix') format('embedded-opentype'), url('/start/static/fonts/glyphicons/halflings-regular.woff2') format('woff2'), url('/start/static/fonts/glyphicons/halflings-regular.woff') format('woff'), url('/start/static/fonts/glyphicons/halflings-regular.ttf') format('truetype'), url('/start/static/fonts/glyphicons/halflings-regular.svg#glyphicons_halflingsregular') format('svg');
-}
-
-.glyphicon {
-    position: relative;
-    top: 1px;
-    display: inline-block;
-    font-family: 'Glyphicons Halflings';
-    font-style: normal;
-    font-weight: normal;
-    line-height: 1;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-.glyphicon-heart:before {
-    content: "\e005";
-}
-
-.glyphicon-heart-empty:before {
-    content: "\e143";
-}
-
-.glyphicon-ok:before {
-    content: "\e013";
-}
-
-.glyphicon-star:before {
-    content: "\e006";
-}
-
-.glyphicon-star-empty:before {
-    content: "\e007";
-}
-
 .mark_favor {
     position: relative;
     right: 15px;
@@ -207,17 +44,6 @@ body {
     font-size: 16px;
     color: coral;
 }
-
-/* .bage-notifition {
-  border-radius: 50%;
-  background: red;
-  color: white;
-  padding: 5px;
-  position: absolute;
-  top: 3px;
-  right: 3px;
-  line-height: 5px;
-} */
 
 .radio,
 .checkbox {
@@ -693,16 +519,6 @@ footer a,
     width: 16px;
     border-radius: 3px;
 }
-
-/* .support {
-  width: 5%;
-  margin: 0;
-  display: flex;
-  float: right;
-  justify-content: center;
-  min-width: 30px;
-  position: relative;
-} */
 
 #support_menu {
     position: absolute;
@@ -1400,14 +1216,7 @@ h1.hour {
     background-size: contain;
 }
 
-@keyframes iconzoom {
-    100% {
-        transform: scale(1.3);
-    }
-    0% {
-        transform: scale(1);
-    }
-}
+
 
 /* #background_selector_widget #images_selector li .like-container.clicked .like-action {
   animation: iconzoom .5s ease;
@@ -1837,9 +1646,6 @@ h3 {
     color: white;
 }
 
-/* #search-input:focus {
-    background: rgba(255, 255, 255, 0.66);
-} */
 
 div.color,
 #colors_selector {
@@ -2016,100 +1822,7 @@ ul#countdown li .label {
     font-size: 13px;
 }
 
-.icon_myaccount {
-    background-image: url('chrome-extension://__MSG_@@extension_id__/start/static/icons/googleResources/myaccount.png');
-    background-size: cover;
-}
 
-.icon_googleplus {
-    background-image: url('chrome-extension://__MSG_@@extension_id__/start/static/icons/googleResources/plus.png');
-    background-size: cover;
-}
-
-.icon_youtube {
-    background-image: url('chrome-extension://__MSG_@@extension_id__/start/static/icons/googleResources/youtube.png');
-    background-size: cover;
-}
-
-.icon_drive {
-    background-image: url('chrome-extension://__MSG_@@extension_id__/start/static/icons/googleResources/drive.png');
-    background-size: cover;
-}
-
-.icon_gmail {
-    background-image: url('chrome-extension://__MSG_@@extension_id__/start/static/icons/googleResources/gmail.png');
-    background-size: cover;
-}
-
-.icon_documents {
-    background-image: url('chrome-extension://__MSG_@@extension_id__/start/static/icons/googleResources/docs.png');
-    background-size: cover;
-}
-
-.icon_contacts {
-    background-image: url('chrome-extension://__MSG_@@extension_id__/start/static/icons/googleResources/contacts.png');
-    background-size: cover;
-}
-
-.icon_photos {
-    background-image: url('chrome-extension://__MSG_@@extension_id__/start/static/icons/googleResources/photos.png');
-    background-size: cover;
-}
-
-.icon_calendar {
-    background-image: url('chrome-extension://__MSG_@@extension_id__/start/static/icons/googleResources/calendar.png');
-    background-size: cover;
-}
-
-.icon_news {
-    background-image: url('chrome-extension://__MSG_@@extension_id__/start/static/icons/googleResources/news.png');
-    background-size: cover;
-}
-
-.icon_sheets {
-    background-image: url('chrome-extension://__MSG_@@extension_id__/start/static/icons/googleResources/sheets.png');
-    background-size: cover;
-}
-
-.icon_hangouts {
-    background-image: url('chrome-extension://__MSG_@@extension_id__/start/static/icons/googleResources/hangouts.png');
-    background-size: cover;
-}
-
-.icon_googlemap {
-    background-image: url('chrome-extension://__MSG_@@extension_id__/start/static/icons/googleResources/maps.png');
-    background-size: cover;
-}
-
-.icon_classroom {
-    background-image: url('chrome-extension://__MSG_@@extension_id__/start/static/icons/googleResources/classroom.png');
-    background-size: cover;
-}
-
-.icon_facebook {
-    background-image: url('chrome-extension://__MSG_@@extension_id__/start/static/icons/shareResources/facebook.png');
-    background-size: cover;
-}
-
-.icon_twitter {
-    background-image: url('chrome-extension://__MSG_@@extension_id__/start/static/icons/shareResources/twitter.png');
-    background-size: cover;
-}
-
-.icon_pinterest {
-    background-image: url('chrome-extension://__MSG_@@extension_id__/start/static/icons/shareResources/pinterest.png');
-    background-size: cover;
-}
-
-.icon_tumblr {
-    background-image: url('chrome-extension://__MSG_@@extension_id__/start/static/icons/shareResources/tumblr.png');
-    background-size: cover;
-}
-
-.icon_vk {
-    background-image: url('chrome-extension://__MSG_@@extension_id__/start/static/icons/shareResources/vk.png');
-    background-size: cover;
-}
 
 #error_weather_messager:hover {
     cursor: pointer;
