@@ -1,8 +1,8 @@
-@import url("font-face.css");
-@import url("key-frames.css");
-@import url("my-apps-icons.css");
-@import url("scrollbar.css");
-@import url("glyphicons.css");
+@import url("modules/font-face.css");
+@import url("modules/key-frames.css");
+@import url("modules/my-apps-icons.css");
+@import url("modules/scrollbar.css");
+@import url("modules/glyphicons.css");
 
 html {
     height: 100%;
