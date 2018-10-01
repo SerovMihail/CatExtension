@@ -1,23 +1,21 @@
 window.AutoSuggest = function (textBox, engine, action) {
   "use strict";
-  var t = this;
+  var self = this;
   var interval = null;
   var lastValue = "";
   var m_suggestUrl = engine;
-
-  t.asDiv = null;
+  self.asDiv = null;
   var selectedRow = -1;
   var resultsLength = 0;
-  t.action = action;
-  t.init = function () {
-    textBox.addEventListener("keydown", t.keyDown, false);
-    textBox.addEventListener("keyup", t.keyUp, false);
-    //textBox.addEventListener("blur" ,t.documentMouseDown, false);
+  self.action = action;
+  self.init = function () {
+    textBox.addEventListener("keydown", self.keyDown, false);
+    textBox.addEventListener("keyup", self.keyUp, false);
   }
-  t.setSuggestUrl = function (su) {
+  self.setSuggestUrl = function (su) {
     m_suggestUrl = su;
   }
-  t.sprintf = function (str, params) {
+  self.sprintf = function (str, params) {
     var formatted = str;
     for (var k in params) {
       var v = params[k];
@@ -26,9 +24,9 @@ window.AutoSuggest = function (textBox, engine, action) {
     }
     return formatted;
   }
-  t.getData = function (val) {
+  self.getData = function (val) {
     if (!val) {
-      if (t.asDiv != null) t.asDiv.style.display = 'none';
+      if (self.asDiv != null) self.asDiv.style.display = 'none';
       return;
     }
     // no data retrieves if, suggest url is empty 
@@ -37,7 +35,7 @@ window.AutoSuggest = function (textBox, engine, action) {
     var locale = hl = utils.locale;
     var locale = locale.replace("_", "-");
 
-    var URL = t.sprintf(m_suggestUrl, { searchTerms: val, lang: locale, country: '' });
+    var URL = self.sprintf(m_suggestUrl, { searchTerms: val, lang: locale, country: '' });
 
     {
       var xmlHttpRequest;
@@ -48,11 +46,11 @@ window.AutoSuggest = function (textBox, engine, action) {
           if (xmlHttpRequest.status == 200) {
             var response;
             if (lastValue == val) {
-              if (t.asDiv == null) {
-                t.asDiv = document.getElementById('search-suggestion-pad');
+              if (self.asDiv == null) {
+                self.asDiv = document.getElementById('search-suggestion-pad');
               }
               // clean previous result
-              t.asDiv.innerHTML = null;
+              self.asDiv.innerHTML = null;
 
               var response = xmlHttpRequest.response;
 
@@ -88,18 +86,18 @@ window.AutoSuggest = function (textBox, engine, action) {
                 row.addEventListener("click", function (e) {
                   var row = e.currentTarget;
                   textBox.value = row.textContent;
-                  t.onSearch(row.textContent);
+                  self.onSearch(row.textContent);
                   e.preventDefault();
                 }, false);
 
-                t.asDiv.appendChild(row);
+                self.asDiv.appendChild(row);
 
               }
               selectedRow = -1;
               if (resultsLength == 0) {
-                t.asDiv.style.display = 'none';
+                self.asDiv.style.display = 'none';
               } else {
-                t.asDiv.style.display = 'block';
+                self.asDiv.style.display = 'block';
               }
             }
           }
@@ -109,7 +107,7 @@ window.AutoSuggest = function (textBox, engine, action) {
     }
     //)
   }
-  t.keyUp = function (e) {
+  self.keyUp = function (e) {
     var keyCode = e.keyCode;
     if (keyCode != getKeyCode('ENTER')) { 
       if ((keyCode != getKeyCode('UP_ARROW')) && (keyCode != getKeyCode('DOWN_ARROW')) && (keyCode != getKeyCode('F5'))) {
@@ -118,11 +116,11 @@ window.AutoSuggest = function (textBox, engine, action) {
           interval = null;
         }
         lastValue = textBox.value;
-        interval = setTimeout(t.getData, 10, textBox.value)
+        interval = setTimeout(self.getData, 10, textBox.value)
       }
     }
   }
-  t.keyDown = function (e) {
+  self.keyDown = function (e) {
     var keyCode = e.keyCode;
     /*
     if(keyCode==13){
@@ -161,11 +159,11 @@ window.AutoSuggest = function (textBox, engine, action) {
     //   textBox.value = row.textContent;
     // }
   }
-  t.documentMouseDown = function (e) {
-    if (e.explicitOriginalTarget != t.asDiv) {
+  self.documentMouseDown = function (e) {
+    if (e.explicitOriginalTarget != self.asDiv) {
       lastValue = "--";
-      if (t.asDiv != null) {
-        t.asDiv.style.display = 'none';
+      if (self.asDiv != null) {
+        self.asDiv.style.display = 'none';
         try {
           document.getElementById("container").style.height = "3px";
         } catch (e) { console.log(e) }
@@ -173,7 +171,7 @@ window.AutoSuggest = function (textBox, engine, action) {
     }
   }
 
-  t.setASdivPosition = function () {
+  self.setASdivPosition = function () {
     var el = textBox;
     var x = 0;
     var y = textBox.offsetHeight - 1;
@@ -184,26 +182,26 @@ window.AutoSuggest = function (textBox, engine, action) {
     }
     x += el.offsetLeft;
     y += el.offsetTop;
-    if (t.asDiv != null) {
-      t.asDiv.style.left = x + "px";
-      t.asDiv.style.top = y + "px";
+    if (self.asDiv != null) {
+      self.asDiv.style.left = x + "px";
+      self.asDiv.style.top = y + "px";
     }
   }
 
-  t.onSearch = function (val) {
+  self.onSearch = function (val) {
     lastValue = "--";
-    if (t.asDiv != null) {
-      t.asDiv.style.display = 'none';
+    if (self.asDiv != null) {
+      self.asDiv.style.display = 'none';
       if (document.getElementById("container")) {
         document.getElementById("container").style.height = "29px";
       }
-      t.action();
+      self.action();
     }
   }
 
-  t.changeSuggestUrl = function (aUrl) {
+  self.changeSuggestUrl = function (aUrl) {
     m_suggestUrl = aUrl;
   }
 
-  t.init();
+  self.init();
 };
