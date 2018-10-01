@@ -249,11 +249,12 @@
         clearTimeout(g);
       }
     }
+    var twoHundred = 200;
     var _ = function () {
-      $("#topsites_menu").fadeOut(200);
-      $("#share_menu").fadeOut(200);
-      $("#support_menu").fadeOut(200);
-      $("#tool_menu").fadeOut(200);
+      $("#topsites_menu").fadeOut(twoHundred);
+      $("#share_menu").fadeOut(twoHundred);
+      $("#support_menu").fadeOut(twoHundred);
+      $("#tool_menu").fadeOut(twoHundred);
     };
     $("nav").off("mouseleave");
     $("nav").on("mouseleave", _);
@@ -262,17 +263,17 @@
     $("#topsites_menu").hide();
     utils.resetMouseEnterHnd($("#lnk_topsites"), function (e) {
       e.stopPropagation();
-      $("#topsites_menu").show(200);
-      $("#share_menu").fadeOut(200);
-      $("#support_menu").fadeOut(200);
-      $("#tool_menu").fadeOut(200);
+      $("#topsites_menu").show(twoHundred);
+      $("#share_menu").fadeOut(twoHundred);
+      $("#support_menu").fadeOut(twoHundred);
+      $("#tool_menu").fadeOut(twoHundred);
     });
     utils.resetClickHnd($("#lnk_topsites"), function (e) {
       e.stopPropagation();
-      $("#topsites_menu").toggle(200);
-      $("#share_menu").fadeOut(200);
-      $("#support_menu").fadeOut(200);
-      $("#tool_menu").fadeOut(200);
+      $("#topsites_menu").toggle(twoHundred);
+      $("#share_menu").fadeOut(twoHundred);
+      $("#support_menu").fadeOut(twoHundred);
+      $("#tool_menu").fadeOut(twoHundred);
     });
     utils.resetMouseEnterHnd($("#topsites_menu"), function (e) {
       e.stopPropagation();
@@ -285,17 +286,17 @@
     $("#share_menu").hide();
     utils.resetMouseEnterHnd($("#lnk_share"), function (e) {
       e.stopPropagation();
-      $("#topsites_menu").fadeOut(200);
-      $("#share_menu").show(200);
-      $("#support_menu").fadeOut(200);
-      $("#tool_menu").fadeOut(200);
+      $("#topsites_menu").fadeOut(twoHundred);
+      $("#share_menu").show(twoHundred);
+      $("#support_menu").fadeOut(twoHundred);
+      $("#tool_menu").fadeOut(twoHundred);
     });
     utils.resetClickHnd($("#lnk_share"), function (e) {
       e.stopPropagation();
-      $("#topsites_menu").fadeOut(200);
-      $("#share_menu").toggle(200);
-      $("#support_menu").fadeOut(200);
-      $("#tool_menu").fadeOut(200);
+      $("#topsites_menu").fadeOut(twoHundred);
+      $("#share_menu").toggle(twoHundred);
+      $("#support_menu").fadeOut(twoHundred);
+      $("#tool_menu").fadeOut(twoHundred);
     });
     utils.resetMouseEnterHnd($("#share_menu"), function (e) {
       e.stopPropagation();
@@ -309,17 +310,17 @@
     $("#support_menu").hide();
     utils.resetMouseEnterHnd($("#lnk_support"), function (e) {
       e.stopPropagation();
-      $("#topsites_menu").fadeOut(200);
-      $("#share_menu").fadeOut(200);
-      $("#support_menu").show(200);
-      $("#tool_menu").fadeOut(200);
+      $("#topsites_menu").fadeOut(twoHundred);
+      $("#share_menu").fadeOut(twoHundred);
+      $("#support_menu").show(twoHundred);
+      $("#tool_menu").fadeOut(twoHundred);
     });
     utils.resetClickHnd($("#lnk_support"), function (e) {
       e.stopPropagation();
-      $("#topsites_menu").fadeOut(200);
-      $("#share_menu").fadeOut(200);
-      $("#support_menu").toggle(200);
-      $("#tool_menu").fadeOut(200);
+      $("#topsites_menu").fadeOut(twoHundred);
+      $("#share_menu").fadeOut(twoHundred);
+      $("#support_menu").toggle(twoHundred);
+      $("#tool_menu").fadeOut(twoHundred);
     });
     utils.resetMouseEnterHnd($("#support_menu"), function (e) {
       e.stopPropagation();
@@ -333,17 +334,17 @@
     $("#tool_menu").hide();
     utils.resetMouseEnterHnd($("#lnk_tool"), function (e) {
       e.stopPropagation();
-      $("#topsites_menu").fadeOut(200);
-      $("#share_menu").fadeOut(200);
-      $("#support_menu").fadeOut(200);
-      $("#tool_menu").show(200);
+      $("#topsites_menu").fadeOut(twoHundred);
+      $("#share_menu").fadeOut(twoHundred);
+      $("#support_menu").fadeOut(twoHundred);
+      $("#tool_menu").show(twoHundred);
     });
     utils.resetClickHnd($("#lnk_tool"), function (e) {
       e.stopPropagation();
-      $("#topsites_menu").fadeOut(200);
-      $("#share_menu").fadeOut(200);
-      $("#support_menu").fadeOut(200);
-      $("#tool_menu").toggle(200);
+      $("#topsites_menu").fadeOut(twoHundred);
+      $("#share_menu").fadeOut(twoHundred);
+      $("#support_menu").fadeOut(twoHundred);
+      $("#tool_menu").toggle(twoHundred);
     });
     utils.resetMouseEnterHnd($("#tool_menu"), function (e) {
       e.stopPropagation();
@@ -391,22 +392,18 @@
       $(".num").html(user["date_format"].replace("{{m}}", e.getMonth() + 1).replace("{{d}}", e.getDate()).replace("{{y}}", e.getFullYear()));
     }
 
-    var x = setInterval(DataProcessing, 1e4);
-    //var D = setTimeout(E, C);
+    var x = setInterval(DataProcessing, 1e4);    
     if (e.listAllThreads.threadSearchForm) {
       e.listAllThreads.threadSearchForm.pause();
     }
     e.listAllThreads.threadSearchForm = {
       pause: function () {
-        clearInterval(x);
-        //clearTimeout(D);
+        clearInterval(x);        
       },
       resume: function () {
         DataProcessing();
-        clearInterval(x);
-        //clearTimeout(D);
-        x = setInterval(DataProcessing, 1e4);
-        //D = setTimeout(E, C);
+        clearInterval(x);        
+        x = setInterval(DataProcessing, 1e4);        
       }
     };
     var M = SEARCH_ENGINES;
@@ -415,7 +412,7 @@
       $("#search-suggestion-pad").css({
         direction: o.css("direction")
       });
-      if (e.keyCode == 13 || e.which == 13) {
+      if (e.keyCode == getKeyCode('ENTER') || getKeyCode('ENTER')) {
         H();
       }
     });
@@ -505,7 +502,7 @@
         if (i != "web") {
           return;
         }
-        if (e.keyCode == 13 || e.which == 13) {
+        if (e.keyCode == getKeyCode('ENTER') || e.which == getKeyCode('ENTER')) {
           a.call(this);
         }
       });

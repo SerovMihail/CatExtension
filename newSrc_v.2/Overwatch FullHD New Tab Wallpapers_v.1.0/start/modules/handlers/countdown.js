@@ -53,7 +53,7 @@ window.loadCountDownModule = function (e) {
       $("#countdownTitle").text(countdownText);
     }
     var setTimeElem = function (e) {
-      if (e.handleObj.type == "blur" || e.keyCode == 13) {
+      if (e.handleObj.type == "blur" || e.keyCode == getKeyCode('ENTER')) {
         if ($(this).val() == "") {
           $(this).attr("type", "text");
           $(this).val("Invalid time");
@@ -68,13 +68,13 @@ window.loadCountDownModule = function (e) {
             changeOptions: utils.getGlobalOpt()
           });
         }
-        if (e.keyCode == 13) {
+        if (e.keyCode == getKeyCode('ENTER')) {
           $(this).trigger("blur");
         }
       }
     };
     var setTextElem = function (e) {
-      if (e.handleObj.type == "blur" || e.keyCode == 13) {
+      if (e.handleObj.type == "blur" || e.keyCode == getKeyCode('ENTER')) {
         if ($(this).val().length > 0) {
           countdownText = "Countdown to " + $(this).val();
         } else {
@@ -85,7 +85,7 @@ window.loadCountDownModule = function (e) {
         chrome.runtime.sendMessage({
           changeOptions: utils.getGlobalOpt()
         });
-        if (e.keyCode == 13) {
+        if (e.keyCode == getKeyCode('ENTER')) {
           $(this).trigger("blur");
         }
       }
@@ -111,13 +111,14 @@ window.loadCountDownModule = function (e) {
         d = 0;
       } else {
         var o = (e - countdownToTime) / 1e3;
+        var min = 60;
         o = Math.abs(Math.floor(o));
-        c = Math.floor(o / (24 * 60 * 60));
-        d = o - c * 24 * 60 * 60;
-        s = Math.floor(d / (60 * 60));
-        d = d - s * 60 * 60;
-        u = Math.floor(d / 60);
-        d = d - u * 60;
+        c = Math.floor(o / (24 * min * min));
+        d = o - c * 24 * min * min;
+        s = Math.floor(d / (min * min));
+        d = d - s * min * min;
+        u = Math.floor(d / min);
+        d = d - u * min;
       }
     }
     function w() {

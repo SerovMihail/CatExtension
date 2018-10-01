@@ -111,8 +111,8 @@ window.AutoSuggest = function (textBox, engine, action) {
   }
   t.keyUp = function (e) {
     var keyCode = e.keyCode;
-    if (keyCode != 13) {
-      if ((keyCode != 38) && (keyCode != 40) && (keyCode != 116)) {
+    if (keyCode != getKeyCode('ENTER')) { UP_ARROW
+      if ((keyCode != getKeyCode('UP_ARROW')) && (keyCode != getKeyCode('DOWN_ARROW')) && (keyCode != getKeyCode('F5'))) {
         if (interval != null) {
           window.clearInterval(interval)
           interval = null;
@@ -135,9 +135,9 @@ window.AutoSuggest = function (textBox, engine, action) {
       
     }
     */
-    if ((keyCode != 38) && (keyCode != 40)) {
+    if ((keyCode != getKeyCode('UP_ARROW')) && (keyCode != 40)) {
     } else {
-      if (keyCode == 38) {
+      if (keyCode == getKeyCode('UP_ARROW')) {
         if (selectedRow != -1) {
           document.getElementById("auto-suggest-row" + selectedRow).setAttribute("class", "");
         }
