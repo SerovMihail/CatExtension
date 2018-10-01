@@ -607,8 +607,7 @@ select:focus {
 }
 
 nav {
-    display: flex;
-    width: 38%;
+    display: flex;    
     align-items: center;
     height: 40px;
     z-index: 11;
@@ -1829,7 +1828,7 @@ h3 {
     transition: all 0.32s;
     outline: none;
     background-color: rgba(99, 110, 114,0.6);
-    font-size: 25px;    
+    font-size: 20px;    
     padding-left: 20px;    
     color: white;
     border-radius: 5px;
