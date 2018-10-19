@@ -213,20 +213,20 @@
         });
         String.prototype.toShortNumber = function () {
           var e = this.toString();
-          var t = Number(e);
-          if (!t || t === NaN) {
+          var parsedNumber = Number(e);
+          if (!parsedNumber || parsedNumber === NaN) {
             var a = e.match(/\d+/g).toString();
-            t = Number(a);
+            parsedNumber = Number(a);
           }
           var result;
-          if (t >= 1e9) {
-            result = (Math.round(t / 1e7) / 100).toString() + "B";
-          } else if (t >= 1e6) {
-            result = (Math.round(t / 1e4) / 100).toString() + "M";
-          } else if (t >= 1e3) {
-            result = (Math.round(t / 10) / 100).toString() + "K";
-          } else if (t < 1e3) {
-            return t.toString();
+          if (parsedNumber >= 1e9) {
+            result = (Math.round(parsedNumber / 1e7) / 100).toString() + "B";
+          } else if (parsedNumber >= 1e6) {
+            result = (Math.round(parsedNumber / 1e4) / 100).toString() + "M";
+          } else if (parsedNumber >= 1e3) {
+            result = (Math.round(parsedNumber / 10) / 100).toString() + "K";
+          } else if (parsedNumber < 1e3) {
+            return parsedNumber.toString();
           }
           return result;
         };
@@ -239,8 +239,6 @@
         $("#background_selector_widget").on("click", function (e) {
           e.stopPropagation();
         });
-        var h = [];
-
         $("#background_selector_widget #tab-background li").off("click");
         $("#background_selector_widget #tab-background li").on("click", function (t) {
           t.preventDefault();
@@ -270,14 +268,14 @@
       };
       chrome.extension.sendMessage({
         rateStatus: true
-      }, function (e) {
-        if (e === -1) {
+      }, function (state) {
+        if (state === -1) {
           $("#click-Rate").hide();
         }
-        if (e === 0) {
+        if (state === 0) {
           $("#click-Rate").show();
         }
-        if (e === 1) {
+        if (state === 1) {
           $("#click-Rate").addClass(localStorage.getItem("highlight") || "highlight");
           $("#click-Rate").show();
         }
@@ -326,6 +324,7 @@
       });
       $('[data-toggle="tooltip"]').tooltip();
     });
+
     e.addEventListener("load", function () {
       $("#__bg").fadeIn(350, function () {
         $("#wrapper").fadeIn(100, function () {
