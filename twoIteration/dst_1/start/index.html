@@ -3,7 +3,7 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <link rel="shortcut icon" type="image/x-icon" href="/start/static/icons/main/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="/start/static/graphic/main/favicon.ico">
     <title>New Tab</title>
 
     <!-- Styles -->
@@ -18,7 +18,7 @@
 
     <!-- Libs -->
     <script type="text/javascript" src="/start/libs/jquery.min.js"></script>
-    <script type="text/javascript" src="/start/libs/vendors.min.js"></script>    
+    <script type="text/javascript" src="/start/libs/vendors.min.js"></script>
 </head>
 
 <body>
@@ -99,7 +99,7 @@
                 <div id="search-box">
                     <input id="search-input" autocomplete="off" dir="auto" type="text" autofocus="autofocus" tabindex="1"
                         placeholder="Search Google" />
-                    <img class="search-icon" id="search-button" src="static/icons/svg/search.svg" alt="Start searching">
+                    <img class="search-icon" id="search-button" src="static/graphic/svg/search.svg" alt="Start searching">
                 </div>
             </div>
             <ul id="search-suggestion-pad"></ul>
@@ -109,7 +109,7 @@
             <div class="toggle" data-toggle="tooltip" data-placement="bottom" title="Click to change your background">
                 <span id="background_selector_menu">Options</span>
                 <span href="#" id="weather" class="clock">
-                    <img src="/start/static/icons/main/clock.png">
+                    <img src="/start/static/graphic/main/clock.png">
                 </span>
             </div>
             <div class="time" data-toggle="tooltip" data-placement="bottom" title="Click to change between 24 and 12 hours">
@@ -145,11 +145,12 @@
                     <div id="tab-setting">
                         <div class="t-r-a-s">
                             <ul>
+
                                 <li>
-                                    <label data-toggle="tooltip" data-placement="bottom" title="Display / Hide &quot;Apps&quot; element in newtab page">
-                                        <span>Apps</span>
+                                    <label data-toggle="tooltip" data-placement="top" title="Display / Hide &quot;Most Visited&quot; element in newtab page">
+                                        <span>Most Visited</span>
                                         <label class="switch normal" title="on/off">
-                                            <input type="checkbox" id="enable_apps" />
+                                            <input type="checkbox" id="enable_most_visited" />
                                             <span class="slider round"></span>
                                             <span class="on">ON</span>
                                             <span class="off">OFF</span>
@@ -170,10 +171,10 @@
                                 </li>
 
                                 <li>
-                                    <label data-toggle="tooltip" data-placement="top" title="Display / Hide &quot;Most Visited&quot; element in newtab page">
-                                        <span>Most Visited</span>
+                                    <label data-toggle="tooltip" data-placement="bottom" title="Display / Hide &quot;Apps&quot; element in newtab page">
+                                        <span>Apps</span>
                                         <label class="switch normal" title="on/off">
-                                            <input type="checkbox" id="enable_most_visited" />
+                                            <input type="checkbox" id="enable_apps" />
                                             <span class="slider round"></span>
                                             <span class="on">ON</span>
                                             <span class="off">OFF</span>

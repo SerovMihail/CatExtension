@@ -38,7 +38,7 @@ body {
 
 .mark_favor {
     position: relative;
-    right: 15px;
+    right: 85px;
     bottom: 80px;
     padding: 0;
     margin: 0;
@@ -844,7 +844,6 @@ h1.hour {
     margin-top: -5px;
     vertical-align: top;
     margin-bottom: 0;
-    margin-left: 5px;
 }
 
 .date {
@@ -1195,7 +1194,7 @@ h1.hour {
     border-radius: 50%;
     overflow: hidden;
     display: inline-block;
-    margin: 0 5px 10px 0;
+    margin: 0 0 10px 5px;
     cursor: pointer;
     position: relative;
 }
