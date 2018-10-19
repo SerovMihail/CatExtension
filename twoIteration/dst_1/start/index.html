@@ -5,27 +5,27 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link rel="shortcut icon" type="image/x-icon" href="/start/static/graphic/common/favicon.ico">
     <title>New Tab</title>
-    
+
     <link rel="stylesheet" type="text/css" href="/start/static/styles/common.css">
-    
+
     <script type="text/javascript" src="/start/js/libs/jquery.min.js"></script>
     <script type="text/javascript" src="/start/js/libs/third-party-resources.min.js"></script>
-    
+
     <script data-source="internal" type="text/javascript" src="/start/js/background/init/settings.js"></script>
     <script data-source="internal" type="text/javascript" src="/start/js/background/init/prefs-sys.js"></script>
     <script data-source="internal" type="text/javascript" src="/start/js/background/methodsExtend/utils.js"></script>
     <script data-source="internal" type="text/javascript" src="/start/js/background/handlers/common.js"></script>
     <script data-source="internal" type="text/javascript" src="/start/js/background/init/search-engines.js"></script>
-    
+
 </head>
 
 <body>
-   
+
     <div class="background" id="__bg">
         <div class="top_gradient"></div>
         <div class="bottom_gradient"></div>
     </div>
-    
+
 
     <!-- begin main content -->
     <div id="wrapper" style="display: none;">
@@ -87,8 +87,11 @@
             <div id="search-box-wrapper">
                 <div id="search-box">
                     <input id="search-input" autocomplete="off" dir="auto" type="text" autofocus="autofocus" tabindex="1"
-                        placeholder="Search Google" />
-                    <img class="search-icon" id="search-button" src="static/graphic/svg/search.svg" alt="Start searching">
+                        placeholder="Search Google" />                  
+
+                    <svg  alt="Start searching" class="search-icon" id="search-button"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="512px"
+                        id="Layer_1" fill="white" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve">
+                        <path d="M344.5,298c15-23.6,23.8-51.6,23.8-81.7c0-84.1-68.1-152.3-152.1-152.3C132.1,64,64,132.2,64,216.3  c0,84.1,68.1,152.3,152.1,152.3c30.5,0,58.9-9,82.7-24.4l6.9-4.8L414.3,448l33.7-34.3L339.5,305.1L344.5,298z M301.4,131.2  c22.7,22.7,35.2,52.9,35.2,85c0,32.1-12.5,62.3-35.2,85c-22.7,22.7-52.9,35.2-85,35.2c-32.1,0-62.3-12.5-85-35.2  c-22.7-22.7-35.2-52.9-35.2-85c0-32.1,12.5-62.3,35.2-85c22.7-22.7,52.9-35.2,85-35.2C248.5,96,278.7,108.5,301.4,131.2z" /></svg>
                 </div>
             </div>
             <ul id="search-suggestion-pad"></ul>
@@ -330,7 +333,7 @@
 
 
     <script data-source="internal" type="text/javascript" src="/start/js/contentModules/base/load-front.js"></script>
-    
+
     <script data-source="internal" type="text/javascript" src="/start/js/contentModules/helpers/keysEnum.js"></script>
     <script data-source="internal" type="text/javascript" src="/start/js/contentModules/base/options.js"></script>
     <script data-source="internal" type="text/javascript" src="/start/js/contentModules/search/form.js"></script>
