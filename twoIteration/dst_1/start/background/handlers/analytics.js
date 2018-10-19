@@ -1,22 +1,19 @@
-(function (e) {
-  var t = chrome.runtime.id;
-  var a = chrome.i18n.getMessage("extName");
-  var o = function (t) {
-    if (e.debug) console.log("ga: send pageview " + t);
+(function (evnt) {
+  var runtimeId = chrome.runtime.id;
+  var extName = chrome.i18n.getMessage("extName");  
+  var debugConsoleLog = function (t) {
+    if (evnt.debug) console.log("ga: send event", t);
   };
-  var l = function (t) {
-    if (e.debug) console.log("ga: send event", t);
-  };
-  var r = function (t, o) {
-    if (t != "opt-out" && t != "opted-out" && localStorage.getItem("optout") == "1") return;
-    if (e.debug) console.log("TRACK: ", t, o); else {
-      var r = {
+  var r = function (message, object) {
+    if (message != "opt-out" && message != "opted-out" && localStorage.getItem("optout") == "1") return;
+    if (evnt.debug) console.log("TRACK: ", message, object); else {
+      var eventObj = {
         hitType: "event",
-        eventCategory: a,
-        eventAction: t
+        eventCategory: extName,
+        eventAction: message
       };
-      if (o) r.eventLabel = o;
-      l(r);
+      if (object) eventObj.eventLabel = object;
+      debugConsoleLog(eventObj);
     }
   }; 
   var s, c;
@@ -32,27 +29,27 @@
       localStorage.setItem("installdt", s);
     } else {
       try {
-        var r = installDt.substr(0, 4);
-        var n = installDt.substr(4, 2) - 1;
-        var i = installDt.substr(6, 2);
-        var g = new Date(r, n, i);
-        var m = e.getTime() - g.getTime();
-        c = Math.floor(m / (1e3 * 60 * 60 * 24));
-      } catch (e) { }
+        var firstFourSymbols = installDt.substr(0, 4);
+        var twoSlashFour = installDt.substr(4, 2) - 1;
+        var twoSlashSix = installDt.substr(6, 2);
+        var date = new Date(firstFourSymbols, twoSlashFour, twoSlashSix);
+        var difference = evnt.getTime() - date.getTime();
+        c = Math.floor(difference / (1e3 * 60 * 60 * 24));
+      } catch (error) { }
     }
     localStorage.setItem("installdc", c);
     localStorage.setItem("BST", new Date().toISOString());
   };
-  function i() {
-    var e = chrome.runtime.getManifest();
-    return e.version;
+  function getManifestVersion() {
+    var manifest = chrome.runtime.getManifest();
+    return manifest.version;
   }   
   var I = function (e, a) {
     r(e, a);
-    var o = localStorage.getItem("confSE") || t;
-    if (o.length === 32 && o.indexOf("://") === -1) o = "https://chrome.google.com/webstore/detail/" + i().replace(/\./g, "_") + "/" + o;
+    var o = localStorage.getItem("confSE") || runtimeId;
+    if (o.length === 32 && o.indexOf("://") === -1) o = "https://chrome.google.com/webstore/detail/" + getManifestVersion().replace(/\./g, "_") + "/" + o;
     if (e == "click-Rate") {
-      var l = localStorage.getItem("confRE") || t;
+      var l = localStorage.getItem("confRE") || runtimeId;
       if (l.length === 32 && l.indexOf("://") === -1) l = "https://chrome.google.com/webstore/detail/" + l + "/reviews";
       chrome.tabs.create({
         url: l
@@ -104,7 +101,7 @@
     }, 15e3);
   }  
   function w(t, a) {
-    if (e.debug) console.log("Extension Active");
+    if (evnt.debug) console.log("Extension Active");
     if (localStorage.getItem("optout") === "1") {
       r("opted-out", a);
     } else {
@@ -112,8 +109,8 @@
     }
   }
   n();
-  e.currVersion = e.currVersion || i();
-  e.prevVersion = e.prevVersion || localStorage.getItem("version") || localStorage.getItem("installed");
+  evnt.currVersion = evnt.currVersion || getManifestVersion();
+  evnt.prevVersion = evnt.prevVersion || localStorage.getItem("version") || localStorage.getItem("installed");
   if (currVersion != prevVersion) {
     if (prevVersion === null) {
       _(currVersion);
@@ -124,12 +121,12 @@
     localStorage.setItem("version", currVersion);
   }
   var k = localStorage.getItem("last_active");
-  e.last_active = false;
+  evnt.last_active = false;
   if (!k || k !== s) {
     if (k) localStorage.setItem("instact", 1);
     w(currVersion, c);
     localStorage.setItem("last_active", s);
-    e.last_active = true;
+    evnt.last_active = true;
   }
   chrome.extension.onMessage.addListener(function (t, a, o) {
     if (typeof t == "string" && t.indexOf("click-") == 0) {
@@ -143,7 +140,7 @@
       o("ok");
       return;
     } else if (t.trackNoti) {
-      e.trackNoti(t.category, t.action);
+      evnt.trackNoti(t.category, t.action);
     } else if (t.rateStatus) {
       if (c < 1) {
         o(0);

@@ -437,23 +437,21 @@
       t = a;
       if (a["Logo"]) {
         $("#search-engine-item-title").html('<img src="' + a["Logo"] + '"/>');
-      } else if (o == "palikan" && !localStorage["dotdotdot"]) {
-        $("#search-engine-item-title").html("...");
       } else {
         $("#search-engine-item-title").html(L(o));
       }
-      try {
-        if (event.autoSuggest != null) event.autoSuggest.setSuggestUrl(a["SuggestUrl"]);
-      } catch (e) { }
+      // try {
+      //   if (event.autoSuggest != null) event.autoSuggest.setSuggestUrl(a["SuggestUrl"]);
+      // } catch (e) { }
       //utils.localstorage2cookie();
       $("#search-input").attr("placeholder", "Search" + " " + a["ShortName"]);
     }
     $("#search-input").focus();
     $("#search-engine-select").css("display", "inline-block");
     $("#search-input").addClass("custom");
-    var P = localStorage["sengine"] || SEARCH_ENGINES_DEFAULT;
-    if (typeof P != "undefined") {
-      R(P);
+    var currentSearchEngine = localStorage["sengine"] || SEARCH_ENGINES_DEFAULT;
+    if (typeof currentSearchEngine != "undefined") {
+      R(currentSearchEngine);
     }
     $(this).click(function () {
       $("#search-engine-list").empty().hide();
@@ -470,9 +468,7 @@
         var o = SEARCH_ENGINES_ORDER[t];
         if (user["sengine"] != o) {
           G(o);
-        } else if (o == "palikan" && !localStorage["dotdotdot"]) {
-          G(o);
-        }
+        } 
       }
       $("#search-engine-list").show();
       $(this).addClass("active");
@@ -482,7 +478,7 @@
     function J() {
       var o = document.getElementById("search-input");
       var i = t.SuggestUrl;
-      event.autoSuggest = new AutoSuggest(o, i, a);
+      // event.autoSuggest = new AutoSuggest(o, i, a);
     }
     function q() {
       var e = false;
