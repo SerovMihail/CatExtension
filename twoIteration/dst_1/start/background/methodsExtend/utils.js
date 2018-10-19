@@ -6,9 +6,6 @@
   function setInLocalStorage(e, t) {
     localStorage[e] = t;
   }
-  function clearLocalStorage(e) {
-    localStorage.clear();
-  }
   var lang = navigator.languages[0] || navigator.language;
   var shortLang = lang.substr(0, 2);
   var getOS = function () {

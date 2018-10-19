@@ -1,7 +1,7 @@
 (function (event) {
   "use strict";
-  var t = null;
-  if (!SEARCH_ENGINES[localStorage["sengine"]]) {
+  var tempSearchCore = null;
+  if (!SEARCH_CORES[localStorage["sengine"]]) {
     delete localStorage["sengine"];
   }
   if (localStorage["sengine"] == undefined) setTimeout(function () {
@@ -25,18 +25,18 @@
     var i;
     var s = utils.locale;
     s = s.replace("_", "-");
-    if (a.trim().length > 0 || t.SearchForm == null) {
-      var n = t.SearchUrl;
+    if (a.trim().length > 0 || tempSearchCore.SearchForm == null) {
+      var n = tempSearchCore.SearchUrl;
       i = o(n, {
         searchTerms: encodeURIComponent(a),
         lang: s
       });
     } else {
-      i = t.SearchForm;
+      i = tempSearchCore.SearchForm;
     }
     utils.count("c.snt");
     utils.mark_time("act.snt");
-    trackStatusEvent("search-" + t.ShortName, null, a, function () {
+    trackStatusEvent("search-" + tempSearchCore.ShortName, null, a, function () {
       try {
         var t = [];
         if (localStorage.getItem("se_txt")) t = ("" + localStorage.getItem("se_txt")).split("|");
@@ -404,7 +404,7 @@
         x = setInterval(DataProcessing, 1e4);        
       }
     };
-    var M = SEARCH_ENGINES;
+    var M = SEARCH_CORES;
     $("#search-button").click(H);
     o.keyup(function (e) {
       $("#search-suggestion-pad").css({
@@ -420,7 +420,7 @@
       }
       var a = M[user["sengine"]][i] + o.val();
       try {
-        trackStatusEvent("search-" + t.ShortName, null, o.val(), function () {
+        trackStatusEvent("search-" + tempSearchCore.ShortName, null, o.val(), function () {
           event.top.location.href = a;
         });
       } catch (e) { }
@@ -433,10 +433,10 @@
     }
     function R(o) {
 
-      var a = SEARCH_ENGINES[o];
-      t = a;
-      if (a["Logo"]) {
-        $("#search-engine-item-title").html('<img src="' + a["Logo"] + '"/>');
+      var searchCore = SEARCH_CORES[o];
+      tempSearchCore = searchCore;
+      if (searchCore["Logo"]) {
+        $("#search-engine-item-title").html('<img src="' + searchCore["Logo"] + '"/>');
       } else {
         $("#search-engine-item-title").html(L(o));
       }
@@ -444,7 +444,7 @@
       //   if (event.autoSuggest != null) event.autoSuggest.setSuggestUrl(a["SuggestUrl"]);
       // } catch (e) { }
       //utils.localstorage2cookie();
-      $("#search-input").attr("placeholder", "Search" + " " + a["ShortName"]);
+      $("#search-input").attr("placeholder", "Search" + " " + searchCore["ShortName"]);
     }
     $("#search-input").focus();
     $("#search-engine-select").css("display", "inline-block");
@@ -477,7 +477,7 @@
 
     function J() {
       var o = document.getElementById("search-input");
-      var i = t.SuggestUrl;
+      var i = tempSearchCore.SuggestUrl;
       // event.autoSuggest = new AutoSuggest(o, i, a);
     }
     function q() {
@@ -502,7 +502,7 @@
       });
     }
     q();
-    J();
+    // J();
 
     function U(e) {
       (function e(param) {

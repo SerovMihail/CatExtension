@@ -50,10 +50,6 @@ body {
     color: coral;
 }
 
-
-
-
-
 input:focus,
 select:focus {
     outline: 0 !important;
@@ -558,14 +554,7 @@ h1.hour {
     position: relative;
 }
 
-/* #background_selector_widget #images_selector li .like-container {
-  width: 70px;
-  max-height: 30px;
-  left: 2px;
-  bottom: 25px;
-  position: absolute;
-  text-align: center;
-} */
+
 
 #background_selector_widget #images_selector li .like-action {
     display: inline-block;
@@ -578,14 +567,9 @@ h1.hour {
 }
 
 
-
-/* #background_selector_widget #images_selector li .like-container.clicked .like-action {
-  animation: iconzoom .5s ease;
-} */
-
 #background_selector_widget #images_selector li .like-action.active {
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAACcElEQVRoQ+2Z/XHUMBDF36sA0gHpIKmAUAFQAaGDUAFJBUAFQAWQCkgqIFRAUgFJBY/ZmzuPfN6zJI/OijzRn3f62J/3S7siFjK4EA48gcQ0Kek3gKNg3k8AFyRvYmun/L83jUiSI9A9gFf7gJkbxNhuARyTNKhiowaICW8mdl6MAtifs+8wrY3s9yQPlgBiDO9JfisFU8u0TP7vJE+XAHJL8nAJICBZzCKKbRR+WUlvAPyIfe0WQCyLv46AXJM8icGm/l9cI5KeA/iXIMDjdnZJZwA+JYA87vAr6S+AFwkghyTtulJkFDUtSWbzvxIk+0MyvBknLBmfUhrEMvW7BKm+kDQTLDY6EKd+SDnkhuSxTcxw8pR9x+aYOVpN8yE0zRDEqx+ih25ygSS7bnyNLig3wcoAKwdWfhaCXAF4mXtOALJdEeZuNWX+JUlLvkVBJml0ivTBmu6+FmrECp2PuRsHGqkB0t3XWgfpbgchSGoO6CmtokYerEvjOXtrIG9J2uV0NXoJMVJnu+5TUSO9S2fLIL0GxjZIdi6pqJFehdkyyKhpZeeSShrpRSzP2VsB6UUsDyQ7BFfSyKBM3vaRVkAGLddBYZWbSypp5IGkNTm60SrIuGmtK72sXFJBI4OINXD2CMjqTUNSL7LNDHIJ4Mzrvnim5YbgsL0Z+tHMIDubeskgAM5JXkiy4qt7bZoZZOcDkQeSFYJnBrkj6Tb/WgPpmg3bNYXboMvJJYFGsqJdbm8AgBut3MJq86OklGcBm961PtcNus8ArD3zbIKgu5bcrRtybrQaBSkoxGxbFe39zia1c9ATSM2v7529GI38B3YNU0I0C36HAAAAAElFTkSuQmCC);
-    /*transition: background .3s;*/
+    
 }
 
 #background_selector_widget #images_selector li .like-label {
@@ -671,14 +655,6 @@ h3 {
     flex-grow: 1;
     width: 33.3333%;
 }
-
-/* .bgFooter #checkbox_disable_weather {
-  display: inline;
-  margin-left: 15px;
-}
-.bgFooter #checkbox_disable_weather .checkbox{
-  margin: 0 19px 0 0;
-} */
 
 .bgFooter #change_city_box {
     border-top: 1px solid #F3F3F3;

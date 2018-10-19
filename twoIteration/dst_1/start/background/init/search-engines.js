@@ -1,7 +1,7 @@
 (function(window){
   "use strict";
 
-  window.SEARCH_ENGINES = {
+  window.SEARCH_CORES = {
     'google' : {
       "ShortName": "Google",
       "LongName" : "Google Search",

@@ -1,13 +1,13 @@
-window.loadAutoHideModule = function (e) {
-  if (e.autoHideThread) clearTimeout(e.autoHideThread);
-  e.autoHideThread = null;
+window.loadAutoHideModule = function (evt) {
+  if (evt.autoHideThread) clearTimeout(evt.autoHideThread);
+  evt.autoHideThread = null;
   function show() {
     $("#wrapper").fadeIn(1e3);
     delay();
   }
   function delay() {
-    clearTimeout(e.autoHideThread);
-    e.autoHideThread = setTimeout(a, 1e4);
+    clearTimeout(evt.autoHideThread);
+    evt.autoHideThread = setTimeout(a, 1e4);
   }
   
   function hide() {
@@ -17,16 +17,16 @@ window.loadAutoHideModule = function (e) {
   }
 
   function deleteEvents() {
-    clearTimeout(e.autoHideThread);
+    clearTimeout(evt.autoHideThread);
     $("body").off("mousemove", show);
     $("input[type=text]").off("focus", deleteEvents);
     $("input[type=search]").off("keypress", deleteEvents);
     $("input[type=text], input[type=search]").off("focusout", addEvents);
   }
   function addEvents() {
-    e.listAllThreads.threadAutoHide = {
+    evt.listAllThreads.threadAutoHide = {
       pause: function () {
-        clearTimeout(e.autoHideThread);
+        clearTimeout(evt.autoHideThread);
         hide();
       },
       resume: function () {
