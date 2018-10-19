@@ -23,7 +23,8 @@ body {
     margin: 0;
     font-size: 80%;
     font-weight: 100;
-    font-family: 'sf-light';
+    /* font-family: 'sf-light'; */
+    font-family: 'Nunito Sans', sans-serif;
     background-image: none;
     background: transparent;
     background-repeat: no-repeat !important;
@@ -1431,7 +1432,7 @@ h3 {
 
 #overlay_popup {
     background: rgba(255, 255, 255, 1);
-    font-family: 'Montserrat', sans-serif;
+    font-family: inherit;
     z-index: 15;
     display: none;
     position: relative;
@@ -1733,7 +1734,7 @@ ul .title {
     font-style: normal;
     font-stretch: normal;
     text-align: center;
-    font-family: 'Open Sans', sans-serif;
+    font-family: inherit;
     color: #ffffff;
     text-shadow: 0 0 4px #000;
     padding-bottom: 8px;
@@ -1779,7 +1780,7 @@ ul#countdown {
     align-self: center;
     margin: 0 auto;
     color: #fff;
-    font-family: 'Open Sans', sans-serif;
+    font-family: inherit;
     font-weight: bold;
 }
 
