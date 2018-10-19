@@ -371,26 +371,26 @@
       } else {
         user["time_format"] = "12h";
       }
-      DataProcessing();
+      dataProcessing();
     }
-    function DataProcessing() {
-      var e = new Date();
+    function dataProcessing() {
+      var nowDate = new Date();
       if (user["time_format"] == "12h") {
-        var t = e.getHours() < 12 ? "AM" : "PM";
-        $(".ampm").html(t);
+        var dayPart = nowDate.getHours() < 12 ? "AM" : "PM";
+        $(".ampm").html(dayPart);
         $(".ampm").css("display", "inline-block");
-        var o = e.getHours();
+        var o = nowDate.getHours();
         if (o == 0) o = 12; else if (o > 12) o = o - 12;
-        $(".hour").html(o + ":" + ("0" + e.getMinutes()).slice(-2));
+        $(".hour").html(o + ":" + ("0" + nowDate.getMinutes()).slice(-2));
       } else {
-        $(".hour").html(("0" + e.getHours()).slice(-2) + ":" + ("0" + e.getMinutes()).slice(-2));
+        $(".hour").html(("0" + nowDate.getHours()).slice(-2) + ":" + ("0" + nowDate.getMinutes()).slice(-2));
         $(".ampm").css("display", "none");
       }
-      $(".day").html(s[e.getDay()]);
-      $(".num").html(user["date_format"].replace("{{m}}", e.getMonth() + 1).replace("{{d}}", e.getDate()).replace("{{y}}", e.getFullYear()));
+      $(".day").html(s[nowDate.getDay()]);
+      $(".num").html(user["date_format"].replace("{{m}}", nowDate.getMonth() + 1).replace("{{d}}", nowDate.getDate()).replace("{{y}}", nowDate.getFullYear()));
     }
 
-    var x = setInterval(DataProcessing, 1e4);    
+    var x = setInterval(dataProcessing, 1e4);    
     if (event.listAllThreads.threadSearchForm) {
       event.listAllThreads.threadSearchForm.pause();
     }
@@ -399,9 +399,9 @@
         clearInterval(x);        
       },
       resume: function () {
-        DataProcessing();
+        dataProcessing();
         clearInterval(x);        
-        x = setInterval(DataProcessing, 1e4);        
+        x = setInterval(dataProcessing, 1e4);        
       }
     };
     var M = SEARCH_CORES;
