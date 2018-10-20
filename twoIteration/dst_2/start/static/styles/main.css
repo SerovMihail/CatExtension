@@ -1,15 +1,15 @@
-@import url("modules/font-face.css");
-@import url("modules/key-frames.css");
-@import url("modules/my-apps-icons.css");
-@import url("modules/scrollbar.css");
-@import url("modules/glyphicons.css");
+@import url("parts/font-face.css");
+@import url("parts/key-frames.css");
+@import url("parts/my-apps-icons.css");
+@import url("parts/scrollbar.css");
+@import url("parts/glyphicons.css");
 
-@import url("modules/countdown.css");
-@import url("modules/background.css");
-@import url("modules/switch.css");
-@import url("modules/checkboxes.css");
-@import url("modules/tooltip.css");
-@import url("modules/dropdown.css");
+@import url("parts/countdown.css");
+@import url("parts/background.css");
+@import url("parts/switch.css");
+@import url("parts/checkboxes.css");
+@import url("parts/tooltip.css");
+@import url("parts/dropdown.css");
 
 html {
     height: 100%;

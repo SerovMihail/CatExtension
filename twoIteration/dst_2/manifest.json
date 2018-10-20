@@ -21,13 +21,13 @@
     "persistent": true,
     "scripts": [
       "/start/libs/jquery.min.js",
-      "/start/background/init/search-engines.js",
-      "/start/background/init/settings.js",
-      "/start/background/init/prefs-sys.js",
-      "/start/background/methodsExtend/utils.js",
-      "/start/background/handlers/common.js",
-      "/start/background/handlers/setup.js",
-      "/start/background/handlers/analytics.js"
+      "/start/bg/init/search-engines.js",
+      "/start/bg/init/settings.js",
+      "/start/bg/init/prefs-sys.js",
+      "/start/bg/methodsExtend/utils.js",
+      "/start/bg/handlers/common.js",
+      "/start/bg/handlers/setup.js",
+      "/start/bg/handlers/analytics.js"
     ]
   },  
   "permissions": [
