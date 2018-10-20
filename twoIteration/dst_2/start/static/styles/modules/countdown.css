@@ -3,6 +3,28 @@
     transition: all 0.5s, opacity 0s;
 }
 
+.countDown {
+    position: absolute;
+    bottom: 60px;
+    width: 100%;
+    top: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: -1;
+}
+
+.option_bottom {
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.colon {
+    min-width: 5% !important;
+}
+
+
 ul .title {
     display: block;
     position: absolute;
