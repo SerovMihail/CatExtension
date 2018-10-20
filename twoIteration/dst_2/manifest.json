@@ -24,10 +24,10 @@
       "/start/scripts/bg/init/search-engines.js",
       "/start/scripts/bg/init/settings.js",
       "/start/scripts/bg/init/prefs-sys.js",
-      "/start/scripts/bg/methodsExtend/utils.js",
-      "/start/scripts/bg/handlers/common.js",
-      "/start/scripts/bg/handlers/setup.js",
-      "/start/scripts/bg/handlers/analytics.js"
+      "/start/scripts/bg/utils/index.js",
+      "/start/scripts/bg/helpers/common.js",
+      "/start/scripts/bg/helpers/setup.js",
+      "/start/scripts/bg/helpers/analytics.js"
     ]
   },  
   "permissions": [
