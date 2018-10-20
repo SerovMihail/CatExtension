@@ -1,9 +1,6 @@
 (function (e) {
   var t = chrome.runtime.id;
-  var a = chrome.i18n.getMessage("extName");
-  var o = function (t) {
-    if (e.debug) console.log("ga: send pageview " + t);
-  };
+  var a = chrome.i18n.getMessage("extName");  
   var l = function (t) {
     if (e.debug) console.log("ga: send event", t);
   };
