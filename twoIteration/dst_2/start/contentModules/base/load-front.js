@@ -1,5 +1,5 @@
-(function (e) {
-  e.getAllImages = function () {
+(function (window) {
+  window.getAllImages = function () {
     chrome.runtime.getPackageDirectoryEntry(function (s) {
       s.getDirectory('start/static/bg-images', {}, function (imagesDirectory) {
         var dirReader = imagesDirectory.createReader();
@@ -19,24 +19,23 @@
           });
         };
         getEntries(function (buffer) {
-          e.imageBuffer = buffer.map(function (el) {
+          window.imageBuffer = buffer.map(function (el) {
             return {
               fullPath: el.fullPath.replace('/crxfs', '')
             }
           });
-          def('bg_img_list', e.imageBuffer.length);
-          e.setNewTabBackground();
+          def('bg_img_list', window.imageBuffer.length);
+          window.setNewTabBackground();
         });
       });
     });
 
   };
 
-  e.listAllThreads = {};
-  e.chosenRandomBG = "";
-
+  window.listAllThreads = {};
+  window.chosenRandomBG = "";
   
-  e.setBackgroundGIFOrJPG = function (e) {    
+  window.setBackgroundGIFOrJPG = function (e) {    
 
     var t = e.replace("bg-0", "").replace("bg-", "").replace(".jpg", "");
     var imagePath = window.imageBuffer[parseInt(t)].fullPath;
@@ -51,7 +50,7 @@
     
   };
 
-  e.setNewTabBackground = function () {
+  window.setNewTabBackground = function () {
 
     var lastBg = "" + localStorage.getItem("last_bg");
     var favorArr = [], newArr = [];
@@ -79,10 +78,10 @@
     } else {
       chosenRandomBG = "bg-" + ("0" + lastBg).slice(-2) + ".jpg";
     }
-    e.setBackgroundGIFOrJPG(chosenRandomBG);
+    window.setBackgroundGIFOrJPG(chosenRandomBG);
   };
   
 
-  e.getAllImages();
+  window.getAllImages();
 
 })(this);

@@ -67,9 +67,9 @@ window.loadAutoHideModule = function (e) {
 window.loadSnowModule = function (e) {
   if (e.change_interval) clearInterval(e.change_interval);
   e.change_interval = null;
-  var t = function () {
+  var setSnow = function () {
     var type;
-    var a = $('<div id="flake" class="snow" />').css({
+    var wrapper = $('<div id="flake" class="snow" />').css({
       position: "absolute",
       "z-index": 999999999,
       top: "-50px",
@@ -85,7 +85,7 @@ window.loadSnowModule = function (e) {
         customTop = height - 40,
         customLeftDistance = leftDistance - 250 + Math.random() * 200,
         duration = height * 10 + Math.random() * 5e3;
-      a.clone().appendTo("body").html(type.snow_type).css({
+      wrapper.clone().appendTo("body").html(type.snow_type).css({
         left: leftDistance,
         opacity: customOpacity,
         "font-size": customFontSize,
@@ -141,7 +141,7 @@ window.loadSnowModule = function (e) {
     clearInterval(e.change_interval);
   };
   if (localStorage.getItem("enable_snow") == "yes") {
-    t();
+    setSnow();
     $("#snow_type").parent().parent().parent().show();
   } else {
     a();
@@ -151,7 +151,7 @@ window.loadSnowModule = function (e) {
   $("#enable_snow").off("change").on("change", function () {
     localStorage.setItem("enable_snow", $("#enable_snow").is(":checked") ? "yes" : "no");
     if ($("#enable_snow").is(":checked")) {
-      t();
+      setSnow();
       $("#snow_type").parent().parent().parent().fadeIn();
     } else {
       a();
@@ -167,6 +167,6 @@ window.loadSnowModule = function (e) {
   $("#snow_type").off("change").on("change", function () {
     localStorage.setItem("snow_type", $(this).val());
     a();
-    t();
+    setSnow();
   });
 };
