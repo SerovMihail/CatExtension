@@ -1,6 +1,7 @@
+
 @font-face {
-    font-family: 'sf-light';
-    src: url('/start/static/fonts/sf/light.otf');
+    font-family: 'Rubik';
+    src: url('/start/static/fonts/sf/Rubik-Regular.ttf');
     font-display: fallback;
 }
 
