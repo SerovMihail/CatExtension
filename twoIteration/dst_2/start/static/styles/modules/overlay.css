@@ -1,0 +1,200 @@
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+#arrow_dialog {
+    display: none;
+    position: absolute;
+    z-index: 100;
+    top: 335px;
+    right: 3%;
+}
+
+#arrow_dialog img {
+    display: block;
+}
+
+#overlay_progress_popup {
+    z-index: 15;
+    display: none;
+    position: relative;
+    width: 438px;
+    height: 225px;
+    margin: 0 auto;
+    top: 30%;
+    overflow: hidden;
+    border: 1px solid #c2c2c2;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.26);
+    background: rgba(255, 255, 255, 1);
+}
+
+#progressBar {
+    margin: 60px 40px;
+}
+
+#overlay_popup {
+    background: rgba(255, 255, 255, 1);
+    font-family: inherit;
+    z-index: 15;
+    display: none;
+    position: relative;
+    width: 438px;
+    height: 225px;
+    margin: 0px auto;
+    top: 30%;
+    overflow: hidden;
+    border: 1px solid #c2c2c2;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.26);
+}
+
+#overlay_popup header,
+#overlay_progress_popup header {
+    overflow: hidden;
+    border-bottom: 1px solid #ccc;
+    margin: 0 10px;
+    position: relative;
+}
+
+#overlay_popup * {
+    box-sizing: border-box;
+}
+
+#overlay_popup .x-button {
+    width: 15px;
+    height: 15px;
+    display: block;
+    top: 5px;
+    right: 7px;
+    position: absolute;
+}
+
+#overlay_popup img,
+#overlay_progress_popup img {
+    height: 20%;
+    margin: 20px 0px -41px 20px;
+    width: 45px;
+    height: 45px;
+}
+
+#overlay_popup .x-button:before {
+    transform: rotate(45deg);
+}
+
+#overlay_popup .x-button:after {
+    transform: rotate(-45deg);
+}
+
+#overlay_popup .x-button:after,
+#overlay_popup .x-button:before {
+    content: "";
+    display: block;
+    left: 1px;
+    position: absolute;
+    right: 1px;
+    top: 10px;
+    height: 2px;
+    background: #ccc;
+    -webkit-transform-origin: 50% 50%;
+    /* Chrome, Safari, Opera */
+    transform-origin: 50% 50%;
+}
+
+#overlay_popup .x-button:hover:after,
+#overlay_popup .x-button:hover:before {
+    background: #888;
+}
+
+#overlay_popup p {
+    font-family: helvetica;
+    color: #717171;
+    line-height: 1.3em;
+    margin: 7px 0px -41px -37px;
+    font-size: 13px;
+    font-weight: 100;
+    letter-spacing: -0.5px;
+    max-width: 500px;
+    display: block;
+    float: left;
+    width: 387px;
+}
+
+#overlay_popup h1,
+#overlay_progress_popup h1 {
+    font-family: helvetica;
+    font-size: 19px;
+    font-weight: normal;
+    color: #717171;
+    line-height: 1.1em;
+    margin: -37px 0px -41px 22px;
+}
+
+#overlay_popup .wrapper,
+#overlay_progress_popup .wrapper {
+    width: 100%;
+    margin: 45px 20px 0px 62px;
+    float: left;
+}
+
+#overlay_popup section {
+    float: left;
+    width: 100%;
+    height: 65%;
+}
+
+#overlay_popup section .wrapper {
+    margin-top: 20px;
+    width: 35%;
+}
+
+#overlay_popup .buttons {
+    float: left;
+    position: absolute;
+    background-color: white;
+    bottom: 0;
+    left: 147px;
+    text-align: right;
+    padding: 20px;
+}
+
+#overlay_popup .btn {
+    font-family: helvetica;
+    border-radius: 0;
+    color: white;
+    background-color: #2984D7;
+    height: 27px;
+    padding: 0px 25px 31px;
+    margin-left: 15px;
+    font-size: 13px;
+    font-weight: 100;
+    line-height: 32px;
+    letter-spacing: -0.5px;
+    text-align: center;
+    float: right;
+    cursor: pointer;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#overlay_popup .btn:hover {
+    background-color: #2B90E2;
+}
+
+#overlay_popup #bt1 {
+    left: -13px;
+}
+
+#overlay_popup #bt2 {
+    margin-left: 144px;
+}
+
+#overlay_popup span {
+    vertical-align: middle;
+    display: inline-block;
+}
