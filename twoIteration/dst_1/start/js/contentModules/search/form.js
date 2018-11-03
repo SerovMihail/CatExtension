@@ -444,7 +444,7 @@
       //   if (event.autoSuggest != null) event.autoSuggest.setSuggestUrl(a["SuggestUrl"]);
       // } catch (e) { }
       //utils.localstorage2cookie();
-      $("#search-input").attr("placeholder", "Search" + " " + searchCore["ShortName"]);
+      $("#search-input").attr("placeholder", "Search");
     }
     $("#search-input").focus();
     $("#search-engine-select").css("display", "inline-block");
