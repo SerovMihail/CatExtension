@@ -1,7 +1,5 @@
 const showTour = localStorage.getItem('tour_shown');
 
-debugger;
-
 if (showTour && JSON.parse(showTour)) {
     $('body').prepend('<div id="tour_container"></div>');
     $("#tour_container").load(chrome.extension.getURL("/start/tour.html"), function () {

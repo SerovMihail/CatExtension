@@ -1,30 +1,39 @@
 <ul class="cd-tour-wrapper">
-	<li class="cd-single-step first">
-		<span class="">Step 1</span>
+    <li class="cd-single-step">
 
-		<div class="cd-more-info bottom first">
-			<!-- <h4>Customize</h4> -->
-			<p style="text-align: center;">Text</p>
-			<!-- <div class="text-center">
+        <div class="cd-more-info bottom">
+            <!-- <h4>Customize</h4> -->
+            <div class="arrow"></div>
+            <p style="text-align: center;">Text</p>
+            <!-- <div class="text-center">
 				<img src="img/settings.png" alt="step 1">
             </div> -->
-            
+
             <button class="btn btn-custom cd-ok">Ok</button>
-		</div>
-	</li> 
+        </div>
+    </li>
 </ul> <!-- .cd-tour-wrapper -->
 
 <div class="cd-app-screen"></div>
 <div class="cd-cover-layer"></div>
 
 <style>
+    .arrow {
+        background-image: url(./static/graphic/common/arrow.png);
+    width: 170px;
+    height: 160px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform: translate(20%) rotate(235deg) scale(1, -1);
+    margin: 0 auto;
+    }
 
-.btn-custom {
-    width: 100px;
-    height: 30px;
-    background: grey;
-    border: 0;
-    color: white;
-    cursor: pointer;
-}
+    .btn-custom {
+        width: 100px;
+        height: 30px;
+        background: grey;
+        border: 0;
+        color: white;
+        cursor: pointer;
+    }
 </style>
