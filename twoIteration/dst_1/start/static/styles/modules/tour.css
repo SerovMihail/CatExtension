@@ -516,7 +516,7 @@
 }
 
 .cd-single-step .cd-more-info.bottom {
-    top: calc(100% + 125px);
+    top: calc(100% + 175px);
     -webkit-transform: translateX(-50%);
     -moz-transform: translateX(-50%);
     -ms-transform: translateX(-50%);
@@ -526,7 +526,7 @@
 
 .cd-single-step .cd-more-info.top,
 .cd-single-step .cd-more-info.bottom {
-    left: 85%;
+    left: 89%;
     /* top: 0%; */
 }
 
