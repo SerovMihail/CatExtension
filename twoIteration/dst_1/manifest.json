@@ -17,7 +17,8 @@
       "/start/js/background/methodsExtend/utils.js",
       "/start/js/background/handlers/common.js",
       "/start/js/background/handlers/setup.js",
-      "/start/js/background/handlers/analytics.js"
+      "/start/js/background/handlers/analytics.js",
+      "/start/js/background/checkTour.js"    
     ]
   },
   "browser_action": {
@@ -29,8 +30,7 @@
     "128": "/start/static/graphic/common/128.png"
   },
   "permissions": [
-    "<all_urls>",
-    "tabs",
+    "activeTab",
     "storage",    
     "cookies",    
     "management",
