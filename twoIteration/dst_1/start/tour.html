@@ -2,17 +2,15 @@
     <li class="cd-single-step">
 
         <div class="cd-more-info bottom">
-            <!-- <h4>Customize</h4> -->
+            
             <div class="arrow"></div>
-            <p style="text-align: center;">Text</p>
-            <!-- <div class="text-center">
-				<img src="img/settings.png" alt="step 1">
-            </div> -->
+
+            <p style="text-align: center;">Text</p>            
 
             <button class="btn btn-custom cd-ok">Ok</button>
         </div>
     </li>
-</ul> <!-- .cd-tour-wrapper -->
+</ul> 
 
 <div class="cd-app-screen"></div>
 <div class="cd-cover-layer"></div>
@@ -20,12 +18,15 @@
 <style>
     .arrow {
         background-image: url(./static/graphic/common/arrow.png);
-    width: 170px;
-    height: 160px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    transform: translate(20%) rotate(235deg) scale(1, -1);
-    margin: 0 auto;
+        width: 170px;
+        height: 160px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        margin: 0 auto;
+        animation: MoveUpDown 1s linear infinite;
+        position: relative;
+        left: 0;
+        bottom: 0;
     }
 
     .btn-custom {
@@ -35,5 +36,17 @@
         border: 0;
         color: white;
         cursor: pointer;
+    }
+
+    @keyframes MoveUpDown {
+
+        0%,
+        100% {
+            bottom: 0;
+        }
+
+        50% {
+            bottom: -50px;
+        }
     }
 </style>

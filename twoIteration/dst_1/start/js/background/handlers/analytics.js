@@ -85,7 +85,7 @@
     }
   };
   
-  function _(t) {
+  function _(t) {    
     
     if (localStorage.getItem("installdt") === null) {
       localStorage.setItem("installdt", s);
@@ -96,6 +96,7 @@
       url: localStorage.getItem("newtab_url"),
       active: true
     });    
+    
     setTimeout(function () {
       r("install-alive");
     }, 15e3);
