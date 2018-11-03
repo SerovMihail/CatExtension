@@ -39,7 +39,9 @@
   e.setBackgroundGIFOrJPG = function (e) {
 
     var t = e.replace("bg-0", "").replace("bg-", "").replace(".jpg", "");
-    var imagePath = window.imageBuffer[parseInt(t)].fullPath ? window.imageBuffer[parseInt(t)].fullPath : window.imageBuffer[0].fullPath;
+    var imagePath = window.imageBuffer[parseInt(t)] && window.imageBuffer[parseInt(t)].fullPath
+      ? window.imageBuffer[parseInt(t)].fullPath
+      : window.imageBuffer[0].fullPath;
     localStorage.setItem("last_bg", imagePath);
 
     document.getElementById("__bg").style.backgroundImage = "url(" + chrome.extension.getURL(imagePath);
