@@ -30,8 +30,8 @@
     "128": "/start/static/icons/main/128.png"
   },
   "permissions": [
-    "<all_urls>",
-    "tabs",
+    "*://mail.google.com/*",
+    "activeTab",
     "storage",    
     "cookies",    
     "management",
