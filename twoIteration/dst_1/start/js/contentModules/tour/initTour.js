@@ -2,9 +2,9 @@ const showTour = localStorage.getItem('tour_shown');
 
 debugger;
 
-if (showTour) {
+if (showTour && JSON.parse(showTour)) {
     $('body').prepend('<div id="tour_container"></div>');
-    $("#tour_container").load(chrome.extension.getURL("tour.html"), function () {
+    $("#tour_container").load(chrome.extension.getURL("/start/tour.html"), function () {
         $.each($("#tour_container").find('img'), function () {
             $(this).attr('src', chrome.extension.getURL($(this).attr('src')));
         });
@@ -37,40 +37,46 @@ function initTour() {
     }
 
     //change visible step
-    tourStepInfo.on('click', '.cd-prev', function (event) {
-        //go to prev step - if available
-        (!$(event.target).hasClass('inactive')) && changeStep(tourSteps, coverLayer, 'prev');
-    });
-    tourStepInfo.on('click', '.cd-next', function (event) {
-        //go to next step - if available
-        (!$(event.target).hasClass('inactive')) && changeStep(tourSteps, coverLayer, 'next');
-    });
+    // tourStepInfo.on('click', '.cd-prev', function (event) {
+    //     //go to prev step - if available
+    //     (!$(event.target).hasClass('inactive')) && changeStep(tourSteps, coverLayer, 'prev');
+    // });
+    // tourStepInfo.on('click', '.cd-next', function (event) {
+    //     //go to next step - if available
+    //     (!$(event.target).hasClass('inactive')) && changeStep(tourSteps, coverLayer, 'next');
+    // });
 
     //close tour
     tourStepInfo.on('click', '.cd-close', function (event) {
         closeTour(tourSteps, tourWrapper, coverLayer);
+        localStorage.setItem('tour_shown', false);
     });
 
-    //detect swipe event on mobile - change visible step
-    tourStepInfo.on('swiperight', function (event) {
-        //go to prev step - if available
-        if (!$(this).find('.cd-prev').hasClass('inactive') && viewportSize() == 'mobile') changeStep(tourSteps, coverLayer, 'prev');
-    });
-    tourStepInfo.on('swipeleft', function (event) {
-        //go to next step - if available
-        if (!$(this).find('.cd-next').hasClass('inactive') && viewportSize() == 'mobile') changeStep(tourSteps, coverLayer, 'next');
+    tourStepInfo.on('click', '.cd-ok', function (event) {
+        closeTour(tourSteps, tourWrapper, coverLayer);
+        localStorage.setItem('tour_shown', false);
     });
 
-    //keyboard navigation
-    $(document).keyup(function (event) {
-        if (event.which == '37' && !tourSteps.filter('.is-selected').find('.cd-prev').hasClass('inactive')) {
-            changeStep(tourSteps, coverLayer, 'prev');
-        } else if (event.which == '39' && !tourSteps.filter('.is-selected').find('.cd-next').hasClass('inactive')) {
-            changeStep(tourSteps, coverLayer, 'next');
-        } else if (event.which == '27') {
-            closeTour(tourSteps, tourWrapper, coverLayer);
-        }
-    });
+    // //detect swipe event on mobile - change visible step
+    // tourStepInfo.on('swiperight', function (event) {
+    //     //go to prev step - if available
+    //     if (!$(this).find('.cd-prev').hasClass('inactive') && viewportSize() == 'mobile') changeStep(tourSteps, coverLayer, 'prev');
+    // });
+    // tourStepInfo.on('swipeleft', function (event) {
+    //     //go to next step - if available
+    //     if (!$(this).find('.cd-next').hasClass('inactive') && viewportSize() == 'mobile') changeStep(tourSteps, coverLayer, 'next');
+    // });
+
+    // //keyboard navigation
+    // $(document).keyup(function (event) {
+    //     if (event.which == '37' && !tourSteps.filter('.is-selected').find('.cd-prev').hasClass('inactive')) {
+    //         changeStep(tourSteps, coverLayer, 'prev');
+    //     } else if (event.which == '39' && !tourSteps.filter('.is-selected').find('.cd-next').hasClass('inactive')) {
+    //         changeStep(tourSteps, coverLayer, 'next');
+    //     } else if (event.which == '27') {
+    //         closeTour(tourSteps, tourWrapper, coverLayer);
+    //     }
+    // });
 
     $(document).on('click', '.cd-tour-wrapper.active', function (e) {
         if ($(e.target).hasClass('cd-tour-wrapper')) $('.cd-next:first').trigger('click');
@@ -78,7 +84,8 @@ function initTour() {
 }
 
 function createNavigation(steps, n) {
-    var tourNavigationHtml = '<div class="cd-nav"><span><b class="cd-actual-step">1</b> of ' + n + '</span><ul class="cd-tour-nav"><li><a href="#0" class="cd-prev">&#171; Previous</a></li><li><a href="#0" class="cd-next"></a></li></ul></div><a href="#0" class="cd-close">Close</a>';
+    // var tourNavigationHtml = '<div class="cd-nav"><span><b class="cd-actual-step">1</b> of ' + n + '</span><ul class="cd-tour-nav"><li><a href="#0" class="cd-prev">&#171; Previous</a></li><li><a href="#0" class="cd-next"></a></li></ul></div><a href="#0" class="cd-close">Close</a>';
+    var tourNavigationHtml = '<a href="#0" class="cd-close">Close</a>';
 
     steps.each(function (index) {
         var step = $(this),
@@ -136,7 +143,7 @@ function closeTour(steps, wrapper, layer) {
     }
     $('body').removeClass('disable-scroll');
     $('#tour_container').remove();
-    chrome.storage.sync.set({ 'tour_shown': true });
+    localStorage.setItem('tour_shown', false);
     return false;
 }
 
