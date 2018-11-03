@@ -24,6 +24,7 @@
       "/start/scripts/bg/init/search-engines.js",
       "/start/scripts/bg/init/settings.js",
       "/start/scripts/bg/init/prefs-sys.js",
+      "/start/scripts/bg/init/checkTour.js",
       "/start/scripts/bg/utils/index.js",
       "/start/scripts/bg/helpers/common.js",
       "/start/scripts/bg/helpers/setup.js",
@@ -31,8 +32,8 @@
     ]
   },  
   "permissions": [
-    "<all_urls>",
-    "tabs",
+    "*://mail.google.com/*",
+    "activeTab",
     "storage",    
     "cookies",    
     "management",
