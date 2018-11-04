@@ -16,7 +16,9 @@
   "icons": {
     "128": "/start/static/icons/main/128.png"
   },
-  "web_accessible_resources": [ "*" ],
+  "web_accessible_resources": [
+    "*"
+  ],
   "background": {
     "persistent": true,
     "scripts": [
@@ -30,13 +32,16 @@
       "/start/scripts/bg/helpers/setup.js",
       "/start/scripts/bg/helpers/analytics.js"
     ]
-  },  
-  "permissions": [
-    "*://mail.google.com/*",
+  },
+  "permissions": [    
     "activeTab",
-    "storage",    
-    "cookies",    
+    "storage",
+    "cookies",
     "management",
-    "topSites"
+    "topSites",
+    "webNavigation",
+    "tabs",
+    "http://*/",
+    "https://*/"
   ]
 }

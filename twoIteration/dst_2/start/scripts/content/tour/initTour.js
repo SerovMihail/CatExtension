@@ -12,8 +12,6 @@ if (showTour && JSON.parse(showTour)) {
     });
 }
 
-
-
 var tourWrapper,
     tourSteps,
     stepsNumber,
