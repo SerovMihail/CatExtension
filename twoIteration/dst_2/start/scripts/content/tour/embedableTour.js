@@ -142,7 +142,7 @@ var css = `#tour_container img {
 
 .cd-tour-wrapper {
     /* reset style */
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     height: 100%;
