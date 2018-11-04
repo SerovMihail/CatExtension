@@ -815,8 +815,6 @@ step.is-selected.first span,
     head = document.head || document.getElementsByTagName('head')[0],
     style = document.createElement('style');
 
-debugger;
-
 style.type = 'text/css';
 style.appendChild(document.createTextNode(css));
 
