@@ -117,7 +117,7 @@
       _(currVersion);
     } else {
       localStorage.setItem("instact", 1);
-      v(currVersion, prevVersion);
+      // v(currVersion, prevVersion);
     }
     localStorage.setItem("version", currVersion);
   }

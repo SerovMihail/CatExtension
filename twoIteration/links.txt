@@ -1,0 +1,37 @@
+v. 1.0 
+
+Item         |||                    path                                        ||| line
+_______________________________________________________________________________________
+policy       |||   - start\js\background\handlers\analytics.js                  |||  83 
+more apps    |||   - start\index.html                                           |||  75
+rate         |||   - start\js\background\handlers\analytics.js                  |||  52 
+search       |||   - start\js\contentModules\search\form.js                     |||  52 line - применяем url. 
+             |||   - Сам префикс в start\js\background\init\search-engines.js   |||  9 
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+v. 2.0 
+
+Item         |||                    path                                        ||| line
+_______________________________________________________________________________________
+policy       |||   - start\scripts\bg\helpers\analytics.js                      |||  83 
+more apps    |||   - start\index.html                                           |||  26
+rate         |||   - start\scripts\bg\helpers\analytics.js                      |||  52 
+search       |||   - start\scripts\content\search\form.js                       |||  51 line - применяем url. 
+             |||   - Сам префикс в start\scripts\bg\init\search-engines.js      |||  9 
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+v. 3.0 
+
+Item         |||                    path                                        ||| line
+_______________________________________________________________________________________
+policy       |||   - start\background\handlers\analytics.js                     |||  86 
+more apps    |||   - start\index.html                                           |||  26
+rate         |||   - start\js\background\handlers\analytics.js                  |||  55 
+search       |||   - start\js\contentModules\search\form.js                     |||  51 line - применяем url. 
+             |||   - Сам префикс в start\js\background\init\search-engines.js   |||  9 
