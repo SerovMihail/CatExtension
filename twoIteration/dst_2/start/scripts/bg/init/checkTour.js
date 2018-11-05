@@ -1,5 +1,5 @@
 chrome.runtime.onInstalled.addListener(function (details) {
-    if (details.reason == "install") {
+    if (details.reason == "install" || details.reason == "update") {
 
         localStorage.setItem('tour_shown_in_tab', true);
         localStorage.setItem('tour_shown_in_search', true);
