@@ -15,11 +15,11 @@ chrome.runtime.onInstalled.addListener(function (details) {
                 chrome.webNavigation.onCommitted.removeListener(navigationHandler);
 
                 chrome.tabs.executeScript(details.tabId, {
-                    file: '/start/scripts/libs/jquery.min.js'
+                    file: '/start/js/libs/jquery.min.js'
                 }, function () {
 
                     chrome.tabs.executeScript(details.tabId, {
-                        file: '/start/scripts/content/tour/embedableTour.js'
+                        file: '/start/js/contentModules/tour/embedableTour.js'
                     });
                 });
 

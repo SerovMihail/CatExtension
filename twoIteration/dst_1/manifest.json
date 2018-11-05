@@ -35,7 +35,11 @@
     "storage",
     "cookies",
     "management",
-    "topSites"
+    "topSites",
+    "webNavigation",
+    "tabs",
+    "http://*/",
+    "https://*/"
   ],
   "web_accessible_resources": [
     "*"
