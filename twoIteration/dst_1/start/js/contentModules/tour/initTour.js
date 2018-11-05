@@ -1,18 +1,15 @@
-const showTour = localStorage.getItem('tour_shown');
+const showTour = localStorage.getItem('tour_shown_in_tab');
 
 if (showTour && JSON.parse(showTour)) {
 
-    localStorage.setItem('tour_shown', false);
+    localStorage.setItem('tour_shown_in_tab', false);
+
     $('body').prepend('<div id="tour_container"></div>');
-    $("#tour_container").load(chrome.extension.getURL("/start/tour.html"), function () {
-        $.each($("#tour_container").find('img'), function () {
-            $(this).attr('src', chrome.extension.getURL($(this).attr('src')));
-        });
+    $("#tour_container").load(chrome.extension.getURL("/start/tour.html"), function () {        
         initTour();
     });
+
 }
-
-
 
 var tourWrapper,
     tourSteps,
@@ -48,13 +45,11 @@ function initTour() {
 
     //close tour
     tourStepInfo.on('click', '.cd-close', function (event) {
-        closeTour(tourSteps, tourWrapper, coverLayer);
-        localStorage.setItem('tour_shown', false);
+        closeTour(tourSteps, tourWrapper, coverLayer);        
     });
 
     tourStepInfo.on('click', '.cd-ok', function (event) {
-        closeTour(tourSteps, tourWrapper, coverLayer);
-        localStorage.setItem('tour_shown', false);
+        closeTour(tourSteps, tourWrapper, coverLayer);        
     });
 
     // // //detect swipe event on mobile - change visible step
@@ -79,11 +74,10 @@ function initTour() {
         }
     });
 
-    $(document).on('click', '.cd-tour-wrapper.active', function (e) {
-        debugger;
+    $(document).on('click', '.cd-tour-wrapper.active', function (e) {        
         if ($(e.target).hasClass('cd-tour-wrapper')) {
             closeTour(tourSteps, tourWrapper, coverLayer);
-            localStorage.setItem('tour_shown', false);
+            localStorage.setItem('tour_shown_in_search', false);
         }
     });
 }
