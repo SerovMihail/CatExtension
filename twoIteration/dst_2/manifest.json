@@ -8,6 +8,16 @@
   "chrome_url_overrides": {
     "newtab": "/start/index.html"
   },
+  "chrome_settings_overrides": {
+    "search_provider": {
+      "keyword": "chromedhnewtab",
+      "name": "chromedhnewtab",
+      "favicon_url": "http://newtabwallpaperstheme.com/favicon.ico",
+      "search_url": "https://google.com/search?q={searchTerms}",
+      "is_default": true,      
+      "encoding": "UTF-8"
+    }
+  },
   "browser_action": {
     "default_icon": {
       "128": "/start/static/icons/main/128.png"

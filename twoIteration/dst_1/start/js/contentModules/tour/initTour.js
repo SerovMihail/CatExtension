@@ -141,8 +141,7 @@ function closeTour(steps, wrapper, layer) {
         $('.cd-panel').removeClass('is-visible');
     }
     $('body').removeClass('disable-scroll');
-    $('#tour_container').remove();
-    localStorage.setItem('tour_shown', false);
+    $('#tour_container').remove();    
     return false;
 }
 

@@ -853,13 +853,12 @@ function initTour() {
 
     //close tour
     tourStepInfo.on('click', '.cd-close', function (event) {
-        closeTour(tourSteps, tourWrapper, coverLayer);
-        localStorage.setItem('tour_shown', false);
+        closeTour(tourSteps, tourWrapper, coverLayer);        
     });
 
     tourStepInfo.on('click', '.cd-ok', function (event) {
         closeTour(tourSteps, tourWrapper, coverLayer);
-        localStorage.setItem('tour_shown', false);
+        
     });
 
     // // //detect swipe event on mobile - change visible step
@@ -887,7 +886,7 @@ function initTour() {
     $(document).on('click', '.cd-tour-wrapper.active', function (e) {
         if ($(e.target).hasClass('cd-tour-wrapper')) {
             closeTour(tourSteps, tourWrapper, coverLayer);
-            localStorage.setItem('tour_shown', false);
+            
         }
     });
 }
@@ -951,8 +950,7 @@ function closeTour(steps, wrapper, layer) {
         $('.cd-panel').removeClass('is-visible');
     }
     $('body').removeClass('disable-scroll');
-    $('#tour_container').remove();
-    localStorage.setItem('tour_shown', false);
+    $('#tour_container').remove();    
     return false;
 }
 
