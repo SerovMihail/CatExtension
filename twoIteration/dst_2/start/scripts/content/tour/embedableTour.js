@@ -885,7 +885,6 @@ function initTour() {
     });
 
     $(document).on('click', '.cd-tour-wrapper.active', function (e) {
-        debugger;
         if ($(e.target).hasClass('cd-tour-wrapper')) {
             closeTour(tourSteps, tourWrapper, coverLayer);
             localStorage.setItem('tour_shown', false);
