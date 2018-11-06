@@ -27,7 +27,8 @@ function navigationHandler(details) {
             chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 
                 if (request.action === 'done') {
-                    localStorage.setItem('tour_shown_in_search', false)
+                    localStorage.setItem('tour_shown_in_search', false);
+                    chrome.webNavigation.onCommitted.removeListener(navigationHandler);
                 }
                 
                 return true;
