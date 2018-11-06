@@ -549,7 +549,7 @@ transform: translateX(-50%);
 }
 
 .cd-single-step .cd-more-info.bottom {
-top: calc(100% + 145px);
+top: calc(100% + 175px);
 -webkit-transform: translateX(-50%);
 -moz-transform: translateX(-50%);
 -ms-transform: translateX(-50%);
