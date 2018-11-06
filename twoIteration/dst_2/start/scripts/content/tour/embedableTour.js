@@ -963,8 +963,7 @@ cursor: pointer;
             $('.cd-panel').removeClass('is-visible');
         }
         $('body').removeClass('disable-scroll');
-        $('#tour_container').remove();
-        done();
+        $('#tour_container').remove();        
         return false;
     }
 

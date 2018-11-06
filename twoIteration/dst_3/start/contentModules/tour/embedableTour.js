@@ -867,11 +867,12 @@ step.is-selected.first span,
         //close tour
         tourStepInfo.on('click', '.cd-close', function (event) {
             closeTour(tourSteps, tourWrapper, coverLayer);
+            done();
         });
 
         tourStepInfo.on('click', '.cd-ok', function (event) {
             closeTour(tourSteps, tourWrapper, coverLayer);
-
+            done();
         });
 
         // // //detect swipe event on mobile - change visible step
@@ -899,7 +900,7 @@ step.is-selected.first span,
         $(document).on('click', '.cd-tour-wrapper.active', function (e) {
             if ($(e.target).hasClass('cd-tour-wrapper')) {
                 closeTour(tourSteps, tourWrapper, coverLayer);
-
+                done();
             }
         });
     }

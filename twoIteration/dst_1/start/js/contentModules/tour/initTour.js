@@ -76,8 +76,72 @@ function initTour() {
 
     $(document).on('click', '.cd-tour-wrapper.active', function (e) {        
         if ($(e.target).hasClass('cd-tour-wrapper')) {
+            closeTour(tourSteps, tourWrapper, coverLayer);            
+        }
+    });
+}
+
+function initTour() {
+    var tourWrapper = $('.cd-tour-wrapper'),
+        tourSteps = tourWrapper.children('li'),
+        stepsNumber = tourSteps.length,
+        coverLayer = $('.cd-cover-layer'),
+        tourStepInfo = $('.cd-more-info');
+    $('body').addClass('disable-scroll')
+    //create the navigation for each step of the tour
+    createNavigation(tourSteps, stepsNumber);
+
+    //start tour
+    if (!tourWrapper.hasClass('active')) {
+        //in that case, the tour has not been started yet
+        tourWrapper.addClass('active');
+        showStep(tourSteps.eq(0), coverLayer);
+    }
+
+    // change visible step
+    tourStepInfo.on('click', '.cd-prev', function (event) {
+        //go to prev step - if available
+        (!$(event.target).hasClass('inactive')) && changeStep(tourSteps, coverLayer, 'prev');
+    });
+    tourStepInfo.on('click', '.cd-next', function (event) {
+        //go to next step - if available
+        (!$(event.target).hasClass('inactive')) && changeStep(tourSteps, coverLayer, 'next');
+    });
+
+    //close tour
+    tourStepInfo.on('click', '.cd-close', function (event) {
+        closeTour(tourSteps, tourWrapper, coverLayer);        
+    });
+
+    tourStepInfo.on('click', '.cd-ok', function (event) {
+        closeTour(tourSteps, tourWrapper, coverLayer);        
+    });
+
+    // // //detect swipe event on mobile - change visible step
+    // tourStepInfo.on('swiperight', function (event) {
+    //     //go to prev step - if available
+    //     if (!$(this).find('.cd-prev').hasClass('inactive') && viewportSize() == 'mobile') changeStep(tourSteps, coverLayer, 'prev');
+    // });
+    // tourStepInfo.on('swipeleft', function (event) {
+    //     //go to next step - if available
+    //     if (!$(this).find('.cd-next').hasClass('inactive') && viewportSize() == 'mobile') changeStep(tourSteps, coverLayer, 'next');
+    // });
+
+    //keyboard navigation
+    $(document).keyup(function (event) {
+        // if (event.which == '37' && !tourSteps.filter('.is-selected').find('.cd-prev').hasClass('inactive')) {
+        //     changeStep(tourSteps, coverLayer, 'prev');
+        // } else if (event.which == '39' && !tourSteps.filter('.is-selected').find('.cd-next').hasClass('inactive')) {
+        //     changeStep(tourSteps, coverLayer, 'next');
+        // } else 
+        if (event.which == '27') {
             closeTour(tourSteps, tourWrapper, coverLayer);
-            localStorage.setItem('tour_shown_in_search', false);
+        }
+    });
+
+    $(document).on('click', '.cd-tour-wrapper.active', function (e) {
+        if ($(e.target).hasClass('cd-tour-wrapper')) {
+            closeTour(tourSteps, tourWrapper, coverLayer);            
         }
     });
 }

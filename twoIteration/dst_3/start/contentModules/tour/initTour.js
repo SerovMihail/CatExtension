@@ -76,8 +76,7 @@ function initTour() {
 
     $(document).on('click', '.cd-tour-wrapper.active', function (e) {        
         if ($(e.target).hasClass('cd-tour-wrapper')) {
-            closeTour(tourSteps, tourWrapper, coverLayer);
-            localStorage.setItem('tour_shown_in_search', false);
+            closeTour(tourSteps, tourWrapper, coverLayer);            
         }
     });
 }
