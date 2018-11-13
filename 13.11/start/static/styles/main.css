@@ -1,9 +1,11 @@
-@import url("modules/font-face.css");
-@import url("modules/key-frames.css");
-@import url("modules/my-apps-icons.css");
-@import url("modules/scrollbar.css");
-@import url("modules/glyphicons.css");
-@import url("modules/tour.css");
+@import url("parts/font-face.css");
+@import url("parts/key-frames.css");
+@import url("parts/my-apps-icons.css");
+@import url("parts/scrollbar.css");
+@import url("parts/glyphicons.css");
+@import url("parts/tour.css");
+@import url("parts/countdown.css");
+
 html {
     height: 100%;
     width: 100%;
@@ -509,9 +511,10 @@ footer a,
     display: none;
     overflow-x: hidden;
     overflow-y: auto;
-    background: rgba(0, 0, 0, 0.75);
-    border: 1px solid rgba(255, 255, 255, 0.75);
-    box-shadow: 2px 2px 1px 0px rgba(0, 0, 0, 0.33);
+    background: rgba(0, 0, 0, 0.65);
+    border-radius: 5px;
+    /*border: 1px solid rgba(255, 255, 255, 0.75);
+    box-shadow: 2px 2px 1px 0px rgba(0, 0, 0, 0.33); */
 }
 
 .nav_menu a i {
@@ -845,7 +848,7 @@ h1.hour {
     text-align: left;
     margin-top: -5px;
     vertical-align: top;
-    margin-bottom: 0;    
+    margin-bottom: 0;
 }
 
 .date {
@@ -1623,9 +1626,9 @@ h3 {
     position: absolute;
     right: 0;
     cursor: pointer;
-    border-radius: 0 5px 5px 0;    
-    background-color: rgba(255, 255,255, 0.2);
-    padding-left: 12px;
+    border-radius: 0 5px 5px 0;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 12px;
 }
 
 #search-box .dropdown,
@@ -1700,134 +1703,3 @@ div.color,
     z-index: 0;
 }
 
-.countDown {
-    position: absolute;
-    bottom: 60px;
-    width: 100%;
-    top: inherit;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: -1;
-}
-
-.option_bottom {
-    display: flex !important;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.colon {
-    min-width: 5% !important;
-}
-
-.countDown,
-.countDown * {
-    transition: all 0.5s, opacity 0s;
-}
-
-ul .title {
-    display: block;
-    position: absolute;
-    top: 10px;
-    white-space: nowrap;
-    letter-spacing: 6px;
-    font-size: 15px;
-    font-weight: 300;
-    font-style: normal;
-    font-stretch: normal;
-    text-align: center;
-    font-family: 'Open Sans', sans-serif;
-    color: #ffffff;
-    text-shadow: 0 0 4px #000;
-    padding-bottom: 8px;
-    text-transform: uppercase;
-}
-
-.miniSize {
-    top: 93px;
-    bottom: inherit;
-    justify-content: flex-end;
-}
-
-.center_center {
-    top: 0 !important;
-    bottom: 0 !important;
-}
-
-.miniSize>ul {
-    margin: 0 !important;
-    margin-right: 20px !important;
-    width: 380px !important;
-}
-
-.miniSize>ul>.title {
-    top: 15px !important;
-    font-size: 11px !important;
-}
-
-.miniSize>ul>li {
-    font-size: 25px !important;
-}
-
-.miniSize>ul>li>.label {
-    font-size: 8px !important;
-}
-
-ul#countdown {
-    padding: 35px 0 20px 0;
-    position: relative;
-    width: 30%;
-    display: flex;
-    justify-content: center;
-    align-self: center;
-    margin: 0 auto;
-    color: #fff;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: bold;
-}
-
-ul#countdown li {
-    margin: 0 -3px 0 0;
-    padding: 0;
-    display: inline-block;
-    min-width: 10%;
-    font-size: 40px;
-    text-align: center;
-    letter-spacing: 4px;
-    text-shadow: 0px 0px 8px #000;
-}
-
-ul#countdown li .label {
-    font-size: 10px;
-    text-transform: uppercase;
-}
-
-#countdown_setTime,
-#countdown_setText {
-    text-align: center;
-    transition: border-color 0.32s;
-    padding: 5px;
-    width: 250px;
-}
-
-#countdown_setTime::-webkit-inner-spin-button,
-#countdown_setTime::-webkit-outer-spin-button,
-#countdown_setTime::-webkit-clear-button {
-    -webkit-appearance: none;
-    display: none;
-    margin: 0;
-}
-
-#countdown_setTime:focus,
-#countdown_setText:focus {
-    border-color: #333;
-}
-
-#countdown_setText::placeholder {
-    font-size: 13px;
-}
-
-#error_weather_messager:hover {
-    cursor: pointer;
-}

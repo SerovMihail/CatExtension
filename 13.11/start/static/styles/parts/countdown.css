@@ -1,0 +1,127 @@
+.countDown {
+    position: absolute;
+    bottom: 60px;
+    width: 100%;
+    top: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: -1;
+}
+
+.option_bottom {
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.colon {
+    min-width: 5% !important;
+}
+
+.countDown,
+.countDown * {
+    transition: all 0.5s, opacity 0s;
+}
+
+ul .title {
+    display: block;
+    position: absolute;
+    top: 10px;
+    white-space: nowrap;
+    letter-spacing: 6px;
+    font-size: 15px;
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    color: #ffffff;
+    text-shadow: 0 0 4px #000;
+    padding-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.miniSize {
+    top: 93px;
+    bottom: inherit;
+    justify-content: flex-end;
+}
+
+.center_center {
+    top: 0 !important;
+    bottom: 0 !important;
+}
+
+.miniSize>ul {
+    margin: 0 !important;
+    margin-right: 20px !important;
+    width: 380px !important;
+}
+
+.miniSize>ul>.title {
+    top: 15px !important;
+    font-size: 11px !important;
+}
+
+.miniSize>ul>li {
+    font-size: 25px !important;
+}
+
+.miniSize>ul>li>.label {
+    font-size: 8px !important;
+}
+
+ul#countdown {
+    padding: 35px 0 20px 0;
+    position: relative;
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    margin: 0 auto;
+    color: #fff;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+}
+
+ul#countdown li {
+    margin: 0 -3px 0 0;
+    padding: 0;
+    display: inline-block;
+    min-width: 10%;
+    font-size: 40px;
+    text-align: center;
+    letter-spacing: 4px;
+    text-shadow: 0px 0px 8px #000;
+}
+
+ul#countdown li .label {
+    font-size: 10px;
+    text-transform: uppercase;
+}
+
+#countdown_setTime,
+#countdown_setText {
+    text-align: center;
+    transition: border-color 0.32s;
+    padding: 5px;
+    width: 250px;
+}
+
+#countdown_setTime::-webkit-inner-spin-button,
+#countdown_setTime::-webkit-outer-spin-button,
+#countdown_setTime::-webkit-clear-button {
+    -webkit-appearance: none;
+    display: none;
+    margin: 0;
+}
+
+#countdown_setTime:focus,
+#countdown_setText:focus {
+    border-color: #333;
+}
+
+#countdown_setText::placeholder {
+    font-size: 13px;
+}

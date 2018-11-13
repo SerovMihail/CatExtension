@@ -125,8 +125,8 @@
           if (c.indexOf(param[a].url) >= 0) {
             continue;
           } else {
-            if (a != 0)
-              $("#topsites_menu").append($("<hr>"));
+            // if (a != 0)
+            //   $("#topsites_menu").append($("<hr>"));
 
             $("#topsites_menu").append($('<div><a href="' + (event.vl ? user["firstRunLandingPage"] : param[a].url) + '"><i style="background-image:url(\'https://www.google.com/s2/favicons?domain=' + encodeURIComponent(param[a].url) + "');background-size:cover;\"></i>" + param[a].title + '</a><div class="closebtn" close-for="' + param[a].url + '"></div></div>'));
             o++;
