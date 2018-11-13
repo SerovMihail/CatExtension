@@ -55,20 +55,20 @@
   user["selected_cat"] = i;
   $(document).ready(function () {
     d();
-    var o = $("#search-input");
-    var s = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    var c = [];
-    if (localStorage.getItem("hideLink")) c = JSON.parse(localStorage.getItem("hideLink"));
+    var inputElem = $("#search-input");
+    var daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    var hidedLink = [];
+    if (localStorage.getItem("hideLink")) hidedLink = JSON.parse(localStorage.getItem("hideLink"));
     var arr = [];
     if (localStorage.getItem("hideApp")) {
       arr = JSON.parse(localStorage.getItem("hideApp"));
     }
     function d() {
       $("#tool_menu").html(`\n        <div><a id="tool_myaccount"  href="https://myaccount.google.com/"><i class="icon_myaccount"></i>My Account</a><div class="closebtn" hide-app="https://myaccount.google.com/"></div></div>\n        <div><a id="tool_gmail"      href="https://mail.google.com/mail/"><i class="icon_gmail"></i>Gmail</a><div class="closebtn" hide-app="https://mail.google.com/mail/"></div></div>\n        <div><a id="tool_youtube"    href="https://www.youtube.com/"><i class="icon_youtube"></i>Youtube</a><div class="closebtn" hide-app="https://www.youtube.com/"></div></div>\n        <div><a id="tool_drive"      href="https://drive.google.com/"><i class="icon_drive"></i>Drive</a><div class="closebtn" hide-app="https://drive.google.com/"></div></div>\n        <div><a id="tool_documents"  href="https://docs.google.com/document/"><i class="icon_documents"></i>Docs</a><div class="closebtn" hide-app="https://docs.google.com/document/"></div></div>\n        <div><a id="tool_contacts"   href="https://contacts.google.com/"><i class="icon_contacts"></i>Contacts</a><div class="closebtn" hide-app="https://contacts.google.com/"></div></div>\n        <div><a id="tool_calendar"   href="https://calendar.google.com/"><i class="icon_calendar"></i>Calendar</a><div class="closebtn" hide-app="https://calendar.google.com/"></div></div>\n        <div><a id="tool_photos"     href="https://photos.google.com/"><i class="icon_photos"></i>Photos</a><div class="closebtn" hide-app="https://photos.google.com/"></div></div>\n        <div><a id="tool_news"       href="https://news.google.com/"><i class="icon_news"></i>News</a><div class="closebtn" hide-app="https://news.google.com/"></div></div>\n        <div><a id="tool_googleplus" href="https://plus.google.com/"><i class="icon_googleplus"></i>Google+</a><div class="closebtn" hide-app="https://plus.google.com/"></div></div>\n        <div><a id="tool_hangouts"   href="https://hangouts.google.com/"><i class="icon_hangouts"></i>Hangouts</a><div class="closebtn" hide-app="https://hangouts.google.com/"></div></div>\n        <div><a id="tool_googlemap"  href="https://maps.google.com/"><i class="icon_googlemap"></i>Google Maps</a><div class="closebtn" hide-app="https://maps.google.com/"></div></div>\n        <div><a id="tool_classroom"  href="https://classroom.google.com/"><i class="icon_classroom"></i>Google Classroom</a><div class="closebtn" hide-app="https://classroom.google.com/"></div></div>\n        <hr>\n        <div><a id="tool_facebook"   href="https://www.facebook.com/"><i class="icon_facebook"></i>Facebook</a><div class="closebtn" hide-app="https://www.facebook.com/"></div></div>\n        `);
-      var e = ["Gmail", "YouTube", "Drive", "Docs", "Contacts", "Photos", "Calendar", "Google+", "Hangouts", "Google Maps", "Google Classroom", "Google Search"];
+      var services = ["Gmail", "YouTube", "Drive", "Docs", "Contacts", "Photos", "Calendar", "Google+", "Hangouts", "Google Maps", "Google Classroom", "Google Search"];
       function t(t) {
-        for (var o = 0; o < e.length; o++) {
-          if (e[o] === t || "Google " + e[o] === t) {
+        for (var o = 0; o < services.length; o++) {
+          if (services[o] === t || "Google " + services[o] === t) {
             return true;
           }
         }
@@ -122,7 +122,7 @@
       }, function (param) {
         var o = 0;
         for (var a = 0; a < param.length; a++) {
-          if (c.indexOf(param[a].url) >= 0) {
+          if (hidedLink.indexOf(param[a].url) >= 0) {
             continue;
           } else {
             // if (a != 0)
@@ -147,8 +147,8 @@
     function h() {
       utils.resetClickHnd($(".closebtn"), function () {
         if ($(this).attr("close-for")) {
-          c.push($(this).attr("close-for"));
-          localStorage.setItem("hideLink", JSON.stringify(c));          
+          hidedLink.push($(this).attr("close-for"));
+          localStorage.setItem("hideLink", JSON.stringify(hidedLink));          
           findTopSites();
           $("#msg").text("Link removed");
           p("mostVisited");
@@ -177,8 +177,8 @@
       $(".undo-box").removeClass("undo-box-hide");
       utils.resetClickHnd($("#undobtn"), function () {
         if (e === "mostVisited") {
-          c.pop();
-          localStorage.setItem("hideLink", JSON.stringify(c));
+          hidedLink.pop();
+          localStorage.setItem("hideLink", JSON.stringify(hidedLink));
           //utils.localstorage2cookie();
           $("#topsites_menu").empty();
           findTopSites();
@@ -228,7 +228,7 @@
             d();
           } else if ($(this).attr("restore-for") === "topsites_menu") {
             localStorage.removeItem("hideLink");
-            c = [];
+            hidedLink = [];
             findTopSites();
           }
         });
@@ -386,7 +386,7 @@
         $(".hour").html(("0" + e.getHours()).slice(-2) + ":" + ("0" + e.getMinutes()).slice(-2));
         $(".ampm").css("display", "none");
       }
-      $(".day").html(s[e.getDay()]);
+      $(".day").html(daysOfWeek[e.getDay()]);
       $(".num").html(user["date_format"].replace("{{m}}", e.getMonth() + 1).replace("{{d}}", e.getDate()).replace("{{y}}", e.getFullYear()));
     }
 
@@ -406,21 +406,21 @@
     };
     var M = SEARCH_ENGINES;
     $("#search-button").click(H);
-    o.keyup(function (e) {
+    inputElem.keyup(function (e) {
       $("#search-suggestion-pad").css({
-        direction: o.css("direction")
+        direction: inputElem.css("direction")
       });
       if (e.keyCode == getKeyCode('ENTER') || getKeyCode('ENTER')) {
         H();
       }
     });
     function H() {
-      if (i == "web" || o.val() == "") {
+      if (i == "web" || inputElem.val() == "") {
         return;
       }
-      var a = M[user["sengine"]][i] + o.val();
+      var a = M[user["sengine"]][i] + inputElem.val();
       try {
-        trackStatusEvent("search-" + t.ShortName, null, o.val(), function () {
+        trackStatusEvent("search-" + t.ShortName, null, inputElem.val(), function () {
           event.top.location.href = a;
         });
       } catch (e) { }
