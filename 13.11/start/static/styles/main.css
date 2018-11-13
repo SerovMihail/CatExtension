@@ -929,7 +929,7 @@ h1.hour {
 #background_selector_widget.triangle-top::before {
     content: '';
     position: absolute;
-    left: 10%;
+    left: 12%;
     margin-left: -10px;
     top: -10px;
     width: 0;

@@ -30,9 +30,8 @@ window.AutoSuggest = function (textBox, engine, action) {
       return;
     }
     // no data retrieves if, suggest url is empty 
-    if (m_suggestUrl === undefined || m_suggestUrl === '') { return; }
-    var hl;
-    var locale = hl = utils.locale;
+    if (m_suggestUrl === undefined || m_suggestUrl === '') { return; }   
+    var locale = utils.locale;
     var locale = locale.replace("_", "-");
 
     var URL = self.sprintf(m_suggestUrl, { searchTerms: val, lang: locale, country: '' });

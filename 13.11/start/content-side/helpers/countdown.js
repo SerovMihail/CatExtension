@@ -98,45 +98,45 @@ window.loadCountDownModule = function (e) {
     setTextElem.on("blur", setTextElem);
     setTextElem.off("keydown");
     setTextElem.on("keydown", setTextElem);
-    var c;
-    var s;
-    var u;
-    var d;
+    var variableOne;
+    var variableTwo;
+    var variableThree;
+    var variableFour;
     function m() {
       var e = new Date().getTime();
       if (e > countdownToTime) {
-        c = 0;
-        s = 0;
-        u = 0;
-        d = 0;
+        variableOne = 0;
+        variableTwo = 0;
+        variableThree = 0;
+        variableFour = 0;
       } else {
         var o = (e - countdownToTime) / 1e3;
         var min = 60;
         o = Math.abs(Math.floor(o));
-        c = Math.floor(o / (24 * min * min));
-        d = o - c * 24 * min * min;
-        s = Math.floor(d / (min * min));
-        d = d - s * min * min;
-        u = Math.floor(d / min);
-        d = d - u * min;
+        variableOne = Math.floor(o / (24 * min * min));
+        variableFour = o - variableOne * 24 * min * min;
+        variableTwo = Math.floor(variableFour / (min * min));
+        variableFour = variableFour - variableTwo * min * min;
+        variableThree = Math.floor(variableFour / min);
+        variableFour = variableFour - variableThree * min;
       }
     }
-    function w() {
+    function setCountdown() {
       clearTimeout(e.countDownThread);
       m();
-      $("#days .number").text(c < 10 ? ("0" + c).slice(-2) : c);
-      $("#hours .number").text(("0" + s).slice(-2));
-      $("#minutes .number").text(("0" + u).slice(-2));
-      $("#seconds .number").text(("0" + d).slice(-2));
-      if (localStorage.getItem("enable_countdown") == "yes") e.countDownThread = setTimeout(w, 999);
+      $("#days .number").text(variableOne < 10 ? ("0" + variableOne).slice(-2) : variableOne);
+      $("#hours .number").text(("0" + variableTwo).slice(-2));
+      $("#minutes .number").text(("0" + variableThree).slice(-2));
+      $("#seconds .number").text(("0" + variableFour).slice(-2));
+      if (localStorage.getItem("enable_countdown") == "yes") e.countDownThread = setTimeout(setCountdown, 999);
     }
-    e.countDownThread = setTimeout(w, 1);
+    e.countDownThread = setTimeout(setCountdown, 1);
     e.listAllThreads.threadCountdown = {
       pause: function () {
         clearInterval(e.countDownThread);
       },
       resume: function () {
-        w();
+        setCountdown();
       }
     };
   };
