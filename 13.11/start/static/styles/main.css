@@ -845,8 +845,7 @@ h1.hour {
     text-align: left;
     margin-top: -5px;
     vertical-align: top;
-    margin-bottom: 0;
-    margin-left: 5px;
+    margin-bottom: 0;    
 }
 
 .date {
@@ -904,6 +903,7 @@ h1.hour {
     min-width: 560px;
     max-width: 560px;
     letter-spacing: 1px;
+    border-radius: 5px;
 }
 
 #background_selector_widget ul {
@@ -945,6 +945,7 @@ h1.hour {
     top: 0;
     left: 0;
     z-index: 10;
+    border-radius: 5px;
 }
 
 #background_selector_widget #tabs ul.ui-tabs-nav .ui-state-default {
@@ -961,6 +962,7 @@ h1.hour {
     padding: 10px 15px;
     position: relative;
     font-size: 1.2em;
+    border-radius: 5px;
 }
 
 #background_selector_widget #tabs ul.ui-tabs-nav li.ui-tabs-active div.tab-control {
@@ -1621,8 +1623,7 @@ h3 {
     position: absolute;
     right: 0;
     cursor: pointer;
-    border-radius: 0 5px 5px 0;
-    padding: 10px;
+    border-radius: 0 5px 5px 0;    
     background-color: rgba(255, 255,255, 0.2);
     padding-left: 12px;
 }
