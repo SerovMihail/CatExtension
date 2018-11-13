@@ -12,24 +12,24 @@
   var lang = navigator.languages[0] || navigator.language;
   var shortLang = lang.substr(0, 2);
   var getOS = function () {
-    var e = navigator.userAgent.toLowerCase();
-    if (/x11; cros /.test(e)) {
+    var userAgent = navigator.userAgent.toLowerCase();
+    if (/x11; cros /.test(userAgent)) {
       return "chromeOS";
-    } else if (/macintosh; intel mac os x /.test(e)) {
+    } else if (/macintosh; intel mac os x /.test(userAgent)) {
       return "macOS";
-    } else if (/x11; .*; linux /.test(e)) {
+    } else if (/x11; .*; linux /.test(userAgent)) {
       return "linux";
-    } else if (/windows nt 5.0/.test(e)) {
+    } else if (/windows nt 5.0/.test(userAgent)) {
       return "winXP";
-    } else if (/windows nt 6.0/.test(e)) {
+    } else if (/windows nt 6.0/.test(userAgent)) {
       return "winVista";
-    } else if (/windows nt 6.1/.test(e)) {
+    } else if (/windows nt 6.1/.test(userAgent)) {
       return "win7";
-    } else if (/windows nt 6.2/.test(e)) {
+    } else if (/windows nt 6.2/.test(userAgent)) {
       return "win8";
-    } else if (/windows nt 6.3/.test(e)) {
+    } else if (/windows nt 6.3/.test(userAgent)) {
       return "win8.1";
-    } else if (/windows nt 10.0/.test(e)) {
+    } else if (/windows nt 10.0/.test(userAgent)) {
       return "win10";
     }
   }();

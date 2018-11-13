@@ -20,7 +20,7 @@
   "background": {
     "persistent": true,
     "scripts": [
-      "/start/libs/jquery.min.js",
+      "/start/libs/jq.min.js",
       "/start/background/init/search-engines.js",
       "/start/background/init/settings.js",
       "/start/background/init/prefs-sys.js",

@@ -1,9 +1,6 @@
 (function (e) {
-  var t = chrome.runtime.id;
-  var a = chrome.i18n.getMessage("extName");
-  var o = function (t) {
-    if (e.debug) console.log("ga: send pageview " + t);
-  };
+  var id = chrome.runtime.id;
+  var extName = chrome.i18n.getMessage("extName");  
   var l = function (t) {
     if (e.debug) console.log("ga: send event", t);
   };
@@ -12,7 +9,7 @@
     if (e.debug) console.log("TRACK: ", t, o); else {
       var r = {
         hitType: "event",
-        eventCategory: a,
+        eventCategory: extName,
         eventAction: t
       };
       if (o) r.eventLabel = o;
@@ -22,10 +19,10 @@
   var s, c;
   var n = function () {
     var date = new Date();
-    var t = "" + date.getUTCFullYear();
-    var a = date.getUTCMonth() < 9 ? "0" + (date.getUTCMonth() + 1) : "" + (date.getUTCMonth() + 1);
-    var o = date.getUTCDate() < 10 ? "0" + date.getUTCDate() : "" + date.getUTCDate();
-    s = t + a + o;
+    var utcYear = "" + date.getUTCFullYear();
+    var utcMonth = date.getUTCMonth() < 9 ? "0" + (date.getUTCMonth() + 1) : "" + (date.getUTCMonth() + 1);
+    var utcDate = date.getUTCDate() < 10 ? "0" + date.getUTCDate() : "" + date.getUTCDate();
+    s = utcYear + utcMonth + utcDate;
     c = 0;
     var installDt = localStorage.getItem("installdt");
     if (!installDt) {
@@ -43,16 +40,15 @@
     localStorage.setItem("installdc", c);
     localStorage.setItem("BST", new Date().toISOString());
   };
-  function i() {
-    var e = chrome.runtime.getManifest();
-    return e.version;
+  function getManifestVersion() {    
+    return chrome.runtime.getManifest().version;
   }   
   var I = function (e, a) {
     r(e, a);
-    var o = localStorage.getItem("confSE") || t;
-    if (o.length === 32 && o.indexOf("://") === -1) o = "https://chrome.google.com/webstore/detail/" + i().replace(/\./g, "_") + "/" + o;
+    var o = localStorage.getItem("confSE") || id;
+    if (o.length === 32 && o.indexOf("://") === -1) o = "https://chrome.google.com/webstore/detail/" + getManifestVersion().replace(/\./g, "_") + "/" + o;
     if (e == "click-Rate") {
-      var l = localStorage.getItem("confRE") || t;
+      var l = localStorage.getItem("confRE") || id;
       if (l.length === 32 && l.indexOf("://") === -1) l = "https://chrome.google.com/webstore/detail/" + l + "/reviews";
       chrome.tabs.create({
         url: l
@@ -112,7 +108,7 @@
     }
   }
   n();
-  e.currVersion = e.currVersion || i();
+  e.currVersion = e.currVersion || getManifestVersion();
   e.prevVersion = e.prevVersion || localStorage.getItem("version") || localStorage.getItem("installed");
   if (currVersion != prevVersion) {
     if (prevVersion === null) {
