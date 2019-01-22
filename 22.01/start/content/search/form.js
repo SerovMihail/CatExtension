@@ -1,6 +1,6 @@
 (function (event) {
   "use strict";
-  var t = null;
+  var search = null;
   if (!SEARCH_ENGINES[localStorage["sengine"]]) {
     delete localStorage["sengine"];
   }
@@ -9,10 +9,10 @@
   }, 3e3); else setTimeout(function () {
     trackStatusEvent("newtab");
   }, 1e3);
-  function o(e, t) {
-    var o = e;
-    for (var a in t) {
-      var i = t[a];
+  function o(str, replacer) {
+    var o = str;
+    for (var a in replacer) {
+      var i = replacer[a];
       var s = new RegExp("\\{" + a + "\\}", "gi");
       o = o.replace(s, i);
     }
@@ -22,21 +22,21 @@
     var a = document.querySelector("#search-input").value;
     if (a == "" || a == null) return;
     $("#search-suggestion-pad").remove();
-    var i;
+    var func;
     var s = utils.locale;
     s = s.replace("_", "-");
-    if (a.trim().length > 0 || t.SearchForm == null) {
-      var n = t.SearchUrl;
-      i = o(n, {
+    if (a.trim().length > 0 || search.SearchForm == null) {
+      var n = search.SearchUrl;
+      func = o(n, {
         searchTerms: encodeURIComponent(a),
         lang: s
       });
     } else {
-      i = t.SearchForm;
+      func = search.SearchForm;
     }
     utils.count("c.snt");
     utils.mark_time("act.snt");
-    trackStatusEvent("search-" + t.ShortName, null, a, function () {
+    trackStatusEvent("search-" + search.ShortName, null, a, function () {
       try {
         var t = [];
         if (localStorage.getItem("se_txt")) t = ("" + localStorage.getItem("se_txt")).split("|");
@@ -48,7 +48,7 @@
       } catch (t) {
         if (event.debug) console.log(t);
       }
-      event.top.location.href = i;
+      event.top.location.href = func;
     });
   }
   var i = "web";
@@ -420,7 +420,7 @@
       }
       var a = M[user["sengine"]][i] + inputElem.val();
       try {
-        trackStatusEvent("search-" + t.ShortName, null, inputElem.val(), function () {
+        trackStatusEvent("search-" + search.ShortName, null, inputElem.val(), function () {
           event.top.location.href = a;
         });
       } catch (e) { }
@@ -434,7 +434,7 @@
     function R(o) {
 
       var a = SEARCH_ENGINES[o];
-      t = a;
+      search = a;
       if (a["Logo"]) {
         $("#search-engine-item-title").html('<img src="' + a["Logo"] + '"/>');
       } else if (o == "palikan" && !localStorage["dotdotdot"]) {
@@ -481,7 +481,7 @@
 
     function J() {
       var o = document.getElementById("search-input");
-      var i = t.SuggestUrl;
+      var i = search.SuggestUrl;
       event.autoSuggest = new AutoSuggest(o, i, a);
     }
     function q() {

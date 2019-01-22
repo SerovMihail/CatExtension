@@ -21,7 +21,7 @@ function navigationHandler(details) {
         }, function () {            
 
             chrome.tabs.executeScript(details.tabId, {
-                file: '/start/content-side/tour/embedableTour.js'
+                file: '/start/content/tour/embedableTour.js'
             });
             chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 
