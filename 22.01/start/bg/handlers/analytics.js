@@ -1,19 +1,19 @@
 (function (e) {
   var id = chrome.runtime.id;
   var extName = chrome.i18n.getMessage("extName");  
-  var l = function (t) {
+  var debugFunc = function (t) {
     if (e.debug) console.log("ga: send event", t);
   };
   var r = function (t, o) {
     if (t != "opt-out" && t != "opted-out" && localStorage.getItem("optout") == "1") return;
     if (e.debug) console.log("TRACK: ", t, o); else {
-      var r = {
+      var eventObject = {
         hitType: "event",
         eventCategory: extName,
         eventAction: t
       };
-      if (o) r.eventLabel = o;
-      l(r);
+      if (o) eventObject.eventLabel = o;
+      debugFunc(eventObject);
     }
   }; 
   var s, c;

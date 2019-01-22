@@ -17,7 +17,7 @@ function navigationHandler(details) {
     if (details.transitionQualifiers.includes('from_address_bar') && tourShowInSearch && JSON.parse(tourShowInSearch)) {
 
         chrome.tabs.executeScript(details.tabId, {
-            file: '/start/libs/jq.min.js'
+            file: '/start/libs/JQuery.min.js'
         }, function () {            
 
             chrome.tabs.executeScript(details.tabId, {

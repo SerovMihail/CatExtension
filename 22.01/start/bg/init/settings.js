@@ -36,7 +36,7 @@
   }
   if (!Array.prototype.forEach) {
     Array.prototype.forEach = function(e) {
-      var r, t;
+      var secondArg, counter;
       if (this == null) {
         throw new TypeError("this is null or not defined");
       }
@@ -46,16 +46,16 @@
         throw new TypeError(e + " is not a function");
       }
       if (arguments.length > 1) {
-        r = arguments[1];
+        secondArg = arguments[1];
       }
-      t = 0;
-      while (t < o) {
-        var i;
-        if (t in n) {
-          i = n[t];
-          e.call(r, i, t, n);
+      counter = 0;
+      while (counter < o) {
+        var increment;
+        if (counter in n) {
+          increment = n[counter];
+          e.call(secondArg, increment, counter, n);
         }
-        t++;
+        counter++;
       }
     };
   }
@@ -63,15 +63,15 @@
     var r = "";
     var t = {};
     function getter(e) {
-      var n = localStorage[r + e];
-      if (n == null) {
-        n = t[e];
-        return n;
+      var localStorageCell = localStorage[r + e];
+      if (localStorageCell == null) {
+        localStorageCell = t[e];
+        return localStorageCell;
       }
-      if (typeof n == "string") {
-        if (n == "false") return false; else if (n == "true") return true; else if (typeof parseInt(n) != "number" && n != "NaN") return n; else if (parseInt(n) == n) return parseInt(n); else return "" + n;
+      if (typeof localStorageCell == "string") {
+        if (localStorageCell == "false") return false; else if (localStorageCell == "true") return true; else if (typeof parseInt(localStorageCell) != "number" && localStorageCell != "NaN") return localStorageCell; else if (parseInt(localStorageCell) == localStorageCell) return parseInt(localStorageCell); else return "" + localStorageCell;
       }
-      return n;
+      return localStorageCell;
     }
     function setter(e, n) {
       var o = t[e];
