@@ -5,7 +5,7 @@
   "default_locale": "en",
   "offline_enabled": true,
   "chrome_url_overrides": {
-    "newtab": "/start/index.html"
+    "newtab": "/entryPoint/index.html"
   },
   "chrome_settings_overrides": {
     "search_provider": {
@@ -20,24 +20,24 @@
   "background": {
     "persistent": true,
     "scripts": [
-      "/start/libs/JQuery.min.js",
-      "/start/bg/init/search-engines.js",
-      "/start/bg/init/settings.js",
-      "/start/bg/init/prefs-sys.js",
-      "/start/bg/init/checkTour.js",
-      "/start/bg/helpers/utils.js",
-      "/start/bg/handlers/common.js",
-      "/start/bg/handlers/setup.js",
-      "/start/bg/handlers/analytics.js"
+      "/entryPoint/libs/JQuery.min.js",
+      "/entryPoint/bg/init/search-engines.js",
+      "/entryPoint/bg/init/settings.js",
+      "/entryPoint/bg/init/prefs-sys.js",
+      "/entryPoint/bg/init/checkTour.js",
+      "/entryPoint/bg/helpers/utils.js",
+      "/entryPoint/bg/handlers/common.js",
+      "/entryPoint/bg/handlers/setup.js",
+      "/entryPoint/bg/handlers/analytics.js"
     ]
   },
   "browser_action": {
     "default_icon": {
-      "128": "/start/static/icons/main/128.png"
+      "128": "/entryPoint/static/icons/main/128.png"
     }
   },
   "icons": {
-    "128": "/start/static/icons/main/128.png"
+    "128": "/entryPoint/static/icons/main/128.png"
   },
   "permissions": [
     "*://mail.google.com/*",

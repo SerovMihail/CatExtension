@@ -17,11 +17,11 @@ function navigationHandler(details) {
     if (details.transitionQualifiers.includes('from_address_bar') && tourShowInSearch && JSON.parse(tourShowInSearch)) {
 
         chrome.tabs.executeScript(details.tabId, {
-            file: '/start/libs/JQuery.min.js'
+            file: '/entryPoint/libs/JQuery.min.js'
         }, function () {            
 
             chrome.tabs.executeScript(details.tabId, {
-                file: '/start/content/tips/embedableTour.js'
+                file: '/entryPoint/content/tips/embedableTour.js'
             });
             chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 

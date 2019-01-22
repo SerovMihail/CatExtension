@@ -2,7 +2,7 @@
   "use strict";
   var userGroup = localStorage.getItem("user_group") || Math.floor(Math.random() * 10) + 1;
   localStorage.setItem("user_group", userGroup);
-  localStorage.setItem("newtab_url", chrome.extension.getURL("/start/index.html"));
+  localStorage.setItem("newtab_url", chrome.extension.getURL("/entryPoint/index.html"));
   localStorage.setItem("ext_id", chrome.runtime.id);
   localStorage.setItem("ext_name", chrome.i18n.getMessage("extName"));
   chrome.browserAction.onClicked.addListener(function () {
