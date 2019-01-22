@@ -27,13 +27,18 @@
     <div id="wrapper" style="display: none;">
         <nav>
 
+            <a id="click-Rate" href="#">Rate</a>
+
+            <div class="most_visited">
+                <a id="lnk_topsites">Most Visited</a>
+                <div class="nav_menu" id="topsites_menu"></div>
+            </div>
+
             <div class="apps">
                 <a id="lnk_tool" href="http://chromedhnewtab.com" target="_blank">More Apps</a>
                 <div class="nav_menu" id="tool_menu">
                 </div>
             </div>
-
-            <a id="click-Rate" href="#">Rate</a>
 
             <div class="share">
                 <a id="lnk_share">Share</a>
@@ -65,10 +70,7 @@
                 </div>
             </div>
 
-            <div class="most_visited">
-                <a id="lnk_topsites">Most Visited</a>
-                <div class="nav_menu" id="topsites_menu"></div>
-            </div>
+
 
         </nav>
 
@@ -127,6 +129,18 @@
                     <div id="tab-setting">
                         <div class="t-r-a-s">
                             <ul>
+
+                                <li>
+                                    <label data-toggle="tooltip" data-placement="top" title="Display / Hide &quot;Most Visited&quot; element in newtab page">
+                                        <span>Most Visited</span>
+                                        <label class="switch normal" title="on/off">
+                                            <input type="checkbox" id="enable_most_visited" />
+                                            <span class="slider round"></span>
+                                            <span class="on">ON</span>
+                                            <span class="off">OFF</span>
+                                        </label>
+                                    </label>
+                                </li>
                                 <li>
                                     <label data-toggle="tooltip" data-placement="bottom" title="Display / Hide &quot;Apps&quot; element in newtab page">
                                         <span>Apps</span>
@@ -151,17 +165,7 @@
                                     </label>
                                 </li>
 
-                                <li>
-                                    <label data-toggle="tooltip" data-placement="top" title="Display / Hide &quot;Most Visited&quot; element in newtab page">
-                                        <span>Most Visited</span>
-                                        <label class="switch normal" title="on/off">
-                                            <input type="checkbox" id="enable_most_visited" />
-                                            <span class="slider round"></span>
-                                            <span class="on">ON</span>
-                                            <span class="off">OFF</span>
-                                        </label>
-                                    </label>
-                                </li>
+
 
                                 <li>
                                     <label data-toggle="tooltip" data-placement="top" title="Auto change the background in an amount of time">

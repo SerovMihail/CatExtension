@@ -1,10 +1,10 @@
-@import url("parts/font-face.css");
-@import url("parts/key-frames.css");
-@import url("parts/my-apps-icons.css");
-@import url("parts/scrollbar.css");
-@import url("parts/glyphicons.css");
-@import url("parts/tour.css");
-@import url("parts/countdown.css");
+@import url("modules/font-face.css");
+@import url("modules/key-frames.css");
+@import url("modules/my-apps-icons.css");
+@import url("modules/scrollbar.css");
+@import url("modules/glyphicons.css");
+@import url("modules/tour.css");
+@import url("modules/countdown.css");
 
 html {
     height: 100%;
@@ -45,8 +45,8 @@ body {
     width: 100px;
     height: 100px;
     position: absolute;
-    right: 50px;
-    bottom: 50px;
+    right: 30px;
+    bottom: 30px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -527,7 +527,7 @@ footer a,
     display: none;
     overflow-x: hidden;
     overflow-y: auto;
-    background: rgba(0, 0, 0, 0.65);
+    background: rgba(119, 116, 116, 0.65);
     border-radius: 5px;
     /*border: 1px solid rgba(255, 255, 255, 0.75);
     box-shadow: 2px 2px 1px 0px rgba(0, 0, 0, 0.33); */
@@ -683,7 +683,7 @@ footer a,
     width: 110px;
     background-color: #ECECEC;
     height: 45px;
-    background-image: url(../images/down.png);
+    background-image: url(../pictures/down.png);
     line-height: 45px;
     color: #484848;
     background-repeat: no-repeat;
@@ -711,7 +711,7 @@ div#search-engine-select {
 /* .dropdown dt a:hover {} */
 
 .dropdown dt a {
-    background: #ECECEC url(../images/down.png) no-repeat scroll 95px center;
+    background: #ECECEC url(../pictures/down.png) no-repeat scroll 95px center;
     display: block;
     padding-right: 20px;
     border: none;
@@ -782,7 +782,7 @@ div#search-engine-select {
 }
 
 .search-box {
-    width: 30%;
+    width: 25%;
     position: absolute;
     margin: auto;
     top: 15px;
@@ -1639,10 +1639,10 @@ h3 {
     width: 50px;
     height: 49px;
     position: absolute;
-    right: 0;
+    right: -50px;
     cursor: pointer;
     border-radius: 0 5px 5px 0;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.5);
     padding: 12px;
 }
 
@@ -1664,11 +1664,12 @@ h3 {
     font-size: 20px;
     padding-left: 20px;
     color: white;
-    border-radius: 5px;
+    border-radius: 5px 0 0 5px;
 }
 
 #search-input::placeholder {
     color: white;
+    text-align: center;
     opacity: .7;
 }
 
