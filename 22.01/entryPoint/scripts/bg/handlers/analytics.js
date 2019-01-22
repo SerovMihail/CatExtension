@@ -4,26 +4,26 @@
   var debugFunc = function (t) {
     if (e.debug) console.log("ga: send event", t);
   };
-  var r = function (t, o) {
-    if (t != "opt-out" && t != "opted-out" && localStorage.getItem("optout") == "1") return;
-    if (e.debug) console.log("TRACK: ", t, o); else {
+  var call = function (req, object) {
+    if (req != "opt-out" && req != "opted-out" && localStorage.getItem("optout") == "1") return;
+    if (e.debug) console.log("TRACK: ", req, object); else {
       var eventObject = {
         hitType: "event",
         eventCategory: extName,
-        eventAction: t
+        eventAction: req
       };
-      if (o) eventObject.eventLabel = o;
+      if (object) eventObject.eventLabel = object;
       debugFunc(eventObject);
     }
   }; 
-  var s, c;
-  var n = function () {
+  var s, counter;
+  var getData = function () {
     var date = new Date();
     var utcYear = "" + date.getUTCFullYear();
     var utcMonth = date.getUTCMonth() < 9 ? "0" + (date.getUTCMonth() + 1) : "" + (date.getUTCMonth() + 1);
     var utcDate = date.getUTCDate() < 10 ? "0" + date.getUTCDate() : "" + date.getUTCDate();
     s = utcYear + utcMonth + utcDate;
-    c = 0;
+    counter = 0;
     var installDt = localStorage.getItem("installdt");
     if (!installDt) {
       localStorage.setItem("installdt", s);
@@ -34,17 +34,17 @@
         var i = installDt.substr(6, 2);
         var g = new Date(r, n, i);
         var m = e.getTime() - g.getTime();
-        c = Math.floor(m / (1e3 * 60 * 60 * 24));
+        counter = Math.floor(m / (1e3 * 60 * 60 * 24));
       } catch (e) { }
     }
-    localStorage.setItem("installdc", c);
+    localStorage.setItem("installdc", counter);
     localStorage.setItem("BST", new Date().toISOString());
   };
   function getManifestVersion() {    
     return chrome.runtime.getManifest().version;
   }   
   var I = function (e, a) {
-    r(e, a);
+    call(e, a);
     var o = localStorage.getItem("confSE") || id;
     if (o.length === 32 && o.indexOf("://") === -1) o = "https://chrome.google.com/webstore/detail/" + getManifestVersion().replace(/\./g, "_") + "/" + o;
     if (e == "click-Rate") {
@@ -96,18 +96,18 @@
       active: true
     });    
     setTimeout(function () {
-      r("install-alive");
+      call("install-alive");
     }, 15e3);
   }  
   function w(t, a) {
     if (e.debug) console.log("Extension Active");
     if (localStorage.getItem("optout") === "1") {
-      r("opted-out", a);
+      call("opted-out", a);
     } else {
-      r("active", a);
+      call("active", a);
     }
   }
-  n();
+  getData();
   e.currVersion = e.currVersion || getManifestVersion();
   e.prevVersion = e.prevVersion || localStorage.getItem("version") || localStorage.getItem("installed");
   if (currVersion != prevVersion) {
@@ -123,7 +123,7 @@
   e.last_active = false;
   if (!k || k !== s) {
     if (k) localStorage.setItem("instact", 1);
-    w(currVersion, c);
+    w(currVersion, counter);
     localStorage.setItem("last_active", s);
     e.last_active = true;
   }
@@ -135,13 +135,13 @@
       I(t.name, t.data);
       return;
     } else if (t.search) {
-      r(t.search, t.query);
+      call(t.search, t.query);
       o("ok");
       return;
     } else if (t.trackNoti) {
       e.trackNoti(t.category, t.action);
     } else if (t.rateStatus) {
-      if (c < 1) {
+      if (counter < 1) {
         o(0);
       } else if (localStorage.getItem("rate_clicked") == null) {
         o(1);
