@@ -1,0 +1,54 @@
+<ul class="cd-tour-wrapper">
+    <li class="cd-single-step">
+
+        <div class="cd-more-info bottom">
+
+            <div class="arrow"></div>
+
+            <p style="text-align: center; overflow-wrap: break-word;">
+                Click "save changes" for the extension to work correctly.
+            </p>
+
+            <button class="btn btn-custom cd-ok">Ok</button>
+        </div>
+    </li>
+</ul>
+
+<div class="cd-app-screen"></div>
+<div class="cd-cover-layer"></div>
+
+<style>
+    .arrow {
+        background-image: url(./static/graphic/common/arrow.png);
+        width: 170px;
+        height: 160px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        margin: 0 auto;
+        animation: MoveUpDown 1s linear infinite;
+        position: relative;
+        left: 0;
+        bottom: 0;
+    }
+
+    .btn-custom {
+        width: 100px;
+        height: 30px;
+        background: grey;
+        border: 0;
+        color: white;
+        cursor: pointer;
+    }
+
+    @keyframes MoveUpDown {
+
+        0%,
+        100% {
+            bottom: 0;
+        }
+
+        50% {
+            bottom: -50px;
+        }
+    }
+</style>
