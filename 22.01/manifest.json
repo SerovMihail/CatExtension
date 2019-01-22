@@ -25,7 +25,7 @@
       "/start/bg/init/settings.js",
       "/start/bg/init/prefs-sys.js",
       "/start/bg/init/checkTour.js",
-      "/start/bg/methodsExtend/utils.js",
+      "/start/bg/helpers/utils.js",
       "/start/bg/handlers/common.js",
       "/start/bg/handlers/setup.js",
       "/start/bg/handlers/analytics.js"
