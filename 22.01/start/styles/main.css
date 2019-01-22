@@ -40,6 +40,22 @@ body {
     padding-inline-start: 0;
 }
 
+.watermark .watermark-icon {
+    background-image: url('../static/icons/main/sample-watermark.png');
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    right: 50px;
+    bottom: 50px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.watermark .watermark-icon:hover {
+    filter: hue-rotate(180deg);
+}
+
 .mark_favor {
     position: relative;
     right: 15px;
