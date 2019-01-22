@@ -37,9 +37,9 @@
 
   e.setBackgroundGIFOrJPG = function (e) {
 
-    var t = e.replace("bg-0", "").replace("bg-", "").replace(".jpg", "");
-    var imagePath = window.imageBuffer[parseInt(t)] && window.imageBuffer[parseInt(t)].fullPath
-      ? window.imageBuffer[parseInt(t)].fullPath
+    var clearNameOfBackground = e.replace("bg-0", "").replace("bg-", "").replace(".jpg", "");
+    var imagePath = window.imageBuffer[parseInt(clearNameOfBackground)] && window.imageBuffer[parseInt(clearNameOfBackground)].fullPath
+      ? window.imageBuffer[parseInt(clearNameOfBackground)].fullPath
       : window.imageBuffer[0].fullPath;
     localStorage.setItem("last_bg", imagePath);
 
@@ -55,23 +55,23 @@
   e.setNewTabBackground = function () {
 
     var lastBg = "" + localStorage.getItem("last_bg");
-    var favorArr = [], newArr = [];
+    var favorArr = [], changedArray = [];
     if (localStorage.getItem("mark_favor")) {
       favorArr = JSON.parse(localStorage.getItem("mark_favor"));
       if (favorArr.length >= 2 && favorArr.indexOf(lastBg) > -1) {
         favorArr.splice(favorArr.indexOf(lastBg), 1);
       }
-      if (favorArr.length) newArr = favorArr.join("|").split("|");
+      if (favorArr.length) changedArray = favorArr.join("|").split("|");
     }
     for (var n = 1; n <= user["bg_img_list"]; n++) {
-      if ("" + n !== lastBg) newArr.push("" + n);
+      if ("" + n !== lastBg) changedArray.push("" + n);
     }
     if (localStorage.getItem("shuffle_background") == "yes" || localStorage.getItem("shuffle_favorites") == "yes" && favorArr.length == 0) {
       var gIndex;
       if (lastBg == "0") {
         gIndex = 1;
       } else {
-        gIndex = newArr[Math.floor(Math.random() * newArr.length)];
+        gIndex = changedArray[Math.floor(Math.random() * changedArray.length)];
       }
       chosenRandomBG = "bg-" + ("0" + gIndex).slice(-2) + ".jpg";
     } else if (localStorage.getItem("shuffle_favorites") == "yes") {

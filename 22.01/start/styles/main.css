@@ -3,7 +3,7 @@
 @import url("modules/my-apps-icons.css");
 @import url("modules/scrollbar.css");
 @import url("modules/glyphicons.css");
-@import url("modules/tour.css");
+@import url("newStyles/tour.css");
 @import url("modules/countdown.css");
 
 html {
@@ -1671,7 +1671,7 @@ h3 {
 #search-input::placeholder {
     color: white;
     text-align: center;
-    opacity: .7;
+    opacity: .8;
 }
 
 div.color,

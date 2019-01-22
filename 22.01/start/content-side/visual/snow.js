@@ -1,13 +1,13 @@
-window.loadAutoHideModule = function (e) {
-  if (e.autoHideThread) clearTimeout(e.autoHideThread);
-  e.autoHideThread = null;
+window.loadAutoHideModule = function (event) {
+  if (event.autoHideThread) clearTimeout(event.autoHideThread);
+  event.autoHideThread = null;
   function show() {
     $("#wrapper").fadeIn(1e3);
     delay();
   }
   function delay() {
-    clearTimeout(e.autoHideThread);
-    e.autoHideThread = setTimeout(a, 1e4);
+    clearTimeout(event.autoHideThread);
+    event.autoHideThread = setTimeout(a, 1e4);
   }
   
   function hide() {
@@ -17,16 +17,16 @@ window.loadAutoHideModule = function (e) {
   }
 
   function deleteEvents() {
-    clearTimeout(e.autoHideThread);
+    clearTimeout(event.autoHideThread);
     $("body").off("mousemove", show);
     $("input[type=text]").off("focus", deleteEvents);
     $("input[type=search]").off("keypress", deleteEvents);
     $("input[type=text], input[type=search]").off("focusout", addEvents);
   }
   function addEvents() {
-    e.listAllThreads.threadAutoHide = {
+    event.listAllThreads.threadAutoHide = {
       pause: function () {
-        clearTimeout(e.autoHideThread);
+        clearTimeout(event.autoHideThread);
         hide();
       },
       resume: function () {
@@ -76,15 +76,15 @@ window.loadSnowModule = function (e) {
       cursor: "default",
       "user-select": "none"
     }).html("&#10052;");
-    var n = function () {
-      var height = $(document).height(),
-        width = $(document).width();
-      var leftDistance = Math.random() * width - 100,
+    var changeAnimationState = function () {
+      var h = $(document).height(),
+        w = $(document).width();
+      var leftDistance = Math.random() * w - 100,
         customOpacity = 0.5 + Math.random(),
         customFontSize = type.minSize + Math.random() * type.maxSize,
-        customTop = height - 40,
+        customTop = h - 40,
         customLeftDistance = leftDistance - 250 + Math.random() * 200,
-        duration = height * 10 + Math.random() * 5e3;
+        duration = h * 10 + Math.random() * 5e3;
       a.clone().appendTo("body").html(type.snow_type).css({
         left: leftDistance,
         opacity: customOpacity,
@@ -131,7 +131,7 @@ window.loadSnowModule = function (e) {
       resume: function () {
         $(".snow").resume();
         clearInterval(e.change_interval);
-        e.change_interval = setInterval(n, type.newOn);
+        e.change_interval = setInterval(changeAnimationState, type.newOn);
       }
     };
     e.listAllThreads.threadSnow.resume();
