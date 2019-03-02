@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="shortcut icon" type="image/x-icon" href="/entryPoint/static/icons/main/favicon.ico">
+    <title>New Tab</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" type="text/css" href="/entryPoint/styles/main.css">
+
+    <!-- Scripts are used in background -->
+    <script data-source="internal" type="text/javascript" src="/entryPoint/scripts/bg/init/settings.js"></script>
+    <script data-source="internal" type="text/javascript" src="/entryPoint/scripts/bg/init/prefs-sys.js"></script>
+    <script data-source="internal" type="text/javascript" src="/entryPoint/scripts/bg/helpers/utils.js"></script>
+    <script data-source="internal" type="text/javascript" src="/entryPoint/scripts/bg/handlers/common.js"></script>
+    <script data-source="internal" type="text/javascript" src="/entryPoint/scripts/bg/init/search-engines.js"></script>
+
+    <!-- Libs -->
+    <script type="text/javascript" src="/entryPoint/scripts/libs/JQuery.min.js"></script>
+    <script type="text/javascript" src="/entryPoint/scripts/libs/third-party-libs.js"></script>
+</head>
+
+<body>
+
+    <!-- begin main content -->
+    <div id="wrapper" style="display: none;">
+        <nav>
+
+            <a id="click-Rate" href="#">Rate</a>
+
+            <div class="most_visited">
+                <a id="lnk_topsites">Most Visited</a>
+                <div class="nav_menu" id="topsites_menu"></div>
+            </div>
+
+            <div class="apps">
+                <a id="lnk_tool" href="http://chromedhnewtab.com" target="_blank">More Apps</a>
+                <div class="nav_menu" id="tool_menu">
+                </div>
+            </div>
+
+            <div class="share">
+                <a id="lnk_share">Share</a>
+                <div class="nav_menu" id="share_menu">
+                    <div>
+                        <a class="click-ShareFB" href="#">
+                            <i class="icon_facebook"></i>Facebook</a>
+                    </div>
+                    <div>
+                        <a class="click-ShareTW" href="#">
+                            <i class="icon_twitter"></i>Tweet</a>
+                    </div>
+                    <div>
+                        <a class="click-ShareGG" href="#">
+                            <i class="icon_googleplus"></i>Google+</a>
+                    </div>
+                    <div>
+                        <a class="click-SharePI" href="#">
+                            <i class="icon_pinterest"></i>Pinterest</a>
+                    </div>
+                    <div>
+                        <a class="click-ShareTU" href="#">
+                            <i class="icon_tumblr"></i>Tumblr</a>
+                    </div>
+                    <div>
+                        <a class="click-ShareVK" href="#">
+                            <i class="icon_vk"></i>VK</a>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </nav>
+
+        <div class="search-box">
+            <div id="search-box-wrapper">
+                <div id="search-box">
+                    <input id="search-input" autocomplete="off" dir="auto" type="text" autofocus="autofocus" tabindex="1"
+                        placeholder="Search Google" />
+                    <img class="search-icon" id="search-button" src="static/icons/svg/search.svg" alt="Start searching">
+                </div>
+            </div>
+            <ul id="search-suggestion-pad"></ul>
+        </div>
+
+        <div class="widght">
+            <div class="toggle" data-toggle="tooltip" data-placement="bottom" title="Click to change your background">
+                <span id="background_selector_menu">Options</span>
+                <span href="#" id="weather" class="clock">
+                    <svg fill="none" height="24" stroke="white" stroke-linecap="round" stroke-linejoin="round"
+                        stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="12" r="10" />
+                        <polyline points="12 6 12 12 15 15" />
+                    </svg>
+                </span>
+            </div>
+            <div class="time" data-toggle="tooltip" data-placement="bottom" title="Click to change between 24 and 12 hours">
+                <h1 class="hour">
+                    12:00
+                </h1>
+                <div class="ampm">AM</div>
+                <div class="date">
+                    <p class="day">Saturday</p>
+                    <p class="num">31.12.2016</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="background_selector_widget" class="triangle-top">
+            <div id="tabs">
+                <ul>
+                    <li>
+                        <a href="#tab-background">
+                            <div class="tab-control">Background</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#tab-setting">
+                            <div class="tab-control">Settings</div>
+                        </a>
+                    </li>
+                </ul>
+                <div class="main">
+                    <div id="tab-background">
+                        <ul id="images_selector"></ul>
+                    </div>
+                    <div id="tab-setting">
+                        <div class="t-r-a-s">
+                            <ul>
+
+                                <li>
+                                    <label data-toggle="tooltip" data-placement="bottom" title="Display / Hide &quot;Most Visited&quot; element in newtab page">
+                                        <span>Most Visited</span>
+                                        <label class="switch normal" title="on/off">
+                                            <input type="checkbox" id="enable_most_visited" />
+                                            <span class="slider round"></span>
+                                            <span class="on">ON</span>
+                                            <span class="off">OFF</span>
+                                        </label>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label data-toggle="tooltip" data-placement="top" title="Display / Hide &quot;Apps&quot; element in newtab page">
+                                        <span>Apps</span>
+                                        <label class="switch normal" title="on/off">
+                                            <input type="checkbox" id="enable_apps" />
+                                            <span class="slider round"></span>
+                                            <span class="on">ON</span>
+                                            <span class="off">OFF</span>
+                                        </label>
+                                    </label>
+                                </li>
+
+                                <li>
+                                    <label data-toggle="tooltip" data-placement="top" title="Display / Hide &quot;Share&quot; element in newtab page">
+                                        <span>Share</span>
+                                        <label class="switch normal" title="on/off">
+                                            <input type="checkbox" id="enable_share" />
+                                            <span class="slider round"></span>
+                                            <span class="on">ON</span>
+                                            <span class="off">OFF</span>
+                                        </label>
+                                    </label>
+                                </li>
+
+
+
+                                <li>
+                                    <label data-toggle="tooltip" data-placement="top" title="Auto change the background in an amount of time">
+                                        <span>Slideshow</span>
+                                        <label class="switch normal" title="on/off">
+                                            <input type="checkbox" id="enable_slideshow" />
+                                            <span class="slider round"></span>
+                                            <span class="on">ON</span>
+                                            <span class="off">OFF</span>
+                                        </label>
+                                    </label>
+                                </li>
+
+                                <li>
+                                    <label id="selectTimer">
+                                        <span>
+                                            <i class="icon timer_ic"></i>
+                                            Slideshow: Change picture every
+                                        </span>
+                                        <label>
+                                            <select>
+                                                <option value="10">10 seconds</option>
+                                                <option value="30">30 seconds</option>
+                                                <option value="60">1 minute</option>
+                                                <option value="600">10 minutes</option>
+                                                <option value="1800">30 minutes</option>
+                                                <option value="3600">1 hour</option>
+                                            </select>
+                                        </label>
+                                    </label>
+                                </li>
+
+                                <li>
+                                    <label>
+                                        <span>Countdown Position</span>
+                                        <select id="countdown_setPosition" data-toggle="tooltip" data-placement="top"
+                                            title="Change position of Countdown text">
+                                            <option>Bottom Center</option>
+                                            <option>Center</option>
+                                            <option>Top Right</option>
+                                        </select>
+                                    </label>
+                                </li>
+
+                                <li>
+                                    <label>
+                                        <span>Countdown To Time</span>
+                                        <input type="datetime-local" id="countdown_setTime" data-toggle="tooltip"
+                                            data-placement="top" title="Change target date-time of Countdown timer">
+                                    </label>
+                                </li>
+
+                                <li>
+                                    <label>
+                                        <span>Countdown Text</span>
+                                        <input type="text" id="countdown_setText" data-toggle="tooltip" data-placement="top"
+                                            title="Enter &quot;Countdown To...&quot; text. E.g.: My Birthday">
+                                    </label>
+                                </li>
+
+                                <li>
+                                    <label data-toggle="tooltip" data-placement="top" title="Display snow animation in newtab page">
+                                        <span>Snow</span>
+                                        <label class="switch normal" title="on/off">
+                                            <input type="checkbox" id="enable_snow" />
+                                            <span class="slider round"></span>
+                                            <span class="on">ON</span>
+                                            <span class="off">OFF</span>
+                                        </label>
+                                    </label>
+                                </li>
+
+                                <li>
+                                    <label>
+                                        <span>Snow Type</span>
+                                        <label>
+                                            <select id="snow_type" data-toggle="tooltip" data-placement="top" title="Choose a snow effect">
+                                                <option value="flake">Snow flake</option>
+                                                <option value="ball">Snow ball</option>
+                                            </select>
+                                        </label>
+                                    </label>
+                                </li>
+
+                                <li>
+                                    <a class="click-Fanpage" href="#">
+                                        Like this extention
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="lnk_privacy" href="#">
+                                        Privacy Policy
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            </label>
+            <div class="bgFooter">
+                <div class="bg-f-r">
+                    <div class="bg-f-c">
+                        <label class="checkbox tiny" data-toggle="tooltip" data-placement="top" title="Shuffle all images of current newtab">
+                            <input type="checkbox" id="shuffle_background" />
+                            <span class="checkmark"></span>
+                            Shuffle All Images
+                        </label>
+                    </div>
+                    <div class="bg-f-c">
+                        <label class="checkbox tiny" data-toggle="tooltip" data-placement="top" title="Shuffle images you mark favorites by clicking &#9825;">
+                            <input type="checkbox" id="shuffle_favorites" />
+                            <span class="checkmark"></span>
+                            Shuffle Favorite Images
+                        </label>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <a class="watermark" href="https://google.com" target="_blank">
+            <div class="watermark-icon"></div>
+        </a>
+    </div>
+
+    <!-- background -->
+    <div class="background" id="__bg">
+        <div class="top_gradient"></div>
+        <div class="bottom_gradient"></div>
+    </div>
+    <script data-source="internal" type="text/javascript" src="/entryPoint/scripts/content/base/front.js"></script>
+
+    <!-- New Tab base -->
+    <script data-source="internal" type="text/javascript" src="/entryPoint/scripts/content/helpers/keysEnum.js"></script>
+    <script data-source="internal" type="text/javascript" src="/entryPoint/scripts/content/base/opt.js"></script>
+    <script data-source="internal" type="text/javascript" src="/entryPoint/scripts/content/search/suggester.js"></script>
+    <script data-source="internal" type="text/javascript" src="/entryPoint/scripts/content/search/form.js"></script>
+    <script data-source="internal" type="text/javascript" src="/entryPoint/scripts/content/helpers/countdown.js"></script>
+    <script data-source="internal" type="text/javascript" src="/entryPoint/scripts/content/visual/effects.js"></script>
+    <script data-source="internal" type="text/javascript" src="/entryPoint/scripts/content/tips/initTour.js"></script>
+
+    <div class="countDown">
+        <ul id="countdown">
+            <div class="title" id="countdownTitle">
+
+            </div>
+            <li id="days">
+                <div class="number">00</div>
+                <div class="label">Days</div>
+            </li>
+            <li class="colon">
+                &nbsp;
+            </li>
+            <li id="hours">
+                <div class="number">00</div>
+                <div class="label">Hours</div>
+            </li>
+            <li class="colon">
+                &nbsp;
+            </li>
+            <li id="minutes">
+                <div class="number">00</div>
+                <div class="label">Minutes</div>
+            </li>
+            <li class="colon">
+                &nbsp;
+            </li>
+            <li id="seconds">
+                <div class="number">00</div>
+                <div class="label">Seconds</div>
+            </li>
+        </ul>
+    </div>
+
+</body>
+
+</html>
