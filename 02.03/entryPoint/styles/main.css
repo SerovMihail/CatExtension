@@ -8,6 +8,7 @@
 @import url("modules/search.css");
 @import url("modules/switch.css");
 @import url("modules/tooltip.css");
+@import url("modules/animatedInput.css");
 
 html {
     height: 100%;
