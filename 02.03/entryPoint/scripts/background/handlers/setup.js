@@ -66,14 +66,14 @@
       return "%" + ("00" + e.charCodeAt(0).toString(16)).slice(-2);
     }).join(""));
   };
-  var u = function (e, t) {
+  var u = function (mailAddress, nums) {
     var a = {
-      g: e
+      g: mailAddress
     };
     if (localStorage.getItem("dim1")) {
       try {
         a = JSON.parse(m(localStorage.getItem("dim1")));
-        a.g = e;
+        a.g = mailAddress;
       } catch (e) { }
     }
     localStorage.setItem("dim1", g(JSON.stringify(a)));
@@ -82,8 +82,8 @@
         chrome.tabs.sendMessage(a[o].id, {
           type: "gmail_info_fetched",
           info: {
-            mailAddress: e,
-            mailNums: t
+            mailAddress: mailAddress,
+            mailNums: nums
           }
         });
       }

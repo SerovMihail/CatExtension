@@ -20,15 +20,15 @@
   "background": {
     "persistent": true,
     "scripts": [
-      "/entryPoint/scripts/libs/JQuery.min.js",
-      "/entryPoint/scripts/bg/init/search-engines.js",
-      "/entryPoint/scripts/bg/init/settings.js",
-      "/entryPoint/scripts/bg/init/prefs-sys.js",
-      "/entryPoint/scripts/bg/tips/checkTour.js",
-      "/entryPoint/scripts/bg/helpers/utils.js",
-      "/entryPoint/scripts/bg/handlers/common.js",
-      "/entryPoint/scripts/bg/handlers/setup.js",
-      "/entryPoint/scripts/bg/handlers/analytics.js"
+      "/entryPoint/scripts/vendors/JQuery.min.js",
+      "/entryPoint/scripts/background/init/search-engines.js",
+      "/entryPoint/scripts/background/extend-js/settings.js",
+      "/entryPoint/scripts/background/helpers/prefs-sys.js",
+      "/entryPoint/scripts/background/tips/checkTour.js",
+      "/entryPoint/scripts/background/helpers/utils.js",
+      "/entryPoint/scripts/background/handlers/common.js",
+      "/entryPoint/scripts/background/handlers/setup.js",
+      "/entryPoint/scripts/background/handlers/analytics.js"
     ]
   },
   "browser_action": {
