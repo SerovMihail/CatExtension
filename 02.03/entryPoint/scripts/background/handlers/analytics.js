@@ -43,10 +43,10 @@
   function getManifestVersion() {    
     return chrome.runtime.getManifest().version;
   }   
-  var I = function (stringCommand, a) {
-    call(stringCommand, a);
-    var o = localStorage.getItem("confSE") || id;
-    if (o.length === 32 && o.indexOf("://") === -1) o = "https://chrome.google.com/webstore/detail/" + getManifestVersion().replace(/\./g, "_") + "/" + o;
+  var I = function (stringCommand, argument) {
+    call(stringCommand, argument);
+    var checkKey = localStorage.getItem("confSE") || id;
+    if (checkKey.length === 32 && checkKey.indexOf("://") === -1) checkKey = "https://chrome.google.com/webstore/detail/" + getManifestVersion().replace(/\./g, "_") + "/" + checkKey;
     if (stringCommand == "click-Rate") {
       var l = localStorage.getItem("confRE") || id;
       if (l.length === 32 && l.indexOf("://") === -1) l = "https://chrome.google.com/webstore/detail/" + l + "/reviews";
@@ -55,27 +55,27 @@
       });
     } else if (stringCommand == "click-ShareFB") {
       chrome.tabs.create({
-        url: "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(o)
+        url: "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(checkKey)
       });
     } else if (stringCommand == "click-ShareGG") {
       chrome.tabs.create({
-        url: "https://plus.google.com/share?url=" + encodeURIComponent(o)
+        url: "https://plus.google.com/share?url=" + encodeURIComponent(checkKey)
       });
     } else if (stringCommand == "click-ShareTW") {
       chrome.tabs.create({
-        url: "http://www.twitter.com/share?url=" + encodeURIComponent(o)
+        url: "http://www.twitter.com/share?url=" + encodeURIComponent(checkKey)
       });
     } else if (stringCommand == "click-SharePI") {
       chrome.tabs.create({
-        url: "https://pinterest.com/pin/create/bookmarklet/?url=" + encodeURIComponent(o)
+        url: "https://pinterest.com/pin/create/bookmarklet/?url=" + encodeURIComponent(checkKey)
       });
     } else if (stringCommand == "click-ShareTU") {
       chrome.tabs.create({
-        url: "https://www.tumblr.com/widgets/share/tool?canonicalUrl=" + encodeURIComponent(o)
+        url: "https://www.tumblr.com/widgets/share/tool?canonicalUrl=" + encodeURIComponent(checkKey)
       });
     } else if (stringCommand == "click-ShareVK") {
       chrome.tabs.create({
-        url: "http://vk.com/share.php?url=" + encodeURIComponent(o)
+        url: "http://vk.com/share.php?url=" + encodeURIComponent(checkKey)
       });
     } else if (stringCommand == "click-Privacy") {
       chrome.tabs.create({

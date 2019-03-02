@@ -60,12 +60,12 @@
     };
   }
   (function() {
-    var r = "";
-    var t = {};
-    function getter(e) {
-      var localStorageCell = localStorage[r + e];
+    var keyPrefix = "";
+    var settingStore = {};
+    function getter(key) {
+      var localStorageCell = localStorage[keyPrefix + key];
       if (localStorageCell == null) {
-        localStorageCell = t[e];
+        localStorageCell = settingStore[key];
         return localStorageCell;
       }
       if (typeof localStorageCell == "string") {
@@ -74,8 +74,8 @@
       return localStorageCell;
     }
     function setter(e, n) {
-      var o = t[e];
-      var i = r + e;
+      var o = settingStore[e];
+      var i = keyPrefix + e;
       if (typeof n == "object") {
         throw "object type not supported";
       } else if (o == n && localStorage[i] != null) delete localStorage[i]; else if (n == null) delete localStorage[i]; else localStorage[i] = n;
@@ -84,7 +84,7 @@
     var defineUser = function(e, r) {
       if (r == null) if (e == null) throw "name and defaultValue must have a concrete values"; else return userObj[e];
       if (typeof e != "string") throw "name is not of type string";
-      t[e] = r;
+      settingStore[e] = r;
       userObj.__defineGetter__(e, function() {
         return getter(e);
       });
