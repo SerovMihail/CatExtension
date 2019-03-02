@@ -16,17 +16,17 @@
       debugFunc(eventObject);
     }
   }; 
-  var s, counter;
+  var fullDate, counter;
   var getData = function () {
     var date = new Date();
     var utcYear = "" + date.getUTCFullYear();
     var utcMonth = date.getUTCMonth() < 9 ? "0" + (date.getUTCMonth() + 1) : "" + (date.getUTCMonth() + 1);
     var utcDate = date.getUTCDate() < 10 ? "0" + date.getUTCDate() : "" + date.getUTCDate();
-    s = utcYear + utcMonth + utcDate;
+    fullDate = utcYear + utcMonth + utcDate;
     counter = 0;
     var installDt = localStorage.getItem("installdt");
     if (!installDt) {
-      localStorage.setItem("installdt", s);
+      localStorage.setItem("installdt", fullDate);
     } else {
       try {
         var r = installDt.substr(0, 4);
@@ -43,41 +43,41 @@
   function getManifestVersion() {    
     return chrome.runtime.getManifest().version;
   }   
-  var I = function (e, a) {
-    call(e, a);
+  var I = function (stringCommand, a) {
+    call(stringCommand, a);
     var o = localStorage.getItem("confSE") || id;
     if (o.length === 32 && o.indexOf("://") === -1) o = "https://chrome.google.com/webstore/detail/" + getManifestVersion().replace(/\./g, "_") + "/" + o;
-    if (e == "click-Rate") {
+    if (stringCommand == "click-Rate") {
       var l = localStorage.getItem("confRE") || id;
       if (l.length === 32 && l.indexOf("://") === -1) l = "https://chrome.google.com/webstore/detail/" + l + "/reviews";
       chrome.tabs.create({
         url: l
       });
-    } else if (e == "click-ShareFB") {
+    } else if (stringCommand == "click-ShareFB") {
       chrome.tabs.create({
         url: "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(o)
       });
-    } else if (e == "click-ShareGG") {
+    } else if (stringCommand == "click-ShareGG") {
       chrome.tabs.create({
         url: "https://plus.google.com/share?url=" + encodeURIComponent(o)
       });
-    } else if (e == "click-ShareTW") {
+    } else if (stringCommand == "click-ShareTW") {
       chrome.tabs.create({
         url: "http://www.twitter.com/share?url=" + encodeURIComponent(o)
       });
-    } else if (e == "click-SharePI") {
+    } else if (stringCommand == "click-SharePI") {
       chrome.tabs.create({
         url: "https://pinterest.com/pin/create/bookmarklet/?url=" + encodeURIComponent(o)
       });
-    } else if (e == "click-ShareTU") {
+    } else if (stringCommand == "click-ShareTU") {
       chrome.tabs.create({
         url: "https://www.tumblr.com/widgets/share/tool?canonicalUrl=" + encodeURIComponent(o)
       });
-    } else if (e == "click-ShareVK") {
+    } else if (stringCommand == "click-ShareVK") {
       chrome.tabs.create({
         url: "http://vk.com/share.php?url=" + encodeURIComponent(o)
       });
-    } else if (e == "click-Privacy") {
+    } else if (stringCommand == "click-Privacy") {
       chrome.tabs.create({
         url: "http://chromedhnewtab.com/privacy-policy/"
       });
@@ -87,7 +87,7 @@
   function _(t) {
     
     if (localStorage.getItem("installdt") === null) {
-      localStorage.setItem("installdt", s);
+      localStorage.setItem("installdt", fullDate);
     }
     handleClick();
     f = true;
@@ -121,26 +121,26 @@
   }
   var k = localStorage.getItem("last_active");
   e.last_active = false;
-  if (!k || k !== s) {
+  if (!k || k !== fullDate) {
     if (k) localStorage.setItem("instact", 1);
     w(currVersion, counter);
-    localStorage.setItem("last_active", s);
+    localStorage.setItem("last_active", fullDate);
     e.last_active = true;
   }
-  chrome.extension.onMessage.addListener(function (t, a, o) {
-    if (typeof t == "string" && t.indexOf("click-") == 0) {
-      I(t);
+  chrome.extension.onMessage.addListener(function (commandString, a, o) {
+    if (typeof commandString == "string" && commandString.indexOf("click-") == 0) {
+      I(commandString);
       return;
-    } else if (typeof t.name == "string" && t.name.indexOf("click-") == 0) {
-      I(t.name, t.data);
+    } else if (typeof commandString.name == "string" && commandString.name.indexOf("click-") == 0) {
+      I(commandString.name, commandString.data);
       return;
-    } else if (t.search) {
-      call(t.search, t.query);
+    } else if (commandString.search) {
+      call(commandString.search, commandString.query);
       o("ok");
       return;
-    } else if (t.trackNoti) {
-      e.trackNoti(t.category, t.action);
-    } else if (t.rateStatus) {
+    } else if (commandString.trackNoti) {
+      e.trackNoti(commandString.category, commandString.action);
+    } else if (commandString.rateStatus) {
       if (counter < 1) {
         o(0);
       } else if (localStorage.getItem("rate_clicked") == null) {
