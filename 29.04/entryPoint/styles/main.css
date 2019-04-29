@@ -981,7 +981,7 @@ h1.hour {
     padding: 10px 15px;
     position: relative;
     font-size: 1.2em;
-    border-radius: 5px;
+    border-radius: 5px 5px 0 0;
 }
 
 #background_selector_widget #tabs ul.ui-tabs-nav li.ui-tabs-active div.tab-control {
