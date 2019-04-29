@@ -102,6 +102,7 @@ body {
 
 .checkbox:hover input~.checkmark {
     background-color: #ccc;
+    transition: all .5s;
 }
 
 .checkbox input {
@@ -112,6 +113,7 @@ body {
 
 .checkbox input:checked~.checkmark {
     background-color: #56B1EA;
+    transition: all .5s;
 }
 
 .checkbox input:checked~.checkmark:after {
@@ -168,8 +170,8 @@ body {
 }
 
 .checkbox.tiny .checkmark:after {
-    left: 5px;
-    top: 0px;
+    left: 4px;
+    top: 1px;
     width: 3px;
     height: 7px;
     border: solid white;
