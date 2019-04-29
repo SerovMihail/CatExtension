@@ -8,6 +8,7 @@
     line-height: 1;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    transform: rotate(3deg);
 }
 
 .glyphicon-heart:before {

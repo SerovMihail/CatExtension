@@ -5,10 +5,10 @@
         var dirReader = imagesDirectory.createReader();
         var buffer = [];
         getEntries = function (callback) {
-          dirReader.readEntries(function (results) {
-            if (results.length) {
-              for (var idx in results) {
-                buffer.push(results[idx]);
+          dirReader.readEntries(function (nestedFolders) {
+            if (nestedFolders.length) {
+              for (var idx in nestedFolders) {
+                buffer.push(nestedFolders[idx]);
               }
               getEntries(callback);
             } else {

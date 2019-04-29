@@ -1,94 +1,94 @@
 .icon_myaccount {
-    background-image: url('chrome-extension://__MSG_@@extension_id__/entryPoint/static/icons/apps/myaccount.png');
+    background-image: url('chrome-extension://__MSG_@@extension_id__/entryPoint/static/icons/resources/myaccount.png');
     background-size: cover;
 }
 
 .icon_googleplus {
-    background-image: url('chrome-extension://__MSG_@@extension_id__/entryPoint/static/icons/apps/plus.png');
+    background-image: url('chrome-extension://__MSG_@@extension_id__/entryPoint/static/icons/resources/plus.png');
     background-size: cover;
 }
 
 .icon_youtube {
-    background-image: url('chrome-extension://__MSG_@@extension_id__/entryPoint/static/icons/apps/youtube.png');
+    background-image: url('chrome-extension://__MSG_@@extension_id__/entryPoint/static/icons/resources/youtube.png');
     background-size: cover;
 }
 
 .icon_drive {
-    background-image: url('chrome-extension://__MSG_@@extension_id__/entryPoint/static/icons/apps/drive.png');
+    background-image: url('chrome-extension://__MSG_@@extension_id__/entryPoint/static/icons/resources/drive.png');
     background-size: cover;
 }
 
 .icon_gmail {
-    background-image: url('chrome-extension://__MSG_@@extension_id__/entryPoint/static/icons/apps/gmail.png');
+    background-image: url('chrome-extension://__MSG_@@extension_id__/entryPoint/static/icons/resources/gmail.png');
     background-size: cover;
 }
 
 .icon_documents {
-    background-image: url('chrome-extension://__MSG_@@extension_id__/entryPoint/static/icons/apps/docs.png');
+    background-image: url('chrome-extension://__MSG_@@extension_id__/entryPoint/static/icons/resources/docs.png');
     background-size: cover;
 }
 
 .icon_contacts {
-    background-image: url('chrome-extension://__MSG_@@extension_id__/entryPoint/static/icons/apps/contacts.png');
+    background-image: url('chrome-extension://__MSG_@@extension_id__/entryPoint/static/icons/resources/contacts.png');
     background-size: cover;
 }
 
 .icon_photos {
-    background-image: url('chrome-extension://__MSG_@@extension_id__/entryPoint/static/icons/apps/photos.png');
+    background-image: url('chrome-extension://__MSG_@@extension_id__/entryPoint/static/icons/resources/photos.png');
     background-size: cover;
 }
 
 .icon_calendar {
-    background-image: url('chrome-extension://__MSG_@@extension_id__/entryPoint/static/icons/apps/calendar.png');
+    background-image: url('chrome-extension://__MSG_@@extension_id__/entryPoint/static/icons/resources/calendar.png');
     background-size: cover;
 }
 
 .icon_news {
-    background-image: url('chrome-extension://__MSG_@@extension_id__/entryPoint/static/icons/apps/news.png');
+    background-image: url('chrome-extension://__MSG_@@extension_id__/entryPoint/static/icons/resources/news.png');
     background-size: cover;
 }
 
 .icon_sheets {
-    background-image: url('chrome-extension://__MSG_@@extension_id__/entryPoint/static/icons/apps/sheets.png');
+    background-image: url('chrome-extension://__MSG_@@extension_id__/entryPoint/static/icons/resources/sheets.png');
     background-size: cover;
 }
 
 .icon_hangouts {
-    background-image: url('chrome-extension://__MSG_@@extension_id__/entryPoint/static/icons/apps/hangouts.png');
+    background-image: url('chrome-extension://__MSG_@@extension_id__/entryPoint/static/icons/resources/hangouts.png');
     background-size: cover;
 }
 
 .icon_googlemap {
-    background-image: url('chrome-extension://__MSG_@@extension_id__/entryPoint/static/icons/apps/maps.png');
+    background-image: url('chrome-extension://__MSG_@@extension_id__/entryPoint/static/icons/resources/maps.png');
     background-size: cover;
 }
 
 .icon_classroom {
-    background-image: url('chrome-extension://__MSG_@@extension_id__/entryPoint/static/icons/apps/classroom.png');
+    background-image: url('chrome-extension://__MSG_@@extension_id__/entryPoint/static/icons/resources/classroom.png');
     background-size: cover;
 }
 
 .icon_facebook {
-    background-image: url('chrome-extension://__MSG_@@extension_id__/entryPoint/static/icons/sharing-resources/facebook.png');
+    background-image: url('chrome-extension://__MSG_@@extension_id__/entryPoint/static/icons/share/facebook.png');
     background-size: cover;
 }
 
 .icon_twitter {
-    background-image: url('chrome-extension://__MSG_@@extension_id__/entryPoint/static/icons/sharing-resources/twitter.png');
+    background-image: url('chrome-extension://__MSG_@@extension_id__/entryPoint/static/icons/share/twitter.png');
     background-size: cover;
 }
 
 .icon_pinterest {
-    background-image: url('chrome-extension://__MSG_@@extension_id__/entryPoint/static/icons/sharing-resources/pinterest.png');
+    background-image: url('chrome-extension://__MSG_@@extension_id__/entryPoint/static/icons/share/pinterest.png');
     background-size: cover;
 }
 
 .icon_tumblr {
-    background-image: url('chrome-extension://__MSG_@@extension_id__/entryPoint/static/icons/sharing-resources/tumblr.png');
+    background-image: url('chrome-extension://__MSG_@@extension_id__/entryPoint/static/icons/share/tumblr.png');
     background-size: cover;
 }
 
 .icon_vk {
-    background-image: url('chrome-extension://__MSG_@@extension_id__/entryPoint/static/icons/sharing-resources/vk.png');
+    background-image: url('chrome-extension://__MSG_@@extension_id__/entryPoint/static/icons/share/vk.png');
     background-size: cover;
 }

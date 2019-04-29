@@ -16,12 +16,15 @@ var tourWrapper,
     stepsNumber,
     coverLayer,
     tourStepInfo;
+
 function initTour() {
+    
     var tourWrapper = $('.cd-tour-wrapper'),
         tourSteps = tourWrapper.children('li'),
         stepsNumber = tourSteps.length,
         coverLayer = $('.cd-cover-layer'),
         tourStepInfo = $('.cd-more-info');
+
     $('body').addClass('disable-scroll')
     //create the navigation for each step of the tour
     createNavigation(tourSteps, stepsNumber);
