@@ -595,6 +595,7 @@ h1.hour {
 #background_selector_widget #tabs ul.ui-tabs-nav li.ui-tabs-active div.tab-control {
     background: white;
     color: #5692F5;
+    transition: all .5s;
 }
 
 #background_selector_widget .main {

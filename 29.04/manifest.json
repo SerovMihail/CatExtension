@@ -20,9 +20,9 @@
   "background": {
     "persistent": true,
     "scripts": [
-      "/entryPoint/scripts/vendors/JQuery.min.js",
+      "/entryPoint/scripts/vendor/JQuery.min.js",
       "/entryPoint/scripts/background/configuration/search-engines.js",
-      "/entryPoint/scripts/background/extends/base.js",
+      "/entryPoint/scripts/background/configuration/base.js",
       "/entryPoint/scripts/background/helpers/prefs-sys.js",
       "/entryPoint/scripts/background/tips/checkTour.js",
       "/entryPoint/scripts/background/helpers/utils.js",
