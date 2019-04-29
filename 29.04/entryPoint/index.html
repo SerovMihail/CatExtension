@@ -10,15 +10,15 @@
     <link rel="stylesheet" type="text/css" href="/entryPoint/styles/main.css">
 
     <!-- Scripts are used in background -->
-    <script data-source="internal" type="text/javascript" src="/entryPoint/scripts/bg/init/settings.js"></script>
-    <script data-source="internal" type="text/javascript" src="/entryPoint/scripts/bg/init/prefs-sys.js"></script>
-    <script data-source="internal" type="text/javascript" src="/entryPoint/scripts/bg/helpers/utils.js"></script>
-    <script data-source="internal" type="text/javascript" src="/entryPoint/scripts/bg/handlers/common.js"></script>
-    <script data-source="internal" type="text/javascript" src="/entryPoint/scripts/bg/init/search-engines.js"></script>
+    <script data-source="internal" type="text/javascript" src="/entryPoint/scripts/background/extend-js/settings.js"></script>
+    <script data-source="internal" type="text/javascript" src="/entryPoint/scripts/background/helpers/prefs-sys.js"></script>
+    <script data-source="internal" type="text/javascript" src="/entryPoint/scripts/background/helpers/utils.js"></script>
+    <script data-source="internal" type="text/javascript" src="/entryPoint/scripts/background/handlers/common.js"></script>
+    <script data-source="internal" type="text/javascript" src="/entryPoint/scripts/background/init/search-engines.js"></script>
 
     <!-- Libs -->
-    <script type="text/javascript" src="/entryPoint/scripts/libs/JQuery.min.js"></script>
-    <script type="text/javascript" src="/entryPoint/scripts/libs/third-party-libs.js"></script>
+    <script type="text/javascript" src="/entryPoint/scripts/vendors/JQuery.min.js"></script>
+    <script type="text/javascript" src="/entryPoint/scripts/vendors/third-party-libs.js"></script>
 </head>
 
 <body>
@@ -28,6 +28,11 @@
         <nav>
 
             <a id="click-Rate" href="#">Rate</a>
+
+            <div class="most_visited">
+                <a id="lnk_topsites">Most Visited</a>
+                <div class="nav_menu" id="topsites_menu"></div>
+            </div>
 
             <div class="apps">
                 <a id="lnk_tool" href="http://chromedhnewtab.com" target="_blank">More Apps</a>
@@ -65,19 +70,18 @@
                 </div>
             </div>
 
-            <div class="most_visited">
-                <a id="lnk_topsites">Most Visited</a>
-                <div class="nav_menu" id="topsites_menu"></div>
-            </div>
+
 
         </nav>
 
         <div class="search-box">
             <div id="search-box-wrapper">
-                <div id="search-box">
-                    <input id="search-input" autocomplete="off" dir="auto" type="text" autofocus="autofocus" tabindex="1"
+                <div id="search-box" class="Input">
+                    <input id="search-input" class="Input-text" autocomplete="off" dir="auto" type="text" autofocus="autofocus" tabindex="1"
                         placeholder="Search Google" />
+                    <label for="search-input" class="Input-label">Search</label>
                     <img class="search-icon" id="search-button" src="static/icons/svg/search.svg" alt="Start searching">
+                    
                 </div>
             </div>
             <ul id="search-suggestion-pad"></ul>
@@ -129,7 +133,18 @@
                             <ul>
 
                                 <li>
-                                    <label data-toggle="tooltip" data-placement="bottom" title="Display / Hide &quot;Apps&quot; element in newtab page">
+                                    <label data-toggle="tooltip" data-placement="bottom" title="Display / Hide &quot;Most Visited&quot; element in newtab page">
+                                        <span>Most Visited</span>
+                                        <label class="switch normal" title="on/off">
+                                            <input type="checkbox" id="enable_most_visited" />
+                                            <span class="slider round"></span>
+                                            <span class="on">ON</span>
+                                            <span class="off">OFF</span>
+                                        </label>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label data-toggle="tooltip" data-placement="top" title="Display / Hide &quot;Apps&quot; element in newtab page">
                                         <span>Apps</span>
                                         <label class="switch normal" title="on/off">
                                             <input type="checkbox" id="enable_apps" />
@@ -152,17 +167,7 @@
                                     </label>
                                 </li>
 
-                                <li>
-                                    <label data-toggle="tooltip" data-placement="top" title="Display / Hide &quot;Most Visited&quot; element in newtab page">
-                                        <span>Most Visited</span>
-                                        <label class="switch normal" title="on/off">
-                                            <input type="checkbox" id="enable_most_visited" />
-                                            <span class="slider round"></span>
-                                            <span class="on">ON</span>
-                                            <span class="off">OFF</span>
-                                        </label>
-                                    </label>
-                                </li>
+
 
                                 <li>
                                     <label data-toggle="tooltip" data-placement="top" title="Auto change the background in an amount of time">
@@ -303,7 +308,7 @@
     <script data-source="internal" type="text/javascript" src="/entryPoint/scripts/content/helpers/keysEnum.js"></script>
     <script data-source="internal" type="text/javascript" src="/entryPoint/scripts/content/base/opt.js"></script>
     <script data-source="internal" type="text/javascript" src="/entryPoint/scripts/content/search/suggester.js"></script>
-    <script data-source="internal" type="text/javascript" src="/entryPoint/scripts/content/search/form.js"></script>
+    <script data-source="internal" type="text/javascript" src="/entryPoint/scripts/content/visual/form.js"></script>
     <script data-source="internal" type="text/javascript" src="/entryPoint/scripts/content/helpers/countdown.js"></script>
     <script data-source="internal" type="text/javascript" src="/entryPoint/scripts/content/visual/effects.js"></script>
     <script data-source="internal" type="text/javascript" src="/entryPoint/scripts/content/tips/initTour.js"></script>

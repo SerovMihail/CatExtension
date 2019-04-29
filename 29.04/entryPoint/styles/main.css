@@ -3,8 +3,12 @@
 @import url("modules/my-apps-icons.css");
 @import url("modules/scrollbar.css");
 @import url("modules/glyphicons.css");
-@import url("newStyles/tour.css");
+@import url("modules/tour.css");
 @import url("modules/countdown.css");
+@import url("modules/search.css");
+@import url("modules/switch.css");
+@import url("modules/tooltip.css");
+@import url("modules/animatedInput.css");
 
 html {
     height: 100%;
@@ -24,8 +28,8 @@ body {
     overflow: hidden;
     margin: 0;
     font-size: 80%;
-    font-weight: 400;
-    font-family: 'Rubik';
+    font-weight: 100;
+    font-family: 'sf-light';
     background-image: none;
     background: transparent;
     background-repeat: no-repeat !important;
@@ -81,123 +85,6 @@ body {
 .radio input[type="radio"]:first-child,
 .checkbox input[type="checkbox"]:first-child {
     margin-left: 0;
-}
-
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
-    display: flex;
-    align-items: center;
-    margin-right: 30px;
-}
-
-.switch input {
-    display: none;
-}
-
-.switch input:checked+.slider {
-    background-color: #56B1EA;
-}
-
-.switch input:focus+.slider {
-    box-shadow: 0 0 1px #56B1EA;
-}
-
-.switch input:checked+.slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
-}
-
-.switch .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    -webkit-transition: .4s;
-    transition: .4s;
-}
-
-.switch .slider:before {
-    position: absolute;
-    content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
-}
-
-.switch .slider.round {
-    border-radius: 34px;
-}
-
-.switch .slider.round:before {
-    border-radius: 50%;
-}
-
-.switch .on,
-.switch .off {
-    margin-left: 46px;
-}
-
-.switch input:checked~.on {
-    display: initial;
-}
-
-.switch input:checked~.off {
-    display: none;
-}
-
-.switch input:not(:checked)~.on {
-    display: none;
-}
-
-.switch input:not(:checked)~.off {
-    display: initial;
-}
-
-.switch.mini {
-    width: 30px;
-    height: 14px;
-}
-
-.switch.mini input:checked+.slider:before {
-    -webkit-transform: translateX(16px);
-    -ms-transform: translateX(16px);
-    transform: translateX(16px);
-}
-
-.switch.mini .slider:before {
-    height: 10px;
-    width: 10px;
-    left: 2px;
-    bottom: 2px;
-}
-
-.switch.normal {
-    width: 40px;
-    height: 18px;
-}
-
-.switch.normal input:checked+.slider:before {
-    -webkit-transform: translateX(22px);
-    -ms-transform: translateX(22px);
-    transform: translateX(22px);
-}
-
-.switch.normal .slider:before {
-    height: 14px;
-    width: 14px;
-    left: 2px;
-    bottom: 2px;
 }
 
 .checkbox {
@@ -288,135 +175,7 @@ body {
     border-width: 0 1px 1px 0;
 }
 
-.tooltip {
-    position: absolute;
-    z-index: 1070;
-    display: block;
-    font-family: inherit;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: normal;
-    line-height: 1.42857143;
-    text-align: left;
-    text-align: start;
-    text-decoration: none;
-    text-shadow: none;
-    text-transform: none;
-    letter-spacing: normal;
-    word-break: normal;
-    word-spacing: normal;
-    word-wrap: normal;
-    white-space: normal;
-    filter: alpha(opacity=0);
-    opacity: 0;
-    line-break: auto;
-}
 
-.tooltip.in {
-    filter: alpha(opacity=90);
-    opacity: .9;
-}
-
-.tooltip.top {
-    padding: 5px 0;
-    margin-top: -3px;
-}
-
-.tooltip.right {
-    padding: 0 5px;
-    margin-left: 3px;
-}
-
-.tooltip.bottom {
-    padding: 5px 0;
-    margin-top: 3px;
-}
-
-.tooltip.left {
-    padding: 0 5px;
-    margin-left: -3px;
-}
-
-.tooltip-inner {
-    max-width: 200px;
-    padding: 3px 8px;
-    color: #fff;
-    text-align: center;
-    background-color: #000;
-    border-radius: 4px;
-}
-
-.tooltip-arrow {
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-color: transparent;
-    border-style: solid;
-}
-
-.tooltip.top .tooltip-arrow {
-    bottom: 0;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px 5px 0;
-    border-top-color: #000;
-}
-
-.tooltip.top-left .tooltip-arrow {
-    right: 5px;
-    bottom: 0;
-    margin-bottom: -5px;
-    border-width: 5px 5px 0;
-    border-top-color: #000;
-}
-
-.tooltip.top-right .tooltip-arrow {
-    bottom: 0;
-    left: 5px;
-    margin-bottom: -5px;
-    border-width: 5px 5px 0;
-    border-top-color: #000;
-}
-
-.tooltip.right .tooltip-arrow {
-    top: 50%;
-    left: 0;
-    margin-top: -5px;
-    border-width: 5px 5px 5px 0;
-    border-right-color: #000;
-}
-
-.tooltip.left .tooltip-arrow {
-    top: 50%;
-    right: 0;
-    margin-top: -5px;
-    border-width: 5px 0 5px 5px;
-    border-left-color: #000;
-}
-
-.tooltip.bottom .tooltip-arrow {
-    top: 0;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 0 5px 5px;
-    border-bottom-color: #000;
-}
-
-.tooltip.bottom-left .tooltip-arrow {
-    top: 0;
-    right: 5px;
-    margin-top: -5px;
-    border-width: 0 5px 5px;
-    border-bottom-color: #000;
-}
-
-.tooltip.bottom-right .tooltip-arrow {
-    top: 0;
-    left: 5px;
-    margin-top: -5px;
-    border-width: 0 5px 5px;
-    border-bottom-color: #000;
-}
 
 input:focus,
 select:focus {
@@ -794,58 +553,6 @@ div#search-engine-select {
     width: 220px;
     display: inline-block;
     vertical-align: top;
-}
-
-.weather {
-    width: 220px;
-    text-align: left;
-    display: inline-block;
-    display: none;
-    vertical-align: top;
-}
-
-.weather:after {
-    clear: both;
-    width: 100%;
-    content: "";
-    display: block;
-}
-
-.weather .fright {
-    float: left;
-    text-align: left;
-    font-size: 15px;
-}
-
-.weather .fright img {
-    vertical-align: top;
-    margin-right: 0;
-    height: auto;
-    margin-top: -3px;
-    margin-bottom: 3px;
-}
-
-.weather h1 {
-    margin-right: 5px;
-    float: left;
-    font-size: 50px;
-    font-weight: 100;
-    margin-top: 0;
-    vertical-align: top;
-    margin-bottom: 0;
-    line-height: 40px;
-}
-
-.weather h1 .units {
-    font-size: 30px;
-}
-
-.weather h1 em {
-    font-style: normal;
-    font-size: 35px;
-    vertical-align: top;
-    display: inline-block;
-    margin-top: -3px;
 }
 
 h1.hour {
@@ -1452,6 +1159,7 @@ h3 {
 
 #overlay_popup {
     background: rgba(255, 255, 255, 1);
+    font-family: 'Montserrat', sans-serif;
     z-index: 15;
     display: none;
     position: relative;
@@ -1522,6 +1230,7 @@ h3 {
 }
 
 #overlay_popup p {
+    font-family: helvetica;
     color: #717171;
     line-height: 1.3em;
     margin: 7px 0px -41px -37px;
@@ -1536,6 +1245,7 @@ h3 {
 
 #overlay_popup h1,
 #overlay_progress_popup h1 {
+    font-family: helvetica;
     font-size: 19px;
     font-weight: normal;
     color: #717171;
@@ -1572,6 +1282,7 @@ h3 {
 }
 
 #overlay_popup .btn {
+    font-family: helvetica;
     border-radius: 0;
     color: white;
     background-color: #2984D7;
@@ -1606,68 +1317,7 @@ h3 {
     display: inline-block;
 }
 
-#search-box-wrapper {
-    top: 15px;
-    left: 0;
-    right: 0;
-    width: 100%;
-}
 
-#ads-in-search-box {
-    margin: 3px auto;
-    padding: 0;
-    width: 100%;
-    min-height: 63px;
-    text-align: center;
-}
-
-#search-box {
-    width: 100%;
-    margin: 0;
-    height: 45px;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#search-box .search-icon {
-    width: 50px;
-    height: 50px;
-    position: absolute;
-    right: -50px;
-    cursor: pointer;
-    border-radius: 0 5px 5px 0;
-    background-color: rgba(255, 255, 255, 0.5);
-    padding: 12px;
-}
-
-#search-box .dropdown,
-#search-box .searchBtn {
-    display: none;
-}
-
-#search-input {
-    width: 100%;
-    box-shadow: none;
-    height: 50px;
-    line-height: 45px !important;
-    border: none;
-    font-family: inherit;
-    transition: all 0.32s;
-    outline: none;
-    background-color: rgba(99, 110, 114, 0.6);
-    font-size: 20px;
-    padding-left: 20px;
-    color: white;
-    border-radius: 5px 0 0 5px;
-    background: linear-gradient(to right, rgba(99,110,114, 0.6) 0%, rgba(255,255,255, 0.5) 100%);
-}
-
-#search-input::placeholder {
-    color: white;
-    text-align: center;
-}
 
 div.color,
 #colors_selector {

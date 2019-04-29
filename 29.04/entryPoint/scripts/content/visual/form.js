@@ -117,9 +117,8 @@
     }
     findTopSites();
     function findTopSites() {
-      chrome.runtime.sendMessage({
-        topSites: true
-      }, function (param) {
+
+      chrome.topSites.get(function (param) {        
         var o = 0;
         for (var a = 0; a < param.length; a++) {
           if (hidedLink.indexOf(param[a].url) >= 0) {
@@ -142,20 +141,20 @@
           }
         }
         h();
-      });
+      });     
     }
     function h() {
       utils.resetClickHnd($(".closebtn"), function () {
         if ($(this).attr("close-for")) {
           hidedLink.push($(this).attr("close-for"));
-          localStorage.setItem("hideLink", JSON.stringify(hidedLink));          
+          localStorage.setItem("hideLink", JSON.stringify(hidedLink));
           findTopSites();
           $("#msg").text("Link removed");
           p("mostVisited");
         } else if ($(this).attr("hide-app")) {
           arr.push($(this).attr("hide-app"));
           $(this).parent().remove();
-          localStorage.setItem("hideApp", JSON.stringify(arr));          
+          localStorage.setItem("hideApp", JSON.stringify(arr));
           $("#msg").text("App removed");
           p("apps");
         }
@@ -390,18 +389,18 @@
       $(".num").html(user["date_format"].replace("{{m}}", e.getMonth() + 1).replace("{{d}}", e.getDate()).replace("{{y}}", e.getFullYear()));
     }
 
-    var x = setInterval(DataProcessing, 1e4);    
+    var x = setInterval(DataProcessing, 1e4);
     if (event.listAllThreads.threadSearchForm) {
       event.listAllThreads.threadSearchForm.pause();
     }
     event.listAllThreads.threadSearchForm = {
       pause: function () {
-        clearInterval(x);        
+        clearInterval(x);
       },
       resume: function () {
         DataProcessing();
-        clearInterval(x);        
-        x = setInterval(DataProcessing, 1e4);        
+        clearInterval(x);
+        x = setInterval(DataProcessing, 1e4);
       }
     };
     var M = SEARCH_ENGINES;

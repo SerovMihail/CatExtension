@@ -69,26 +69,26 @@
 }
 
 .icon_facebook {
-    background-image: url('chrome-extension://__MSG_@@extension_id__/entryPoint/static/icons/sharing/facebook.png');
+    background-image: url('chrome-extension://__MSG_@@extension_id__/entryPoint/static/icons/sharing-resources/facebook.png');
     background-size: cover;
 }
 
 .icon_twitter {
-    background-image: url('chrome-extension://__MSG_@@extension_id__/entryPoint/static/icons/sharing/twitter.png');
+    background-image: url('chrome-extension://__MSG_@@extension_id__/entryPoint/static/icons/sharing-resources/twitter.png');
     background-size: cover;
 }
 
 .icon_pinterest {
-    background-image: url('chrome-extension://__MSG_@@extension_id__/entryPoint/static/icons/sharing/pinterest.png');
+    background-image: url('chrome-extension://__MSG_@@extension_id__/entryPoint/static/icons/sharing-resources/pinterest.png');
     background-size: cover;
 }
 
 .icon_tumblr {
-    background-image: url('chrome-extension://__MSG_@@extension_id__/entryPoint/static/icons/sharing/tumblr.png');
+    background-image: url('chrome-extension://__MSG_@@extension_id__/entryPoint/static/icons/sharing-resources/tumblr.png');
     background-size: cover;
 }
 
 .icon_vk {
-    background-image: url('chrome-extension://__MSG_@@extension_id__/entryPoint/static/icons/sharing/vk.png');
+    background-image: url('chrome-extension://__MSG_@@extension_id__/entryPoint/static/icons/sharing-resources/vk.png');
     background-size: cover;
 }
