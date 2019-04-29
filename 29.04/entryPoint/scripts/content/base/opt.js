@@ -1,6 +1,6 @@
 (function (e) {
   try {
-    var flag = false;
+    var loadDefault = false;
     function setActive() {
       var currentActiveTabIndex = parseInt(localStorage.getItem("curTabActive")) || 0;
       $("#tabs").tabs({
@@ -342,8 +342,8 @@
             $("#background_selector_widget").fadeIn();
             chrome.extension.sendMessage("click-ChangeThemeMenu");
             a();
-            if (!flag) {
-              flag = true;
+            if (!loadDefault) {
+              loadDefault = true;
               e.loadImagesInOption();              
             }
           });
