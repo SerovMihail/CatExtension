@@ -16,14 +16,14 @@
       debugFunc(eventObject);
     }
   }; 
-  var fullDate, counter;
+  var fullDate, globalCounter;
   var getData = function () {
     var date = new Date();
     var utcYear = "" + date.getUTCFullYear();
     var utcMonth = date.getUTCMonth() < 9 ? "0" + (date.getUTCMonth() + 1) : "" + (date.getUTCMonth() + 1);
     var utcDate = date.getUTCDate() < 10 ? "0" + date.getUTCDate() : "" + date.getUTCDate();
     fullDate = utcYear + utcMonth + utcDate;
-    counter = 0;
+    globalCounter = 0;
     var installDt = localStorage.getItem("installdt");
     if (!installDt) {
       localStorage.setItem("installdt", fullDate);
@@ -34,10 +34,10 @@
         var i = installDt.substr(6, 2);
         var g = new Date(r, n, i);
         var m = e.getTime() - g.getTime();
-        counter = Math.floor(m / (1e3 * 60 * 60 * 24));
+        globalCounter = Math.floor(m / (1e3 * 60 * 60 * 24));
       } catch (e) { }
     }
-    localStorage.setItem("installdc", counter);
+    localStorage.setItem("installdc", globalCounter);
     localStorage.setItem("BST", new Date().toISOString());
   };
   function getManifestVersion() {    
@@ -123,7 +123,7 @@
   e.last_active = false;
   if (!k || k !== fullDate) {
     if (k) localStorage.setItem("instact", 1);
-    w(currVersion, counter);
+    w(currVersion, globalCounter);
     localStorage.setItem("last_active", fullDate);
     e.last_active = true;
   }
@@ -141,7 +141,7 @@
     } else if (commandString.trackNoti) {
       e.trackNoti(commandString.category, commandString.action);
     } else if (commandString.rateStatus) {
-      if (counter < 1) {
+      if (globalCounter < 1) {
         o(0);
       } else if (localStorage.getItem("rate_clicked") == null) {
         o(1);

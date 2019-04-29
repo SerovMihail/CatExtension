@@ -1,8 +1,4 @@
-@font-face {
-    font-family: 'sf-light';
-    src: url('/entryPoint/static/fonts/text/FrancoisOne-Regular.ttf');
-    font-display: fallback;
-}
+@import url('https://fonts.googleapis.com/css?family=Rubik');
 
 @font-face {
     font-family: 'Glyphicons Halflings';

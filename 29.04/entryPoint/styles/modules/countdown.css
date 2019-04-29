@@ -35,7 +35,6 @@ ul .title {
     font-style: normal;
     font-stretch: normal;
     text-align: center;
-    font-family: 'Open Sans', sans-serif;
     color: #ffffff;
     text-shadow: 0 0 4px #000;
     padding-bottom: 8px;
@@ -81,7 +80,6 @@ ul#countdown {
     align-self: center;
     margin: 0 auto;
     color: #fff;
-    font-family: 'Open Sans', sans-serif;
     font-weight: bold;
 }
 

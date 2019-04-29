@@ -12,20 +12,20 @@
   }
   if (!Array.prototype.find) {
     Object.defineProperty(Array.prototype, "find", {
-      value: function(e) {
+      value: function(event) {
         if (this == null) {
           throw new TypeError('"this" is null or not defined');
         }
         var array = Object(this);
         var plusOneBinary = array.length >>> 0;
-        if (typeof e !== "function") {
+        if (typeof event !== "function") {
           throw new TypeError("predicate must be a function");
         }
         var fistArg = arguments[1];
         var zero = 0;
         while (zero < plusOneBinary) {
           var i = array[zero];
-          if (e.call(fistArg, i, zero, array)) {
+          if (event.call(fistArg, i, zero, array)) {
             return i;
           }
           zero++;

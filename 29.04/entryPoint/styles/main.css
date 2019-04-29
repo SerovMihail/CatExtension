@@ -29,7 +29,7 @@ body {
     margin: 0;
     font-size: 80%;
     font-weight: 100;
-    font-family: 'sf-light';
+    font-family: 'Rubik';
     background-image: none;
     background: transparent;
     background-repeat: no-repeat !important;
@@ -528,7 +528,6 @@ div#search-engine-select {
     color: white;
     display: inline-block;
     height: 70px;
-    text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
     z-index: 10;
 }
 
@@ -1159,7 +1158,6 @@ h3 {
 
 #overlay_popup {
     background: rgba(255, 255, 255, 1);
-    font-family: 'Montserrat', sans-serif;
     z-index: 15;
     display: none;
     position: relative;
@@ -1230,7 +1228,6 @@ h3 {
 }
 
 #overlay_popup p {
-    font-family: helvetica;
     color: #717171;
     line-height: 1.3em;
     margin: 7px 0px -41px -37px;
@@ -1245,7 +1242,6 @@ h3 {
 
 #overlay_popup h1,
 #overlay_progress_popup h1 {
-    font-family: helvetica;
     font-size: 19px;
     font-weight: normal;
     color: #717171;
@@ -1282,7 +1278,6 @@ h3 {
 }
 
 #overlay_popup .btn {
-    font-family: helvetica;
     border-radius: 0;
     color: white;
     background-color: #2984D7;
