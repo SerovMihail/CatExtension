@@ -276,7 +276,7 @@ nav a,
 footer a,
 #background_selector_menu {
     display: inline-block;
-    margin: 0 15px 0 10px;
+    margin: 0 10px 0 10px;
     color: white;
     font-weight: 100;
     text-decoration: none;
@@ -809,8 +809,8 @@ h1.hour {
 }
 
 #background_selector_widget ul#images_selector li.selected {
-    border: 3px dotted #bf00ff;
-    /*opacity: 0.68;*/
+    border: 3px dotted rgba(255,255, 5, 0.3);
+    transition: all .5s;
 }
 
 #background_selector_widget ul#images_selector li.selected::before {

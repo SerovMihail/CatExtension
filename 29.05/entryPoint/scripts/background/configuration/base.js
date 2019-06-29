@@ -1,14 +1,14 @@
-(function(e) {
+(function(arg) {
   "use strict";
-  if (e.navigator.userAgent.toLowerCase().indexOf("firefox") > -1) {
-    e.chrome.runtime = e.browser.runtime;
-    e.chrome.extension = e.browser.runtime;
-    e.chrome.browserAction = e.browser.browserAction;
-    e.chrome.tabs = e.browser.tabs;
-    e.chrome.windows = e.browser.windows;
-    e.chrome.storage = e.browser.storage;    
-    e.chrome.i18n = e.browser.i18n;
-    e.chrome = e.browser;
+  if (arg.navigator.userAgent.toLowerCase().indexOf("firefox") > -1) {
+    arg.chrome.runtime = arg.browser.runtime;
+    arg.chrome.extension = arg.browser.runtime;
+    arg.chrome.browserAction = arg.browser.browserAction;
+    arg.chrome.tabs = arg.browser.tabs;
+    arg.chrome.windows = arg.browser.windows;
+    arg.chrome.storage = arg.browser.storage;    
+    arg.chrome.i18n = arg.browser.i18n;
+    arg.chrome = arg.browser;
   }
   if (!Array.prototype.find) {
     Object.defineProperty(Array.prototype, "find", {
@@ -92,8 +92,8 @@
         setter(e, r);
       });
     };
-    e.def = defineUser;
-    e.user = userObj;
+    arg.def = defineUser;
+    arg.user = userObj;
   })();
   (function() {
     var r = {};
@@ -107,12 +107,12 @@
         throw "config is not mutable, if you need mutable key/val, use preferences machanism";
       });
     };
-    e.conf = defineConfig;
-    e.config = configObj;
+    arg.conf = defineConfig;
+    arg.config = configObj;
   })();
-  e.storageDefaultKeys = [];
-  e.storageDefault = function(r, t) {
-    e.storageDefaultKeys.push(r);
+  arg.storageDefaultKeys = [];
+  arg.storageDefault = function(r, t) {
+    arg.storageDefaultKeys.push(r);
     if (!localStorage.getItem(r)) localStorage.setItem(r, t);
   };
 })(this);

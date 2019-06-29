@@ -1,5 +1,5 @@
 {
-  "version": "0.3",
+  "version": "0.4",
   "name": "Overwatch FullHD New Tab Wallpapers",
   "description": "Get a lot of FullHD Wallpapers Overwatch for chrome new tabs",
   "default_locale": "en",
@@ -14,7 +14,7 @@
       "/entryPoint/scripts/background/configuration/search-engines.js",
       "/entryPoint/scripts/background/configuration/base.js",
       "/entryPoint/scripts/background/helpers/prefs-sys.js",
-      "/entryPoint/scripts/background/tips/checkTour.js",
+      "/entryPoint/scripts/background/tips/tutorial.js",
       "/entryPoint/scripts/background/helpers/utils.js",
       "/entryPoint/scripts/background/handlers/common.js",
       "/entryPoint/scripts/background/handlers/setup.js",

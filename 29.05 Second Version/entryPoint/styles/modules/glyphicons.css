@@ -1,0 +1,25 @@
+.glyphicon {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transform: rotate(3deg); 
+    transition: all .5s;
+}
+
+.glyphicon-heart:before {
+    content: "\e005";    
+    opacity: 1;
+    transition: all 1s;
+}
+
+.glyphicon-heart-empty:before {
+    content: "\e143";
+    transition: all 1s;
+    opacity: 0.5;
+}
