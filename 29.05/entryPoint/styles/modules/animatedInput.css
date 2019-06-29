@@ -50,11 +50,12 @@
 
 .Input-text::placeholder {
     color: #B0BEC5;
+    text-indent: 0px;
+    transition: text-indent 700ms;
 }
 
-.Input-text:focus {
-    outline: none;
-    box-shadow: 0.2rem 0.8rem 1.6rem var(--colorPrimary600);
+.Input-text:focus::placeholder {
+    text-indent: 500px;
 }
 
 .Input-label {
