@@ -1,0 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Rubik');
+
+@font-face {
+    font-family: 'Glyphicons Halflings';
+    src: url('/entryPoint/static/fonts/glyps/regular.eot');
+    src: url('/entryPoint/static/fonts/glyps/regular.eot?#iefix') format('embedded-opentype'), url('/entryPoint/static/fonts/glyps/regular.woff2') format('woff2'), url('/entryPoint/static/fonts/glyps/regular.woff') format('woff'), url('/entryPoint/static/fonts/glyps/regular.ttf') format('truetype'), url('/entryPoint/static/fonts/glyps/regular.svg#glyphicons_halflingsregular') format('svg');
+}
