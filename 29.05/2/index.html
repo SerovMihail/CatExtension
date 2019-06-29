@@ -29,15 +29,17 @@
 
             <a id="click-Rate" href="#">Rate</a>
 
-            <div class="most_visited">
-                <a id="lnk_topsites">Most Visited</a>
-                <div class="nav_menu" id="topsites_menu"></div>
-            </div>
+           
 
             <div class="apps">
                 <a id="lnk_tool" href="http://chromedhnewtab.com" target="_blank">More Apps</a>
                 <div class="nav_menu" id="tool_menu">
                 </div>
+            </div>
+
+            <div class="most_visited">
+                <a id="lnk_topsites">Most Visited</a>
+                <div class="nav_menu" id="topsites_menu"></div>
             </div>
 
             <div class="share">
@@ -77,11 +79,9 @@
         <div class="search-box">
             <div id="search-box-wrapper">
                 <div id="search-box" class="Input">
-                    <input id="search-input" class="Input-text" autocomplete="off" dir="auto" type="text" autofocus="autofocus" tabindex="1"
-                        placeholder="Search Google" />
-                    <label for="search-input" class="Input-label">Search</label>
-                    <img class="search-icon" id="search-button" src="static/icons/svg/search.svg" alt="Start searching">
-                    
+                    <input id="search-input" class="Input-text" autocomplete="off" dir="auto" type="text" autofocus="autofocus" tabindex="1"  />
+                    <img class="search-icon" src="static/icons/svg/search.svg" alt="Start searching">
+                    <span class="search-btn"  id="search-button">Search</span>
                 </div>
             </div>
             <ul id="search-suggestion-pad"></ul>
@@ -131,23 +131,23 @@
                     <div id="tab-setting">
                         <div class="t-r-a-s">
                             <ul>
-
                                 <li>
-                                    <label data-toggle="tooltip" data-placement="bottom" title="Display / Hide &quot;Most Visited&quot; element in newtab page">
-                                        <span>Most Visited</span>
+                                    <label data-toggle="tooltip" data-placement="top" title="Display / Hide &quot;Apps&quot; element in newtab page">
+                                        <span>Apps</span>
                                         <label class="switch normal" title="on/off">
-                                            <input type="checkbox" id="enable_most_visited" />
+                                            <input type="checkbox" id="enable_apps" />
                                             <span class="slider round"></span>
                                             <span class="on">ON</span>
                                             <span class="off">OFF</span>
                                         </label>
                                     </label>
                                 </li>
+
                                 <li>
-                                    <label data-toggle="tooltip" data-placement="top" title="Display / Hide &quot;Apps&quot; element in newtab page">
-                                        <span>Apps</span>
+                                    <label data-toggle="tooltip" data-placement="bottom" title="Display / Hide &quot;Most Visited&quot; element in newtab page">
+                                        <span>Most Visited</span>
                                         <label class="switch normal" title="on/off">
-                                            <input type="checkbox" id="enable_apps" />
+                                            <input type="checkbox" id="enable_most_visited" />
                                             <span class="slider round"></span>
                                             <span class="on">ON</span>
                                             <span class="off">OFF</span>
@@ -166,8 +166,6 @@
                                         </label>
                                     </label>
                                 </li>
-
-
 
                                 <li>
                                     <label data-toggle="tooltip" data-placement="top" title="Auto change the background in an amount of time">

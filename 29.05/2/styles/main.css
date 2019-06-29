@@ -291,7 +291,7 @@ footer a,
     display: none;
     overflow-x: hidden;
     overflow-y: auto;
-    background: rgba(119, 116, 116, 0.95);
+    background: rgba(119, 136, 144, 0.85);
     border-radius: 5px;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.6);
 }
@@ -446,7 +446,7 @@ footer a,
 }
 
 .search-box {
-    width: 25%;
+    width: 35%;
     position: absolute;
     margin: auto;
     top: 15px;
