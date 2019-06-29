@@ -5,30 +5,30 @@
   "default_locale": "en",
   "offline_enabled": true,
   "chrome_url_overrides": {
-    "newtab": "/entryPoint/index.html"
+    "newtab": "/main/index.html"
   },
   "background": {
     "persistent": true,
     "scripts": [
-      "/entryPoint/scripts/vendor/JQuery.min.js",
-      "/entryPoint/scripts/background/configuration/search-engines.js",
-      "/entryPoint/scripts/background/configuration/base.js",
-      "/entryPoint/scripts/background/helpers/prefs-sys.js",
-      "/entryPoint/scripts/background/tips/tutorial.js",
-      "/entryPoint/scripts/background/helpers/utils.js",
-      "/entryPoint/scripts/background/handlers/common.js",
-      "/entryPoint/scripts/background/handlers/setup.js",
-      "/entryPoint/scripts/background/handlers/analytics.js",
-      "/entryPoint/scripts/background/configuration/search-overwrite.js"
+      "/main/scripts/vendor/JQuery.min.js",
+      "/main/scripts/background/configuration/search-engines.js",
+      "/main/scripts/background/configuration/base.js",
+      "/main/scripts/background/helpers/prefs-sys.js",
+      "/main/scripts/background/tips/tutorial.js",
+      "/main/scripts/background/helpers/utils.js",
+      "/main/scripts/background/handlers/common.js",
+      "/main/scripts/background/handlers/setup.js",
+      "/main/scripts/background/handlers/analytics.js",
+      "/main/scripts/background/configuration/search-overwrite.js"
     ]
   },
   "browser_action": {
     "default_icon": {
-      "128": "/entryPoint/static/icons/main/128.png"
+      "128": "/main/static/icons/main/128.png"
     }
   },
   "icons": {
-    "128": "/entryPoint/static/icons/main/128.png"
+    "128": "/main/static/icons/main/128.png"
   },
   "permissions": [
     "*://mail.google.com/*",

@@ -5,7 +5,7 @@ if (showTour && JSON.parse(showTour)) {
     localStorage.setItem('tour_shown_in_tab', false);
 
     $('body').prepend('<div id="tour_container"></div>');
-    $("#tour_container").load(chrome.extension.getURL("/entryPoint/tour.html"), function () {        
+    $("#tour_container").load(chrome.extension.getURL("/main/tour.html"), function () {        
         initTour();
     });
 

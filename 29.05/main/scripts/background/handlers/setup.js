@@ -5,7 +5,7 @@
   localStorage.setItem("user_group", userGroup);
   localStorage.setItem(
     "newtab_url",
-    chrome.extension.getURL("/entryPoint/index.html")
+    chrome.extension.getURL("/main/index.html")
   );
   localStorage.setItem("ext_id", chrome.runtime.id);
   localStorage.setItem("ext_name", chrome.i18n.getMessage("extName"));

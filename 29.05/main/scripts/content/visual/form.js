@@ -9,7 +9,7 @@
   }, 3e3); else setTimeout(function () {
     trackStatusEvent("newtab");
   }, 1e3);
-  function o(str, replacer) {
+  function replace(str, replacer) {
     var o = str;
     for (var a in replacer) {
       var i = replacer[a];
@@ -18,7 +18,7 @@
     }
     return o;
   }
-  function a() {
+  function encode() {
     var a = document.querySelector("#search-input").value;
     if (a == "" || a == null) return;
     $("#search-suggestion-pad").remove();
@@ -27,7 +27,7 @@
     s = s.replace("_", "-");
     if (a.trim().length > 0 || search.SearchForm == null) {
       var n = search.SearchUrl;
-      func = o(n, {
+      func = replace(n, {
         searchTerms: encodeURIComponent(a),
         lang: s
       });
@@ -54,7 +54,7 @@
   var i = "web";
   user["selected_cat"] = i;
   $(document).ready(function () {
-    d();
+    insertHtml();
     var inputElem = $("#search-input");
     var daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     var hidedLink = [];
@@ -63,7 +63,7 @@
     if (localStorage.getItem("hideApp")) {
       arr = JSON.parse(localStorage.getItem("hideApp"));
     }
-    function d() {
+    function insertHtml() {
       $("#tool_menu").html(`\n        <div><a id="tool_myaccount"  href="https://myaccount.google.com/"><i class="icon_myaccount"></i>My Account</a><div class="closebtn" hide-app="https://myaccount.google.com/"></div></div>\n        <div><a id="tool_gmail"      href="https://mail.google.com/mail/"><i class="icon_gmail"></i>Gmail</a><div class="closebtn" hide-app="https://mail.google.com/mail/"></div></div>\n        <div><a id="tool_youtube"    href="https://www.youtube.com/"><i class="icon_youtube"></i>Youtube</a><div class="closebtn" hide-app="https://www.youtube.com/"></div></div>\n        <div><a id="tool_drive"      href="https://drive.google.com/"><i class="icon_drive"></i>Drive</a><div class="closebtn" hide-app="https://drive.google.com/"></div></div>\n        <div><a id="tool_documents"  href="https://docs.google.com/document/"><i class="icon_documents"></i>Docs</a><div class="closebtn" hide-app="https://docs.google.com/document/"></div></div>\n        <div><a id="tool_contacts"   href="https://contacts.google.com/"><i class="icon_contacts"></i>Contacts</a><div class="closebtn" hide-app="https://contacts.google.com/"></div></div>\n        <div><a id="tool_calendar"   href="https://calendar.google.com/"><i class="icon_calendar"></i>Calendar</a><div class="closebtn" hide-app="https://calendar.google.com/"></div></div>\n        <div><a id="tool_photos"     href="https://photos.google.com/"><i class="icon_photos"></i>Photos</a><div class="closebtn" hide-app="https://photos.google.com/"></div></div>\n        <div><a id="tool_news"       href="https://news.google.com/"><i class="icon_news"></i>News</a><div class="closebtn" hide-app="https://news.google.com/"></div></div>\n        <div><a id="tool_googleplus" href="https://plus.google.com/"><i class="icon_googleplus"></i>Google+</a><div class="closebtn" hide-app="https://plus.google.com/"></div></div>\n        <div><a id="tool_hangouts"   href="https://hangouts.google.com/"><i class="icon_hangouts"></i>Hangouts</a><div class="closebtn" hide-app="https://hangouts.google.com/"></div></div>\n        <div><a id="tool_googlemap"  href="https://maps.google.com/"><i class="icon_googlemap"></i>Google Maps</a><div class="closebtn" hide-app="https://maps.google.com/"></div></div>\n        <div><a id="tool_classroom"  href="https://classroom.google.com/"><i class="icon_classroom"></i>Google Classroom</a><div class="closebtn" hide-app="https://classroom.google.com/"></div></div>\n       \n        <div><a id="tool_facebook"   href="https://www.facebook.com/"><i class="icon_facebook"></i>Facebook</a><div class="closebtn" hide-app="https://www.facebook.com/"></div></div>\n        `);
       var services = ["Gmail", "YouTube", "Drive", "Docs", "Contacts", "Photos", "Calendar", "Google+", "Hangouts", "Google Maps", "Google Classroom", "Google Search"];
       function t(t) {
@@ -112,7 +112,7 @@
             $(`#tool_menu a[href='${e}']`).parent().hide();
           });
         }
-        h();
+        resetClick();
       });
     }
     findTopSites();
@@ -140,10 +140,10 @@
             f("topsites_menu", "Links");
           }
         }
-        h();
+        resetClick();
       });     
     }
-    function h() {
+    function resetClick() {
       utils.resetClickHnd($(".closebtn"), function () {
         if ($(this).attr("close-for")) {
           hidedLink.push($(this).attr("close-for"));
@@ -178,20 +178,18 @@
         if (e === "mostVisited") {
           hidedLink.pop();
           localStorage.setItem("hideLink", JSON.stringify(hidedLink));
-          //utils.localstorage2cookie();
           $("#topsites_menu").empty();
           findTopSites();
         } else if (e === "apps") {
           arr.pop();
           localStorage.setItem("hideApp", JSON.stringify(arr));
-          //utils.localstorage2cookie();
           $("#tool_menu").empty();
           if (arr.toString().indexOf("mail.google.com") < 0) {
             chrome.runtime.sendMessage(chrome.runtime.id, {
               type: "fetch_email_data"
             });
           }
-          d();
+          insertHtml();
         }
         $(".undo-box").addClass("undo-box-hide");
       });
@@ -224,7 +222,7 @@
                 type: "fetch_email_data"
               });
             }
-            d();
+            insertHtml();
           } else if ($(this).attr("restore-for") === "topsites_menu") {
             localStorage.removeItem("hideLink");
             hidedLink = [];
@@ -481,7 +479,7 @@
     function J() {
       var o = document.getElementById("search-input");
       var i = search.SuggestUrl;
-      event.autoSuggest = new AutoSuggest(o, i, a);
+      event.autoSuggest = new AutoSuggest(o, i, encode);
     }
     function q() {
       var e = false;
@@ -489,7 +487,7 @@
         if (i != "web") return;
         if (!e) {
           e = true;
-          a();
+          encode();
           setTimeout(function () {
             e = false;
           }, 1e3);
@@ -500,7 +498,7 @@
           return;
         }
         if (e.keyCode == getKeyCode('ENTER') || e.which == getKeyCode('ENTER')) {
-          a.call(this);
+          encode.call(this);
         }
       });
     }
