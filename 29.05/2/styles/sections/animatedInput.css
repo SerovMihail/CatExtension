@@ -83,7 +83,7 @@
     visibility: visible;
     z-index: 1;
     opacity: 1;
-    transform: translate3d(13px, var(--labelTransformedPosY), 0) scale(var(--labelScaleFactor));
+    transform: translate3d(5px, var(--labelTransformedPosY), 0) scale(var(--labelScaleFactor));
     transition: transform var(--inputTransitionDuration), visibility 0ms, z-index 0ms;
     text-shadow: 5px 5px 6px black;
 }

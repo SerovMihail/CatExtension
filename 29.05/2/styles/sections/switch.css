@@ -13,7 +13,7 @@
 }
 
 .switch input:checked+.slider {
-    background-color: #56B1EA;
+    background-color: gray;
 }
 
 .switch input:focus+.slider {

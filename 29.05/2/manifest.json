@@ -1,34 +1,34 @@
 {
-  "version": "0.3",
+  "version": "0.5",
   "name": "Overwatch FullHD New Tab Wallpapers",
   "description": "Get a lot of FullHD Wallpapers Overwatch for chrome new tabs",
   "default_locale": "en",
   "offline_enabled": true,
   "chrome_url_overrides": {
-    "newtab": "/entryPoint/index.html"
+    "newtab": "/index.html"
   },
   "background": {
     "persistent": true,
     "scripts": [
-      "/entryPoint/scripts/vendor/JQuery.min.js",
-      "/entryPoint/scripts/background/configuration/search-engines.js",
-      "/entryPoint/scripts/background/configuration/base.js",
-      "/entryPoint/scripts/background/helpers/prefs-sys.js",
-      "/entryPoint/scripts/background/tips/checkTour.js",
-      "/entryPoint/scripts/background/helpers/utils.js",
-      "/entryPoint/scripts/background/handlers/common.js",
-      "/entryPoint/scripts/background/handlers/setup.js",
-      "/entryPoint/scripts/background/handlers/analytics.js",
-      "/entryPoint/scripts/background/configuration/search-overwrite.js"
+      "/scripts/vendor/JQuery.min.js",
+      "/scripts/background/configuration/search-engines.js",
+      "/scripts/background/configuration/base.js",
+      "/scripts/background/helpers/prefs-sys.js",
+      "/scripts/background/tips/checkTour.js",
+      "/scripts/background/helpers/utils.js",
+      "/scripts/background/handlers/common.js",
+      "/scripts/background/handlers/setup.js",
+      "/scripts/background/handlers/analytics.js",
+      "/scripts/background/configuration/search-overwrite.js"
     ]
   },
   "browser_action": {
     "default_icon": {
-      "128": "/entryPoint/static/icons/main/128.png"
+      "128": "/static/icons/main/128.png"
     }
   },
   "icons": {
-    "128": "/entryPoint/static/icons/main/128.png"
+    "128": "/static/icons/main/128.png"
   },
   "permissions": [
     "*://mail.google.com/*",

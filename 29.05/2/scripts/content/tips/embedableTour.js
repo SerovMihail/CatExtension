@@ -793,7 +793,7 @@ step.is-selected.first span,
 }
 
 .arrow {
-    background-image: url(${chrome.extension.getURL("/entryPoint/static/icons/main/arrow.png")});
+    background-image: url(${chrome.extension.getURL("/static/icons/main/arrow.png")});
     width: 170px;
     height: 160px;
     background-size: contain;
