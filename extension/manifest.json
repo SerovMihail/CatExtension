@@ -11,10 +11,11 @@
     "persistent": true,
     "scripts": [
       "/scripts/vendor/JQuery.min.js",
+      "/scripts/background/polyfills/array.js",
       "/scripts/background/configuration/search-engines.js",
       "/scripts/background/configuration/base.js",
       "/scripts/background/helpers/prefs-sys.js",
-      "/scripts/background/tips/checkTour.js",
+      "/scripts/background/tutorial/checkTour.js",
       "/scripts/background/helpers/utils.js",
       "/scripts/background/handlers/common.js",
       "/scripts/background/handlers/setup.js",

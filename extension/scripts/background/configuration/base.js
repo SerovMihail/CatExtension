@@ -9,56 +9,7 @@
     e.chrome.storage = e.browser.storage;    
     e.chrome.i18n = e.browser.i18n;
     e.chrome = e.browser;
-  }
-  if (!Array.prototype.find) {
-    Object.defineProperty(Array.prototype, "find", {
-      value: function(event) {
-        if (this == null) {
-          throw new TypeError('"this" is null or not defined');
-        }
-        var array = Object(this);
-        var plusOneBinary = array.length >>> 0;
-        if (typeof event !== "function") {
-          throw new TypeError("predicate must be a function");
-        }
-        var fistArg = arguments[1];
-        var zero = 0;
-        while (zero < plusOneBinary) {
-          var i = array[zero];
-          if (event.call(fistArg, i, zero, array)) {
-            return i;
-          }
-          zero++;
-        }
-        return undefined;
-      }
-    });
-  }
-  if (!Array.prototype.forEach) {
-    Array.prototype.forEach = function(e) {
-      var secondArg, counter;
-      if (this == null) {
-        throw new TypeError("this is null or not defined");
-      }
-      var n = Object(this);
-      var o = n.length >>> 0;
-      if (typeof e !== "function") {
-        throw new TypeError(e + " is not a function");
-      }
-      if (arguments.length > 1) {
-        secondArg = arguments[1];
-      }
-      counter = 0;
-      while (counter < o) {
-        var increment;
-        if (counter in n) {
-          increment = n[counter];
-          e.call(secondArg, increment, counter, n);
-        }
-        counter++;
-      }
-    };
-  }
+  }  
   (function() {
     var keyPrefix = "";
     var settingStore = {};
@@ -81,15 +32,15 @@
       } else if (o == n && localStorage[i] != null) delete localStorage[i]; else if (n == null) delete localStorage[i]; else localStorage[i] = n;
     }
     var userObj = {};
-    var defineUser = function(e, r) {
-      if (r == null) if (e == null) throw "name and defaultValue must have a concrete values"; else return userObj[e];
-      if (typeof e != "string") throw "name is not of type string";
-      settingStore[e] = r;
-      userObj.__defineGetter__(e, function() {
-        return getter(e);
+    var defineUser = function(user, setting) {
+      if (setting == null) if (user == null) throw "name and defaultValue must have a concrete values"; else return userObj[user];
+      if (typeof user != "string") throw "name is not of type string";
+      settingStore[user] = setting;
+      userObj.__defineGetter__(user, function() {
+        return getter(user);
       });
-      userObj.__defineSetter__(e, function(r) {
-        setter(e, r);
+      userObj.__defineSetter__(user, function(r) {
+        setter(user, r);
       });
     };
     e.def = defineUser;
@@ -104,7 +55,7 @@
         return r[e];
       });
       t.__defineSetter__(e, function(e) {
-        throw "config is not mutable, if you need mutable key/val, use preferences machanism";
+        throw "config is not mutable, if you need mutable key/val, use preferences mechanism";
       });
     };
     e.conf = defineConfig;
