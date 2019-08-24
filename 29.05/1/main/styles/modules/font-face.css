@@ -1,7 +1,0 @@
-@import url('https://fonts.googleapis.com/css?family=Oswald&display=swap');
-
-@font-face {
-    font-family: 'Glyphicons Halflings';
-    src: url('/main/static/fonts/glyps/regular.eot');
-    src: url('/main/static/fonts/glyps/regular.eot?#iefix') format('embedded-opentype'), url('/main/static/fonts/glyps/regular.woff2') format('woff2'), url('/main/static/fonts/glyps/regular.woff') format('woff'), url('/main/static/fonts/glyps/regular.ttf') format('truetype'), url('/main/static/fonts/glyps/regular.svg#glyphicons_halflingsregular') format('svg');
-}
