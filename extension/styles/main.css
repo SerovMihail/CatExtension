@@ -305,6 +305,17 @@ footer a,
     border-radius: 3px;
 }
 
+.nav_menu div:hover {
+    transition: all .5s;
+    border-radius: 5px;
+    background: rgba(119, 136, 144, 1);
+    
+}
+.nav_menu a:hover {
+    transition: all .5s;
+    transform: translateX(5px);
+}
+
 #support_menu {
     position: absolute;
     bottom: 40px;
