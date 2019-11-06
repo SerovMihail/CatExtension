@@ -73,8 +73,8 @@ window.loadCountDownModule = function (e) {
         }
       }
     };
-    var setTextElem = function (e) {
-      if (e.handleObj.type == "blur" || e.keyCode == getKeyCode('ENTER')) {
+    var setTextElem = function (event) {
+      if (event.handleObj.type == "blur" || event.keyCode == getKeyCode('ENTER')) {
         if ($(this).val().length > 0) {
           countdownText = "Countdown to " + $(this).val();
         } else {
@@ -85,7 +85,7 @@ window.loadCountDownModule = function (e) {
         chrome.runtime.sendMessage({
           changeOptions: utils.getGlobalOpt()
         });
-        if (e.keyCode == getKeyCode('ENTER')) {
+        if (event.keyCode == getKeyCode('ENTER')) {
           $(this).trigger("blur");
         }
       }

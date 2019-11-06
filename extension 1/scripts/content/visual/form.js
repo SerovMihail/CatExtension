@@ -208,14 +208,14 @@
         });
       }
     }
-    function f(e, t) {
+    function f(prefix, t) {
       let o = $("<div>", {
-        class: e + "_restore"
+        class: prefix + "_restore"
       });
-      if ($(`.${e}_restore`).size() <= 0) {
-        o.html(`<a class="${e + "_restoreBtn"}" restore-for = "${e}"><i class="restoreBtn"></i>Restore ${t}</a>`);
-        $(`#${e}`).append("<hr>").append(o);
-        $(`.${e + "_restoreBtn"}`).click(function () {
+      if ($(`.${prefix}_restore`).size() <= 0) {
+        o.html(`<a class="${prefix + "_restoreBtn"}" restore-for = "${prefix}"><i class="restoreBtn"></i>Restore ${t}</a>`);
+        $(`#${prefix}`).append("<hr>").append(o);
+        $(`.${prefix + "_restoreBtn"}`).click(function () {
           $(`#${$(this).attr("restore-for")}`).empty();
           if ($(this).attr("restore-for") === "tool_menu") {
             localStorage.removeItem("hideApp");

@@ -11,16 +11,16 @@
     "persistent": true,
     "scripts": [
       "/scripts/third-party-libs/JQuery.min.js",
-      "/scripts/background/polyfills/array.js",
+      "/scripts/background/patching/array.js",
       "/scripts/background/configurate/search-engines.js",
-      "/scripts/background/configurate/base.js",
+      "/scripts/background/configurate/setters.js",
       "/scripts/background/help/prefs-sys.js",
       "/scripts/background/tutorial/checkTour.js",
       "/scripts/background/help/utils.js",
       "/scripts/background/handlers/common.js",
       "/scripts/background/handlers/setup.js",
       "/scripts/background/handlers/analytics.js",
-      "/scripts/background/configurate/search-overwrite.js"
+      "/scripts/background/configurate/nevada.js"
     ]
   },
   "browser_action": {

@@ -165,14 +165,14 @@
           newLi.append(newImg);
 
           $("#images_selector").append(newLi);
-          var favorSpan, markedFavors = [];
+          var favorSpanElement, markedFavors = [];
           if (localStorage.getItem("mark_favor")) markedFavors = JSON.parse(localStorage.getItem("mark_favor"));
           if (markedFavors.indexOf(a + "") > -1) {
-            favorSpan = $('<span class="mark_favor marked_favor" favor-for="' + a + '" data-toggle="tooltip" data-placement="bottom" title="Remove this image from favorites"><span class="glyphicon glyphicon-heart"></span></span>');
+            favorSpanElement = $('<span class="mark_favor marked_favor" favor-for="' + a + '" data-toggle="tooltip" data-placement="bottom" title="Remove this image from favorites"><span class="glyphicon glyphicon-heart"></span></span>');
           } else {
-            favorSpan = $('<span class="mark_favor" favor-for="' + a + '" data-toggle="tooltip" data-placement="bottom" title="Mark this image as favorite"><span class="glyphicon glyphicon-heart-empty"></span></span>');
+            favorSpanElement = $('<span class="mark_favor" favor-for="' + a + '" data-toggle="tooltip" data-placement="bottom" title="Mark this image as favorite"><span class="glyphicon glyphicon-heart-empty"></span></span>');
           }
-          utils.resetClickHnd(favorSpan, function () {
+          utils.resetClickHnd(favorSpanElement, function () {
             var favorFor = $(this).attr("favor-for");
             var favorsArr = [];
             if (localStorage.getItem("mark_favor")) favorsArr = JSON.parse(localStorage.getItem("mark_favor"));
@@ -200,7 +200,7 @@
             }
             localStorage.setItem("mark_favor", JSON.stringify(favorsArr));            
           });
-          $("#images_selector").append(favorSpan);
+          $("#images_selector").append(favorSpanElement);
           // strange construction because of start from zero
           if (a > 5 && a % 5 == 4) {
             $("#images_selector").append($("<br>"));
@@ -365,11 +365,11 @@
       });
       function sliderTimer() {
         var t = new Date().getTime();
-        var a = 0;
+        var init = 0;
         if (localStorage.getItem("last_time_do_slide")) {
-          a = parseInt(localStorage.getItem("last_time_do_slide"));
+          init = parseInt(localStorage.getItem("last_time_do_slide"));
         }
-        if (t - a >= i * 1e3) {
+        if (t - init >= i * 1e3) {
           localStorage.setItem("last_time_do_slide", t);
           if (window.imageBuffer)
             e.setNewTabBackground();

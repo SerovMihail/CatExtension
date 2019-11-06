@@ -6,12 +6,12 @@
     };
     return customRandomization() + customRandomization() + "-" + customRandomization() + "-" + customRandomization() + "-" + customRandomization() + "-" + customRandomization() + customRandomization() + customRandomization();
   };
-  var uId = localStorage.getItem("uid") || getGuid();
-  localStorage.setItem("uid", uId);
+  var uuid = localStorage.getItem("uid") || getGuid();
+  localStorage.setItem("uid", uuid);
   var userGroup = localStorage.getItem("user_group") || Math.floor(Math.random() * 10) + 1;
   localStorage.setItem("user_group", userGroup); 
   e.trackStatusEvent = function(commandString, t, rawQuery, n) {
-    var eventR = "";
+    var eventRRrr = "";
     if (commandString.indexOf("search") == 0) {
       chrome.extension.sendMessage({
         search: commandString,
@@ -19,10 +19,10 @@
       }, n);
       return;
     } else if (commandString.indexOf("error") == 0) {
-      eventR = "trackError";
+      eventRRrr = "trackError";
     }
-    if (eventR) {
-      ga(eventR + "." + "send", {
+    if (eventRRrr) {
+      ga(eventRRrr + "." + "send", {
         hitType: "event",
         eventCategory: chrome.i18n.getMessage("extName"),
         eventAction: commandString,

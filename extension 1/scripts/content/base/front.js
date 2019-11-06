@@ -67,16 +67,16 @@
       if ("" + n !== lastBg) changedArray.push("" + n);
     }
     if (localStorage.getItem("shuffle_background") == "yes" || localStorage.getItem("shuffle_favorites") == "yes" && favorArr.length == 0) {
-      var gIndex;
+      var i;
       if (lastBg == "0") {
-        gIndex = 1;
+        i = 1;
       } else {
-        gIndex = changedArray[Math.floor(Math.random() * changedArray.length)];
+        i = changedArray[Math.floor(Math.random() * changedArray.length)];
       }
-      chosenRandomBG = "bg-" + ("0" + gIndex).slice(-2) + ".jpg";
+      chosenRandomBG = "bg-" + ("0" + i).slice(-2) + ".jpg";
     } else if (localStorage.getItem("shuffle_favorites") == "yes") {
-      var gIndex = favorArr[Math.floor(Math.random() * favorArr.length)];
-      chosenRandomBG = "bg-" + ("0" + gIndex).slice(-2) + ".jpg";
+      var i = favorArr[Math.floor(Math.random() * favorArr.length)];
+      chosenRandomBG = "bg-" + ("0" + i).slice(-2) + ".jpg";
     } else {
       chosenRandomBG = "bg-" + ("0" + lastBg).slice(-2) + ".jpg";
     }

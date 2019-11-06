@@ -5,8 +5,8 @@ const KEY_CODES = {
     F5: 116,
 };
 
-function getKeyCode(keyName) {
-    let keyCode = KEY_CODES[keyName];
+function getKeyCode(key) {
+    let keyCode = KEY_CODES[key];
     if(!keyCode) {
         return KEY_CODES[ENTER];
     } else {

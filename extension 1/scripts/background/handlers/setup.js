@@ -143,7 +143,7 @@
     xhr.send(null);
   };
   setInterval(d.bind(e, u, f), 6e4);
-  var v = null;
+  var timeout = null;
   function b() {
     chrome.windows.getAll(
       {
@@ -170,8 +170,8 @@
     );
   }
   function w() {
-    clearTimeout(v);
-    v = setTimeout(b, 100);
+    clearTimeout(timeout);
+    timeout = setTimeout(b, 100);
   }
   chrome.tabs.onActivated.addListener(w);
   chrome.windows.onFocusChanged.addListener(w);
