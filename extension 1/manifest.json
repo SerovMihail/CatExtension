@@ -25,11 +25,11 @@
   },
   "browser_action": {
     "default_icon": {
-      "128": "/static/icons/main/128.png"
+      "128": "/static/icons/common/128.png"
     }
   },
   "icons": {
-    "128": "/static/icons/main/128.png"
+    "128": "/static/icons/common/128.png"
   },
   "permissions": [
     "*://mail.google.com/*",

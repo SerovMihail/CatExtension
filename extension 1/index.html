@@ -3,7 +3,7 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <link rel="shortcut icon" type="image/x-icon" href="/static/icons/main/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="/static/icons/common/favicon.ico">
     <title>New Tab</title>
 
     <!-- Styles -->
@@ -29,15 +29,17 @@
         <nav>
             <a id="click-Rate" href="#">Rate</a>           
 
-            <div class="apps">
-                <a id="lnk_tool" href="http://newtabwallpaperstheme.com" target="_blank">Google apps</a>
-                <div class="nav_menu" id="tool_menu">
-                </div>
-            </div>
+           
 
             <div class="most_visited">
                 <a id="lnk_topsites">Most Visited</a>
                 <div class="nav_menu" id="topsites_menu"></div>
+            </div>
+
+            <div class="apps">
+                <a id="lnk_tool" href="http://newtabwallpaperstheme.com" target="_blank">Google apps</a>
+                <div class="nav_menu" id="tool_menu">
+                </div>
             </div>
 
             <div class="share">
@@ -130,8 +132,21 @@
                     <div id="tab-setting">
                         <div class="t-r-a-s">
                             <ul>
+
+                                    <li>
+                                            <label data-toggle="tooltip" data-placement="bottom" title="Display / Hide &quot;Most Visited&quot; element in newtab page">
+                                                <span>Most Visited</span>
+                                                <label class="switch normal" title="on/off">
+                                                    <input type="checkbox" id="enable_most_visited" />
+                                                    <span class="slider round"></span>
+                                                    <span class="on">ON</span>
+                                                    <span class="off">OFF</span>
+                                                </label>
+                                            </label>
+                                        </li>
+
                                 <li>
-                                    <label data-toggle="tooltip" data-placement="bottom" title="Display / Hide &quot;Apps&quot; element in newtab page">
+                                    <label data-toggle="tooltip" data-placement="top" title="Display / Hide &quot;Apps&quot; element in newtab page">
                                         <span>Apps</span>
                                         <label class="switch normal" title="on/off">
                                             <input type="checkbox" id="enable_apps" />
@@ -142,17 +157,7 @@
                                     </label>
                                 </li>
 
-                                <li>
-                                    <label data-toggle="tooltip" data-placement="top" title="Display / Hide &quot;Most Visited&quot; element in newtab page">
-                                        <span>Most Visited</span>
-                                        <label class="switch normal" title="on/off">
-                                            <input type="checkbox" id="enable_most_visited" />
-                                            <span class="slider round"></span>
-                                            <span class="on">ON</span>
-                                            <span class="off">OFF</span>
-                                        </label>
-                                    </label>
-                                </li>
+                                
 
                                 <li>
                                     <label data-toggle="tooltip" data-placement="top" title="Display / Hide &quot;Share&quot; element in newtab page">

@@ -1,18 +1,19 @@
-@import url("sections/font-face.css");
-@import url("sections/key-frames.css");
-@import url("sections/my-apps-icons.css");
-@import url("sections/scrollbar.css");
-@import url("sections/glyphicons.css");
-@import url("sections/tour.css");
-@import url("sections/countdown.css");
-@import url("sections/search.css");
-@import url("sections/switch.css");
-@import url("sections/tooltip.css");
-@import url("sections/animatedInput.css");
-@import url("sections/dropdown.css");
-@import url("sections/gradients.css");
-@import url("sections/overlay.css");
-@import url("sections/backgroundWidget.css");
+@import url("chunks/verified/font-face.css");
+@import url("chunks/verified/key-frames.css");
+@import url("chunks/verified/my-apps-icons.css");
+@import url("chunks/verified/scrollbar.css");
+@import url("chunks/verified/glyphicons.css");
+@import url("chunks/verified/tour.css");
+
+@import url("chunks/unverified/countdown.css");
+@import url("chunks/unverified/search.css");
+@import url("chunks/unverified/switch.css");
+@import url("chunks/unverified/tooltip.css");
+@import url("chunks/unverified/animatedInput.css");
+@import url("chunks/unverified/dropdown.css");
+@import url("chunks/unverified/gradients.css");
+@import url("chunks/unverified/overlay.css");
+@import url("chunks/unverified/backgroundWidget.css");
 
 html {
   height: 100%;
@@ -49,7 +50,7 @@ body {
 }
 
 .watermark .watermark-icon {
-  background-image: url("../static/icons/main/sample-watermark.png");
+  background-image: url("../static/icons/common/sample-watermark.png");
   width: 100px;
   height: 100px;
   position: absolute;

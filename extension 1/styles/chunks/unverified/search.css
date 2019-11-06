@@ -89,13 +89,14 @@
 }
 
 .underline {
-  background-color: dodgerblue;
+  background-color: #5692f5;
   display: inline-block;
+  opacity: .8;
   height: 4px;
   left: 0;
   margin-top: -4px;
   position: absolute;
-  bottom: -6px;
+  bottom: -3px;
   -webkit-transform: scale(0, 1);
   transform: scale(0, 1);
   -webkit-transition: all 0.5s linear;
