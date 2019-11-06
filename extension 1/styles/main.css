@@ -285,6 +285,7 @@ footer a,
   font-size: 14px;
   cursor: pointer;
   line-height: 30px;
+  padding-right: 20px;
 }
 
 .nav_menu {
@@ -294,6 +295,7 @@ footer a,
   background: rgba(119, 136, 144, 0.85);
   border-radius: 5px;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.6);
+  flex-wrap: wrap;
 }
 
 .nav_menu a i {

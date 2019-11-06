@@ -10,6 +10,19 @@
   border-right: 12px solid transparent;
   border-bottom: 10px solid #f3f4f5;
   z-index: 10;
+  animation: 3s ease 0s triangle;
+}
+
+@keyframes triangle  {
+  0% {
+    left: 70%;
+  }
+  50% {
+    left: 10%;
+  }
+  100% {
+    left: 12%;
+  }
 }
 
 #background_selector_widget #tabs ul.ui-tabs-nav {
