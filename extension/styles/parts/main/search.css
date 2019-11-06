@@ -27,12 +27,12 @@
   padding: 8px 0;
   box-shadow: 0px 14px 20px rgba(0, 0, 0, 0.3);
   transition: all .5s;
-  height: 55px !important;
+  height: 50px !important;
   border-radius: 8px;
 }
 
 .Input:hover #search-input {
-  background-color: transparent;
+  background-color: rgba(99, 110, 114, 0.8);
 }
 
 #search-box .search-icon {
