@@ -34,7 +34,7 @@ body {
   margin: 0;
   font-size: 80%;
   font-weight: 100;
-  font-family: "Patua One", sans-serif;
+  font-family: 'McLaren', cursive;
   background-image: none;
   background: transparent;
   background-repeat: no-repeat !important;
@@ -104,7 +104,7 @@ body {
   user-select: none;
 }
 
-.checkbox:hover input~.checkmark {
+.checkbox:hover input ~ .checkmark {
   background-color: #ccc;
   transition: all 0.5s;
 }
@@ -115,12 +115,12 @@ body {
   display: none;
 }
 
-.checkbox input:checked~.checkmark {
+.checkbox input:checked ~ .checkmark {
   background-color: #56b1ea;
   transition: all 0.5s;
 }
 
-.checkbox input:checked~.checkmark:after {
+.checkbox input:checked ~ .checkmark:after {
   display: block;
 }
 
@@ -367,8 +367,8 @@ footer a,
   overflow: hidden;
 }
 
-#topsites_menu>div,
-#tool_menu>div {
+#topsites_menu > div,
+#tool_menu > div {
   position: relative;
 }
 
@@ -379,8 +379,8 @@ footer a,
   margin: auto 0;
 }
 
-#topsites_menu>div:hover .closebtn:after,
-#tool_menu>div:hover .closebtn:after {
+#topsites_menu > div:hover .closebtn:after,
+#tool_menu > div:hover .closebtn:after {
   opacity: 0.8;
 }
 
@@ -453,7 +453,7 @@ footer a,
   display: inline-block;
 }
 
-.toggle a+a {
+.toggle a + a {
   text-align: center;
 }
 
@@ -496,7 +496,7 @@ h1.hour {
 
 @keyframes appearing {
   from {
-    opacity: .1;
+    opacity: 0.1;
   }
 
   to {
@@ -588,8 +588,6 @@ h1.hour {
   transition: none !important;
 }
 
-
-
 #tab-setting ul li select,
 #countdown_setTime,
 #countdown_setText {
@@ -601,7 +599,7 @@ h1.hour {
   padding: 3px;
 }
 
-#background_selector_widget #tab-setting ul li>label>label {
+#background_selector_widget #tab-setting ul li > label > label {
   float: right;
 }
 

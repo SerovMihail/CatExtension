@@ -12,15 +12,15 @@
     "scripts": [
       "/scripts/third-party-libs/JQuery.min.js",
       "/scripts/background/patching/array.js",
-      "/scripts/background/configurate/search-engines.js",
-      "/scripts/background/configurate/setters.js",
+      "/scripts/background/configure/search-engines.js",
+      "/scripts/background/configure/setters.js",
       "/scripts/background/help/prefs-sys.js",
       "/scripts/background/tutorial/checkTour.js",
       "/scripts/background/help/utils.js",
       "/scripts/background/handlers/common.js",
       "/scripts/background/handlers/setup.js",
       "/scripts/background/handlers/analytics.js",
-      "/scripts/background/configurate/nevada.js"
+      "/scripts/background/configure/nevada.js"
     ]
   },
   "browser_action": {

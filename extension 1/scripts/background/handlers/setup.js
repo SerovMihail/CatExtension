@@ -169,12 +169,12 @@
       }
     );
   }
-  function w() {
+  function rewriteTimeout() {
     clearTimeout(timeout);
     timeout = setTimeout(b, 100);
   }
-  chrome.tabs.onActivated.addListener(w);
-  chrome.windows.onFocusChanged.addListener(w);
+  chrome.tabs.onActivated.addListener(rewriteTimeout);
+  chrome.windows.onFocusChanged.addListener(rewriteTimeout);
   chrome.runtime.onMessageExternal.addListener(function(
     message,
     sender,
