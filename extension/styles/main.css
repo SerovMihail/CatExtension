@@ -306,12 +306,12 @@ footer a,
 }
 
 .nav_menu div:hover {
-  transition: all 2s;
+  transition: all 0.5s;
   border-radius: 5px;
   background: rgba(119, 136, 144, 1);
 }
 .nav_menu a:hover {
-  transition: all 2s;
+  transition: all 0.5s;
   transform: translateX(5px);
 }
 
@@ -378,6 +378,7 @@ footer a,
 #topsites_menu > div:hover .closebtn:after,
 #tool_menu > div:hover .closebtn:after {
   opacity: 0.8;
+  transition: all 2s;
 }
 
 #topsites_menu a {
