@@ -23,6 +23,18 @@
   align-items: center;
 }
 
+.Input:hover {
+  padding: 8px 0;
+  box-shadow: 0px 14px 20px rgba(0, 0, 0, 0.3);
+  transition: all .5s;
+  height: 55px !important;
+  border-radius: 8px;
+}
+
+.Input:hover #search-input {
+  background-color: transparent;
+}
+
 #search-box .search-icon {
   width: 50px;
   height: 48.8px;
@@ -30,11 +42,6 @@
   left: 0;
   padding: 12px;
   opacity: 0.6;
-}
-
-#search-box .search-icon:hover {
-  transition: all 0.5s;
-  opacity: 1;
 }
 
 #search-box .dropdown,
