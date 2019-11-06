@@ -1,7 +1,7 @@
 (function (e) {
   e.getAllImages = function () {
     chrome.runtime.getPackageDirectoryEntry(function (s) {
-      s.getDirectory('static/pictures', {}, function (imagesDirectory) {
+      s.getDirectory('assets/pictures', {}, function (imagesDirectory) {
         var dirReader = imagesDirectory.createReader();
         var buffer = [];
         getEntries = function (callback) {

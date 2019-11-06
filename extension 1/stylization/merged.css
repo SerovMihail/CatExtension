@@ -50,7 +50,7 @@ body {
 }
 
 .watermark .watermark-icon {
-  background-image: url("../static/icons/common/sample-watermark.png");
+  background-image: url("../assets/icons/common/sample-watermark.png");
   width: 100px;
   height: 100px;
   position: absolute;
