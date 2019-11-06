@@ -1,18 +1,19 @@
-@import url("sections/font-face.css");
-@import url("sections/key-frames.css");
-@import url("sections/my-apps-icons.css");
-@import url("sections/scrollbar.css");
-@import url("sections/glyphicons.css");
-@import url("sections/tour.css");
-@import url("sections/countdown.css");
-@import url("sections/search.css");
-@import url("sections/switch.css");
-@import url("sections/tooltip.css");
-@import url("sections/animatedInput.css");
-@import url("sections/dropdown.css");
-@import url("sections/gradients.css");
-@import url("sections/overlay.css");
-@import url("sections/backgroundWidget.css");
+@import url("parts/additional/font-face.css");
+@import url("parts/additional/key-frames.css");
+@import url("parts/additional/my-apps-icons.css");
+@import url("parts/additional/glyphicons.css");
+@import url("parts/additional/counter.css");
+@import url("parts/additional/animatedInput.css");
+@import url("parts/additional/dropdown.css");
+@import url("parts/additional/gradients.css");
+@import url("parts/additional/backgroundWidget.css");
+@import url("parts/main/overlay.css");
+@import url("parts/main/scrollbar.css");
+@import url("parts/main/search.css");
+@import url("parts/main/toggle.css");
+@import url("parts/main/tooltip.css");
+@import url("parts/main/tour.css");
+
 
 html {
   height: 100%;
