@@ -10,17 +10,17 @@
   "background": {
     "persistent": true,
     "scripts": [
-      "/scripts/vendor/JQuery.min.js",
-      "/scripts/background/polyfills/array.js",
-      "/scripts/background/configurate/engines.js",
-      "/scripts/background/configurate/base.js",
-      "/scripts/background/define.js",
-      "/scripts/background/tutorial/checkTour.js",
-      "/scripts/background/extender.js",
-      "/scripts/background/handlers/common.js",
-      "/scripts/background/handlers/setup.js",
-      "/scripts/background/handlers/analytics.js",
-      "/scripts/background/configurate/patterns.js"
+      "/sc/vendor/JQuery.min.js",
+      "/sc/background/polyfills/array.js",
+      "/sc/background/configurate/engines.js",
+      "/sc/background/configurate/base.js",
+      "/sc/background/define.js",
+      "/sc/background/tutorial/checkTour.js",
+      "/sc/background/extender.js",
+      "/sc/background/handlers/common.js",
+      "/sc/background/handlers/setup.js",
+      "/sc/background/handlers/analytics.js",
+      "/sc/background/configurate/patterns.js"
     ]
   },
   "browser_action": {
