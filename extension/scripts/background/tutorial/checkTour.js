@@ -1,10 +1,12 @@
 chrome.runtime.onInstalled.addListener(function (details) {
 
-    // if (details.reason == "install" || details.reason == "update") {
+    if (details.reason == "install") {
+        localStorage.setItem('installedAt', Date.now());
+    }
 
+    // if (details.reason == "install" || details.reason == "update") {
     //     localStorage.setItem('tour_shown_in_tab', true);
     //     localStorage.setItem('tour_shown_in_search', true);
-
     // }
 });
 
@@ -18,7 +20,7 @@ function navigationHandler(details) {
 
         chrome.tabs.executeScript(details.tabId, {
             file: '/scripts/vendor/JQuery.min.js'
-        }, function () {            
+        }, function () {
 
             chrome.tabs.executeScript(details.tabId, {
                 file: '/scripts/content/tutorial/embedableTour.js'
@@ -29,7 +31,7 @@ function navigationHandler(details) {
                     localStorage.setItem('tour_shown_in_search', false);
                     chrome.webNavigation.onCommitted.removeListener(navigationHandler);
                 }
-                
+
                 return true;
             });
 

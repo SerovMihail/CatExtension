@@ -69,26 +69,26 @@
 }
 
 .icon_facebook {
-    background-image: url('chrome-extension://__MSG_@@extension_id__/static/icons/share-pics/facebook.png');
+    background-image: url('chrome-extension://__MSG_@@extension_id__/static/icons/share-icons/facebook.png');
     background-size: cover;
 }
 
 .icon_twitter {
-    background-image: url('chrome-extension://__MSG_@@extension_id__/static/icons/share-pics/twitter.png');
+    background-image: url('chrome-extension://__MSG_@@extension_id__/static/icons/share-icons/twitter.png');
     background-size: cover;
 }
 
 .icon_pinterest {
-    background-image: url('chrome-extension://__MSG_@@extension_id__/static/icons/share-pics/pinterest.png');
+    background-image: url('chrome-extension://__MSG_@@extension_id__/static/icons/share-icons/pinterest.png');
     background-size: cover;
 }
 
 .icon_tumblr {
-    background-image: url('chrome-extension://__MSG_@@extension_id__/static/icons/share-pics/tumblr.png');
+    background-image: url('chrome-extension://__MSG_@@extension_id__/static/icons/share-icons/tumblr.png');
     background-size: cover;
 }
 
 .icon_vk {
-    background-image: url('chrome-extension://__MSG_@@extension_id__/static/icons/share-pics/vk.png');
+    background-image: url('chrome-extension://__MSG_@@extension_id__/static/icons/share-icons/vk.png');
     background-size: cover;
 }

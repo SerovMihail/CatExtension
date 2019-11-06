@@ -80,7 +80,10 @@
     } else {
       chosenRandomBG = "bg-" + ("0" + lastBg).slice(-2) + ".jpg";
     }
-    e.setBackgroundGIFOrJPG(chosenRandomBG);
+
+    if(window.imageBuffer.length) {
+      e.setBackgroundGIFOrJPG(chosenRandomBG);
+    }
   };
 
 

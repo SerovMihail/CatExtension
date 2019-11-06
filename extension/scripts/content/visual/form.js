@@ -11,9 +11,9 @@
   }, 1e3);
   function o(str, replacer) {
     var o = str;
-    for (var a in replacer) {
-      var i = replacer[a];
-      var s = new RegExp("\\{" + a + "\\}", "gi");
+    for (var replace in replacer) {
+      var i = replacer[replace];
+      var s = new RegExp("\\{" + replace + "\\}", "gi");
       o = o.replace(s, i);
     }
     return o;
