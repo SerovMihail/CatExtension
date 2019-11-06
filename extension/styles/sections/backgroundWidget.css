@@ -21,10 +21,12 @@
   left: 0;
   z-index: 10;
   border-radius: 5px;
+  display: flex;
 }
 
 #background_selector_widget #tabs ul.ui-tabs-nav .ui-state-default {
-  display: inline-flex;
+  display: flex;
+  width: 50%;
 }
 
 #background_selector_widget
@@ -34,6 +36,8 @@
   a.ui-tabs-anchor {
   text-decoration: none;
   color: black;
+  width: 100%;
+    text-align: center;
 }
 
 #background_selector_widget
