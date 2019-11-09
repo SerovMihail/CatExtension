@@ -46,8 +46,6 @@
       return;
     }
 
-    debugger;
-
     let value = target.value;
     let settings = settingsScreen.getSelectingBg();
 
