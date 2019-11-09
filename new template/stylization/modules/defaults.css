@@ -7,3 +7,24 @@ body {
     color: #fff;
     font-family: 'Roboto Mono', monospace;
 }
+
+.cover {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+    background: rgba(0, 0, 0, 0.15);
+}
+
+.background {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -2;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
