@@ -1,0 +1,63 @@
+<div class="diag-background-settings">
+  <div class="tab-content">
+    <div id="tab-settings-background">
+      <div id="panel-backgrounds-loading" class="text-center">
+        <div class="spinner-border" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+      <div id="panel-backgrounds-content" class="d-none">
+        <div class="panel-backgrounds-header">
+          <span class="header-label" data-language="Settings_Background"></span>
+        </div>
+        <div id="lst-backgrounds" class="list-background"></div>
+
+
+        <div id="lst-commands">
+          <div class="custom-control custom-radio custom-control-inline">
+            <input
+              id="opt-shuffle-none"
+              type="radio"
+              name="shuffle-settings"
+              value="none"
+              class="custom-control-input"
+            />
+            <label
+              for="opt-shuffle-none"
+              class="custom-control-label"
+              data-language="Backgrounds_Shuffle_None"
+            ></label>
+          </div>
+
+          <div class="custom-control custom-radio custom-control-inline">
+            <input
+              id="opt-shuffle-all"
+              type="radio"
+              name="shuffle-settings"
+              value="all"
+              class="custom-control-input"
+            />
+            <label
+              for="opt-shuffle-all"
+              class="custom-control-label"
+              data-language="Backgrounds_Shuffle_All"
+            ></label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <template id="template-background-item">
+    <div class="item">
+      <div data-title data-background></div>
+    </div>
+  </template>
+
+  <template id="template-other-theme-item">
+    <a data-link class="item">
+      <div data-title data-background></div>
+      <p data-text></p>
+    </a>
+  </template>
+</div>

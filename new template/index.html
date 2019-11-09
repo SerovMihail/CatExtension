@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>New Tab</title>
+
+    <link async rel="stylesheet" href="/lib/css/postit.min.css" />
+    <link async rel="stylesheet" href="/lib/css/tingle.min.css" />
+    <link async rel="stylesheet" href="/lib/css/fontawesome.min.css" />
+    <link async rel="stylesheet" href="/lib/css/bootstrap.min.css" />
+    <link async rel="stylesheet" href="/style/main.css" />
+  </head>
+
+  <body>
+    <div class="background"></div>
+    <div class="cover"></div>
+
+    <div class="page">
+      <header data-hide-ui>
+        <div class="header-features">
+          <a id="btn-feature-settings">
+            <i class="fa fa-wrench"></i>
+            <span data-language="Feature_Settings"></span>
+          </a>
+          <a id="btn-feature-most-visited" data-ui-show="Settings_MostVisited">
+            <i class="fa fa-fire"></i>
+            <span data-language="Feature_MostVisited"></span>
+          </a>
+          <!-- <a
+            id="btn-more-wallpapers"
+            data-click="onSettingCountdownButtonClick"
+          >
+            <i class="fa fa-image"></i>
+            <span data-language="Settings_Background"></span>
+          </a> -->
+          <a id="btn-more-wallpapers" data-ui-show="Settings_MoreWallpapers">
+            <i class="fa fa-image"></i>
+            <span data-language="Settings_Background"></span>
+          </a>
+        </div>
+        <div class="header-search">
+          <form id="frm-search" class="panel-search">
+            <label
+              for="txt-search"
+              class="w-100"
+              data-language="Search_Placeholder"
+            ></label>
+            <button id="btn-search" class="icon">
+              <i class="fa fa-search"></i>
+            </button>
+            <input id="txt-search" class="form-control" />
+          </form>
+        </div>
+        <div class="header-clock">
+          <div class="time" data-clock-time></div>
+          <div class="date" data-clock-date></div>
+        </div>
+      </header>
+
+      <section class="page-content"></section>
+
+      <footer data-hide-ui>
+        <div class="footer-features">
+          <a id="btn-sticky-notes" data-ui-show="Settings_StickyNotes">
+            <i class="fa fa-edit"></i>
+            <span data-language="StickyNotes_Create"></span>
+          </a>
+          <a id="btn-todo" data-ui-show="Settings_Todo">
+            <i class="fa fa-list"></i>
+            <span data-language="Feature_Todo"></span>
+          </a>
+        </div>
+      </footer>
+    </div>
+
+    <div
+      id="board-sticky-notes"
+      class="sticky-notes"
+      data-ui-show="Settings_StickyNotes"
+    ></div>
+
+    <div id="popout-settings" class="popout" data-for="btn-feature-settings">
+      <h2 class="title">
+        <i class="fa fa-wrench"></i>
+        <span data-language="Settings_Title"></span>
+      </h2>
+      <hr />
+      <div id="lst-options-ui" class="option-list"></div>
+      <div class="popper__arrow" x-arrow></div>
+    </div>
+
+    <div class="popout" data-for="btn-feature-most-visited">
+      <div id="lst-top-sites" class="list-top-sites"></div>
+      <div class="popper__arrow" x-arrow></div>
+    </div>
+
+    <div id="my_popup" class="popout" data-for="btn-more-wallpapers">
+      <div class="popper__arrow" x-arrow></div>
+    </div>
+
+    <div id="panel-todo-list" class="popout">
+      <div id="panel-todo-list-content"></div>
+      <div class="popper__arrow" x-arrow></div>
+    </div>
+
+    <div id="panel-more-wallpapers" class="popout popout-wide">
+      <div>
+        <div id="lbl-loading-more-wallpapers" class="text-center">
+          <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+        <div class="lst-header">
+          <span class="header-label" data-language="Settings_Background"></span>
+        </div>
+        <div id="list-more-wallpapers" class="list-background"></div>
+      </div>
+      <div class="popper__arrow" x-arrow></div>
+    </div>
+
+    <a class="watermark" href="https://qtab.biz" target="_blank">
+      <div class="watermark-icon"></div>
+    </a>
+
+    <template id="template-switch-option">
+      <div class="option">
+        <div class="desc">
+          <span data-language-desc></span>
+        </div>
+        <div class="control">
+          <input type="checkbox" class="switch-input" />
+          <label class="switch-label"
+            ><span class="toggle--on" data-language="On"></span
+            ><span class="toggle--off" data-language="Off"></span
+          ></label>
+        </div>
+      </div>
+    </template>
+
+    <template id="template-topsite-item">
+      <div class="item">
+        <img class="icon" data-icon />
+        <a data-link data-text></a>
+      </div>
+    </template>
+
+    <template id="template-more-wallpaper-item">
+      <a data-link class="item">
+        <div data-title data-background></div>
+        <p data-text style="color: white;"></p>
+      </a>
+    </template>
+
+    <script async defer src="/lib/js/popper.min.js"></script>
+    <script async defer src="/lib/js/tingle.min.js"></script>
+    <script async defer src="/lib/js/sweetalert2.js"></script>
+    <script src="/lib/js/postit.min.js"></script>
+
+    <script src="/blocks/dialog/logic.js"></script>
+    <script src="/blocks/list/logic.js"></script>
+
+    <script src="/js/i18n.js"></script>
+    <script src="/js/main.js"></script>
+  </body>
+</html>

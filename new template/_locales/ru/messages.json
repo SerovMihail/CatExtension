@@ -1,0 +1,62 @@
+{
+  "AppName": { "message": "Baby Animals Обои HD New Tab Theme" },
+  "AppDescription": {
+    "message": "Красивые обои Baby Animals с полезными утилитами."
+  },
+  "Welcome_Night": { "message": "Спокойной ночи!" },
+  "Welcome_Morning": { "message": "Доброе утро!" },
+  "Welcome_Afternoon": { "message": "Добрый день!" },
+  "Welcome_Evening": { "message": "Доброй ночи!" },
+  "Feature_Settings": { "message": "настройки" },
+  "Feature_MostVisited": { "message": "самые посещаемые" },
+  "Feature_Apps": { "message": "Программы" },
+  "Feature_MoreWallpapers": { "message": "Больше обоев" },
+  "Feature_Share": { "message": "Поделиться" },
+  "Search_Placeholder": { "message": "Поиск в Интернете..." },
+  "Settings_Title": { "message": "настройки" },
+  "Settings_On": { "message": "На" },
+  "Settings_Off": { "message": "от" },
+  "Settings_AutoHide": {
+    "message": "Автоматическое скрытие (через 10 секунд)"
+  },
+  "Settings_StickyNotes": { "message": "Заметки" },
+  "Settings_Todo": { "message": "Список дел" },
+  "Settings_MostVisited": { "message": "Самые посещаемые" },
+  "Settings_Apps": { "message": "Программы" },
+  "Settings_Share": { "message": "Поделиться" },
+  "Settings_Countdown": { "message": "обратный отсчет" },
+  "Settings_Set": { "message": "Задавать..." },
+  "Feature_Notes": { "message": "Заметки" },
+  "Feature_Todo": { "message": "Список дел" },
+  "Settings_Background": { "message": "фон" },
+  "Settings_Backgrounds": { "message": "фон" },
+  "Settings_Background_Others": { "message": "Другие темы" },
+  "Settings_MoreWallpapers": { "message": "Больше обоев" },
+  "Backgrounds_Shuffle_None": { "message": "Не тасуйте" },
+  "Backgrounds_Shuffle_All": { "message": "Перемешать все изображения" },
+  "Backgrounds_Shuffle_Favorites": {
+    "message": "Перемешать любимые изображения"
+  },
+  "Backgrounds_Shuffle_Explanation": {
+    "message": "Приложение будет перетасовывать обои каждый раз, когда вы открываете новую вкладку"
+  },
+  "Backgrounds_Shuffle_NoFav": {
+    "message": "Пожалуйста, выберите хотя бы любимую фотографию, чтобы мы могли их перемешать."
+  },
+  "StickyNotes_Create": { "message": "Добавить заметки" },
+  "StickyNotes_CloseConfirm": {
+    "message": "Вы уверены, что хотите удалить заметку?"
+  },
+  "Settings_UseDrive": {
+    "message": "Синхронизировать с Google Drive <br /> (для заметок и списка задач)"
+  },
+  "Todo_Add": { "message": "Новый Тодо" },
+  "Todo_DefaultMessage": { "message": "Новый предмет Todo" },
+  "Todo_ConfirmMessage": {
+    "message": "Вы уверены, что хотите удалить элемент?"
+  },
+  "Todo_ConfirmYes": { "message": "Да, Удалить элемент" },
+  "Todo_ConfirmNo": { "message": "Отмена" },
+  "Todo_Rename": { "message": "Переименовать предмет" },
+  "Todo_RenameConfirm": { "message": "Переименовать предмет" }
+}
