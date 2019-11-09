@@ -6,18 +6,18 @@
 }
 
 function TodoList() {
-  let container = document.querySelector("#panel-todo-list");
-  let panel = document.querySelector("#panel-todo-list-content");
-  let btnShowPanel = document.querySelector("#btn-todo");
-  let panelContentTemplate;
-  let itemTemplate;
+  let containerElement = document.querySelector("#panel-todo-list");
+  let panelElement = document.querySelector("#panel-todo-list-content");
+  let btnShowPanelElement = document.querySelector("#btn-todo");
+  let panelContentHTMLTemplate;
+  let itemHTMLTemplate;
   let popper;
 
   this.data = null;
-  const StorageKey = "todo-list";
+  const LocalStorageKey = "todo-list";
 
   this.load = async () => {
-    return settingsScreen.fromLocalStorageOrDefault(StorageKey, () => ({
+    return settingsScreen.fromLocalStorageOrDefault(LocalStorageKey, () => ({
       items: []
     }));
   };
@@ -25,7 +25,7 @@ function TodoList() {
   this.save = async data => {
     data = data || this.data;
 
-    settingsScreen.setLocalStorage(StorageKey, data);
+    settingsScreen.setLocalStorage(LocalStorageKey, data);
   };
 
   this.addTodo = () => {
@@ -33,17 +33,17 @@ function TodoList() {
     this.save();
     this.showTodoList(this.data);
 
-    let item = container.querySelector(".item:last-child");
+    let item = containerElement.querySelector(".item:last-child");
     item.querySelector(".btn-rename").click();
   };
 
   this.showTodoList = data => {
-    let list = panel.querySelector(".todo-list-items");
+    let list = panelElement.querySelector(".todo-list-items");
     list.innerHTML = "";
 
     for (var i = 0; i < data.items.length; i++) {
       let item = data.items[i];
-      let itemEl = template(itemTemplate);
+      let itemEl = template(itemHTMLTemplate);
       itemEl.setAttribute("data-index", i);
 
       itemEl.querySelector("[data-check]").checked = item.completed;
@@ -58,17 +58,17 @@ function TodoList() {
   };
 
   this.show = async () => {
-    panel.innerHTML = "";
-    let content = template(panelContentTemplate);
-    panel.appendChild(content);
+    panelElement.innerHTML = "";
+    let content = template(panelContentHTMLTemplate);
+    panelElement.appendChild(content);
 
-    itemTemplate = content.querySelector("#template-todo-list-item").innerHTML;
+    itemHTMLTemplate = content.querySelector("#template-todo-list-item").innerHTML;
 
     this.data = await this.load();
     this.showTodoList(this.data);
 
     applyLanguage();
-    popper = newTab.showPopper(container, btnShowPanel, "top-start");
+    popper = newTab.showPopper(containerElement, btnShowPanelElement, "top-start");
   };
 
   this.onDeleteButtonClick = async (target, ev) => {
@@ -134,26 +134,26 @@ function TodoList() {
   };
 
   this.addEventListeners = () => {
-    btnShowPanel.addEventListener("click", () => this.show());
+    btnShowPanelElement.addEventListener("click", () => this.show());
 
-    addEventDelegate(container, "click", "#btn-new-todo", () => this.addTodo());
+    addEventDelegate(containerElement, "click", "#btn-new-todo", () => this.addTodo());
 
     addEventDelegate(
-      container,
+      containerElement,
       "click",
       ".btn-delete",
       this.onDeleteButtonClick
     );
     addEventDelegate(
-      container,
+      containerElement,
       "click",
       ".btn-rename",
       this.onRenameButtonClick
     );
 
-    addEventDelegate(container, "click", ".item", this.onTodoItemClick);
+    addEventDelegate(containerElement, "click", ".item", this.onTodoItemClick);
     addEventDelegate(
-      container,
+      containerElement,
       "change",
       "input[data-check]",
       this.onItemCheckChanged
@@ -161,7 +161,7 @@ function TodoList() {
   };
 
   this.initialize = async () => {
-    panelContentTemplate = await fetch("/blocks/list/tpl.html").then(response =>
+    panelContentHTMLTemplate = await fetch("/parts/todo/tpl.html").then(response =>
       response.text()
     );
 

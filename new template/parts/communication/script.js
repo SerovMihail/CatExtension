@@ -1,4 +1,18 @@
-﻿function BackgroundDialog() {
+﻿
+function showModal(dialogHtml, opt) {
+  opt = opt || {};
+
+  opt.closeMethods = opt.closeMethods || ["overlay", "escape"];
+
+  let modal = new tingle.modal(opt);
+  modal.setContent(dialogHtml);
+
+  applyLanguage();
+
+  return modal;
+}
+
+function BackgroundDialog() {
   let modalContent = null;
 
   this.checkFavAvailable = settings => {
@@ -13,19 +27,19 @@
     return hasItem;
   };
 
-  this.getShuffleRadio = option => {
+  this.getShuffleRadio = opt => {
     return (
       modalContent.querySelector(
-        "input[name='shuffle-settings'][value='" + option + "']"
+        "input[name='shuffle-settings'][value='" + opt + "']"
       ) || this.getShuffleRadio("all")
     );
   };
 
-  this.onBackgroundSelected = target => {
+  this.onBackgroundSelected = targetElement => {
     let bgInfo = newTab.bgInfo;
     let selectingBg = settingsScreen.getSelectingBg();
 
-    let item = target.closest("[data-index]");
+    let item = targetElement.closest("[data-index]");
     let index = Number(item.getAttribute("data-index"));
 
     let lstBackgrounds = modalContent.querySelector("#lst-backgrounds");
@@ -41,12 +55,12 @@
     newTab.showBg(selectingBg, true);
   };
 
-  this.onShuffleOptionChanged = target => {
-    if (!target.checked) {
+  this.onShuffleOptionChanged = targetElement => {
+    if (!targetElement.checked) {
       return;
     }
 
-    let value = target.value;
+    let value = targetElement.value;
     let settings = settingsScreen.getSelectingBg();
 
     if (value == "fav") {
@@ -65,12 +79,12 @@
     settingsScreen.setSelectingBg(settings);
   };
 
-  this.onFavButtonClick = target => {
-    target.classList.toggle("active");
-    let isFav = target.classList.contains("active");
+  this.onFavButtonClick = targetElement => {
+    targetElement.classList.toggle("active");
+    let isFav = targetElement.classList.contains("active");
 
-    let item = target.closest("[data-index]");
-    let index = Number(item.getAttribute("data-index"));
+    let element = targetElement.closest("[data-index]");
+    let index = Number(element.getAttribute("data-index"));
 
     let settings = settingsScreen.getSelectingBg();
     settings.favorites[index] = isFav;
@@ -153,7 +167,7 @@
 
   this.showDialog = () => {
     return new Promise(async resolve => {
-      let diagContent = await fetch("/blocks/dialog/tpl.html").then(response =>
+      let diagContent = await fetch("/parts/communication/tpl.html").then(response =>
         response.text()
       );
 
@@ -192,19 +206,3 @@
   return this;
 }
 
-function showModal(dialogHtml, options) {
-  //clickOutside();
-
-  options = options || {};
-
-  options.closeMethods = options.closeMethods || ["overlay", "escape"];
-
-  let modal = new tingle.modal(options);
-  modal.setContent(dialogHtml);
-
-  //modal.open();
-
-  applyLanguage();
-
-  return modal;
-}
