@@ -185,14 +185,14 @@ function Setup() {
   };
 
   this.fromLocalStorageOrDefault = (key, onNotFound) => {
-    let result = localStorage.getItem(key);
+    let value = localStorage.getItem(key);
 
-    if (result) {
-      return JSON.parse(result);
+    if (value) {
+      return JSON.parse(value);
     } else {
-      result = onNotFound();
-      localStorage.setItem(key, JSON.stringify(result));
-      return result;
+      value = onNotFound();
+      localStorage.setItem(key, JSON.stringify(value));
+      return value;
     }
   };
 
@@ -754,8 +754,6 @@ function NewTab() {
   };
 
   this.showPopper = (el, btn, placement) => {
-    console.log("ID", btn.id);
-
     if (el.classList.contains("active")) {
       return;
     }
@@ -803,8 +801,8 @@ function NewTab() {
 
   this.initialize = async () => {
     let self = this;
-    chrome.runtime.getPackageDirectoryEntry(function(s) {
-      s.getDirectory("img", {}, function(imagesDirectory) {
+    chrome.runtime.getPackageDirectoryEntry(function(entry) {
+      entry.getDirectory("img", {}, function(imagesDirectory) {
         var dirReader = imagesDirectory.createReader();
         var buffer = [];
         getEntries = function(callback) {
@@ -838,10 +836,7 @@ function NewTab() {
     this.updateClock();
     this.initializePopper();
     this.addEventListeners();
-
-    this.setMostVisitedSites();
-    //this.showAppList();
-
+    this.setMostVisitedSites();    //this.showAppList();
     this.resetAutoHide();
     this.checkAutoHide();
   };
@@ -881,12 +876,12 @@ function StickyNotes() {
   };
 
   this.load = async () => {
-    let obj;
-    obj = await this.loadFromStorage();
+    let data;
+    data = await this.loadFromStorage();
 
-    if (obj && obj.notes && obj.notes.length) {
+    if (data && data.notes && data.notes.length) {
       board.clearNotes();
-      board.addSerializableObject(obj);
+      board.addSerializableObject(data);
     }
   };
 
@@ -917,7 +912,7 @@ function StickyNotes() {
     })();
   };
 
-  this.addEventListeners = () => {
+  this.addListeners = () => {
     document
       .querySelector("#btn-sticky-notes")
       .addEventListener("click", () => this.onCreateStickyNoteButtonClick());
@@ -945,7 +940,7 @@ function StickyNotes() {
   this.initialize = () => {
     board = new PostIt(document.querySelector("#board-sticky-notes"));
 
-    this.addEventListeners();
+    this.addListeners();
   };
 
   return this;

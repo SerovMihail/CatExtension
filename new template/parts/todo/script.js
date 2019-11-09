@@ -38,8 +38,8 @@ function TodoList() {
   };
 
   this.showTodoList = data => {
-    let list = panelElement.querySelector(".todo-list-items");
-    list.innerHTML = "";
+    let listElement = panelElement.querySelector(".todo-list-items");
+    listElement.innerHTML = "";
 
     for (var i = 0; i < data.items.length; i++) {
       let item = data.items[i];
@@ -49,7 +49,7 @@ function TodoList() {
       itemEl.querySelector("[data-check]").checked = item.completed;
       itemEl.querySelector("[data-text]").innerText = item.text;
 
-      list.appendChild(itemEl);
+      listElement.appendChild(itemEl);
     }
 
     if (popper) {
@@ -75,14 +75,14 @@ function TodoList() {
     event.stopPropagation();
     event.stopImmediatePropagation();
 
-    let confirm = await Swal.fire({
+    let confirmDialogue = await Swal.fire({
       text: getLanguageText("Todo_ConfirmMessage"),
       confirmButtonText: getLanguageText("Todo_ConfirmYes"),
       cancelButtonText: getLanguageText("Todo_ConfirmNo"),
       showCancelButton: true
     });
 
-    if (confirm.value) {
+    if (confirmDialogue.value) {
       let item = target.closest(".item[data-index]");
       let index = Number(item.getAttribute("data-index"));
 

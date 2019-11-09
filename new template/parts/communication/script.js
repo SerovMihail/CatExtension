@@ -36,16 +36,16 @@ function BackgroundDialog() {
 
   this.onFavButtonClick = targetElement => {
     targetElement.classList.toggle("active");
-    let isFav = targetElement.classList.contains("active");
+    let isFavorite = targetElement.classList.contains("active");
 
     let element = targetElement.closest("[data-index]");
     let index = Number(element.getAttribute("data-index"));
 
     let settings = settingsScreen.getSelectingBg();
-    settings.favorites[index] = isFav;
+    settings.favorites[index] = isFavorite;
     settingsScreen.setSelectingBg(settings);
 
-    if (settings.shuffle == "fav" && !isFav) {
+    if (settings.shuffle == "fav" && !isFavorite) {
       let hasItem = this.checkFavAvailable(settings);
 
       if (!hasItem) {
@@ -171,7 +171,7 @@ function BackgroundDialog() {
     let backgroundList = modalContent.querySelector("#lst-backgrounds");
 
     let selectingBg = settingsScreen.getSelectingBg();
-    let counter = 0;
+    let godCounter = 0;
 
     for (let bg of bgInfo) {
       let itemEl = template(itemTemplate);
@@ -182,18 +182,18 @@ function BackgroundDialog() {
       itemEl.querySelector("[data-title]").setAttribute("title", bg.Title);
       backgroundList.appendChild(itemEl);
 
-      itemEl.setAttribute("data-index", counter);
+      itemEl.setAttribute("data-index", godCounter);
 
-      if (counter == newTab.showingBgIndex) {
+      if (godCounter == newTab.showingBgIndex) {
         itemEl.classList.add("selecting");
       }
 
-      if (selectingBg.favorites[counter]) {
+      if (selectingBg.favorites[godCounter]) {
         const fav = itemEl.querySelector(".fav i.fa");
         fav && fav.classList.add("active");
       }
 
-      counter++;
+      godCounter++;
     }
 
     let optShuffle = this.getShuffleRadio(selectingBg.shuffle);
