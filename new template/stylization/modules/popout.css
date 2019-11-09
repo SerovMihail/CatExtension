@@ -7,6 +7,17 @@
     border-radius: 5px;
     z-index: 3;
     background-color: rgba(184, 198, 209, .8);
+    animation: appearing .5s ease-in-out forwards;
+}
+
+@keyframes appearing {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 #my_popup {
@@ -119,7 +130,7 @@
     cursor: pointer;
 }
 
-.list-top-sites>.item:hover{
+.list-top-sites>.item:hover {
     padding-left: 8px;
     transition: all .5s;
 }
@@ -127,6 +138,7 @@
 .list-top-sites>.item a {
     color: #505050;
 }
+
 .list-top-sites>.item a:hover {
     text-decoration: none;
 }
@@ -175,6 +187,7 @@
     position: relative;
     color: #000;
 }
+
 .list-background>.item:hover {
     transform: scale(1.05);
 }

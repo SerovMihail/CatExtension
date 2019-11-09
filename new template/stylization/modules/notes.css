@@ -10,4 +10,16 @@
 
 .sticky-notes .pi-note {
     pointer-events: all;
+    animation: appearing .5s ease-in-out forwards;
+
+}
+
+@keyframes appearing {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
