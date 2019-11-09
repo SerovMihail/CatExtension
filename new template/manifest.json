@@ -24,7 +24,7 @@
   },
   "background": {
     "scripts": [
-      "js/bg.js"
+      "scripts/background.js"
     ]
   },
   "chrome_url_overrides": {

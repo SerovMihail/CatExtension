@@ -167,7 +167,7 @@ function BackgroundDialog() {
 
   this.showDialog = () => {
     return new Promise(async resolve => {
-      let diagContent = await fetch("/parts/communication/tpl.html").then(response =>
+      let diagContent = await fetch("/parts/communication/template.html").then(response =>
         response.text()
       );
 

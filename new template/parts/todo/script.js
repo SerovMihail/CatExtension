@@ -161,7 +161,7 @@ function TodoList() {
   };
 
   this.initialize = async () => {
-    panelContentHTMLTemplate = await fetch("/parts/todo/tpl.html").then(response =>
+    panelContentHTMLTemplate = await fetch("/parts/todo/template.html").then(response =>
       response.text()
     );
 
