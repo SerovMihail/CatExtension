@@ -5,6 +5,15 @@
   "description": "__MSG_AppDescription__",
   "version": "1.0.0",
   "default_locale": "en",
+  "offline_enabled": true,
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "background": {
+    "scripts": [
+      "scripts/background.js"
+    ]
+  },
   "browser_action": {
     "default_icon": {
       "16": "icons/i-16.png",
@@ -22,15 +31,6 @@
     "256": "icons/i-256.png",
     "512": "icons/i-512.png"
   },
-  "background": {
-    "scripts": [
-      "scripts/background.js"
-    ]
-  },
-  "chrome_url_overrides": {
-    "newtab": "index.html"
-  },
-  "offline_enabled": true,
   "permissions": [
     "webRequestBlocking",
     "topSites",

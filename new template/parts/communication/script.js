@@ -49,9 +49,9 @@ function BackgroundDialog() {
       let hasItem = this.checkFavAvailable(settings);
 
       if (!hasItem) {
-        let radio = this.getShuffleRadio("all");
-        radio.checked = true;
-        this.onShuffleOptionChanged(radio);
+        let radioButton = this.getShuffleRadio("all");
+        radioButton.checked = true;
+        this.onShuffleOptionChanged(radioButton);
       }
     }
   };
@@ -164,7 +164,7 @@ function BackgroundDialog() {
   this.loadBackgroundList = () => {
     let contentPanel = modalContent.querySelector("#panel-backgrounds-content");
 
-    let bgInfo = newTab.bgInfo;
+    let bgInfos = newTab.bgInfo;
     let itemTemplate = modalContent.querySelector("#template-background-item")
       .innerHTML;
 
@@ -173,12 +173,12 @@ function BackgroundDialog() {
     let selectingBg = settingsScreen.getSelectingBg();
     let godCounter = 0;
 
-    for (let bg of bgInfo) {
+    for (let bg of bgInfos) {
       let itemEl = template(itemTemplate);
 
       itemEl.querySelector(
         "[data-background]"
-      ).style.backgroundImage = `url(/img/${bg.FileName})`;
+      ).style.backgroundImage = `url(/cover-images/${bg.FileName})`;
       itemEl.querySelector("[data-title]").setAttribute("title", bg.Title);
       backgroundList.appendChild(itemEl);
 

@@ -454,7 +454,7 @@ function NewTab() {
 
     let selectingBgInfo = this.bgInfo[this.showingBgIndex];
 
-    bg.style.backgroundImage = `url(/img/${selectingBgInfo.FileName})`;
+    bg.style.backgroundImage = `url(/cover-images/${selectingBgInfo.FileName})`;
     bg.style.backgroundPosition = "center";
   };
 
@@ -802,7 +802,7 @@ function NewTab() {
   this.initialize = async () => {
     let self = this;
     chrome.runtime.getPackageDirectoryEntry(function(entry) {
-      entry.getDirectory("img", {}, function(imagesDirectory) {
+      entry.getDirectory("cover-images", {}, function(imagesDirectory) {
         var dirReader = imagesDirectory.createReader();
         var buffer = [];
         getEntries = function(callback) {
