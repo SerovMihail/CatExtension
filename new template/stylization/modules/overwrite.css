@@ -1,0 +1,15 @@
+.pi-note .pi-note-title {
+    flex-direction: row-reverse !important;
+}
+
+.sticky-notes .pi-note {
+    box-shadow: 17px 15px 42px 11px rgba(94, 94, 94, 0.39);
+}
+
+.pi-note .pi-note-title {
+    background: #540224;
+}
+
+.pi-note .pi-note-title .pi-note-x::before {
+    color: white;
+}

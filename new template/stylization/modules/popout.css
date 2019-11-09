@@ -1,0 +1,222 @@
+.popout {
+    position: relative;
+    display: none;
+    min-width: 200px;
+    max-width: 40vw;
+    padding: 15px;
+    border-radius: 5px;
+    z-index: 3;
+    background-color: rgba(184, 198, 209, .8);
+}
+
+#my_popup {
+    padding: 0;
+    max-height: 500px;
+    max-width: 500px;
+    min-width: 440px;
+}
+
+#panel-backgrounds-content {
+    max-height: 500px;
+    max-width: 500px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.popout.popout-wide {
+    width: 600px;
+    max-width: 90vw;
+}
+
+.popout.active {
+    display: block;
+}
+
+.popout .popper__arrow {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    position: absolute;
+    margin: 5px;
+    border-color: rgba(243, 243, 243, 0.9);
+}
+
+.popout[x-placement^="bottom"] {
+    margin-top: 15px;
+}
+
+.popout[x-placement^="bottom"] .popper__arrow {
+    border-width: 0 5px 5px 5px;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    border-top-color: transparent;
+    top: -5px;
+    left: calc(50% - 5px);
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.popout[x-placement^="top"] {
+    margin-bottom: 15px;
+}
+
+.popout[x-placement^="top"] .popper__arrow {
+    border-width: 5px 5px 0 5px;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    bottom: -5px;
+    left: calc(50% - 5px);
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.popout h2.title {
+    font-weight: bold;
+    font-size: 1rem;
+    color: #505050;
+}
+
+.popout hr {
+    margin: 1rem -15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    border-bottom: 1px solid rgba(128, 128, 128, 0.5);
+}
+
+.option-list>.option {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5px;
+}
+
+.option-list>.option>.desc {
+    flex-grow: 1;
+    color: #505050;
+}
+
+.option-list>.option>.control {
+    flex-shrink: 0;
+    margin-left: 30px;
+    min-width: 100px;
+    text-align: right;
+}
+
+.option-list>.option>.control a {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.list-top-sites {
+    overflow-y: auto;
+    max-height: 50vh;
+
+}
+
+.list-top-sites>.item {
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.list-top-sites>.item:hover{
+    padding-left: 8px;
+    transition: all .5s;
+}
+
+.list-top-sites>.item a {
+    color: #505050;
+}
+.list-top-sites>.item a:hover {
+    text-decoration: none;
+}
+
+.list-top-sites>.item img {
+    max-height: 1rem;
+    margin-right: 8px;
+}
+
+.panel-backgrounds-header {
+    background: rgba(90, 114, 133, 0.9);
+    min-height: 40px;
+    z-index: 10;
+    position: absolute;
+    width: 100%;
+}
+
+.panel-backgrounds-header .header-label {
+    color: white;
+    padding-top: 7px;
+    display: inline-flex;
+    margin-left: 1rem;
+}
+
+.list-background {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 60px);
+    grid-gap: 20px;
+    justify-content: center;
+    overflow-y: auto;
+    padding: 20px 0;
+}
+
+.list-background.bg-sm {
+    grid-template-columns: repeat(auto-fill, 100px);
+}
+
+.list-background.bg-sm>.item [data-background] {
+    width: 100px;
+    height: 100px;
+}
+
+.list-background>.item {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    color: #000;
+}
+.list-background>.item:hover {
+    transform: scale(1.05);
+}
+
+.list-background>.item.selecting [data-background] {
+    box-shadow: 0 0 20px #ff9501;
+}
+
+.list-background>.item [data-background] {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    transition: all ease-out 0.4s;
+}
+
+.list-background>.item p {
+    margin: 10px 0;
+    text-align: center;
+}
+
+.list-background>.item .fav {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 1.3rem;
+    color: #ff9501;
+}
+
+.list-background>.item .fav>i {
+    font-weight: normal;
+}
+
+.list-background>.item .fav>i:active,
+.list-background>.item .fav>i.active {
+    font-weight: bold;
+}
+
+.list-background>.item .fav>i.active:active {
+    font-weight: normal;
+}

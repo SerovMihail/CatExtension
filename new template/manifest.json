@@ -8,20 +8,20 @@
   "default_locale": "en",
   "browser_action": {
     "default_icon": {
-      "16": "icon-16.png",
-      "32": "icon-32.png",
-      "48": "icon-48.png"
+      "16": "icons/i-16.png",
+      "32": "icons/i-32.png",
+      "48": "icons/i-48.png"
     },
     "default_title": "__MSG_AppName__"
   },
   "icons": {
-    "32": "icon-32.png",
-    "48": "icon-48.png",
-    "64": "icon-64.png",
-    "96": "icon-96.png",
-    "128": "icon-128.png",
-    "256": "icon-256.png",
-    "512": "icon-512.png"
+    "32": "icons/i-32.png",
+    "48": "icons/i-48.png",
+    "64": "icons/i-64.png",
+    "96": "icons/i-96.png",
+    "128": "icons/i-128.png",
+    "256": "icons/i-256.png",
+    "512": "icons/i-512.png"
   },
   "background": {
     "scripts": ["js/bg.js"]
