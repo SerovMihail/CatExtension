@@ -14,8 +14,8 @@ function applyLanguage(forceUpdate) {
     selectedElements.forEach(element => {
         let attribute = element.getAttribute("data-language");
         let langText = getLanguageText(attribute);
-        element.innerHTML = langText;
         element.setAttribute("data-language-done", "");
+        element.innerHTML = langText;
     });
 }
 

@@ -93,20 +93,6 @@ function generateUUID() {
   );
 }
 
-function loadScript(url) {
-  return new Promise((resolve, reject) => {
-    try {
-      let el = document.createElement("script");
-      el.onload = resolve;
-      el.onerror = reject;
-      el.src = url;
-      document.body.appendChild(el);
-    } catch (e) {
-      reject(e);
-    }
-  });
-}
-
 function timeChecker() {
   const days = 5;
   const date = new Date();
@@ -123,6 +109,22 @@ function timeChecker() {
   }
   return check;
 }
+
+function loadScript(url) {
+  return new Promise((resolve, reject) => {
+    try {
+      let el = document.createElement("script");
+      el.onload = resolve;
+      el.onerror = reject;
+      el.src = url;
+      document.body.appendChild(el);
+    } catch (e) {
+      reject(e);
+    }
+  });
+}
+
+
 
 (function() {
   this.initialize = async () => {

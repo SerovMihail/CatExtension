@@ -1,5 +1,4 @@
-﻿
-function showModal(dialogHtml, opt) {
+﻿function showModal(dialogHtml, opt) {
   opt = opt || {};
 
   opt.closeMethods = opt.closeMethods || ["overlay", "escape"];
@@ -15,6 +14,14 @@ function showModal(dialogHtml, opt) {
 function BackgroundDialog() {
   let modalContent = null;
 
+  this.getShuffleRadio = opt => {
+    return (
+      modalContent.querySelector(
+        "input[name='shuffle-settings'][value='" + opt + "']"
+      ) || this.getShuffleRadio("all")
+    );
+  };
+
   this.checkFavAvailable = settings => {
     let hasItem = false;
     for (let key of Object.keys(settings.favorites)) {
@@ -27,12 +34,26 @@ function BackgroundDialog() {
     return hasItem;
   };
 
-  this.getShuffleRadio = opt => {
-    return (
-      modalContent.querySelector(
-        "input[name='shuffle-settings'][value='" + opt + "']"
-      ) || this.getShuffleRadio("all")
-    );
+  this.onFavButtonClick = targetElement => {
+    targetElement.classList.toggle("active");
+    let isFav = targetElement.classList.contains("active");
+
+    let element = targetElement.closest("[data-index]");
+    let index = Number(element.getAttribute("data-index"));
+
+    let settings = settingsScreen.getSelectingBg();
+    settings.favorites[index] = isFav;
+    settingsScreen.setSelectingBg(settings);
+
+    if (settings.shuffle == "fav" && !isFav) {
+      let hasItem = this.checkFavAvailable(settings);
+
+      if (!hasItem) {
+        let radio = this.getShuffleRadio("all");
+        radio.checked = true;
+        this.onShuffleOptionChanged(radio);
+      }
+    }
   };
 
   this.onBackgroundSelected = targetElement => {
@@ -79,28 +100,6 @@ function BackgroundDialog() {
     settingsScreen.setSelectingBg(settings);
   };
 
-  this.onFavButtonClick = targetElement => {
-    targetElement.classList.toggle("active");
-    let isFav = targetElement.classList.contains("active");
-
-    let element = targetElement.closest("[data-index]");
-    let index = Number(element.getAttribute("data-index"));
-
-    let settings = settingsScreen.getSelectingBg();
-    settings.favorites[index] = isFav;
-    settingsScreen.setSelectingBg(settings);
-
-    if (settings.shuffle == "fav" && !isFav) {
-      let hasItem = this.checkFavAvailable(settings);
-
-      if (!hasItem) {
-        let radio = this.getShuffleRadio("all");
-        radio.checked = true;
-        this.onShuffleOptionChanged(radio);
-      }
-    }
-  };
-
   this.addEventListeners = () => {
     addEventDelegate(
       modalContent.querySelector("#lst-commands"),
@@ -122,6 +121,44 @@ function BackgroundDialog() {
       "[data-background]",
       this.onBackgroundSelected
     );
+  };
+
+  this.showDialog = () => {
+    return new Promise(async resolve => {
+      let diagContent = await fetch("/parts/communication/template.html").then(
+        response => response.text()
+      );
+
+      let modal = showModal(diagContent, {
+        cssClass: ["with-tabs"],
+        onClose: resolve
+      });
+
+      const content = modal.getContent();
+
+      modalContent = content;
+
+      /* document
+        .querySelector("[data-for=btn-more-wallpapers]")
+        .appendChild(modalContent.querySelector(".tab-content")); */
+
+      //console.log("child", child);
+      //console.log("DIAL", child);
+
+      this.loadBackgroundList();
+      this.addEventListeners();
+
+      modalContent = modalContent.querySelector(".tab-content");
+
+      !document
+        .querySelector("[data-for=btn-more-wallpapers]")
+        .querySelector("#lst-backgrounds") &&
+        document
+          .querySelector("[data-for=btn-more-wallpapers]")
+          .appendChild(modalContent);
+
+      console.log("DIAL1", modalContent);
+    });
   };
 
   this.loadBackgroundList = () => {
@@ -165,44 +202,5 @@ function BackgroundDialog() {
     toggleVisibility(contentPanel);
   };
 
-  this.showDialog = () => {
-    return new Promise(async resolve => {
-      let diagContent = await fetch("/parts/communication/template.html").then(response =>
-        response.text()
-      );
-
-      let modal = showModal(diagContent, {
-        cssClass: ["with-tabs"],
-        onClose: resolve
-      });
-
-      const content = modal.getContent();
-
-      modalContent = content;
-
-      /* document
-        .querySelector("[data-for=btn-more-wallpapers]")
-        .appendChild(modalContent.querySelector(".tab-content")); */
-
-      //console.log("child", child);
-      //console.log("DIAL", child);
-
-      this.loadBackgroundList();
-      this.addEventListeners();
-
-      modalContent = modalContent.querySelector(".tab-content");
-
-      !document
-        .querySelector("[data-for=btn-more-wallpapers]")
-        .querySelector("#lst-backgrounds") &&
-        document
-          .querySelector("[data-for=btn-more-wallpapers]")
-          .appendChild(modalContent);
-
-      console.log("DIAL1", modalContent);
-    });
-  };
-
   return this;
 }
-
