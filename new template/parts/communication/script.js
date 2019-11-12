@@ -1,4 +1,5 @@
 ﻿function showModal(dialogHtml, opt) {
+  debugger;
   opt = opt || {};
 
   opt.closeMethods = opt.closeMethods || ["overlay", "escape"];

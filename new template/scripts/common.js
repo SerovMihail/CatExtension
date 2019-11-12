@@ -4,37 +4,40 @@ var stickyNoteScreen;
 var todoList;
 var serverUrl = "";
 const appName = "baby-animals";
+const isVisible = elem =>
+  !!elem &&
+  !!(elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length);
 
 function applyLanguage(force) {
-  let elements;
+  let htmlElements;
 
   if (force) {
-    elements = document.querySelectorAll("[data-language]");
+    htmlElements = document.querySelectorAll("[language-data]");
   } else {
-    elements = document.querySelectorAll(
-      "[data-language]:not([data-language-done])"
+    htmlElements = document.querySelectorAll(
+      "[language-data]:not([language-data-done])"
     );
   }
 
-  elements.forEach(element => {
-    let attr = element.getAttribute("data-language");
+  htmlElements.forEach(element => {
+    let attr = element.getAttribute("language-data");
     let text = getLanguageText(attr);
     element.innerHTML = text;
-    element.setAttribute("data-language-done", "");
+    element.setAttribute("language-data-done", "");
   });
 }
 
-function getLanguageText(key) {
-  return chrome.i18n.getMessage(key) || key;
+function getLanguageText(searchValue) {
+  return chrome.i18n.getMessage(searchValue) || searchValue;
 }
 
-function addEventDelegate(el, name, selector, f) {
-  el.addEventListener(name, e => {
+function addEventDelegate(element, name, selector, callback) {
+  element.addEventListener(name, e => {
     let current = e.target;
 
     while (current) {
       if (current.matches(selector)) {
-        f(current, e);
+        callback(current, e);
         break;
       }
 
@@ -54,9 +57,8 @@ function clickOutside() {
   document.body.click();
 }
 
-const isVisible = elem =>
-  !!elem &&
-  !!(elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length);
+
+
 function onceClickOutside(e, callback) {
   const outsideClickListener = event => {
     if (!e.contains(event.target) && isVisible(e)) {
@@ -285,8 +287,8 @@ function Setup() {
       let optionElem = template(optionTemplate);
 
       optionElem
-        .querySelector("[data-language-desc]")
-        .setAttribute("data-language", option);
+        .querySelector("[language-data-desc]")
+        .setAttribute("language-data", option);
 
       let id = "chk-settings-" + option;
 

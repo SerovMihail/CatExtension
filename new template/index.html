@@ -19,22 +19,22 @@
         <div class="header-features">
           <a id="btn-feature-settings">
             <i class="fa fa-cog"></i>
-            <span data-language="Feature_Settings"></span>
+            <span language-data="Feature_Settings"></span>
           </a>
           <a id="btn-feature-most-visited" data-ui-show="Settings_MostVisited">
             <i class="fa fa-star"></i>
-            <span data-language="Feature_MostVisited"></span>
+            <span language-data="Feature_MostVisited"></span>
           </a>
           <a id="btn-more-wallpapers" data-ui-show="Settings_MoreWallpapers">
             <i class="fa fa-image"></i>
-            <span data-language="Settings_Background"></span>
+            <span language-data="Settings_Background"></span>
           </a>
           <!-- <a
             id="btn-more-wallpapers"
             data-click="onSettingCountdownButtonClick"
           >
             <i class="fa fa-image"></i>
-            <span data-language="Settings_Background"></span>
+            <span language-data="Settings_Background"></span>
           </a> -->
         </div>
         <div class="header-search">
@@ -42,7 +42,7 @@
             <label
               for="txt-search"
               class="w-100"
-              data-language="Search_Placeholder"
+              language-data="Search_Placeholder"
             ></label>
             <button id="btn-search" class="icon">
               <i class="fa fa-search"></i>
@@ -62,11 +62,11 @@
         <div class="footer-features">
           <a id="btn-sticky-notes" data-ui-show="Settings_StickyNotes">
             <i class="fa fa-plus"></i>
-            <span data-language="StickyNotes_Create"></span>
+            <span language-data="StickyNotes_Create"></span>
           </a>
           <a id="btn-todo" data-ui-show="Settings_Todo">
             <i class="fa fa-list"></i>
-            <span data-language="Feature_Todo"></span>
+            <span language-data="Feature_Todo"></span>
           </a>
         </div>
       </footer>
@@ -81,7 +81,7 @@
     <div id="popout-settings" class="popout" data-for="btn-feature-settings">
       <h2 class="title">
         <i class="fa fa-cog"></i>
-        <span data-language="Settings_Title"></span>
+        <span language-data="Settings_Title"></span>
       </h2>
       <hr />
       <div id="lst-options-ui" class="option-list"></div>
@@ -110,7 +110,7 @@
           </div>
         </div>
         <div class="lst-header">
-          <span class="header-label" data-language="Settings_Background"></span>
+          <span class="header-label" language-data="Settings_Background"></span>
         </div>
         <div id="list-more-wallpapers" class="list-background"></div>
       </div>
@@ -124,13 +124,13 @@
     <template id="template-switch-option">
       <div class="option">
         <div class="desc">
-          <span data-language-desc></span>
+          <span language-data-desc></span>
         </div>
         <div class="control">
           <input type="checkbox" class="switch-input" />
           <label class="switch-label"
-            ><span class="toggle--on" data-language="On"></span
-            ><span class="toggle--off" data-language="Off"></span
+            ><span class="toggle--on" language-data="On"></span
+            ><span class="toggle--off" language-data="Off"></span
           ></label>
         </div>
       </div>
@@ -158,7 +158,6 @@
     <script src="/parts/communication/script.js"></script>
     <script src="/parts/todo/script.js"></script>
 
-    <script src="/scripts/multilang.js"></script>
     <script src="/scripts/common.js"></script>
   </body>
 </html>

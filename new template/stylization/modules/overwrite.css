@@ -9,6 +9,9 @@
 .pi-note .pi-note-title {
     background: #540224;
 }
+.pi-note .pi-note-title .pi-note-title-input{
+    color: white;
+}
 
 .pi-note .pi-note-title .pi-note-x::before {
     color: white;
