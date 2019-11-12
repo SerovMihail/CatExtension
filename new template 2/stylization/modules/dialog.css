@@ -1,0 +1,37 @@
+.diag-background-settings #panel-backgrounds-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.diag-background-settings #panel-backgrounds-content>#lst-backgrounds {
+    flex-grow: 1;
+    margin: -20px 0;
+}
+
+.diag-background-settings #panel-backgrounds-content>hr {
+    border-top: 1px solid #f2f2f2;
+    margin: 20px -20px;
+}
+
+.diag-background-settings #panel-backgrounds-content>#lst-commands {
+    flex-shrink: 0;
+}
+
+#lst-backgrounds {
+    padding: 60px 0;
+}
+
+#lst-commands {
+    height: 40px;
+    background: rgba(90, 114, 133, 0.9);
+    padding-top: 7px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+#lst-commands .custom-control-inline {
+    margin-left: 1rem;
+    color: white;
+}

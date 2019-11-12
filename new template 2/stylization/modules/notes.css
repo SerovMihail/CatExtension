@@ -1,0 +1,25 @@
+.sticky-notes {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.sticky-notes .pi-note {
+    pointer-events: all;
+    animation: appearing .5s ease-in-out forwards;
+
+}
+
+@keyframes appearing {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}

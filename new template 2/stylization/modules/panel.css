@@ -1,0 +1,90 @@
+#panel-todo-list {
+    width: 400px;
+    max-width: 65vw;
+}
+
+#panel-todo-list .todo-list .todo-list-items {
+    margin: 5px -15px;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+#panel-todo-list .todo-list .todo-list-items>.item {
+    padding: 0 15px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    transition: all ease-out 0.25s;
+    background: transparent;
+    cursor: pointer;
+    color: #505050;
+}
+#panel-todo-list .todo-list .todo-list-items>.item:hover {
+    color: white;
+}
+
+#panel-todo-list .todo-list .todo-list-items>.item>.item-check {
+    flex-grow: 1;
+    display: flex;
+}
+
+#panel-todo-list .todo-list .todo-list-items>.item>.item-check label {
+    flex-grow: 1;
+}
+
+#panel-todo-list .todo-list .todo-list-items>.item>.item-check input:checked+label {
+    text-decoration: line-through;
+}
+
+#panel-todo-list .todo-list .todo-list-items>.item>.item-actions {
+    flex-shrink: 0;
+    display: none;
+}
+
+#panel-todo-list .todo-list .todo-list-items>.item .btn {
+    color: #fff;
+    background: none;
+    outline: none;
+    box-shadow: none;
+    opacity: 0.7;
+    transition: all ease-out 0.25s;
+}
+
+#panel-todo-list .todo-list .todo-list-items>.item .btn:hover {
+    opacity: 1;
+}
+
+#panel-todo-list .todo-list .todo-list-items>.item label {
+    margin-bottom: 0;
+}
+
+#panel-todo-list .todo-list .todo-list-items>.item:hover {
+    background: rgba(50, 50, 52, 0.619);
+}
+
+#panel-todo-list .todo-list .todo-list-items>.item:hover>.item-actions {
+    display: block;
+}
+
+#panel-todo-list .list-actions {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    margin: 5px -15px;
+}
+
+#panel-todo-list .list-actions>a {
+    padding: 5px 15px;
+    transition: all ease-out 0.25s;
+    background: transparent;
+    cursor: pointer;
+    color: #505050;
+    height: 52px;
+    display: flex;
+    align-items: center;
+}
+
+#panel-todo-list .list-actions>a:hover {
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+}

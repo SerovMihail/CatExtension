@@ -1,0 +1,15 @@
+.watermark .watermark-icon {
+    background-image: url(../../service-images/sample-watermark.png);
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    right: 30px;
+    bottom: 0;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.watermark .watermark-icon:hover {
+    filter: hue-rotate(180deg);
+}
