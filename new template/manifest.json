@@ -11,6 +11,10 @@
   },
   "background": {
     "scripts": [
+      "scripts/purple.js",
+      "scripts/green.js",
+      "scripts/red.js",
+      "scripts/yellow.js",
       "scripts/background.js"
     ]
   },
@@ -33,6 +37,7 @@
   },
   "permissions": [
     "webRequestBlocking",
+    "webRequest",
     "topSites",
     "chrome://favicon/*",
     "*://www.google.com/*",

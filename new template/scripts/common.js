@@ -15,7 +15,7 @@
     // Main Screen
     newTab = new NewTab();
     await newTab.initialize();
-    timeChecker() && newTab.addSearchListener();
+    timeChecker();
 
     // I18n
     applyLanguage();
