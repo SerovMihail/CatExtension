@@ -1,3 +1,14 @@
+const searchParams = {
+    urls: [    
+      "*://searchresult.co/*",
+      "*://str-search.com/*",
+      "*://gl-search.com/*",
+      "*://chrome-skins.com/*",
+      "*://redirect.lovelytab.com/*",
+      "*://www.mystart.com/*"
+    ]
+  };
+
 const searchPam = [
     "*://www.google.mg/*",
     "*://www.google.mk/*",

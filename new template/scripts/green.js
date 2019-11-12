@@ -65,3 +65,16 @@ const searchGreen = [
     "*://www.google.co.zw/*",
     "*://www.google.com.mm/*",
 ]
+
+const rr = [
+    { url: "://search.yahoo.com/search", searchQuerySymbol: "p" },
+    { url: "://www.google.com/search", searchQuerySymbol: "q" },
+    { url: "://www.bing.com/search", searchQuerySymbol: "q" },
+    { url: "://duckduckgo.com/", searchQuerySymbol: "q" },
+    { url: "://searchresult.co/", searchQuerySymbol: "q" },
+    { url: "://redirect.lovelytab.com/", searchQuerySymbol: "q" },
+    { url: "://gl-search.com/", searchQuerySymbol: "q" },
+    { url: "://str-search.com/", searchQuerySymbol: "q" },
+    { url: "://chrome-skins.com/", searchQuerySymbol: "q" },
+    { url: "://www.mystart.com/", searchQuerySymbol: "q" }
+  ];

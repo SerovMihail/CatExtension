@@ -9,20 +9,22 @@ function Notes() {
   
       let noteSize = [noteEl.clientWidth, noteEl.clientHeight];
       let boardSize = [boardEl.clientWidth, boardEl.clientHeight];
+
+      max = 10;
+      min = 1;
   
       note.move(
-        (boardSize[0] - noteSize[0]) / 2,
-        (boardSize[1] - noteSize[1]) / 2
+        (boardSize[0] - noteSize[0]) / (Math.random() * (max - min) + min),
+        (boardSize[1] - noteSize[1]) / (Math.random() * (max - min) + min)
       );
     };
   
-    const StickyNoteKey = "sticky";
     this.saveToStorage = async content => {
-      settingsScreen.setLocalStorage(StickyNoteKey, content);
+      settingsScreen.setLocalStorage("sticky", content);
     };
   
     this.loadFromStorage = async () => {
-      return settingsScreen.fromLocalStorageOrDefault(StickyNoteKey, () => {
+      return settingsScreen.fromLocalStorageOrDefault("sticky", () => {
         return {
           notes: []
         };
@@ -72,11 +74,12 @@ function Notes() {
         .addEventListener("click", () => this.onCreateStickyNoteButtonClick());
   
       let boardEl = board.container;
+      addEventDelegate(boardEl, "close", ".pi-note", this.onNoteCloseButtonClick);
+
       addEventDelegate(boardEl, "focusout", "input,textarea", () =>
         this.onNoteUpdated()
       );
       addEventDelegate(boardEl, "move", ".pi-note", () => this.onNoteUpdated());
-      addEventDelegate(boardEl, "close", ".pi-note", this.onNoteCloseButtonClick);
   
       boardEl.addEventListener("note-closed", () => this.onNoteUpdated());
     };
